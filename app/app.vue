@@ -23,7 +23,7 @@ useSeoMeta({
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'Alt View', to: '/alt' }
+  { label: 'Alt View 1', to: '/alt' }
 ]
 </script>
 

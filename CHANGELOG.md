@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.10] — 2026-04-25
+
+### Changed
+
+- Header nav label `Alt View` → `Alt View 1` to leave room for additional alternative views (`Alt View 2`, etc.) without renaming later.
+
 ## [0.1.9] — 2026-04-25
 
 ### Changed

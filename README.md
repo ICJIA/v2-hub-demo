@@ -118,3 +118,4 @@ To deploy: connect the repo to Netlify, accept the auto-detected build settings,
 If you ever need fresher data without a deploy, switch to `nitro.preset = 'netlify'` in `nuxt.config.ts` and remove the `pnpm generate` step — the page will be SSR'd on a Netlify Function, fetching live on each request.
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for the full list of what shipped in v0.1.0.
+3
