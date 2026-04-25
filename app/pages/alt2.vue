@@ -16,8 +16,6 @@ const articles = computed<Article[]>(() => {
   })
 })
 
-const advancedMode = ref(false)
-
 const selectedType = ref<string | null>(null)
 const selectedTopic = ref('')
 const selectedAuthor = ref('')
@@ -120,12 +118,6 @@ const centerItems = computed(() => {
   return [{ label: 'All Centers', value: '' }, ...items]
 })
 
-const selectedAuthorLabel = computed(() => {
-  if (!selectedAuthor.value) return ''
-  const match = authorItems.value.find(i => i.value === selectedAuthor.value)
-  return match?.label ?? selectedAuthor.value
-})
-
 const filtered = computed<Article[]>(() => {
   let r = articles.value
   if (selectedType.value) r = r.filter(a => a.type === selectedType.value)
@@ -218,7 +210,7 @@ function onTypeChipChange(value: string | null) {
         Research Hub — Alt 2
       </h1>
       <p class="text-sm text-muted">
-        Chips are usually enough. Toggle <span class="font-semibold text-highlighted">Advanced filters</span> if you need topic, center, author, year, or search on top of the chip selection.
+        Same chips as Home, with the full filter bar always visible alongside (Topics, Centers, Authors, Years, Search).
       </p>
     </div>
 
@@ -249,23 +241,14 @@ function onTypeChipChange(value: string | null) {
 
     <template v-else>
       <div class="mb-4 space-y-3">
-        <div class="flex flex-wrap items-center gap-3">
-          <ArticleTypeChips
-            class="flex-1"
-            :model-value="selectedType"
-            :available="availableTypes"
-            :total-count="articles.length"
-            @update:model-value="onTypeChipChange"
-          />
-
-          <USwitch
-            v-model="advancedMode"
-            label="Advanced filters"
-          />
-        </div>
+        <ArticleTypeChips
+          :model-value="selectedType"
+          :available="availableTypes"
+          :total-count="articles.length"
+          @update:model-value="onTypeChipChange"
+        />
 
         <ArticleFilterBar
-          v-if="advancedMode"
           v-model:topic="selectedTopic"
           v-model:author="selectedAuthor"
           v-model:year="selectedYear"
@@ -284,15 +267,6 @@ function onTypeChipChange(value: string | null) {
           Showing <span class="font-semibold text-highlighted">{{ filtered.length }}</span>
           of <span class="font-semibold text-highlighted">{{ articles.length }}</span> articles
         </span>
-        <UButton
-          v-if="selectedAuthor"
-          :label="`Author: ${selectedAuthorLabel}`"
-          trailing-icon="i-lucide-x"
-          color="primary"
-          variant="soft"
-          size="xs"
-          @click="selectedAuthor = ''"
-        />
         <UButton
           v-for="t in selectedTags"
           :key="t"

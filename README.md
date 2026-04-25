@@ -38,9 +38,9 @@ pnpm generate    # static site generation (for Netlify)
 
 The same dataset and the same card design are presented three ways so reviewers can compare:
 
-- **`/` — chip-driven (default).** A row of quick-pick chips at the top (`All`, plus pluralized labels Research Reports, Annual Reports, Updates, Strategic Plans) replaces the Publication Type dropdown, and a **Centers** dropdown is added to the filter bar. Clicking the `All` chip is a full reset — clears every filter (topic, center, author, year, tag, search) and returns to the default view.
+- **`/` (Home) — chips with optional advanced filters.** A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an `Advanced filters` toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
 - **`/alt` (Alt 1) — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
-- **`/alt2` (Alt 2) — chips with optional advanced filters.** Same chip row as `/`, but the filter bar is hidden behind an `Advanced filters` toggle. The hypothesis: chips are usually enough; reveal the bar only when needed.
+- **`/alt2` (Alt 2) — chips with always-on filter bar.** Same chip row as Home, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No advanced toggle.
 
 The chip set and the canonical Centers list are shared across pages via `CHIP_TYPES` and `KNOWN_CENTERS` exports in `app/utils/article-format.ts` — adding a new chip or center happens in one place.
 

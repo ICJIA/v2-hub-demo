@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.20] — 2026-04-25
+
+### Changed
+
+- Swapped `/` and `/alt2`. Home is now the chip-row + `Advanced filters` toggle UX (the simpler default — chips usually enough, reveal the bar when needed). `/alt2` is the chips + always-on filter bar UX. `/alt` (dropdown-only) is unchanged. Modal copy and README "Three filter UXs" section updated to reflect the new order.
+
 ## [0.1.19] — 2026-04-25
 
 ### Changed

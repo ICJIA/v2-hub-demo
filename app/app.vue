@@ -45,7 +45,7 @@ const changes = [
   },
   {
     title: 'Several views for publication types',
-    body: 'The Home page uses a chip row above the filter bar. Alt 1 puts Publication Type in the bar instead. Alt 2 starts as chips only and reveals the full filter bar via an Advanced toggle. Same data, three UX options to compare.'
+    body: 'The Home page starts as chips only and reveals the full filter bar via an Advanced toggle. Alt 1 puts Publication Type in the bar instead (no chips). Alt 2 shows chips with the full filter bar always visible. Same data, three UX options to compare.'
   },
   {
     title: 'Clickable, additive tags',
