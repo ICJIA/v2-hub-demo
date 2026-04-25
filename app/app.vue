@@ -37,7 +37,10 @@ const navItems = [
   <UApp>
     <UHeader>
       <template #left>
-        <UNavigationMenu :items="navItems" aria-label="View navigation" />
+        <UNavigationMenu
+          :items="navItems"
+          aria-label="View navigation"
+        />
       </template>
 
       <NuxtLink

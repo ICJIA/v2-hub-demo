@@ -67,15 +67,27 @@ function separatorBefore(idx: number, total: number): string {
       </button>
 
       <h2 class="line-clamp-2 text-lg font-semibold leading-snug text-highlighted">
-        <template v-for="(seg, i) in titleSegments" :key="`t-${i}`">
-          <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
+        <template
+          v-for="(seg, i) in titleSegments"
+          :key="`t-${i}`"
+        >
+          <mark
+            v-if="seg.match"
+            class="rounded-sm bg-primary/40 px-0.5 text-inherit"
+          >{{ seg.text }}</mark>
           <span v-else>{{ seg.text }}</span>
         </template>
       </h2>
 
-      <p v-if="authorNames.length" class="line-clamp-2 text-xs text-toned">
+      <p
+        v-if="authorNames.length"
+        class="line-clamp-2 text-xs text-toned"
+      >
         <span>By </span>
-        <template v-for="(name, idx) in authorNames" :key="idx">
+        <template
+          v-for="(name, idx) in authorNames"
+          :key="idx"
+        >
           <span v-if="idx > 0">{{ separatorBefore(idx, authorNames.length) }}</span>
           <button
             type="button"
@@ -90,14 +102,26 @@ function separatorBefore(idx: number, total: number): string {
         {{ formatDate(article.date ?? article.publishedAt) }}
       </p>
 
-      <p v-if="article.abstract" class="line-clamp-5 min-h-[6.25rem] text-sm text-toned">
-        <template v-for="(seg, i) in abstractSegments" :key="`a-${i}`">
-          <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
+      <p
+        v-if="article.abstract"
+        class="line-clamp-5 min-h-[6.25rem] text-sm text-toned"
+      >
+        <template
+          v-for="(seg, i) in abstractSegments"
+          :key="`a-${i}`"
+        >
+          <mark
+            v-if="seg.match"
+            class="rounded-sm bg-primary/40 px-0.5 text-inherit"
+          >{{ seg.text }}</mark>
           <span v-else>{{ seg.text }}</span>
         </template>
       </p>
 
-      <div v-if="article.tags?.length" class="flex flex-wrap gap-1.5 pt-1">
+      <div
+        v-if="article.tags?.length"
+        class="flex flex-wrap gap-1.5 pt-1"
+      >
         <button
           v-for="tag in article.tags"
           :key="tag"

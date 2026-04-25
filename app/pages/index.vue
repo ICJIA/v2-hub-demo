@@ -134,7 +134,7 @@ const filtered = computed<Article[]>(() => {
   if (selectedYear.value) r = r.filter(a => articleYear(a) === selectedYear.value)
   if (selectedCenter.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedCenter.value))
   if (selectedTags.value.length) {
-    r = r.filter(a => {
+    r = r.filter((a) => {
       const tags = asStrings(a.tags)
       return selectedTags.value.some(t => tags.includes(t))
     })
@@ -222,7 +222,10 @@ function onTypeChipChange(value: string | null) {
       </p>
     </div>
 
-    <div v-if="pending" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <div
+      v-if="pending"
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+    >
       <div
         v-for="i in 6"
         :key="i"
@@ -328,7 +331,10 @@ function onTypeChipChange(value: string | null) {
         No articles match your filters.
       </div>
 
-      <div v-if="filtered.length > pageSize" class="mt-8 flex justify-center">
+      <div
+        v-if="filtered.length > pageSize"
+        class="mt-8 flex justify-center"
+      >
         <UPagination
           v-model:page="currentPage"
           :total="filtered.length"

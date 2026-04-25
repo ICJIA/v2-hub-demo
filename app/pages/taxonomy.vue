@@ -288,7 +288,10 @@ const articleTypes = [
       </p>
 
       <p class="mb-3 text-xs text-muted">
-        <UIcon name="i-lucide-mouse-pointer-click" class="mr-1 inline size-4" />
+        <UIcon
+          name="i-lucide-mouse-pointer-click"
+          class="mr-1 inline size-4"
+        />
         Click any type to see real examples from the live database.
       </p>
 
@@ -312,11 +315,17 @@ const articleTypes = [
             <div class="text-xs text-muted">
               <code>{{ t.value }}</code>
             </div>
-            <div v-if="t.note" class="mt-1 text-xs text-muted">
+            <div
+              v-if="t.note"
+              class="mt-1 text-xs text-muted"
+            >
               {{ t.note }}
             </div>
           </div>
-          <UIcon name="i-lucide-chevron-right" class="mt-1 size-4 shrink-0 text-muted" />
+          <UIcon
+            name="i-lucide-chevron-right"
+            class="mt-1 size-4 shrink-0 text-muted"
+          />
         </button>
       </div>
     </section>
@@ -385,7 +394,10 @@ const articleTypes = [
       <template #body>
         <div class="space-y-4">
           <p class="rounded-lg border border-amber-300/40 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/30 dark:text-amber-200">
-            <UIcon name="i-lucide-info" class="mr-1 inline size-4" />
+            <UIcon
+              name="i-lucide-info"
+              class="mr-1 inline size-4"
+            />
             <strong>For this proof-of-concept, these examples still need curation.</strong> They're pulled directly from articles that already carry this <code>type</code> tag in the CMS. Many articles aren't tagged yet — once editorial curation is complete, every type will have richer, more representative examples.
           </p>
 
@@ -396,7 +408,10 @@ const articleTypes = [
             No tagged examples for this type in the live data yet.
           </div>
 
-          <div v-else class="space-y-3">
+          <div
+            v-else
+            class="space-y-3"
+          >
             <p class="text-xs text-muted">
               Top {{ modalExamples.length }} most-recent of {{ modalTotalCount }} tagged article(s):
             </p>

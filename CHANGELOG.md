@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.62] — 2026-04-25
+
+### Fixed
+
+- CI lint failure on `main`. Ran `eslint . --fix` to clear all auto-fixable issues across `app/app.vue`, `app/components/ArticleCard.vue`, `app/pages/articles/[slug].vue`, `app/pages/index.vue`, `app/pages/taxonomy.vue`, `app/pages/view1.vue`, `app/pages/view2.vue`, and `nuxt.config.ts`. The bulk were `vue/max-attributes-per-line` (split multi-attribute opening tags onto separate lines), three `@stylistic/arrow-parens` errors (parenthesized arrow params with block bodies), `vue/attributes-order` on the View 1 filter bar (`v-model:*` now precedes `class`), and `nuxt/nuxt-config-keys-order` (re-sorted top-level keys in `nuxt.config.ts` to the canonical Nuxt order). Removed an unused `TypeOption` type import from `app/pages/view1.vue` (the only non-auto-fixable error). `pnpm run lint` and `pnpm run typecheck` both pass.
+
 ## [0.1.61] — 2026-04-25
 
 ### Changed

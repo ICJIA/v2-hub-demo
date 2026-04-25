@@ -40,7 +40,10 @@ const authorList = computed(() => {
       class="mb-4"
     />
 
-    <div v-if="pending" class="space-y-4">
+    <div
+      v-if="pending"
+      class="space-y-4"
+    >
       <div class="aspect-[16/9] w-full animate-pulse rounded-lg bg-elevated" />
       <div class="h-8 w-2/3 animate-pulse rounded bg-elevated" />
       <div class="h-4 w-1/3 animate-pulse rounded bg-elevated" />
@@ -61,7 +64,10 @@ const authorList = computed(() => {
       Article not found.
     </div>
 
-    <article v-else class="space-y-6">
+    <article
+      v-else
+      class="space-y-6"
+    >
       <div class="overflow-hidden rounded-lg border border-default">
         <div class="aspect-[16/9] w-full overflow-hidden bg-elevated">
           <img
@@ -85,7 +91,10 @@ const authorList = computed(() => {
           {{ article.title }}
         </h1>
 
-        <p v-if="authorList" class="text-sm text-toned">
+        <p
+          v-if="authorList"
+          class="text-sm text-toned"
+        >
           By {{ authorList }}
         </p>
 
@@ -94,11 +103,17 @@ const authorList = computed(() => {
         </p>
       </div>
 
-      <p v-if="article.abstract" class="text-base leading-relaxed text-toned">
+      <p
+        v-if="article.abstract"
+        class="text-base leading-relaxed text-toned"
+      >
         {{ article.abstract }}
       </p>
 
-      <div v-if="article.tags?.length" class="flex flex-wrap gap-1.5 pt-2">
+      <div
+        v-if="article.tags?.length"
+        class="flex flex-wrap gap-1.5 pt-2"
+      >
         <UBadge
           v-for="tag in article.tags"
           :key="tag"

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Article } from '~/composables/useArticles'
-import type { TypeOption } from '~/components/ArticleTypeChips.vue'
 import { articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
 
 useHead({ title: 'Research Hub — View 1' })
@@ -102,7 +101,7 @@ const filtered = computed<Article[]>(() => {
   if (selectedAuthor.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedAuthor.value))
   if (selectedYear.value) r = r.filter(a => articleYear(a) === selectedYear.value)
   if (selectedTags.value.length) {
-    r = r.filter(a => {
+    r = r.filter((a) => {
       const tags = asStrings(a.tags)
       return selectedTags.value.some(t => tags.includes(t))
     })
@@ -177,7 +176,10 @@ function applyAuthorFilter(key: string) {
       </p>
     </div>
 
-    <div v-if="pending" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <div
+      v-if="pending"
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+    >
       <div
         v-for="i in 6"
         :key="i"
@@ -204,12 +206,12 @@ function applyAuthorFilter(key: string) {
 
     <template v-else>
       <ArticleFilterBar
-        class="mb-4"
         v-model:type="selectedType"
         v-model:topic="selectedTopic"
         v-model:author="selectedAuthor"
         v-model:year="selectedYear"
         v-model:search="searchQuery"
+        class="mb-4"
         :types="typeItems"
         :topics="topicItems"
         :authors="authorItems"
@@ -257,7 +259,10 @@ function applyAuthorFilter(key: string) {
         No articles match your filters.
       </div>
 
-      <div v-if="filtered.length > pageSize" class="mt-8 flex justify-center">
+      <div
+        v-if="filtered.length > pageSize"
+        class="mt-8 flex justify-center"
+      >
         <UPagination
           v-model:page="currentPage"
           :total="filtered.length"
