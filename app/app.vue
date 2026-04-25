@@ -32,24 +32,32 @@ const navItems = [
 
 const changes = [
   {
-    title: 'Filterable publication types',
-    body: 'Pick a publication type and the grid narrows in real time. Try the chips on the home page or the Publication Type dropdown on Alt View 1.'
+    title: 'Find research reports in one click',
+    body: 'Click "Research Reports" at the top of the home page and the list narrows to just research reports. Same one-click filter for Annual Reports, Program Evaluation Summaries, Updates, and Strategic Plans. No scrolling, no menus.'
   },
   {
-    title: 'Clickable author names',
-    body: 'Each author in a card byline is a button. Click a name and the list filters to everything that author worked on.'
+    title: 'Search highlights what it matched',
+    body: 'Type a word in the search box (try "opioid") and articles mentioning it appear, with the word highlighted in their title and summary. Easy to see at a glance why each article was included.'
   },
   {
-    title: 'Normalized author names',
-    body: 'The same person credited differently across articles (e.g. "Riley Calder" vs "Riley Calder, Ph.D" vs "Riley Calder, PhD") collapses into one filter entry, so a click matches every variant.'
+    title: 'Click an author\'s name to see their other work',
+    body: 'Every author name in a card is clickable. One click filters the list to every article that person worked on.'
   },
   {
-    title: 'Several views for publication types',
-    body: 'The Home page starts as chips only and reveals the full filter bar via an Advanced toggle. Alt 1 puts Publication Type in the bar instead (no chips). Alt 2 shows chips with the full filter bar always visible. Same data, three UX options to compare.'
+    title: 'One entry per author, even when their name varies',
+    body: 'Articles sometimes credit the same person three or four different ways — "Riley Calder", "Riley Calder, Ph.D", "Riley Calder, PhD". The current site shows three different entries. This demo shows one, and clicking it matches every variant.'
   },
   {
-    title: 'Clickable, additive tags',
-    body: 'Each tag pill on a card is clickable. Click one and it filters; click another and the results union — articles with any of the selected tags show. Each selected tag becomes a dismiss-able pill near the result count.'
+    title: 'Click any tag — and stack them',
+    body: 'Tags on cards are clickable. Click one and the list filters; click another and the results widen to articles with either tag. Each active tag shows as a removable pill near the result count.'
+  },
+  {
+    title: 'Filter by ICJIA Center',
+    body: 'On the Home page and Alt 2, narrow articles to a specific ICJIA division — Center for Justice Research and Evaluation, Center for Victim Studies, and the rest. All five divisions are always listed.'
+  },
+  {
+    title: 'Three layouts to compare',
+    body: 'Same articles, three filter UX flavors so the team can pick a winner. Home: chips with an "Advanced filters" toggle that reveals the full bar. Alt 1: pure dropdown menus (closest to the live site today). Alt 2: chips and the full bar always visible side by side.'
   }
 ]
 </script>
@@ -121,7 +129,7 @@ const changes = [
       <template #body>
         <div class="space-y-5 text-sm">
           <p class="text-toned">
-            This proof-of-concept layers a handful of improvements on top of the current research hub list. Each one is meant to make finding the right article faster:
+            This demo adds a handful of small improvements over the current research hub list. The goal: anyone — staff, partners, the public — can find the article they're looking for in one or two clicks. Highlights:
           </p>
 
           <ul class="space-y-4">

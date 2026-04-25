@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.23] — 2026-04-25
+
+### Changed
+
+- Rewrote the "What This Demo Shows" modal for non-technical managers. Each bullet now leads with a concrete user action and outcome rather than a feature name. New bullets cover search highlighting, the ICJIA Center filter, and the three-layout comparison; the bullet about publication types now opens with the most relatable example ("Find research reports in one click"). Also drops the word "POC" from the intro in favor of plain English.
+
 ## [0.1.22] — 2026-04-25
 
 ### Changed
