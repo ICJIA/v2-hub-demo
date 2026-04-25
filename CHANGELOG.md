@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.57] — 2026-04-25
+
+### Fixed
+
+- Last `color-contrast` holdout on `/taxonomy`: the `Future` badge bumped one more notch from `size="sm"` (10 px text) to `size="md"` (12 px). axe was still flagging the 10 px label on a yellow `bg-warning` background — likely an oklch-parsing edge case at small sizes. After this bump, axecap reports 0 violations across all four pages on AA.
+
 ## [0.1.56] — 2026-04-25
 
 ### Fixed
