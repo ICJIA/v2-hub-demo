@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.9] — 2026-04-25
+
+### Changed
+
+- Article detail stub copy updated from "for the POC" to "for this proof-of-concept app" — reads more cleanly without the abbreviation.
+
 ## [0.1.8] — 2026-04-25
 
 ### Added

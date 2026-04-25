@@ -114,7 +114,7 @@ const authorList = computed(() => {
           Demo stub
         </p>
         <p>
-          This is a placeholder article detail page for the POC. The real article body would render here in production.
+          This is a placeholder article detail page for this proof-of-concept app. The real article body would render here in production.
         </p>
       </div>
     </article>
