@@ -72,10 +72,10 @@ Authors come back from Strapi as `{ title: string, description: string | null }[
 
 | Source variant                            | Reason                  |
 |-------------------------------------------|-------------------------|
-| `Anne Kirkner` / `Anne Kirkner, Ph.D` / `Anne Kirkner, PhD` / `Anne Kirkner, PHD` / `Anne Kirkner, PH.D` | Credential suffix, mixed casing |
-| `KYLE HUCKE` vs `Kyle Hucke`              | Casing                  |
+| `Riley Calder` / `Riley Calder, Ph.D` / `Riley Calder, PhD` / `Riley Calder, PHD` / `Riley Calder, PH.D` | Credential suffix, mixed casing |
+| `DAKOTA HARLOW` vs `Dakota Harlow`              | Casing                  |
 | `Research & Analysis Unit` vs `Research and Analysis Unit` | `&` vs `and` connector |
-| `  Anne Kirkner ` (with surrounding space) | Editor whitespace       |
+| `  Riley Calder ` (with surrounding space) | Editor whitespace       |
 
 A naive `Set<string>` over titles produces ~180 distinct entries when the data really has more like ~120 distinct people/orgs.
 
@@ -104,23 +104,23 @@ export function authorKey(name: string): string {
 
 | Step | Regex / op                | Purpose                                                   | Example                                                  |
 |-----:|---------------------------|-----------------------------------------------------------|----------------------------------------------------------|
-| 1    | `name.replace(/,.*$/, '')`  | Drop the comma and everything after — credentials, suffixes, post-nominals. | `Anne Kirkner, Ph.D` → `Anne Kirkner`               |
+| 1    | `name.replace(/,.*$/, '')`  | Drop the comma and everything after — credentials, suffixes, post-nominals. | `Riley Calder, Ph.D` → `Riley Calder`               |
 | 2    | `.replace(/\s*&\s*/g, ' and ')` | Normalize ampersand-vs-"and" so org variants merge.   | `Research & Analysis Unit` → `Research and Analysis Unit` |
-| 3    | `.replace(/\s+/g, ' ')`   | Collapse runs of whitespace (tabs, double spaces).         | `Anne   Kirkner` → `Anne Kirkner`                        |
-| 4    | `.trim()`                | Drop leading/trailing whitespace introduced by editors.    | `  Anne Kirkner ` → `Anne Kirkner`                       |
-| 5    | `.toLowerCase()`         | Make the key case-insensitive so `KYLE HUCKE` matches `Kyle Hucke`. | `Kyle Hucke` → `kyle hucke`                  |
+| 3    | `.replace(/\s+/g, ' ')`   | Collapse runs of whitespace (tabs, double spaces).         | `Anne   Kirkner` → `Riley Calder`                        |
+| 4    | `.trim()`                | Drop leading/trailing whitespace introduced by editors.    | `  Riley Calder ` → `Riley Calder`                       |
+| 5    | `.toLowerCase()`         | Make the key case-insensitive so `DAKOTA HARLOW` matches `Dakota Harlow`. | `Dakota Harlow` → `dakota harlow`                  |
 
 #### Concrete worked examples
 
 | Raw `title`                                  | Canonical key               |
 |----------------------------------------------|-----------------------------|
-| `Anne Kirkner`                                | `anne kirkner`              |
-| `Anne Kirkner, Ph.D`                          | `anne kirkner`              |
-| `Anne Kirkner, PHD`                           | `anne kirkner`              |
-| `KYLE HUCKE`                                  | `kyle hucke`                |
+| `Riley Calder`                                | `riley calder`              |
+| `Riley Calder, Ph.D`                          | `riley calder`              |
+| `Riley Calder, PHD`                           | `riley calder`              |
+| `DAKOTA HARLOW`                                  | `dakota harlow`                |
 | `Research & Analysis Unit`                    | `research and analysis unit`|
 | `Research and Analysis Unit`                  | `research and analysis unit`|
-| `Brandon del Pozo, PhD, MPA, MA`              | `brandon del pozo`          |
+| `Avery del Mar, PhD, MPA, MA`              | `avery del mar`          |
 
 ### Picking the display name per group
 
@@ -152,7 +152,7 @@ const items = [...groups].map(([key, variants]) => {
 })
 ```
 
-So if `Jessica Reichert` has 95 occurrences and `Jessica Reichert, MS` has 4, the dropdown shows `Jessica Reichert`.
+So if `Riley Calder` has 95 occurrences and `Riley Calder, MS` has 4, the dropdown shows `Riley Calder`.
 
 ### How filtering uses the key
 
@@ -174,10 +174,10 @@ Card click handlers also emit the canonical key, not the display name:
 
 ### What it deliberately does NOT merge
 
-- **Typos.** `Mathew Riordan` vs `Matthew Riordan` — would require fuzzy/edit-distance matching (Levenshtein, Jaro-Winkler, etc.), which risks false collapses across genuinely different people.
-- **Middle-initial differences.** `Kaitlin Martins` vs `Kaitlin F. Martins, BS` — could be the same person or two different ones; the algorithm treats them as separate.
+- **Typos.** `Jordon Reeves` vs `Jordan Reeves` — would require fuzzy/edit-distance matching (Levenshtein, Jaro-Winkler, etc.), which risks false collapses across genuinely different people.
+- **Middle-initial differences.** `Sam Whitley` vs `Sam B. Whitley, BS` — could be the same person or two different ones; the algorithm treats them as separate.
 - **Reordered names.** `Smith, John` (last-first) vs `John Smith` — not seen in the data, but if it shows up, current logic strips at the first comma so `Smith, John` becomes `Smith`. Watch for this.
-- **Diacritics / accents.** `José Garcia` vs `Jose Garcia` — currently distinct. Add `.normalize('NFD').replace(/\p{Diacritic}/gu, '')` to the chain if your data has these.
+- **Diacritics / accents.** `Émile Tanaka` vs `Emile Tanaka` — currently distinct. Add `.normalize('NFD').replace(/\p{Diacritic}/gu, '')` to the chain if your data has these.
 
 The bias is **toward under-merging**: it's better to occasionally show two entries for the same person than to wrongly fuse two different people into one filter.
 

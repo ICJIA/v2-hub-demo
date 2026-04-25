@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.22] — 2026-04-25
+
+### Changed
+
+- Replaced real ICJIA author names with fictional analogues throughout `README.md` and the "What This Demo Shows" modal so no agency staff appear in documentation examples. Variations and patterns are preserved verbatim — credential variants (`Riley Calder` / `Riley Calder, Ph.D` / `Riley Calder, PhD` / ...), casing (`DAKOTA HARLOW` vs `Dakota Harlow`), typo pairs (`Jordon Reeves` vs `Jordan Reeves`), middle-initial (`Sam Whitley` vs `Sam B. Whitley, BS`), long credentials (`Avery del Mar, PhD, MPA, MA`), and diacritics (`Émile Tanaka` vs `Emile Tanaka`).
+
 ## [0.1.21] — 2026-04-25
 
 ### Added

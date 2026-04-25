@@ -41,7 +41,7 @@ const changes = [
   },
   {
     title: 'Normalized author names',
-    body: 'The same person credited differently across articles (e.g. "Anne Kirkner" vs "Anne Kirkner, Ph.D" vs "Anne Kirkner, PhD") collapses into one filter entry, so a click matches every variant.'
+    body: 'The same person credited differently across articles (e.g. "Riley Calder" vs "Riley Calder, Ph.D" vs "Riley Calder, PhD") collapses into one filter entry, so a click matches every variant.'
   },
   {
     title: 'Several views for publication types',
