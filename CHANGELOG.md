@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.46] — 2026-04-25
+
+### Fixed
+
+- **a11y (axe-devtools, WCAG 2.1 AA):** two moderate findings cleaned up:
+  - `heading-order` — card titles use `<h3>`, but pages went `<h1>` → `<h3>` with no intervening `<h2>`. Added a screen-reader-only `<h2>Articles</h2>` before the card grid on `/`, `/alt`, and `/alt2` so the hierarchy is `h1 → h2 → h3`. Visual layout unchanged.
+  - `landmark-unique` — two `<nav>` landmarks per page (header `UNavigationMenu` + bottom `UPagination`), neither named. Added `aria-label="View navigation"` to the header menu and `aria-label="Article pagination"` to all three paginations so screen-reader users can distinguish them.
+
 ## [0.1.45] — 2026-04-25
 
 ### Fixed

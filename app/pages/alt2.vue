@@ -279,6 +279,10 @@ function onTypeChipChange(value: string | null) {
         />
       </p>
 
+      <h2 class="sr-only">
+        Articles
+      </h2>
+
       <div
         v-if="pageItems.length"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
@@ -306,6 +310,7 @@ function onTypeChipChange(value: string | null) {
           v-model:page="currentPage"
           :total="filtered.length"
           :items-per-page="pageSize"
+          aria-label="Article pagination"
         />
       </div>
     </template>

@@ -66,7 +66,7 @@ const changes = [
   <UApp>
     <UHeader>
       <template #left>
-        <UNavigationMenu :items="navItems" />
+        <UNavigationMenu :items="navItems" aria-label="View navigation" />
       </template>
 
       <NuxtLink
