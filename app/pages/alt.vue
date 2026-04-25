@@ -3,7 +3,7 @@ import type { Article } from '~/composables/useArticles'
 import type { TypeOption } from '~/components/ArticleTypeChips.vue'
 import { articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
 
-useHead({ title: 'Research Hub — Alt View' })
+useHead({ title: 'Research Hub — View 1' })
 
 const { data, pending, error, refresh } = await useArticles()
 
@@ -170,7 +170,7 @@ function applyAuthorFilter(key: string) {
   <UContainer class="py-8">
     <div class="mb-6 space-y-2">
       <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        Research Hub — Alt View
+        Research Hub — View 1
       </h1>
       <p class="text-sm text-muted">
         Pure-dropdown alternative: Publication Type lives in the filter bar, no chip row, no Centers. Centers were removed from this view.

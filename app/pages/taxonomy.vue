@@ -260,7 +260,7 @@ const articleTypes = [
         The fourteen Article types
       </h2>
       <p class="mb-4 text-sm text-toned">
-        These are the only valid values for an article's <em>type</em> field. Editors can't add new ones in the CMS without a code change. The Home page chips surface five of these (the most-asked-for); the dropdown on Alt 1 surfaces all of them.
+        These are the only valid values for an article's <em>type</em> field. Editors can't add new ones in the CMS without a code change. The View 0 chips surface five of these (the most-asked-for); the dropdown on View 1 surfaces all of them.
       </p>
 
       <p class="mb-3 text-xs text-muted">

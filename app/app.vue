@@ -25,9 +25,9 @@ const isWhatsChangedOpen = ref(false)
 const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
-  { label: 'Alt 0', to: '/' },
-  { label: 'Alt 1', to: '/alt' },
-  { label: 'Alt 2', to: '/alt2' }
+  { label: 'View 0', to: '/' },
+  { label: 'View 1', to: '/alt' },
+  { label: 'View 2', to: '/alt2' }
 ]
 
 const changes = [
@@ -53,11 +53,11 @@ const changes = [
   },
   {
     title: 'Filter by ICJIA Center',
-    body: 'On the Home page and Alt 2, narrow articles to a specific ICJIA division — Center for Justice Research and Evaluation, Center for Victim Studies, and the rest. All five divisions are always listed.'
+    body: 'On View 0 (home) and View 2, narrow articles to a specific ICJIA division — Center for Justice Research and Evaluation, Center for Victim Studies, and the rest. All five divisions are always listed.'
   },
   {
     title: 'Three layouts to compare',
-    body: 'Same articles, three filter UX flavors so the team can pick a winner. Home: chips with an "Advanced filters" toggle that reveals the full bar. Alt 1: pure dropdown menus (closest to the live site today). Alt 2: chips and the full bar always visible side by side.'
+    body: 'Same articles, three filter UX flavors so the team can pick a winner. View 0 (home): chips with an "Advanced filters" toggle that reveals the full bar. View 1: pure dropdown menus (closest to the live site today). View 2: chips and the full bar always visible side by side.'
   }
 ]
 </script>
@@ -72,7 +72,7 @@ const changes = [
       <NuxtLink
         to="/"
         class="rounded-full transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        aria-label="Go to Alt 0 (home)"
+        aria-label="Go to View 0 (home)"
       >
         <UBadge
           label="PUBLICATION TYPE FILTER DEMO"

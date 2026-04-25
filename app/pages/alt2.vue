@@ -3,7 +3,7 @@ import type { Article } from '~/composables/useArticles'
 import type { TypeOption } from '~/components/ArticleTypeChips.vue'
 import { CHIP_TYPES, KNOWN_CENTERS, articleAuthorNames, authorKey, pluralize, typeLabel } from '~/utils/article-format'
 
-useHead({ title: 'Research Hub — Alt 2' })
+useHead({ title: 'Research Hub — View 2' })
 
 const { data, pending, error, refresh } = await useArticles()
 
@@ -207,10 +207,10 @@ function onTypeChipChange(value: string | null) {
   <UContainer class="py-8">
     <div class="mb-6 space-y-2">
       <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        Research Hub — Alt 2
+        Research Hub — View 2
       </h1>
       <p class="text-sm text-muted">
-        Same as the Home view, except the granular filters (topic, center, author, year, search) stay visible at all times — there's no <span class="font-semibold text-highlighted">Advanced</span> toggle hiding them. The theory: chips are usually enough for a quick pick; if you need a more granular filter or a search, it's already right there.
+        Same as View 0 (home), except the granular filters (topic, center, author, year, search) stay visible at all times — there's no <span class="font-semibold text-highlighted">Advanced</span> toggle hiding them. The theory: chips are usually enough for a quick pick; if you need a more granular filter or a search, it's already right there.
       </p>
     </div>
 

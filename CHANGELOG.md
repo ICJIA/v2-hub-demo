@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.42] — 2026-04-25
+
+### Changed
+
+- Renamed `Alt 0` / `Alt 1` / `Alt 2` to `View 0` / `View 1` / `View 2` everywhere in user-facing copy — header nav, page headings, modal copy, page descriptions, and README. "Alt" was being read as "alternative" or "broken"; "View" reads as "another way to look at the same thing". Routes (`/`, `/alt`, `/alt2`) are unchanged.
+
 ## [0.1.41] — 2026-04-25
 
 ### Changed
