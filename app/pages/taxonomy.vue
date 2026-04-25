@@ -101,7 +101,7 @@ const structureDiagram = `flowchart TB
   Apps --> APTag["tags<br/>free-form keywords"]:::freeform`
 
 const articleTypes = [
-  { value: 'researchReport', label: 'Research Report', highlight: true },
+  { value: 'researchReport', label: 'Research Report' },
   { value: 'annualReport', label: 'Annual Report' },
   { value: 'article', label: 'Article' },
   { value: 'dataset', label: 'Dataset (article subtype)', note: 'Yes, confusingly there is a "Dataset" type inside Articles AND a separate Datasets content type. They are different.' },
@@ -242,16 +242,14 @@ const articleTypes = [
           :key="t.value"
           type="button"
           class="flex w-full items-start gap-2 rounded border border-default bg-default px-3 py-2 text-left transition-all hover:border-primary/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          :class="t.highlight ? 'border-primary/50 bg-primary/10' : ''"
           @click="showExamples(t.value)"
         >
           <UIcon
-            :name="t.highlight ? 'i-lucide-star' : 'i-lucide-tag'"
-            class="mt-0.5 size-4 shrink-0"
-            :class="t.highlight ? 'text-primary' : 'text-muted'"
+            name="i-lucide-tag"
+            class="mt-0.5 size-4 shrink-0 text-muted"
           />
           <div class="flex-1">
-            <div :class="t.highlight ? 'font-semibold text-highlighted' : 'text-toned'">
+            <div class="text-toned">
               {{ t.label }}
               <span class="ml-1 text-xs font-normal text-muted">({{ examplesByType.get(t.value)?.length ?? 0 }})</span>
             </div>

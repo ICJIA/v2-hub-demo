@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.35] — 2026-04-25
+
+### Changed
+
+- Removed the green/star highlight on the `Research Report` card on `/taxonomy`. All fourteen type cards now share identical styling — the only differentiator is the count badge each one already shows.
+
 ## [0.1.34] — 2026-04-25
 
 ### Added
