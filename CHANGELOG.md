@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.30] — 2026-04-25
+
+### Changed
+
+- Datahub diagram on `/taxonomy` expanded from a single one-app-many-datasets example to four labeled subgraphs covering the four real relationship patterns: solo dataset, one-app-one-dataset, one-app-many-datasets, and shared dataset across apps. Surrounding copy reframed to emphasize that all four are already supported by the Strapi 5 schema — the Hub 2.0 work is editorial (curation, editing, adjustment, oversight), not data-layer.
+
 ## [0.1.29] — 2026-04-25
 
 ### Added

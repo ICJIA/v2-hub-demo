@@ -1,17 +1,33 @@
 <script setup lang="ts">
 useHead({ title: 'Database Taxonomy — Research Hub Demo' })
 
-const datahubDiagram = `flowchart LR
+const datahubDiagram = `flowchart TB
   classDef app fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
   classDef dataset fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px
 
-  App["📱 App<br/>(e.g. Crime Mapper)"]:::app
+  subgraph p1 [1 — Solo dataset]
+    direction LR
+    Dsolo["📊 Dataset<br/>(no app)"]:::dataset
+  end
 
-  App --> D1["📊 Dataset<br/>2024 crime stats"]:::dataset
-  App --> D2["📊 Dataset<br/>2023 crime stats"]:::dataset
-  App --> D3["📊 Dataset<br/>Geocoded incidents"]:::dataset
+  subgraph p2 [2 — One app, one dataset]
+    direction LR
+    A1["📱 App<br/>(dashboard)"]:::app --> D1["📊 Dataset"]:::dataset
+  end
 
-  linkStyle 0,1,2 stroke-width:2px`
+  subgraph p3 [3 — One app, many datasets]
+    direction LR
+    A2["📱 App<br/>(dashboard)"]:::app
+    A2 --> D2a["📊 Dataset A"]:::dataset
+    A2 --> D2b["📊 Dataset B"]:::dataset
+    A2 --> D2c["📊 Dataset C"]:::dataset
+  end
+
+  subgraph p4 [4 — Shared dataset across apps]
+    direction LR
+    A3a["📱 App 1"]:::app --> Dshared["📊 Dataset"]:::dataset
+    A3b["📱 App 2"]:::app --> Dshared
+  end`
 
 const structureDiagram = `flowchart TB
   classDef hub fill:#1e293b,stroke:#334155,color:#fff,stroke-width:2px
@@ -192,10 +208,10 @@ const articleTypes = [
 
       <div class="mb-4 space-y-3 text-sm text-toned">
         <p>
-          Right now Datasets and Apps live as separate islands. The team wants them connected: each <strong>Dataset</strong> would point to the <strong>App</strong> it powers, and each <strong>App</strong> would list one or more <strong>Datasets</strong> it consumes. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
+          Right now Datasets and Apps live as separate islands. The team wants them connected: a <strong>Dataset</strong> can stand alone, or it can power an <strong>App</strong> (dashboard); an <strong>App</strong> can pull from one Dataset or several; and the same Dataset can show up in more than one App. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
         </p>
         <p>
-          The good news: Strapi 5 already has the relation fields in place. Introspection confirms <code>App.datasets</code> and <code>Dataset.apps</code> exist in the schema today. What's missing is editorial work in the CMS to actually wire specific datasets to specific apps.
+          <strong class="text-highlighted">All four of the patterns below are already supported by the Strapi 5 schema today.</strong> Introspection confirms the relation fields are in place — <code>App.datasets</code> and <code>Dataset.apps</code> are bidirectional and accept any number on either side. So the work for Hub 2.0 isn't building anything new at the data layer. It's editorial: <strong>curating</strong> which datasets belong to which apps, <strong>editing</strong> the metadata so the relationships make sense, <strong>adjusting</strong> as the catalog grows, and <strong>oversight</strong> to make sure everything is wired correctly.
         </p>
       </div>
 
@@ -208,8 +224,15 @@ const articleTypes = [
         </template>
       </ClientOnly>
 
-      <div class="mt-4 space-y-2 text-sm text-toned">
-        <p>Once the linking is done, the hub can:</p>
+      <div class="mt-4 space-y-3 text-sm text-toned">
+        <p>What the four patterns mean in practice:</p>
+        <ul class="ml-5 list-disc space-y-1">
+          <li><strong>Solo dataset</strong> — a dataset that stands on its own (raw data, no dashboard yet).</li>
+          <li><strong>One app, one dataset</strong> — a dashboard built around a single dataset.</li>
+          <li><strong>One app, many datasets</strong> — a dashboard that pulls in several datasets (e.g. a crime mapper layering 2024 stats, 2023 stats, and geocoded incidents).</li>
+          <li><strong>Shared dataset across apps</strong> — the same dataset feeding more than one dashboard.</li>
+        </ul>
+        <p>Once the linking is curated, the hub can:</p>
         <ul class="ml-5 list-disc space-y-1">
           <li>Show <em>"Datasets used by this app"</em> on each App page.</li>
           <li>Show <em>"Apps that use this dataset"</em> on each Dataset page.</li>
