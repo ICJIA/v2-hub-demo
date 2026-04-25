@@ -3,7 +3,7 @@ import type { Article } from '~/composables/useArticles'
 import type { TypeOption } from '~/components/ArticleTypeChips.vue'
 import { CHIP_TYPES, KNOWN_CENTERS, articleAuthorNames, authorKey, pluralize, typeLabel } from '~/utils/article-format'
 
-useHead({ title: 'Research Hub — Articles' })
+useHead({ title: 'Research Hub — View 0' })
 
 const { data, pending, error, refresh } = await useArticles()
 
@@ -215,7 +215,7 @@ function onTypeChipChange(value: string | null) {
   <UContainer class="py-8">
     <div class="mb-6 space-y-2">
       <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        Research Hub
+        Research Hub — View 0
       </h1>
       <p class="text-sm text-muted">
         Quick-pick a publication type from the chips. Toggle <span class="font-semibold text-highlighted">Advanced filters</span> when you want to layer on topic, center, author, year, or search.

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.44] — 2026-04-25
+
+### Changed
+
+- Home (route `/`) page heading is now `Research Hub — View 0` to match the labelled-view pattern on `/alt` (View 1) and `/alt2` (View 2). Browser tab title also updated.
+
 ## [0.1.43] — 2026-04-25
 
 ### Changed
