@@ -22,6 +22,7 @@ useSeoMeta({
 })
 
 const isWhatsChangedOpen = ref(false)
+const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -98,11 +99,20 @@ const changes = [
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          ICJIA Publication Type Filter Demo • © {{ new Date().getFullYear() }}
+          ICJIA Publication Type Filter Demo • v{{ version }} • © {{ new Date().getFullYear() }}
         </p>
       </template>
 
       <template #right>
+        <UButton
+          to="https://github.com/ICJIA/v2-hub-demo/blob/main/CHANGELOG.md"
+          target="_blank"
+          label="Changelog"
+          icon="i-lucide-list"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+        />
         <UButton
           to="https://github.com/ICJIA/v2-hub-demo"
           target="_blank"

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.14] — 2026-04-25
+
+### Added
+
+- Footer now shows the running version (`v0.1.14`) and a `Changelog` button that links to `CHANGELOG.md` on GitHub. The version string is wired through `runtimeConfig.public.appVersion`, sourced from `package.json` at build time, so future bumps update the footer automatically.
+
 ## [0.1.13] — 2026-04-25
 
 ### Added

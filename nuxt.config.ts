@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import pkg from './package.json'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -13,6 +15,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true }
+  },
+
+  runtimeConfig: {
+    public: {
+      appVersion: pkg.version
+    }
   },
 
   compatibilityDate: '2025-01-15',
