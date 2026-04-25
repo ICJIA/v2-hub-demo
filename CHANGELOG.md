@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.51] — 2026-04-25
+
+### Added
+
+- README sections for **"What This Demo Shows" modal** and **Hub Taxonomy page (`/taxonomy`)**, both with full walkthroughs of what each surface contains, who it's for, and how it's wired.
+- README **"Accessibility notes"** section listing the WCAG 2.1 AA fixes (heading-order, landmark-unique, target-size, search-match contrast, Mermaid color-mode contrast, keyboard support).
+
+### Changed
+
+- "What the page does" rewritten and expanded into three sub-sections — **Data fetch**, **Card grid**, **Filter bar**, plus a **Behavior details** addendum. Now lists every fetched field, both `fillRandom` modes of `useArticles`, the `priority` LCP optimisation on the first card, and every interaction nuance (search highlighting, additive tags, search-clears-all, scroll-to-top, pagination's aria-label).
+- "Random publication-type fill" section expanded to document the `useArticles({ fillRandom: false })` opt-out used by `/taxonomy`.
+
 ## [0.1.50] — 2026-04-25
 
 ### Changed

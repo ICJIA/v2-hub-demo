@@ -24,18 +24,39 @@ pnpm generate    # static site generation (for Netlify)
 
 ## What the page does
 
-- Fetches every article with `status: PUBLISHED` in a single query (limit 1000), ordered by `publishedAt` descending. Sorts client-side by each article's `date` field (fallback `publishedAt`) so the displayed date drives the order.
-- Renders a card grid (1 / 2 / 3 columns at mobile / tablet / desktop) with splash image, publication type badge, title, authors, formatted date, abstract, and tag badges. Cards link to an internal stub detail page at `/articles/<slug>` — the demo is self-contained and never sends users out to the live `v2hub.netlify.app`.
-- "Filter by" bar (single line at desktop) with four dropdowns and a debounced search box:
-  - **Publication Type** — derived from the Strapi `ENUM_ARTICLE_TYPE` values that actually appear in the data, displayed in human-readable Title Case (e.g. `researchAtAGlance` → "Research At A Glance"). Counts shown next to each entry.
-  - **Topics** — from the JSON `categories` field on each article.
-  - **Authors** — see canonicalization below.
-  - **Years** — derived from each article's `date` (or `publishedAt` fallback), descending.
-- Each dropdown leads with an `All …` reset entry. Filters compose AND-style across categories and the **Clear all** button wipes every filter (including the tag pills described below).
-- Search results **highlight matched substrings** inside each card's title and abstract via inline `<mark>` elements (no `v-html`, so query strings with HTML/regex chars are safe).
-- Tag filtering is **additive (OR-composed)**. Click multiple tags and the grid shows every article matching *any* of them. Each selected tag becomes a removable pill near the result count; clicking the same card-tag again toggles it off.
-- Starting a search **clears every other filter** (type, topic, author, year, center, tag) so the search runs against the full dataset. Only triggers on the empty→non-empty transition.
-- Pagination shows 12 per page; resets to page 1 on any filter change.
+### Data fetch
+
+- Single GraphQL query against `https://v2.hub.icjia-api.cloud/graphql` (`useArticles` composable, `app/composables/useArticles.ts`). Pulls every article with `status: PUBLISHED`, `pagination.limit: 1000`, ordered server-side by `publishedAt` descending.
+- Each article's record includes: `documentId`, `title`, `slug`, `abstract`, `type`, `date`, `publishedAt`, `tags`, `categories`, `authors[]` (objects with `title` and `description`), `splash` (with `url` and `alternativeText`).
+- Articles missing a `type` value get a random one assigned client-side at fetch time via `pickRandomType()` so all fourteen `type` values are visible in the chip / dropdown UX during the demo. Toggleable: `useArticles({ fillRandom: false })` returns the raw set, used by `/taxonomy` so the type-card examples aren't polluted by the random fill. Different cache keys (`articles` vs `articles-raw`) keep the two flavors separate inside `useAsyncData`.
+- Client-side, the array is sorted again by each article's `date` field (fallback `publishedAt`) so the displayed date drives the order. Filters and pagination operate on this sorted array.
+
+### Card grid
+
+- 1 / 2 / 3 columns at mobile / tablet / desktop. Card layout: 16:9 splash image (with explicit `width` / `height` to prevent CLS), publication-type badge (clickable), title (clickable via the wrapping `NuxtLink`), author byline (each name clickable), formatted date, abstract (line-clamp-5), tag pills (each clickable).
+- The first card on every list page is rendered with `:priority="i === 0"`, which becomes `loading="eager"` + `fetchpriority="high"` on the splash image — improves the LCP metric.
+- Cards link to an internal stub detail page at `/articles/<slug>` (`app/pages/articles/[slug].vue`). The detail page renders splash / type / title / byline / date / abstract / tags plus a "demo stub" notice and a Back-to-articles button. The demo never sends users to `v2hub.netlify.app`.
+
+### Filter bar
+
+The `ArticleFilterBar` component (`app/components/ArticleFilterBar.vue`) renders a single-line "Filter by:" row at desktop with up to five dropdowns plus a debounced search input plus a Clear-all button:
+
+- **Publication Type** — derived from the Strapi `ENUM_ARTICLE_TYPE` values that appear in the data, formatted in human-readable Title Case (e.g. `researchAtAGlance` → "Research At A Glance"). Counts shown next to each entry. Only rendered when the page passes `:types`. View 0 and View 2 don't (they use chips instead); View 1 does.
+- **Topics** — from the JSON `categories` field.
+- **Centers** — hardcoded list of the five canonical ICJIA divisions (see below). Only rendered when the page passes `:centers`. View 1 doesn't.
+- **Authors** — canonicalized (see Author canonicalization section).
+- **Years** — derived from each article's `date` (or `publishedAt` fallback), descending.
+- **Search** — free-text, debounced 300 ms, case-insensitive substring match against `title` and `abstract`.
+
+Each dropdown leads with an `All …` reset entry, sized to fit the longest item label (capped at 32 chars so outlier "org-as-author" entries don't blow up the bar). Filters compose AND-style across categories. The **Clear all** button wipes every filter, including the page-level tag pills.
+
+### Behavior details
+
+- **Search highlighting.** Matched substrings inside each card's title and abstract are wrapped in `<mark>` via the `highlightSegments()` helper — splits the text into `{ text, match }[]` pairs using `indexOf`, no `v-html`, so query strings with HTML or regex chars are safe.
+- **Additive (OR) tag filtering.** Click one tag and the grid filters to articles with that tag. Click another and the grid widens to articles with *either* tag. State is `selectedTags: string[]` (not a single string). Each active tag shows as a removable pill near the result count.
+- **Search starts → clear other filters.** When the search transitions from empty to non-empty, every other filter (type, topic, author, year, center, tag) resets so the search runs against the full dataset. Only triggers on the empty → non-empty transition; subsequent keystrokes don't re-trigger the reset.
+- **Smooth scroll-to-top** when a card-click filter is applied so the filter bar comes back into view.
+- **Pagination** via `UPagination`, 12 per page, resets to page 1 on any filter change. Has `aria-label="Article pagination"` for screen-reader landmark uniqueness.
 
 ## Three filter UXs for managers to compare
 
@@ -58,6 +79,35 @@ The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all o
 - Center for Victim Studies
 - Center for Violence Prevention and Intervention Research
 - Research & Analysis Unit
+
+## "What This Demo Shows" modal
+
+Top-right of the header, next to the color-mode toggle. Opens a `UModal` (`app/app.vue`) with a non-jargon checklist aimed at managers who haven't seen the demo yet — this is the elevator pitch:
+
+1. **Find research reports in one click** — the headline benefit, mapped to the chips on View 0 / View 2.
+2. **Search highlights what it matched** — yellow `<mark>` inside title and abstract.
+3. **Click an author's name to see their other work** — clickable bylines.
+4. **One entry per author, even when their name varies** — author canonicalization (see section below).
+5. **Click any tag — and stack them** — additive (OR) tag filtering with removable pills.
+6. **Filter by ICJIA Center** — the five canonical centers, listed even when count is zero.
+7. **Three layouts to compare** — Views 0, 1, and 2.
+
+The modal content is data-driven (a `changes: { title, body }[]` array in `app.vue`), so adding a bullet is one object literal — no template changes.
+
+## Hub Taxonomy page (`/taxonomy`)
+
+A non-filter explainer page accessible via the **Hub Taxonomy** button on the right side of the header. Audience: non-technical managers who use the research hub but have never thought about how the data behind it is organized. The page walks through, in this order:
+
+1. **"First — what's a taxonomy?"** Plain-language definition with three analogies (library, org chart, filing cabinet).
+2. **"Why is the database structured this way — and why has Hub 2.0 kept it?"** Persuasive but kind. Frames the architecture as Hub 1.0's original choice, lists practical wins it produced (findability, consistency over time, fast onboarding for editors, scalable catalog), and explains why Hub 2.0 is an upgrade rather than a teardown.
+3. **The three top-level content types.** A Mermaid diagram (themed for both light and dark mode) showing Articles / Datasets / Apps-Dashboards with their respective fields. Notes that only Articles have a `type` enum; Datasets and Apps/Dashboards just have categories and tags.
+4. **"A note on the word 'Article'."** Historical scope creep from Hub 1.0 — articles started as summaries of research reports and now cover annual reports, program evaluation summaries, updates, etc.
+5. **What each bucket means.** Per-content-type field breakdown.
+6. **Proposed: the "datahub" — Datasets linked to Apps/Dashboards.** A second Mermaid diagram with four labeled subgraphs covering the four real relationship patterns: solo dataset, one app/dashboard with one dataset, one app/dashboard with many datasets, shared dataset across apps/dashboards. The copy emphasizes that **all four are already supported by the Strapi 5 schema today** (introspection confirms `App.datasets` and `Dataset.apps` are bidirectional and accept any number on either side) — the work for Hub 2.0 is editorial: curation, editing, adjustment, oversight.
+7. **The fourteen Article types.** A grid of clickable cards. Each opens a modal listing the top two most-recent real articles tagged with that type (pulled via `useArticles({ fillRandom: false })` so the random-fill demo helper doesn't pollute the examples). Empty types show a "no tagged examples yet — needs curation" message. The modal also includes a banner explaining that examples are illustrative and curation is ongoing.
+8. **"Why this matters for the demo."** A closer that ties everything back to the chip filter on View 0.
+
+The page uses the shared `MermaidDiagram` component (`app/components/MermaidDiagram.vue`), which dynamically imports `mermaid` only when the component mounts — so the ~1 MB library doesn't ship with the other pages — and reactively re-renders when the user toggles light / dark mode. Cluster (subgraph) borders, line color, and text color are all driven by `useColorMode()`.
 
 ## Click-to-filter on cards
 
@@ -198,7 +248,23 @@ Until that lands, this client-side canonicalization keeps the filter usable. The
 
 ## Random publication-type fill (POC only)
 
-Roughly 80% of the articles in the source CMS don't have a `type` set yet. To make the filter behavior visible across all 14 enum values during the demo, articles missing a `type` get a random one assigned **client-side at fetch time** — the Strapi data is never modified. Counts will shift slightly on each reload because the assignment is non-deterministic. Once Strapi is fully tagged, drop the `pickRandomType()` fallback in `app/composables/useArticles.ts` and reload.
+Roughly 80 % of the articles in the source CMS don't have a `type` set yet. To make the filter behavior visible across all fourteen enum values during the demo, articles missing a `type` get a random one assigned **client-side at fetch time** — the Strapi data is never modified. Counts will shift between deploys because the assignment is non-deterministic.
+
+Two ways to opt out:
+
+- **Per-call:** `useArticles({ fillRandom: false })` returns the raw articles unchanged. The `/taxonomy` page uses this so the per-type example modal only shows real, tagged examples. The cache key (`articles-raw` vs `articles`) keeps the two variants separate inside `useAsyncData`.
+- **Global remove:** once Strapi is fully tagged, delete the `pickRandomType()` call inside `useArticles()` and the random fill is gone for everyone.
+
+## Accessibility notes
+
+The demo is targeted at WCAG 2.1 AA. Recent fixes:
+
+- **Heading order.** Page H1 → card H2 (one level deep) so axe-core's `heading-order` rule passes. Modal headings start fresh under the modal title.
+- **Landmark uniqueness.** Both `<nav>` regions (header `UNavigationMenu` + page `UPagination`) carry distinct `aria-label`s (`"View navigation"` and `"Article pagination"`).
+- **Touch target size.** Tag buttons inside cards are `inline-flex min-h-6 min-w-6` so they meet WCAG 2.5.8's 24 × 24 minimum.
+- **Search-match contrast.** `<mark class="bg-primary/40">` keeps the highlight legible against light and dark cards.
+- **Mermaid contrast.** The `MermaidDiagram` component sets `themeVariables.lineColor` / `textColor` / `clusterBorder` / `titleColor` from the current color mode, with `clusterBkg: 'transparent'` so the page bg shows through subgraph rectangles cleanly.
+- **Keyboard.** All clickable elements are `<button>` or `<NuxtLink>`; tab order follows DOM order; focus-visible ring uses Nuxt UI's primary color token.
 
 ## Project layout
 
