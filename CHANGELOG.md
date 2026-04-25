@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.6] — 2026-04-25
+
+### Changed
+
+- Starting a search resets every other filter. As soon as the search box transitions from empty to non-empty, the page clears Type / Topic / Author / Year / Tag (and Center / chip selection on `/alt`) so the search runs against the full dataset and returns the broadest possible matches. Subsequent keystrokes within the same search session don't re-trigger the reset.
+
 ## [0.1.5] — 2026-04-25
 
 ### Changed

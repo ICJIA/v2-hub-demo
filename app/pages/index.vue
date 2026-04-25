@@ -141,6 +141,16 @@ const pageItems = computed(() => {
 watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedTag, searchQuery], () => {
   currentPage.value = 1
 })
+
+watch(searchQuery, (newVal, oldVal) => {
+  if (newVal && !oldVal) {
+    selectedType.value = ''
+    selectedTopic.value = ''
+    selectedAuthor.value = ''
+    selectedYear.value = ''
+    selectedTag.value = ''
+  }
+})
 </script>
 
 <template>
