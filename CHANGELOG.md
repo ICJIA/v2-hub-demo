@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.54] — 2026-04-25
+
+### Fixed
+
+- **Primary green palette darkened for WCAG 1.4.3 AA contrast.** The old `--color-green-500: #00C16A` only gave ~2.33:1 white-text contrast — far below 4.5:1, which is what flipped every primary-colored solid badge / pill / active chip into an axe-core violation. Shifted `green-500` down to `#007F45` (~5.17:1 with white text) and re-balanced 500 → 950 to keep a smooth gradient. The visual identity shifts a touch deeper green but every primary-on-white surface now passes AA.
+
 ## [0.1.53] — 2026-04-25
 
 ### Fixed
