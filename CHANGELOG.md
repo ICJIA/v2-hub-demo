@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.40] — 2026-04-25
+
+### Changed
+
+- Moved `Hub Taxonomy` from the left nav to the right side of the header (next to `What This Demo Shows`). Left nav now only carries the alt views (Home, Alt 1, Alt 2), leaving space for an upcoming `Alt 3`.
+
 ## [0.1.39] — 2026-04-25
 
 ### Changed

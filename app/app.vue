@@ -27,8 +27,7 @@ const version = useRuntimeConfig().public.appVersion
 const navItems = [
   { label: 'Home', to: '/' },
   { label: 'Alt 1', to: '/alt' },
-  { label: 'Alt 2', to: '/alt2' },
-  { label: 'Hub Taxonomy', to: '/taxonomy', icon: 'i-lucide-network' }
+  { label: 'Alt 2', to: '/alt2' }
 ]
 
 const changes = [
@@ -79,6 +78,15 @@ const changes = [
       />
 
       <template #right>
+        <UButton
+          to="/taxonomy"
+          label="Hub Taxonomy"
+          icon="i-lucide-network"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+        />
+
         <UButton
           label="What This Demo Shows"
           icon="i-lucide-sparkles"
