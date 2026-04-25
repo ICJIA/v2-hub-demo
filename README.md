@@ -63,8 +63,8 @@ Each dropdown leads with an `All …` reset entry, sized to fit the longest item
 The same dataset and the same card design are presented three ways so reviewers can pick a winner:
 
 - **`/` — View 0 (chips with optional advanced filters).** Default landing page. A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
-- **`/alt` — View 1 (dropdown-only).** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief, closest to the live site today.
-- **`/alt2` — View 2 (chips with always-on filter bar).** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No Advanced toggle.
+- **`/view1` — View 1 (dropdown-only).** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief, closest to the live site today.
+- **`/view2` — View 2 (chips with always-on filter bar).** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No Advanced toggle.
 
 There's also a separate `/taxonomy` page (linked as **Hub Taxonomy** on the right side of the header) that explains the underlying Strapi 5 data model in plain English with two Mermaid diagrams. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type. Each of the fourteen types is clickable and opens a modal showing the top two real examples currently tagged with that type.
 
@@ -119,7 +119,7 @@ Three card elements double as filters — click them and the grid narrows withou
 
 ## Author canonicalization strategy
 
-> This is the most opinionated piece of the demo. If you port these filters into the live hub, port this **first** — without it, the same person renders as multiple dropdown entries and the filter is unusable. All of it lives in `app/utils/article-format.ts` and `app/pages/index.vue` (mirrored to `alt.vue` / `alt2.vue`).
+> This is the most opinionated piece of the demo. If you port these filters into the live hub, port this **first** — without it, the same person renders as multiple dropdown entries and the filter is unusable. All of it lives in `app/utils/article-format.ts` and `app/pages/index.vue` (mirrored to `view1.vue` / `view2.vue`).
 
 ### Why it's needed
 
@@ -275,8 +275,8 @@ app/
                                        #   footer (version + Changelog + GitHub)
   pages/
     index.vue                          # View 0 — chips with Advanced toggle for the bar
-    alt.vue                            # View 1 — dropdown-only bar (no chips, no Centers)
-    alt2.vue                           # View 2 — chips with always-on bar
+    view1.vue                          # View 1 — dropdown-only bar (no chips, no Centers)
+    view2.vue                          # View 2 — chips with always-on bar
     taxonomy.vue                       # Hub Taxonomy explainer (Mermaid + interactive type list)
     articles/[slug].vue                # internal stub article detail page
   components/

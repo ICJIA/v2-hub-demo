@@ -29,8 +29,8 @@ const currentYear = useState('currentYear', () => new Date().getFullYear())
 
 const navItems = [
   { label: 'View 0', to: '/' },
-  { label: 'View 1', to: '/alt' },
-  { label: 'View 2', to: '/alt2' }
+  { label: 'View 1', to: '/view1' },
+  { label: 'View 2', to: '/view2' }
 ]
 
 const changes = [

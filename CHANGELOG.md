@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.60] — 2026-04-25
+
+### Changed
+
+- Renamed routes to match the nav labels: `/alt` → `/view1`, `/alt2` → `/view2`. Page files renamed via `git mv` (`alt.vue` → `view1.vue`, `alt2.vue` → `view2.vue`). The home page remains `/`. NuxtLink targets in the header `navItems` and every README reference updated. CHANGELOG entries before this version still mention the old routes — that's intentional (history). The current routes in production are `/`, `/view1`, `/view2`, `/taxonomy`, plus `/articles/<slug>` detail pages.
+
 ## [0.1.59] — 2026-04-25
 
 ### Fixed
