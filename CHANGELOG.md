@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.52] — 2026-04-25
+
+### Fixed
+
+- **Favicon 404s.** Browsers auto-request `/apple-touch-icon.png`, `/apple-touch-icon-precomposed.png`, etc. even without `<link>` tags, hitting 404 on each load. Added explicit `<link rel="apple-touch-icon" href="/favicon.ico">` plus `rel="shortcut icon"` so the existing `favicon.ico` is reused for all icon requests. Lighthouse/console errors should drop.
+- **a11y `label-content-name-mismatch`** on the centered `PUBLICATION TYPE FILTER DEMO` badge. Removed the conflicting `aria-label="Go to View 0 (home)"` so the link's accessible name matches the visible text.
+
+### Known issue
+
+- Vue's "Hydration completed but contains mismatches" warning is logged once per page load. Source is third-party (Reka UI / Nuxt UI internal id generation differing between SSR and client). No functional impact; Vue recovers and the page renders correctly. Will resolve when Nuxt UI or Reka UI ship a fix.
+
 ## [0.1.51] — 2026-04-25
 
 ### Added

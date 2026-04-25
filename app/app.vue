@@ -4,7 +4,9 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', href: '/favicon.ico' }
   ],
   htmlAttrs: {
     lang: 'en'
@@ -72,7 +74,6 @@ const changes = [
       <NuxtLink
         to="/"
         class="rounded-full transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        aria-label="Go to View 0 (home)"
       >
         <UBadge
           label="PUBLICATION TYPE FILTER DEMO"
