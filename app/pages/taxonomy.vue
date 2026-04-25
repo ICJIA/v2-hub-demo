@@ -1,5 +1,51 @@
 <script setup lang="ts">
+import type { Article } from '~/composables/useArticles'
+import { formatDate, imageUrl, typeLabel } from '~/utils/article-format'
+
 useHead({ title: 'Database Taxonomy — Research Hub Demo' })
+
+const { data: rawArticles } = await useArticles({ fillRandom: false })
+
+const examplesByType = computed(() => {
+  const map = new Map<string, Article[]>()
+  for (const a of rawArticles.value ?? []) {
+    if (!a.type) continue
+    const list = map.get(a.type) ?? []
+    list.push(a)
+    map.set(a.type, list)
+  }
+  for (const list of map.values()) {
+    list.sort((a, b) => {
+      const ka = a.date ?? a.publishedAt ?? ''
+      const kb = b.date ?? b.publishedAt ?? ''
+      return kb.localeCompare(ka)
+    })
+  }
+  return map
+})
+
+const selectedTypeForModal = ref<string | null>(null)
+const isExamplesOpen = ref(false)
+
+function showExamples(typeValue: string) {
+  selectedTypeForModal.value = typeValue
+  isExamplesOpen.value = true
+}
+
+const modalTitle = computed(() => {
+  if (!selectedTypeForModal.value) return ''
+  return `Examples — ${typeLabel(selectedTypeForModal.value)}`
+})
+
+const modalExamples = computed(() => {
+  if (!selectedTypeForModal.value) return []
+  return (examplesByType.value.get(selectedTypeForModal.value) ?? []).slice(0, 2)
+})
+
+const modalTotalCount = computed(() => {
+  if (!selectedTypeForModal.value) return 0
+  return examplesByType.value.get(selectedTypeForModal.value)?.length ?? 0
+})
 
 const datahubDiagram = `flowchart TB
   classDef app fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
@@ -166,21 +212,29 @@ const articleTypes = [
         These are the only valid values for an article's <em>type</em> field. Editors can't add new ones in the CMS without a code change. The Home page chips surface five of these (the most-asked-for); the dropdown on Alt 1 surfaces all of them.
       </p>
 
-      <ul class="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2">
-        <li
+      <p class="mb-3 text-xs text-muted">
+        <UIcon name="i-lucide-mouse-pointer-click" class="mr-1 inline size-4" />
+        Click any type to see real examples from the live database.
+      </p>
+
+      <div class="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2">
+        <button
           v-for="t in articleTypes"
           :key="t.value"
-          class="flex items-start gap-2 rounded border border-default bg-default px-3 py-2"
+          type="button"
+          class="flex w-full items-start gap-2 rounded border border-default bg-default px-3 py-2 text-left transition-all hover:border-primary/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           :class="t.highlight ? 'border-primary/50 bg-primary/10' : ''"
+          @click="showExamples(t.value)"
         >
           <UIcon
             :name="t.highlight ? 'i-lucide-star' : 'i-lucide-tag'"
             class="mt-0.5 size-4 shrink-0"
             :class="t.highlight ? 'text-primary' : 'text-muted'"
           />
-          <div>
+          <div class="flex-1">
             <div :class="t.highlight ? 'font-semibold text-highlighted' : 'text-toned'">
               {{ t.label }}
+              <span class="ml-1 text-xs font-normal text-muted">({{ examplesByType.get(t.value)?.length ?? 0 }})</span>
             </div>
             <div class="text-xs text-muted">
               <code>{{ t.value }}</code>
@@ -189,8 +243,9 @@ const articleTypes = [
               {{ t.note }}
             </div>
           </div>
-        </li>
-      </ul>
+          <UIcon name="i-lucide-chevron-right" class="mt-1 size-4 shrink-0 text-muted" />
+        </button>
+      </div>
     </section>
 
     <section class="mb-10">
@@ -249,5 +304,64 @@ const articleTypes = [
         The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps/Dashboards aren't part of the filter demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report." The datahub above is the next obvious step: connect those reports to the underlying data and dashboards.
       </p>
     </section>
+
+    <UModal
+      v-model:open="isExamplesOpen"
+      :title="modalTitle"
+    >
+      <template #body>
+        <div class="space-y-4">
+          <p class="rounded-lg border border-amber-300/40 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/30 dark:text-amber-200">
+            <UIcon name="i-lucide-info" class="mr-1 inline size-4" />
+            <strong>For this proof-of-concept, these examples still need curation.</strong> They're pulled directly from articles that already carry this <code>type</code> tag in the CMS. Many articles aren't tagged yet — once editorial curation is complete, every type will have richer, more representative examples.
+          </p>
+
+          <div
+            v-if="!modalExamples.length"
+            class="rounded-lg border border-dashed border-default p-6 text-center text-sm text-muted"
+          >
+            No tagged examples for this type in the live data yet.
+          </div>
+
+          <div v-else class="space-y-3">
+            <p class="text-xs text-muted">
+              Top {{ modalExamples.length }} most-recent of {{ modalTotalCount }} tagged article(s):
+            </p>
+            <NuxtLink
+              v-for="ex in modalExamples"
+              :key="ex.documentId"
+              :to="`/articles/${ex.slug}`"
+              class="block rounded-lg border border-default bg-elevated p-4 transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              @click="isExamplesOpen = false"
+            >
+              <div class="flex gap-4">
+                <div class="aspect-[16/9] w-32 shrink-0 overflow-hidden rounded bg-default">
+                  <img
+                    v-if="ex.splash?.url"
+                    :src="imageUrl(ex.splash.url)"
+                    :alt="ex.splash.alternativeText ?? ex.title"
+                    class="h-full w-full object-cover"
+                  >
+                </div>
+                <div class="min-w-0 flex-1 space-y-1">
+                  <h4 class="line-clamp-2 font-semibold text-highlighted">
+                    {{ ex.title }}
+                  </h4>
+                  <p class="text-xs text-muted">
+                    {{ formatDate(ex.date ?? ex.publishedAt) }}
+                  </p>
+                  <p
+                    v-if="ex.abstract"
+                    class="line-clamp-2 text-sm text-toned"
+                  >
+                    {{ ex.abstract }}
+                  </p>
+                </div>
+              </div>
+            </NuxtLink>
+          </div>
+        </div>
+      </template>
+    </UModal>
   </UContainer>
 </template>

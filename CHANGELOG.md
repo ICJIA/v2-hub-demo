@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.33] — 2026-04-25
+
+### Added
+
+- Article type cards on `/taxonomy` are now clickable. Tap any of the fourteen and a `UModal` opens with the top two most-recent real examples for that type (title, splash, date, abstract excerpt). Each example is a `NuxtLink` to the internal stub article page; the modal closes on navigation.
+- Per-type counts on each card (`Research Report (33)` etc.) so reviewers see at a glance how many tagged examples exist before clicking.
+- Curation banner inside the modal: "For this proof-of-concept, these examples still need curation. They're pulled directly from articles that already carry this `type` tag in the CMS." Empty-state message for types with no tagged examples yet.
+
+### Changed
+
+- `useArticles()` now accepts `{ fillRandom: false }` and uses a separate `articles-raw` cache key for that variant. The taxonomy page uses the raw variant so examples only reflect articles actually tagged with the queried type — the random fill on `/`, `/alt`, `/alt2` is unaffected.
+
 ## [0.1.32] — 2026-04-25
 
 ### Changed

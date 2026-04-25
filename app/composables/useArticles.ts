@@ -64,8 +64,14 @@ const QUERY = `query AllPublishedArticles {
   }
 }`
 
-export function useArticles() {
-  return useAsyncData<Article[]>('articles', async () => {
+interface UseArticlesOptions {
+  fillRandom?: boolean
+}
+
+export function useArticles(options: UseArticlesOptions = {}) {
+  const fillRandom = options.fillRandom !== false
+  const key = fillRandom ? 'articles' : 'articles-raw'
+  return useAsyncData<Article[]>(key, async () => {
     const res = await $fetch<GraphQLResponse>(ENDPOINT, {
       method: 'POST',
       body: { query: QUERY }
@@ -74,6 +80,7 @@ export function useArticles() {
       throw new Error(res.errors.map(e => e.message).join('; '))
     }
     const articles = res.data?.articles ?? []
+    if (!fillRandom) return articles
     return articles.map(a => a.type ? a : { ...a, type: pickRandomType() })
   })
 }
