@@ -210,7 +210,7 @@ function onTypeChipChange(value: string | null) {
         Research Hub — Alt 2
       </h1>
       <p class="text-sm text-muted">
-        Same chips as Home, with the full filter bar always visible alongside (Topics, Centers, Authors, Years, Search).
+        Same as the Home view, except the granular filters (topic, center, author, year, search) stay visible at all times — there's no <span class="font-semibold text-highlighted">Advanced</span> toggle hiding them. The theory: chips are usually enough for a quick pick; if you need a more granular filter or a search, it's already right there.
       </p>
     </div>
 

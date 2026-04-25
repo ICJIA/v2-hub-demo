@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.25] — 2026-04-25
+
+### Changed
+
+- `/alt2` description rewritten to call out the actual difference from Home — the granular filters are always visible (no Advanced toggle hiding them) — and to state the rationale (chips are usually enough; the rest is one glance away when you need it).
+
 ## [0.1.24] — 2026-04-25
 
 ### Changed
