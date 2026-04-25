@@ -2,6 +2,21 @@ import type { Article } from '~/composables/useArticles'
 
 const API_ORIGIN = 'https://v2.hub.icjia-api.cloud'
 
+export const CHIP_TYPES = [
+  'researchReport',
+  'annualReport',
+  'update',
+  'strategicPlan'
+]
+
+export const KNOWN_CENTERS = [
+  'Center for Justice Research and Evaluation',
+  'Center for Sponsored Research & Program Development',
+  'Center for Victim Studies',
+  'Center for Violence Prevention and Intervention Research',
+  'Research & Analysis Unit'
+]
+
 export function articleAuthorNames(a: Article): string[] {
   if (!Array.isArray(a.authors)) return []
   const names: string[] = []

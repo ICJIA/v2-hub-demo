@@ -34,14 +34,17 @@ pnpm generate    # static site generation (for Netlify)
 - Each dropdown leads with an `All …` reset entry. Filters compose AND-style across categories and the **Clear all** button wipes every filter (including the tag pill described below).
 - Pagination shows 12 per page; resets to page 1 on any filter change.
 
-## Two filter UXs for managers to compare
+## Three filter UXs for managers to compare
 
-The same dataset and the same card design are presented two ways so reviewers can compare:
+The same dataset and the same card design are presented three ways so reviewers can compare:
 
 - **`/` — chip-driven (default).** A row of quick-pick chips at the top (`All`, plus pluralized labels Research Reports, Annual Reports, Updates, Strategic Plans) replaces the Publication Type dropdown, and a **Centers** dropdown is added to the filter bar. Clicking the `All` chip is a full reset — clears every filter (topic, center, author, year, tag, search) and returns to the default view.
-- **`/alt` — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
+- **`/alt` (Alt 1) — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
+- **`/alt2` (Alt 2) — chips with optional advanced filters.** Same chip row as `/`, but the filter bar is hidden behind an `Advanced filters` toggle. The hypothesis: chips are usually enough; reveal the bar only when needed.
 
-Both pages share `ArticleFilterBar`, which conditionally renders Type / Centers based on which item arrays the page passes in.
+The chip set and the canonical Centers list are shared across pages via `CHIP_TYPES` and `KNOWN_CENTERS` exports in `app/utils/article-format.ts` — adding a new chip or center happens in one place.
+
+Both `ArticleFilterBar` consumers conditionally render Type / Centers based on which item arrays the page passes in.
 
 The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all of them always appear (with live counts of matching articles, including zero counts):
 

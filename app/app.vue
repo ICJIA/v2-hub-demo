@@ -26,7 +26,8 @@ const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'Alt 1', to: '/alt' }
+  { label: 'Alt 1', to: '/alt' },
+  { label: 'Alt 2', to: '/alt2' }
 ]
 
 const changes = [
@@ -44,7 +45,7 @@ const changes = [
   },
   {
     title: 'Several views for publication types',
-    body: 'The Home page uses a quick-pick chip row above the filter bar. Alt 1 puts Publication Type in the bar instead. Same data, two UX options to compare.'
+    body: 'The Home page uses a chip row above the filter bar. Alt 1 puts Publication Type in the bar instead. Alt 2 starts as chips only and reveals the full filter bar via an Advanced toggle. Same data, three UX options to compare.'
   },
   {
     title: 'Clickable, additive tags',
@@ -79,15 +80,6 @@ const changes = [
         />
 
         <UColorModeButton />
-
-        <UButton
-          to="https://github.com/ICJIA/v2-hub-demo"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
       </template>
     </UHeader>
 

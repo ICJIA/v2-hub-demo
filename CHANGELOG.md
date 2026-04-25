@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.18] — 2026-04-25
+
+### Added
+
+- New `/alt2` page (`app/pages/alt2.vue`). Same chip row as the home page but the filter bar is hidden by default; an `Advanced filters` `USwitch` reveals it on demand. Cards behave identically (clickable type / tag / author, search highlighting, etc.).
+- Active-filter pill for **Author** next to the result count, so an author filter set via a card click stays visible even when the bar is hidden. Existing tag pills work the same way.
+- `Alt 2` link in the header nav.
+
+### Changed
+
+- Extracted the chip-type list (`CHIP_TYPES`) and ICJIA centers list (`KNOWN_CENTERS`) into `app/utils/article-format.ts`. Both `/` and `/alt2` import the same constants now, so adding a new chip in one place updates both pages.
+- Updated the "What This Demo Shows" modal to mention three UX options (Home chips, Alt 1 dropdowns, Alt 2 chips + advanced toggle).
+- Removed the GitHub icon from the header right-slot. It's still available in the footer alongside the Changelog button — the header's job is demo navigation, the footer's is meta links.
+
 ## [0.1.17] — 2026-04-25
 
 ### Changed
