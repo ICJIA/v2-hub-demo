@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.8] — 2026-04-25
+
+### Added
+
+- Internal article detail stub at `app/pages/articles/[slug].vue`. Looks up the article in the cached `useArticles()` payload and renders splash, type badge, title, byline, date, abstract, tags, and a "Demo stub" notice in lieu of the full body. Includes a `Back to articles` button.
+
+### Changed
+
+- `ArticleCard` now links to `/articles/<slug>` via `NuxtLink` instead of `https://v2hub.netlify.app/articles/<slug>` in a new tab. The demo is fully self-contained — no runtime links leave this app.
+- Static-gen note: with `nuxt generate`, the home page's links to all 236 article slugs cause Nitro's crawler to prerender every detail page. `useAsyncData('articles')` caches across pages within a single build, so this still results in just one GraphQL fetch.
+
 ## [0.1.7] — 2026-04-25
 
 ### Changed

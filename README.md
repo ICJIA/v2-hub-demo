@@ -25,7 +25,7 @@ pnpm generate    # static site generation (for Netlify)
 ## What the page does
 
 - Fetches every article with `status: PUBLISHED` in a single query (limit 1000), ordered by `publishedAt` descending. Sorts client-side by each article's `date` field (fallback `publishedAt`) so the displayed date drives the order.
-- Renders a card grid (1 / 2 / 3 columns at mobile / tablet / desktop) with splash image, publication type badge, title, authors, formatted date, abstract, and tag badges.
+- Renders a card grid (1 / 2 / 3 columns at mobile / tablet / desktop) with splash image, publication type badge, title, authors, formatted date, abstract, and tag badges. Cards link to an internal stub detail page at `/articles/<slug>` — the demo is self-contained and never sends users out to the live `v2hub.netlify.app`.
 - "Filter by" bar (single line at desktop) with four dropdowns and a debounced search box:
   - **Publication Type** — derived from the Strapi `ENUM_ARTICLE_TYPE` values that actually appear in the data, displayed in human-readable Title Case (e.g. `researchAtAGlance` → "Research At A Glance"). Counts shown next to each entry.
   - **Topics** — from the JSON `categories` field on each article.

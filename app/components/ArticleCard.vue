@@ -9,7 +9,7 @@ const emit = defineEmits<{
   'select-author': [key: string]
 }>()
 
-const href = computed(() => `https://v2hub.netlify.app/articles/${props.article.slug}`)
+const href = computed(() => `/articles/${props.article.slug}`)
 const splashSrc = computed(() => imageUrl(props.article.splash?.url))
 const splashAlt = computed(() => props.article.splash?.alternativeText ?? props.article.title)
 const authorNames = computed(() => articleAuthorNames(props.article))
@@ -22,10 +22,8 @@ function separatorBefore(idx: number, total: number): string {
 </script>
 
 <template>
-  <a
-    :href="href"
-    target="_blank"
-    rel="noopener"
+  <NuxtLink
+    :to="href"
     class="group block overflow-hidden rounded-lg border border-default bg-default transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
   >
     <div class="aspect-[16/9] w-full overflow-hidden bg-elevated">
@@ -96,5 +94,5 @@ function separatorBefore(idx: number, total: number): string {
         </button>
       </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
