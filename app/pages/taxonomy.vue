@@ -1,6 +1,18 @@
 <script setup lang="ts">
 useHead({ title: 'Database Taxonomy — Research Hub Demo' })
 
+const datahubDiagram = `flowchart LR
+  classDef app fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
+  classDef dataset fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px
+
+  App["📱 App<br/>(e.g. Crime Mapper)"]:::app
+
+  App --> D1["📊 Dataset<br/>2024 crime stats"]:::dataset
+  App --> D2["📊 Dataset<br/>2023 crime stats"]:::dataset
+  App --> D3["📊 Dataset<br/>Geocoded incidents"]:::dataset
+
+  linkStyle 0,1,2 stroke-width:2px`
+
 const structureDiagram = `flowchart TB
   classDef hub fill:#1e293b,stroke:#334155,color:#fff,stroke-width:2px
   classDef content fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
@@ -148,12 +160,53 @@ const articleTypes = [
       </ul>
     </section>
 
+    <section class="mb-10">
+      <div class="mb-3 flex flex-wrap items-center gap-2">
+        <h2 class="text-xl font-semibold text-highlighted">
+          Proposed: the "datahub" — Datasets linked to Apps
+        </h2>
+        <UBadge
+          label="Future"
+          color="warning"
+          variant="subtle"
+          size="xs"
+        />
+      </div>
+
+      <div class="mb-4 space-y-3 text-sm text-toned">
+        <p>
+          Right now Datasets and Apps live as separate islands. The team wants them connected: each <strong>Dataset</strong> would point to the <strong>App</strong> it powers, and each <strong>App</strong> would list one or more <strong>Datasets</strong> it consumes. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
+        </p>
+        <p>
+          The good news: Strapi 5 already has the relation fields in place. Introspection confirms <code>App.datasets</code> and <code>Dataset.apps</code> exist in the schema today. What's missing is editorial work in the CMS to actually wire specific datasets to specific apps.
+        </p>
+      </div>
+
+      <ClientOnly>
+        <MermaidDiagram :source="datahubDiagram" />
+        <template #fallback>
+          <div class="rounded-lg border border-default bg-elevated p-8 text-center text-sm text-muted">
+            Loading diagram…
+          </div>
+        </template>
+      </ClientOnly>
+
+      <div class="mt-4 space-y-2 text-sm text-toned">
+        <p>Once the linking is done, the hub can:</p>
+        <ul class="ml-5 list-disc space-y-1">
+          <li>Show <em>"Datasets used by this app"</em> on each App page.</li>
+          <li>Show <em>"Apps that use this dataset"</em> on each Dataset page.</li>
+          <li>Let visitors jump from a research article straight to the dataset it cites and the app that visualizes it.</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="rounded-lg border border-default bg-elevated p-5 text-sm text-toned">
       <p class="mb-2 font-semibold text-highlighted">
         Why this matters for the demo
       </p>
       <p>
-        The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps aren't part of the demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report."
+        The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps aren't part of the filter demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report." The datahub above is the next obvious step: connect those reports to the underlying data and apps.
       </p>
     </section>
   </UContainer>

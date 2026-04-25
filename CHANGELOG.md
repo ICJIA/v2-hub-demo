@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.28] — 2026-04-25
+
+### Added
+
+- New "Proposed: the 'datahub'" section on `/taxonomy` describing the planned Dataset ↔ App relationship managers want to expose. Includes its own Mermaid diagram (one App pointing at multiple Datasets), a note that Strapi 5 already exposes `App.datasets` and `Dataset.apps` relation fields (so this is editorial work, not a schema change), and a bullet list of UX ideas the linking unlocks.
+
 ## [0.1.27] — 2026-04-25
 
 ### Changed
