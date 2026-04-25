@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.56] — 2026-04-25
+
+### Fixed
+
+- **Three remaining `color-contrast` violations** from the prior axe scan resolved:
+  - "Filter by:" label inside `ArticleFilterBar` switched from `text-muted` to `text-toned` so it has enough contrast against the bar's `bg-elevated` background. (Hits Views 1 + 2.)
+  - Header `PUBLICATION TYPE FILTER DEMO` badge bumped from `size="sm"` (Nuxt UI emits `text-[10px]/3`) to `size="md"` (`text-xs`, 12 px) so it doesn't trip axe's tiny-text contrast edge case.
+  - `Future` badge on `/taxonomy` bumped from `size="xs"` (`text-[8px]/3`) to `size="sm"` (`text-[10px]/3`) for the same reason.
+
 ## [0.1.55] — 2026-04-25
 
 ### Added

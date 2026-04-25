@@ -330,7 +330,7 @@ const articleTypes = [
           label="Future"
           color="warning"
           variant="solid"
-          size="xs"
+          size="sm"
         />
       </div>
 

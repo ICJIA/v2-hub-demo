@@ -95,7 +95,7 @@ const hasActiveFilters = computed(() =>
 
 <template>
   <div class="flex flex-wrap items-center gap-3 rounded-lg border border-default bg-elevated p-3">
-    <span class="text-sm font-medium text-muted">Filter by:</span>
+    <span class="text-sm font-medium text-toned">Filter by:</span>
 
     <USelectMenu
       v-if="types.length"

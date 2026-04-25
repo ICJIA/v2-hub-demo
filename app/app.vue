@@ -79,7 +79,7 @@ const changes = [
           label="PUBLICATION TYPE FILTER DEMO"
           color="primary"
           variant="solid"
-          size="sm"
+          size="md"
           class="cursor-pointer font-semibold tracking-wider"
         />
       </NuxtLink>
