@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.29] — 2026-04-25
+
+### Added
+
+- New "A note on the word 'Article'" callout on `/taxonomy`. Explains the historical scope creep — in Hub 1.0 an article was specifically a summary of a research report; over the years the term expanded to cover annual reports, program evaluation summaries, updates, etc. — and ties that history back to why the Publication Type chips matter today.
+
 ## [0.1.28] — 2026-04-25
 
 ### Added

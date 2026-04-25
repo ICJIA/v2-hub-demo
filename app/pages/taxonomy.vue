@@ -90,6 +90,23 @@ const articleTypes = [
       </ClientOnly>
     </section>
 
+    <section class="mb-10 rounded-lg border border-default bg-elevated p-5">
+      <p class="mb-2 text-base font-semibold text-highlighted">
+        A note on the word "Article"
+      </p>
+      <div class="space-y-3 text-sm text-toned">
+        <p>
+          In <strong>Hub 1.0</strong>, an <em>article</em> was specifically a summary of a <strong>research report</strong> — the public-facing write-up that pointed back at the underlying research document. That was the original meaning when the term was chosen.
+        </p>
+        <p>
+          Over the years the scope quietly widened. Articles started covering <strong>annual reports</strong>, <strong>program evaluation summaries</strong>, <strong>updates</strong>, and so on. The core idea is still the same — an article is a summary of something — but today that "something" can be any one of the fourteen <code>type</code> values, not just <code>researchReport</code>.
+        </p>
+        <p>
+          That history is exactly why the chips in this demo matter. Without a way to filter by <code>type</code>, an article that summarizes a formal research report and an article that summarizes a quarterly newsletter look identical in the list. With the chips, "show me only the formal research reports" is one click.
+        </p>
+      </div>
+    </section>
+
     <section class="mb-10 space-y-6">
       <h2 class="text-xl font-semibold text-highlighted">
         What each bucket means
