@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.58] — 2026-04-25
+
+### Fixed
+
+- **Last `color-contrast` violation cleared.** The `Future` badge on `/taxonomy` was using `variant="solid"` against `color="warning"`, which renders white text on amber-500 — only ~2.15:1 in light mode. Switched to `variant="soft"` (amber-50 bg with amber-700 text), which clears WCAG 1.4.3 AA at ~7.4:1. With this, axecap reports **0 violations across all four pages** at level AA.
+
 ## [0.1.57] — 2026-04-25
 
 ### Fixed

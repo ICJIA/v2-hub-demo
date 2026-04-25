@@ -329,7 +329,7 @@ const articleTypes = [
         <UBadge
           label="Future"
           color="warning"
-          variant="solid"
+          variant="soft"
           size="md"
         />
       </div>
