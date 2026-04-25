@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.27] — 2026-04-25
+
+### Changed
+
+- Mermaid diagrams now use the `base` theme with explicit `lineColor` and `textColor` themeVariables, picked from the current color mode (`useColorMode()`). Lines render `#e2e8f0` (slate-200) in dark mode for high contrast against the dark page background, and `#334155` (slate-700) in light mode. Diagram re-renders automatically when the color-mode toggle is flipped. Also bumps edge `stroke-width` to 2 via a Tailwind arbitrary selector.
+
 ## [0.1.26] — 2026-04-25
 
 ### Added

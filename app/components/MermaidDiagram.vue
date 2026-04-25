@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{ source: string }>()
 
+const colorMode = useColorMode()
 const containerRef = ref<HTMLElement | null>(null)
 const error = ref<string | null>(null)
 
@@ -8,9 +9,15 @@ async function render() {
   if (!containerRef.value) return
   try {
     const mermaid = (await import('mermaid')).default
+    const isDark = colorMode.value === 'dark'
     mermaid.initialize({
       startOnLoad: false,
-      theme: 'default',
+      theme: 'base',
+      themeVariables: {
+        lineColor: isDark ? '#e2e8f0' : '#334155',
+        textColor: isDark ? '#e2e8f0' : '#0f172a',
+        fontSize: '14px'
+      },
       securityLevel: 'loose',
       flowchart: { htmlLabels: true, useMaxWidth: true }
     })
@@ -24,14 +31,20 @@ async function render() {
 }
 
 onMounted(render)
-watch(() => props.source, render)
+watch([() => props.source, () => colorMode.value], render)
 </script>
 
 <template>
   <div>
-    <div v-if="error" class="rounded-lg border border-error bg-elevated p-4 text-sm text-error">
+    <div
+      v-if="error"
+      class="rounded-lg border border-error bg-elevated p-4 text-sm text-error"
+    >
       Failed to render diagram: {{ error }}
     </div>
-    <div ref="containerRef" class="overflow-auto rounded-lg border border-default bg-default p-4" />
+    <div
+      ref="containerRef"
+      class="overflow-auto rounded-lg border border-default bg-default p-4 [&_.edgePath_path]:!stroke-2 [&_.flowchart-link]:!stroke-2 [&_.marker]:!fill-current"
+    />
   </div>
 </template>
