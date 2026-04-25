@@ -1,5 +1,7 @@
 # V2 Hub Demo — Research Hub Article Filter POC
 
+**Live:** https://v2-hub-demo.netlify.app/
+
 Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, and year, alongside a free-text search. Built on the Nuxt UI starter; the landing page is the demo itself.
 
 The page fetches live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, holds all published articles in memory, and applies all filters client-side. Cards link to the corresponding article on `https://v2hub.netlify.app/articles/<slug>` in a new tab.

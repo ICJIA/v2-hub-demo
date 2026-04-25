@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] — 2026-04-25
+
+### Changed
+
+- Header label changed from the Nuxt UI starter dropdown (`TemplateMenu`) to a static `PUBLICATION TYPE DEMO` badge, signalling the purpose of the deploy.
+- README: added the live deploy link `https://v2-hub-demo.netlify.app/` near the top.
+
 ## [0.1.2] — 2026-04-25
 
 ### Added

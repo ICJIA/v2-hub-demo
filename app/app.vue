@@ -32,7 +32,13 @@ useSeoMeta({
           <AppLogo class="w-auto h-6 shrink-0" />
         </NuxtLink>
 
-        <TemplateMenu />
+        <UBadge
+          label="PUBLICATION TYPE DEMO"
+          color="primary"
+          variant="subtle"
+          size="sm"
+          class="font-semibold tracking-wider"
+        />
       </template>
 
       <template #right>
