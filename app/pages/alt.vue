@@ -53,7 +53,7 @@ const availableTypes = computed<TypeOption[]>(() => {
   }
   return ALT_TYPES
     .filter(t => counts.has(t))
-    .map(t => ({ value: t, label: typeLabel(t), count: counts.get(t)! }))
+    .map(t => ({ value: t, label: `${typeLabel(t)}s`, count: counts.get(t)! }))
 })
 
 const topicItems = computed(() => {

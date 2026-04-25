@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.5] — 2026-04-25
+
+### Changed
+
+- `/alt` chip labels are now plural — `Research Reports (N)`, `Annual Reports (N)`, `Updates (N)`, `Strategic Plans (N)` — to match how a chip-row reads when each chip is a "category of items" rather than a single article. Card badges remain singular (one article = one type).
+
 ## [0.1.4] — 2026-04-25
 
 ### Added
