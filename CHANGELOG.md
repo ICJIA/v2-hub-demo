@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.15] — 2026-04-25
+
+### Changed
+
+- Moved `What's Changed` from the left-side navigation menu to a standalone button on the right side of the header (next to the color-mode toggle and GitHub icon). Reads as a utility action rather than a route, which matches its actual behavior — it opens the modal rather than navigating.
+
 ## [0.1.14] — 2026-04-25
 
 ### Added

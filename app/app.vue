@@ -26,15 +26,7 @@ const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'Alt View 1', to: '/alt' },
-  {
-    label: "What's Changed",
-    icon: 'i-lucide-sparkles',
-    onSelect: (e) => {
-      e?.preventDefault?.()
-      isWhatsChangedOpen.value = true
-    }
-  }
+  { label: 'Alt View 1', to: '/alt' }
 ]
 
 const changes = [
