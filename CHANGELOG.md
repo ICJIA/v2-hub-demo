@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.21] — 2026-04-25
+
+### Added
+
+- `programEvaluationSummary` added to `CHIP_TYPES` so `Program Evaluation Summaries` shows up as a chip on Home and Alt 2 (Alt 1 is dropdown-only and unaffected).
+- Tiny `pluralize()` helper in `app/utils/article-format.ts` that handles `-y` → `-ies` and `-s/-x/-z/-ch/-sh` → `-es` so the new chip reads "Summaries", not "Summarys". Both pages now build the chip label via `pluralize(typeLabel(t))`.
+
 ## [0.1.20] — 2026-04-25
 
 ### Changed

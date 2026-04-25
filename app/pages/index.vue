@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Article } from '~/composables/useArticles'
 import type { TypeOption } from '~/components/ArticleTypeChips.vue'
-import { CHIP_TYPES, KNOWN_CENTERS, articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
+import { CHIP_TYPES, KNOWN_CENTERS, articleAuthorNames, authorKey, pluralize, typeLabel } from '~/utils/article-format'
 
 useHead({ title: 'Research Hub — Articles' })
 
@@ -49,7 +49,7 @@ const availableTypes = computed<TypeOption[]>(() => {
   }
   return CHIP_TYPES
     .filter(t => counts.has(t))
-    .map(t => ({ value: t, label: `${typeLabel(t)}s`, count: counts.get(t)! }))
+    .map(t => ({ value: t, label: pluralize(typeLabel(t)), count: counts.get(t)! }))
 })
 
 const topicItems = computed(() => {

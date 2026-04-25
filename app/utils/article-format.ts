@@ -5,9 +5,20 @@ const API_ORIGIN = 'https://v2.hub.icjia-api.cloud'
 export const CHIP_TYPES = [
   'researchReport',
   'annualReport',
+  'programEvaluationSummary',
   'update',
   'strategicPlan'
 ]
+
+export function pluralize(noun: string): string {
+  if (/[^aeiou]y$/i.test(noun)) {
+    return noun.slice(0, -1) + 'ies'
+  }
+  if (/(s|x|z|ch|sh)$/i.test(noun)) {
+    return noun + 'es'
+  }
+  return noun + 's'
+}
 
 export const KNOWN_CENTERS = [
   'Center for Justice Research and Evaluation',
