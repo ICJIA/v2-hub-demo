@@ -26,7 +26,7 @@ const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'Alt View 1', to: '/alt' }
+  { label: 'Alt 1', to: '/alt' }
 ]
 
 const changes = [
@@ -44,11 +44,11 @@ const changes = [
   },
   {
     title: 'Several views for publication types',
-    body: 'The Home page uses a quick-pick chip row above the filter bar. Alt View 1 puts Publication Type in the bar instead. Same data, two UX options to compare.'
+    body: 'The Home page uses a quick-pick chip row above the filter bar. Alt 1 puts Publication Type in the bar instead. Same data, two UX options to compare.'
   },
   {
-    title: 'Clickable tags',
-    body: 'Each tag pill on a card is clickable too — selecting one filters the grid by that tag and shows a small dismiss-able pill near the result count.'
+    title: 'Clickable, additive tags',
+    body: 'Each tag pill on a card is clickable. Click one and it filters; click another and the results union — articles with any of the selected tags show. Each selected tag becomes a dismiss-able pill near the result count.'
   }
 ]
 </script>

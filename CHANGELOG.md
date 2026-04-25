@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.17] — 2026-04-25
+
+### Changed
+
+- Tag filtering is now **additive (OR-composed)** rather than single-tag (AND). Click multiple tags and the grid shows every article that has *any* of the selected tags — not the intersection. Each selected tag becomes its own dismiss-able pill near the result count, and clicking the same tag again toggles it off. State changed from `selectedTag: ''` to `selectedTags: string[]` on both pages; the filter logic now uses `tags.some(t => selectedTags.includes(t))`. Search-clears-all and the bar's Clear-all both reset the array to `[]`.
+- Renamed nav label `Alt View 1` → `Alt 1` to save space in the header. The "What This Demo Shows" modal copy also updated to match.
+
 ## [0.1.16] — 2026-04-25
 
 ### Changed

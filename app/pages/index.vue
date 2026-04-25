@@ -31,7 +31,7 @@ const selectedTopic = ref('')
 const selectedAuthor = ref('')
 const selectedYear = ref('')
 const selectedCenter = ref('')
-const selectedTag = ref('')
+const selectedTags = ref<string[]>([])
 const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = 12
@@ -135,7 +135,12 @@ const filtered = computed<Article[]>(() => {
   if (selectedAuthor.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedAuthor.value))
   if (selectedYear.value) r = r.filter(a => articleYear(a) === selectedYear.value)
   if (selectedCenter.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedCenter.value))
-  if (selectedTag.value) r = r.filter(a => asStrings(a.tags).includes(selectedTag.value))
+  if (selectedTags.value.length) {
+    r = r.filter(a => {
+      const tags = asStrings(a.tags)
+      return selectedTags.value.some(t => tags.includes(t))
+    })
+  }
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
     r = r.filter(a =>
@@ -151,7 +156,7 @@ const pageItems = computed(() => {
   return filtered.value.slice(start, start + pageSize)
 })
 
-watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedCenter, selectedTag, searchQuery], () => {
+watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedCenter, selectedTags, searchQuery], () => {
   currentPage.value = 1
 })
 
@@ -162,7 +167,7 @@ watch(searchQuery, (newVal, oldVal) => {
     selectedAuthor.value = ''
     selectedYear.value = ''
     selectedCenter.value = ''
-    selectedTag.value = ''
+    selectedTags.value = []
   }
 })
 
@@ -178,8 +183,16 @@ function applyTypeFilter(t: string) {
 }
 
 function applyTagFilter(t: string) {
-  selectedTag.value = t
+  if (selectedTags.value.includes(t)) {
+    selectedTags.value = selectedTags.value.filter(x => x !== t)
+  } else {
+    selectedTags.value = [...selectedTags.value, t]
+  }
   scrollToTop()
+}
+
+function removeTag(t: string) {
+  selectedTags.value = selectedTags.value.filter(x => x !== t)
 }
 
 function applyAuthorFilter(key: string) {
@@ -194,7 +207,7 @@ function onTypeChipChange(value: string | null) {
     selectedAuthor.value = ''
     selectedYear.value = ''
     selectedCenter.value = ''
-    selectedTag.value = ''
+    selectedTags.value = []
     searchQuery.value = ''
   }
 }
@@ -255,7 +268,7 @@ function onTypeChipChange(value: string | null) {
           :authors="authorItems"
           :years="yearItems"
           :centers="centerItems"
-          @clear-all="selectedTag = ''"
+          @clear-all="selectedTags = []"
         />
       </div>
 
@@ -265,13 +278,14 @@ function onTypeChipChange(value: string | null) {
           of <span class="font-semibold text-highlighted">{{ articles.length }}</span> articles
         </span>
         <UButton
-          v-if="selectedTag"
-          :label="`Tag: ${selectedTag}`"
+          v-for="t in selectedTags"
+          :key="t"
+          :label="`Tag: ${t}`"
           trailing-icon="i-lucide-x"
           color="primary"
           variant="soft"
           size="xs"
-          @click="selectedTag = ''"
+          @click="removeTag(t)"
         />
       </p>
 
