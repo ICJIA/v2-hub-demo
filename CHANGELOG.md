@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] — 2026-04-25
+
+### Added
+
+- `.nvmrc` pinning Node to 22 so local environments using nvm/fnm pick the same version Netlify uses.
+
+### Changed
+
+- Bumped `NODE_VERSION` in `netlify.toml` from 20 to 22 to match `.nvmrc`.
+
 ## [0.1.1] — 2026-04-25
 
 ### Fixed
