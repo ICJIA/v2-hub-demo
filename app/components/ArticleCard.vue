@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import type { Article } from '~/composables/useArticles'
-import { articleAuthorNames, authorKey, formatDate, imageUrl, typeLabel } from '~/utils/article-format'
+import { articleAuthorNames, authorKey, formatDate, highlightSegments, imageUrl, typeLabel } from '~/utils/article-format'
 
-const props = defineProps<{ article: Article }>()
+const props = withDefaults(defineProps<{
+  article: Article
+  searchQuery?: string
+}>(), {
+  searchQuery: ''
+})
+
 const emit = defineEmits<{
   'select-type': [value: string]
   'select-tag': [value: string]
@@ -13,6 +19,9 @@ const href = computed(() => `/articles/${props.article.slug}`)
 const splashSrc = computed(() => imageUrl(props.article.splash?.url))
 const splashAlt = computed(() => props.article.splash?.alternativeText ?? props.article.title)
 const authorNames = computed(() => articleAuthorNames(props.article))
+
+const titleSegments = computed(() => highlightSegments(props.article.title, props.searchQuery))
+const abstractSegments = computed(() => highlightSegments(props.article.abstract, props.searchQuery))
 
 function separatorBefore(idx: number, total: number): string {
   if (total === 2) return ' and '
@@ -52,7 +61,10 @@ function separatorBefore(idx: number, total: number): string {
       </button>
 
       <h3 class="line-clamp-2 text-lg font-semibold leading-snug text-highlighted">
-        {{ article.title }}
+        <template v-for="(seg, i) in titleSegments" :key="`t-${i}`">
+          <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
+          <span v-else>{{ seg.text }}</span>
+        </template>
       </h3>
 
       <p v-if="authorNames.length" class="line-clamp-2 text-xs text-toned">
@@ -73,7 +85,10 @@ function separatorBefore(idx: number, total: number): string {
       </p>
 
       <p v-if="article.abstract" class="line-clamp-3 text-sm text-toned">
-        {{ article.abstract }}
+        <template v-for="(seg, i) in abstractSegments" :key="`a-${i}`">
+          <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
+          <span v-else>{{ seg.text }}</span>
+        </template>
       </p>
 
       <div v-if="article.tags?.length" class="flex flex-wrap gap-1.5 pt-1">

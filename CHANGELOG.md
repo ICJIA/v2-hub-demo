@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.11] — 2026-04-25
+
+### Added
+
+- Search-term highlighting on cards. When the search box has a value, each matching substring in the title and abstract is wrapped in a `<mark class="bg-primary/40 ...">`. Implementation lives in `app/utils/article-format.ts` as `highlightSegments(text, query)`, which returns an array of `{ text, match }` segments — safer than `v-html` because it avoids any HTML/regex injection risk if a query contains special characters. `ArticleCard` accepts an optional `searchQuery` prop and renders the segments via `<template v-for>` with `<mark>` for matches and `<span>` for non-matches; both `/` and `/alt` pass `:search-query="searchQuery"` to the card.
+
 ## [0.1.10] — 2026-04-25
 
 ### Changed

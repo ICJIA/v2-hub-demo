@@ -23,6 +23,29 @@ export function authorKey(name: string): string {
     .toLowerCase()
 }
 
+export interface HighlightSegment {
+  text: string
+  match: boolean
+}
+
+export function highlightSegments(text: string | null | undefined, query: string): HighlightSegment[] {
+  if (!text) return []
+  if (!query) return [{ text, match: false }]
+  const lowerText = text.toLowerCase()
+  const lowerQuery = query.toLowerCase()
+  const out: HighlightSegment[] = []
+  let i = 0
+  let next = lowerText.indexOf(lowerQuery)
+  while (next !== -1) {
+    if (next > i) out.push({ text: text.slice(i, next), match: false })
+    out.push({ text: text.slice(next, next + query.length), match: true })
+    i = next + query.length
+    next = lowerText.indexOf(lowerQuery, i)
+  }
+  if (i < text.length) out.push({ text: text.slice(i), match: false })
+  return out
+}
+
 export function typeLabel(value: string): string {
   return value
     .replace(/_/g, ' ')

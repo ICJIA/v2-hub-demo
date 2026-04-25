@@ -283,6 +283,7 @@ function onTypeChipChange(value: string | null) {
           v-for="article in pageItems"
           :key="article.documentId"
           :article="article"
+          :search-query="searchQuery"
           @select-type="applyTypeFilter"
           @select-tag="applyTagFilter"
           @select-author="applyAuthorFilter"
