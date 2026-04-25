@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.45] — 2026-04-25
+
+### Fixed
+
+- CHANGELOG had a missing 0.1.25 header — the entry's content was nested as a duplicate `### Changed` block inside 0.1.26. Split into its own section so the version sequence (0.1.0 → 0.1.45) reads cleanly with no gaps.
+
 ## [0.1.44] — 2026-04-25
 
 ### Changed
@@ -128,6 +134,8 @@ All notable changes to this project will be documented in this file. Format foll
 ### Changed
 
 - Added `mermaid@^11.14.0` as a direct dependency.
+
+## [0.1.25] — 2026-04-25
 
 ### Changed
 
