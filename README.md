@@ -2,9 +2,9 @@
 
 **Live:** https://v2-hub-demo.netlify.app/
 
-Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, and year, alongside a free-text search. Built on the Nuxt UI starter; the landing page is the demo itself.
+Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, and tags, alongside a free-text search. Three side-by-side "views" let managers compare different filter UX flavors against the same dataset, plus a `/taxonomy` page explaining the underlying Strapi 5 data model in plain English.
 
-The page fetches live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, holds all published articles in memory, and applies all filters client-side. Cards link to the corresponding article on `https://v2hub.netlify.app/articles/<slug>` in a new tab.
+The pages fetch live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, hold all published articles in memory, and apply every filter client-side. Cards link to an internal stub detail page at `/articles/<slug>` so the demo is fully self-contained — no runtime traffic leaves this app.
 
 ## Quick start
 
@@ -39,13 +39,13 @@ pnpm generate    # static site generation (for Netlify)
 
 ## Three filter UXs for managers to compare
 
-The same dataset and the same card design are presented three ways so reviewers can compare:
+The same dataset and the same card design are presented three ways so reviewers can pick a winner:
 
-- **`/` (Home) — chips with optional advanced filters.** A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an `Advanced filters` toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
-- **`/alt` (View 1) — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
-- **`/alt2` (View 2) — chips with always-on filter bar.** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No advanced toggle.
+- **`/` — View 0 (chips with optional advanced filters).** Default landing page. A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
+- **`/alt` — View 1 (dropdown-only).** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief, closest to the live site today.
+- **`/alt2` — View 2 (chips with always-on filter bar).** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No Advanced toggle.
 
-There's also `/taxonomy`, a non-filter page that explains the underlying Strapi 5 data model in plain English and a Mermaid diagram. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type.
+There's also a separate `/taxonomy` page (linked as **Hub Taxonomy** on the right side of the header) that explains the underlying Strapi 5 data model in plain English with two Mermaid diagrams. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type. Each of the fourteen types is clickable and opens a modal showing the top two real examples currently tagged with that type.
 
 The chip set and the canonical Centers list are shared across pages via `CHIP_TYPES` and `KNOWN_CENTERS` exports in `app/utils/article-format.ts` — adding a new chip or center happens in one place.
 
@@ -63,9 +63,9 @@ The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all o
 
 Three card elements double as filters — click them and the grid narrows without leaving the page. The page also smooth-scrolls back to the top so the filter bar is in view.
 
-- **Publication type badge** — sets the Publication Type dropdown to that type.
-- **Author name** in the byline — sets the Authors dropdown to the canonical key for that name (so all credential variants for the same person match).
-- **Tag badge** — sets a tag filter. Tags don't have a dropdown in the bar; an active tag shows up as a small pill (`Tag: foo ×`) next to the result count, click the × to clear.
+- **Publication type badge** — sets the Publication Type filter (chip on View 0 / View 2, dropdown on View 1) to that type.
+- **Author name** in the byline — sets the Authors dropdown to the canonical key for that name (so every credential variant for the same person matches).
+- **Tag badge** — adds the tag to the active tag filter. Tag filtering is **additive (OR-composed)**: clicking multiple tags widens results to articles matching *any* selected tag. Each active tag shows as a removable pill (`Tag: foo ×`) next to the result count; clicking the same card-tag again toggles it off.
 
 ## Author canonicalization strategy
 
@@ -111,7 +111,7 @@ export function authorKey(name: string): string {
 |-----:|---------------------------|-----------------------------------------------------------|----------------------------------------------------------|
 | 1    | `name.replace(/,.*$/, '')`  | Drop the comma and everything after — credentials, suffixes, post-nominals. | `Riley Calder, Ph.D` → `Riley Calder`               |
 | 2    | `.replace(/\s*&\s*/g, ' and ')` | Normalize ampersand-vs-"and" so org variants merge.   | `Research & Analysis Unit` → `Research and Analysis Unit` |
-| 3    | `.replace(/\s+/g, ' ')`   | Collapse runs of whitespace (tabs, double spaces).         | `Anne   Kirkner` → `Riley Calder`                        |
+| 3    | `.replace(/\s+/g, ' ')`   | Collapse runs of whitespace (tabs, double spaces).         | `Riley   Calder` (double space) → `Riley Calder`         |
 | 4    | `.trim()`                | Drop leading/trailing whitespace introduced by editors.    | `  Riley Calder ` → `Riley Calder`                       |
 | 5    | `.toLowerCase()`         | Make the key case-insensitive so `DAKOTA HARLOW` matches `Dakota Harlow`. | `Dakota Harlow` → `dakota harlow`                  |
 
@@ -204,23 +204,32 @@ Roughly 80% of the articles in the source CMS don't have a `type` set yet. To ma
 
 ```
 app/
-  app.vue                              # shell (header / main / footer)
+  app.vue                              # shell — header (nav + demo badge + What This Demo Shows
+                                       #   modal + Hub Taxonomy link + color-mode toggle), main,
+                                       #   footer (version + Changelog + GitHub)
   pages/
-    index.vue                          # the demo page (state, filter logic, layout)
+    index.vue                          # View 0 — chips with Advanced toggle for the bar
+    alt.vue                            # View 1 — dropdown-only bar (no chips, no Centers)
+    alt2.vue                           # View 2 — chips with always-on bar
+    taxonomy.vue                       # Hub Taxonomy explainer (Mermaid + interactive type list)
+    articles/[slug].vue                # internal stub article detail page
   components/
-    ArticleCard.vue                    # single card
-    ArticleFilterBar.vue               # the four dropdowns + search + Clear all
+    ArticleCard.vue                    # single card with click-to-filter on type/author/tag
+    ArticleFilterBar.vue               # conditional Type / Topics / Centers / Authors / Years
+                                       #   / search + Clear all
+    ArticleTypeChips.vue               # the chip row used by View 0 and View 2
+    MermaidDiagram.vue                 # client-only Mermaid wrapper, color-mode aware
   composables/
-    useArticles.ts                     # GraphQL query + fetch
+    useArticles.ts                     # GraphQL query + fetch with optional random-type fill
   utils/
-    article-format.ts                  # typeLabel / imageUrl / formatDate / articleAuthorNames
+    article-format.ts                  # typeLabel / pluralize / imageUrl / formatDate /
+                                       #   articleAuthorNames / authorKey / highlightSegments /
+                                       #   CHIP_TYPES / KNOWN_CENTERS
 ```
-
-The Nuxt UI starter scaffolding (header `TemplateMenu`, `AppLogo`, etc.) is intentionally left in place so the demo still feels like a normal app shell.
 
 ## Deploying to Netlify (static)
 
-This POC is set up for **fully static** deployment — `nuxt generate` prerenders `/` at build time, baking the GraphQL response into the HTML. No Netlify Functions, no runtime fetches needed. The Strapi endpoint just has to be reachable from Netlify's build container (it's public, so it is).
+This POC is set up for **fully static** deployment — `nuxt generate` prerenders every route at build time (View 0, View 1, View 2, `/taxonomy`, and all 236 `/articles/<slug>` detail pages discovered by the crawler), baking the GraphQL response into the HTML. No Netlify Functions, no runtime fetches needed. The Strapi endpoint just has to be reachable from Netlify's build container (it's public, so it is).
 
 Already in the repo:
 
@@ -233,5 +242,4 @@ To deploy: connect the repo to Netlify, accept the auto-detected build settings,
 
 If you ever need fresher data without a deploy, switch to `nitro.preset = 'netlify'` in `nuxt.config.ts` and remove the `pnpm generate` step — the page will be SSR'd on a Netlify Function, fetching live on each request.
 
-See [`CHANGELOG.md`](./CHANGELOG.md) for the full list of what shipped in v0.1.0.
-3
+See [`CHANGELOG.md`](./CHANGELOG.md) for the full per-version history.

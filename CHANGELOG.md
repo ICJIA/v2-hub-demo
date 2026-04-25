@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.50] — 2026-04-25
+
+### Changed
+
+- README audit + cleanup:
+  - Lead paragraph rewritten — drops the stale "Cards link to `v2hub.netlify.app`" line (we link internally now), names the three views, and points at `/taxonomy`.
+  - "Three filter UXs" section labeled by `View 0` / `View 1` / `View 2` to match the nav.
+  - Click-to-filter section's tag bullet rewritten to reflect that tags are additive (OR), with multiple removable pills.
+  - Author-canonicalization step-by-step example fixed: the whitespace-collapse row had a stray "Anne Kirkner" leftover from the fictional-name swap; corrected to `Riley Calder` with a double space.
+  - "Project layout" expanded to list every current page and component (alt.vue, alt2.vue, taxonomy.vue, articles/[slug].vue, ArticleTypeChips, MermaidDiagram) and to describe the shell better.
+  - Dropped the stale "TemplateMenu / AppLogo intentionally left in place" line — both have been removed.
+  - Netlify section now says `nuxt generate` prerenders **every** route, not just `/`.
+  - Stripped a stray "3" character from the end of the file.
+  - Replaced "what shipped in v0.1.0" with a generic "full per-version history" pointer to `CHANGELOG.md`.
+
 ## [0.1.49] — 2026-04-25
 
 ### Changed
