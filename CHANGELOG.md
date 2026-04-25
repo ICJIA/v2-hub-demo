@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.36] — 2026-04-25
+
+### Added
+
+- "Why is the database structured like a taxonomy?" subsection inside the top callout on `/taxonomy`. Covers two practical reasons (findability + consistency over time) and explains how Strapi 5 enforces the shape that makes the chips, filters, search, and proposed datahub possible. Closes with the line "The taxonomy is what turns the pile into a research catalog."
+
 ## [0.1.35] — 2026-04-25
 
 ### Changed

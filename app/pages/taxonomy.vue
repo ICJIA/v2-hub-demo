@@ -133,7 +133,7 @@ const articleTypes = [
       <p class="mb-2 text-base font-semibold text-highlighted">
         First — what's a "taxonomy"?
       </p>
-      <div class="space-y-2 text-sm text-toned">
+      <div class="space-y-3 text-sm text-toned">
         <p>
           It's a fancy word for <strong class="text-highlighted">how things are organized into groups, from broad to specific</strong>. Think of:
         </p>
@@ -144,6 +144,26 @@ const articleTypes = [
         </ul>
         <p>
           That's all this page is doing — walking through how the research hub's content is filed away. The big buckets sit at the top, narrower groupings inside each, and the actual pieces (research reports, datasets, dashboards) at the bottom.
+        </p>
+      </div>
+
+      <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
+        Why is the database structured like a taxonomy?
+      </p>
+      <div class="space-y-3 text-sm text-toned">
+        <p>
+          Two practical reasons:
+        </p>
+        <ul class="ml-5 list-disc space-y-1">
+          <li>
+            <strong>Findability.</strong> When every item is filed in the right bucket (and only the right bucket), pulling up exactly what someone wants is fast. The chip filter on the Home page works because every Article is filed under one of fourteen <code>type</code> values — click "Research Reports" and you skip past everything that isn't one.
+          </li>
+          <li>
+            <strong>Consistency over time.</strong> The hub grows. New articles, datasets, and dashboards arrive every quarter. A taxonomy gives editors a fixed set of buckets and a fixed set of fields per bucket — same shape, same rules — instead of inventing a new place each time. "Annual Report 2030" lands the same way "Annual Report 2024" did.
+          </li>
+        </ul>
+        <p>
+          That's what <strong class="text-highlighted">Strapi 5</strong> (the CMS behind Hub 2.0) does. It forces every Article to carry the same fields (<code>title</code>, <code>date</code>, <code>type</code>, <code>categories</code>, …); every Dataset has its own fixed schema; every App/Dashboard has another. The site can then turn that fixed shape into something useful — chips, filters, search, the proposed datahub — because the shape is the same for every record. Take the structure away and the hub becomes a pile of documents again. <strong>The taxonomy is what turns the pile into a research catalog.</strong>
         </p>
       </div>
     </section>
