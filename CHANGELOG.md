@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.48] — 2026-04-25
+
+### Fixed
+
+- **Netlify build OOM during prerender.** With ~240 routes being statically generated (4 list pages + `/taxonomy` + 236 `/articles/<slug>` detail pages), the default ~2 GB Node heap was running out during Nitro's prerender phase. Added `NODE_OPTIONS = "--max-old-space-size=4096"` to `netlify.toml`'s `[build.environment]`. If 4 GB isn't enough later, this can be raised to 6144 / 8192. The Netlify build agent has plenty of headroom.
+
 ## [0.1.47] — 2026-04-25
 
 ### Fixed
