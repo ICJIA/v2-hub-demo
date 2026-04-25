@@ -38,10 +38,18 @@ pnpm generate    # static site generation (for Netlify)
 
 The same dataset and the same card design are presented two ways so reviewers can compare:
 
-- **`/` — dropdown-driven.** All filtering, including Publication Type, lives in the filter bar.
-- **`/alt` — chip-driven.** A row of quick-pick chips at the top (`All`, plus Research Report, Annual Report, Update, Strategic Plan) replaces the Publication Type dropdown, and a **Centers** dropdown is added to the filter bar in its place. Clicking the `All` chip is a full reset — clears every filter (topic, author, year, center, tag, search) and returns to the default view.
+- **`/` — chip-driven (default).** A row of quick-pick chips at the top (`All`, plus pluralized labels Research Reports, Annual Reports, Updates, Strategic Plans) replaces the Publication Type dropdown, and a **Centers** dropdown is added to the filter bar. Clicking the `All` chip is a full reset — clears every filter (topic, center, author, year, tag, search) and returns to the default view.
+- **`/alt` — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
 
 Both pages share `ArticleFilterBar`, which conditionally renders Type / Centers based on which item arrays the page passes in.
+
+The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all of them always appear (with live counts of matching articles, including zero counts):
+
+- Center for Justice Research and Evaluation
+- Center for Sponsored Research & Program Development
+- Center for Victim Studies
+- Center for Violence Prevention and Intervention Research
+- Research & Analysis Unit
 
 ## Click-to-filter on cards
 

@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import type { Article } from '~/composables/useArticles'
+import type { TypeOption } from '~/components/ArticleTypeChips.vue'
 import { articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
 
 useHead({ title: 'Research Hub — Articles' })
+
+const ALT_TYPES = ['researchReport', 'annualReport', 'update', 'strategicPlan']
+
+const KNOWN_CENTERS = [
+  'Center for Justice Research and Evaluation',
+  'Center for Sponsored Research & Program Development',
+  'Center for Victim Studies',
+  'Center for Violence Prevention and Intervention Research',
+  'Research & Analysis Unit'
+]
 
 const { data, pending, error, refresh } = await useArticles()
 
@@ -15,35 +26,15 @@ const articles = computed<Article[]>(() => {
   })
 })
 
-const selectedType = ref('')
+const selectedType = ref<string | null>(null)
 const selectedTopic = ref('')
 const selectedAuthor = ref('')
 const selectedYear = ref('')
+const selectedCenter = ref('')
 const selectedTag = ref('')
 const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = 12
-
-function scrollToTop() {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-}
-
-function applyTypeFilter(t: string) {
-  selectedType.value = t
-  scrollToTop()
-}
-
-function applyTagFilter(t: string) {
-  selectedTag.value = t
-  scrollToTop()
-}
-
-function applyAuthorFilter(key: string) {
-  selectedAuthor.value = key
-  scrollToTop()
-}
 
 function articleYear(a: Article): string {
   const dt = a.date ?? a.publishedAt
@@ -57,17 +48,16 @@ function asStrings(arr: unknown): string[] {
   return arr.filter((v): v is string => typeof v === 'string' && v.length > 0)
 }
 
-
-const typeItems = computed(() => {
+const availableTypes = computed<TypeOption[]>(() => {
   const counts = new Map<string, number>()
   for (const a of articles.value) {
-    if (!a.type) continue
-    counts.set(a.type, (counts.get(a.type) ?? 0) + 1)
+    if (ALT_TYPES.includes(a.type)) {
+      counts.set(a.type, (counts.get(a.type) ?? 0) + 1)
+    }
   }
-  const items = Array.from(counts.entries())
-    .map(([value, count]) => ({ value, label: `${typeLabel(value)} (${count})` }))
-    .sort((a, b) => a.label.localeCompare(b.label))
-  return [{ label: `All Publication Types (${articles.value.length})`, value: '' }, ...items]
+  return ALT_TYPES
+    .filter(t => counts.has(t))
+    .map(t => ({ value: t, label: `${typeLabel(t)}s`, count: counts.get(t)! }))
 })
 
 const topicItems = computed(() => {
@@ -116,12 +106,35 @@ const yearItems = computed(() => {
   return [{ label: 'All Years', value: '' }, ...items]
 })
 
+const centerItems = computed(() => {
+  const counts = new Map<string, number>()
+  for (const center of KNOWN_CENTERS) {
+    counts.set(authorKey(center), 0)
+  }
+  for (const a of articles.value) {
+    for (const name of articleAuthorNames(a)) {
+      const key = authorKey(name)
+      if (counts.has(key)) {
+        counts.set(key, counts.get(key)! + 1)
+      }
+    }
+  }
+  const items = KNOWN_CENTERS
+    .map(center => ({
+      label: `${center} (${counts.get(authorKey(center)) ?? 0})`,
+      value: authorKey(center)
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label))
+  return [{ label: 'All Centers', value: '' }, ...items]
+})
+
 const filtered = computed<Article[]>(() => {
   let r = articles.value
   if (selectedType.value) r = r.filter(a => a.type === selectedType.value)
   if (selectedTopic.value) r = r.filter(a => asStrings(a.categories).includes(selectedTopic.value))
   if (selectedAuthor.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedAuthor.value))
   if (selectedYear.value) r = r.filter(a => articleYear(a) === selectedYear.value)
+  if (selectedCenter.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedCenter.value))
   if (selectedTag.value) r = r.filter(a => asStrings(a.tags).includes(selectedTag.value))
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
@@ -138,19 +151,53 @@ const pageItems = computed(() => {
   return filtered.value.slice(start, start + pageSize)
 })
 
-watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedTag, searchQuery], () => {
+watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedCenter, selectedTag, searchQuery], () => {
   currentPage.value = 1
 })
 
 watch(searchQuery, (newVal, oldVal) => {
   if (newVal && !oldVal) {
-    selectedType.value = ''
+    selectedType.value = null
     selectedTopic.value = ''
     selectedAuthor.value = ''
     selectedYear.value = ''
+    selectedCenter.value = ''
     selectedTag.value = ''
   }
 })
+
+function scrollToTop() {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
+
+function applyTypeFilter(t: string) {
+  selectedType.value = t
+  scrollToTop()
+}
+
+function applyTagFilter(t: string) {
+  selectedTag.value = t
+  scrollToTop()
+}
+
+function applyAuthorFilter(key: string) {
+  selectedAuthor.value = key
+  scrollToTop()
+}
+
+function onTypeChipChange(value: string | null) {
+  selectedType.value = value
+  if (value === null) {
+    selectedTopic.value = ''
+    selectedAuthor.value = ''
+    selectedYear.value = ''
+    selectedCenter.value = ''
+    selectedTag.value = ''
+    searchQuery.value = ''
+  }
+}
 </script>
 
 <template>
@@ -160,7 +207,7 @@ watch(searchQuery, (newVal, oldVal) => {
         Research Hub
       </h1>
       <p class="text-sm text-muted">
-        Browse all published articles. Use the filter bar to narrow by type, topic, author, year, or search.
+        Quick-pick a publication type from the chips, or compose finer filters with topic, center, author, year, and search.
       </p>
     </div>
 
@@ -190,19 +237,27 @@ watch(searchQuery, (newVal, oldVal) => {
     />
 
     <template v-else>
-      <ArticleFilterBar
-        class="mb-4"
-        v-model:type="selectedType"
-        v-model:topic="selectedTopic"
-        v-model:author="selectedAuthor"
-        v-model:year="selectedYear"
-        v-model:search="searchQuery"
-        :types="typeItems"
-        :topics="topicItems"
-        :authors="authorItems"
-        :years="yearItems"
-        @clear-all="selectedTag = ''"
-      />
+      <div class="mb-4 space-y-3">
+        <ArticleTypeChips
+          :model-value="selectedType"
+          :available="availableTypes"
+          :total-count="articles.length"
+          @update:model-value="onTypeChipChange"
+        />
+
+        <ArticleFilterBar
+          v-model:topic="selectedTopic"
+          v-model:author="selectedAuthor"
+          v-model:year="selectedYear"
+          v-model:center="selectedCenter"
+          v-model:search="searchQuery"
+          :topics="topicItems"
+          :authors="authorItems"
+          :years="yearItems"
+          :centers="centerItems"
+          @clear-all="selectedTag = ''"
+        />
+      </div>
 
       <p class="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted">
         <span>

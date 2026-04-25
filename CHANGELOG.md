@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.7] — 2026-04-25
+
+### Changed
+
+- Swapped `/` and `/alt`. The home page is now the chip-driven UX (chips above the bar, Publication Type dropdown removed, Centers added to the bar). `/alt` is now the dropdown-only UX (Publication Type in the bar, no chips, no Centers — i.e., the "centers were removed" original brief).
+- Centers dropdown now uses a hardcoded list of the canonical ICJIA centers so all five always appear, with live counts pulled from author matches:
+  - Center for Justice Research and Evaluation
+  - Center for Sponsored Research & Program Development
+  - Center for Victim Studies
+  - Center for Violence Prevention and Intervention Research
+  - Research & Analysis Unit
+  
+  Counts of 0 are shown rather than hidden, so the dropdown reflects the full set of ICJIA's organizational divisions even when a center has no articles in the demo dataset yet.
+
 ## [0.1.6] — 2026-04-25
 
 ### Changed
