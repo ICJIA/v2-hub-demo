@@ -80,9 +80,9 @@ The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all o
 - Center for Violence Prevention and Intervention Research
 - Research & Analysis Unit
 
-## "What This Demo Shows" modal
+## "What This Demo Shows" page (`/about`)
 
-Top-right of the header, next to the color-mode toggle. Opens a `UModal` (`app/app.vue`) with a non-jargon checklist aimed at managers who haven't seen the demo yet — this is the elevator pitch:
+Top-right of the header, the **What This Demo Shows** button links to `/about` (`app/pages/about.vue`). The page carries a non-jargon checklist aimed at managers who haven't seen the demo yet — this is the elevator pitch, and it's a real route so the link can be shared:
 
 1. **Find research reports in one click** — the headline benefit, mapped to the chips on View 0 / View 2.
 2. **Search highlights what it matched** — yellow `<mark>` inside title and abstract.
@@ -92,7 +92,7 @@ Top-right of the header, next to the color-mode toggle. Opens a `UModal` (`app/a
 6. **Filter by ICJIA Center** — the five canonical centers, listed even when count is zero.
 7. **Three layouts to compare** — Views 0, 1, and 2.
 
-The modal content is data-driven (a `changes: { title, body }[]` array in `app.vue`), so adding a bullet is one object literal — no template changes.
+The page content is data-driven (a `changes: { title, body }[]` array in `app/pages/about.vue`), so adding a bullet is one object literal — no template changes.
 
 ## Hub Taxonomy page (`/taxonomy`)
 
@@ -271,12 +271,13 @@ The demo is targeted at WCAG 2.1 AA. Recent fixes:
 ```
 app/
   app.vue                              # shell — header (nav + demo badge + What This Demo Shows
-                                       #   modal + Hub Taxonomy link + color-mode toggle), main,
+                                       #   link + Hub Taxonomy link + color-mode toggle), main,
                                        #   footer (version + Changelog + GitHub)
   pages/
     index.vue                          # View 0 — chips with Advanced toggle for the bar
     view1.vue                          # View 1 — dropdown-only bar (no chips, no Centers)
     view2.vue                          # View 2 — chips with always-on bar
+    about.vue                          # /about — What This Demo Shows pitch page
     taxonomy.vue                       # Hub Taxonomy explainer (Mermaid + interactive type list)
     articles/[slug].vue                # internal stub article detail page
   components/

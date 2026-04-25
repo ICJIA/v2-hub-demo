@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.61] — 2026-04-25
+
+### Changed
+
+- Promoted the **What This Demo Shows** modal to a real page at `/about` (`app/pages/about.vue`) so the URL can be shared. The header button is now a `NuxtLink` to `/about` instead of a click handler that opens a `UModal`. The seven bullets — find research reports in one click, search highlights, clickable authors, one entry per author, additive tags, ICJIA Center filter, three layouts to compare — render as cards on the page. Includes a footer pointing at the public URL so reviewers can copy and share.
+- Removed the modal infrastructure from `app/app.vue` (no more `isWhatsChangedOpen` ref, no `UModal`, no `changes` array — moved to the page).
+
 ## [0.1.60] — 2026-04-25
 
 ### Changed
