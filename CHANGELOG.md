@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.63] — 2026-04-25
+
+### Fixed
+
+- **Lighthouse `tap-targets` violations on the article cards.** Inline author buttons used to be raw `<button class="cursor-pointer hover:underline">` with no size constraints — they inherited `text-xs` line-height (~16px) which is below the 24px tap-target minimum. Switched them to `inline-flex min-h-6 items-center align-middle` so the hit area is at least 24px tall while the visual flow inside the "By A, B, and C" line stays intact (no horizontal padding, so the natural `, ` separators read normally). Also added `min-h-6 min-w-6` to the type-badge button (`Update`/`Research Report`/etc) for the same reason. Bumped the tag-button gap from `gap-1.5` (6px) to `gap-2` (8px) so adjacent tag tap targets meet the 8px-of-spacing rule.
+
 ## [0.1.62] — 2026-04-25
 
 ### Fixed

@@ -54,7 +54,7 @@ function separatorBefore(idx: number, total: number): string {
     <div class="space-y-3 p-4">
       <button
         type="button"
-        class="cursor-pointer rounded-full transition-opacity hover:opacity-80"
+        class="inline-flex min-h-6 min-w-6 cursor-pointer items-center rounded-full transition-opacity hover:opacity-80"
         :aria-label="`Filter by ${typeLabel(article.type)}`"
         @click.stop.prevent="emit('select-type', article.type)"
       >
@@ -91,7 +91,7 @@ function separatorBefore(idx: number, total: number): string {
           <span v-if="idx > 0">{{ separatorBefore(idx, authorNames.length) }}</span>
           <button
             type="button"
-            class="cursor-pointer hover:underline"
+            class="inline-flex min-h-6 cursor-pointer items-center align-middle hover:underline"
             :aria-label="`Filter by author ${name}`"
             @click.stop.prevent="emit('select-author', authorKey(name))"
           >{{ name }}</button>
@@ -120,7 +120,7 @@ function separatorBefore(idx: number, total: number): string {
 
       <div
         v-if="article.tags?.length"
-        class="flex flex-wrap gap-1.5 pt-1"
+        class="flex flex-wrap gap-2 pt-1"
       >
         <button
           v-for="tag in article.tags"
