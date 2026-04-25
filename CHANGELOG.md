@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.38] — 2026-04-25
+
+### Changed
+
+- Rewrote the "Why is the database structured like a taxonomy?" section on `/taxonomy` to be specifically about Hub 1.0 → Hub 2.0 continuity. Tone aimed at non-technical managers who use the hub but never thought about its architecture: persuasive but kind. Leads with "you've probably noticed that it works" — credits the original team for the architectural choice that made the chips, search, consistent layouts, and editor productivity possible — and frames Hub 2.0 as an upgrade rather than a teardown because that early call was the right one.
+
 ## [0.1.37] — 2026-04-25
 
 ### Added

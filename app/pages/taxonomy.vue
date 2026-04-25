@@ -148,25 +148,34 @@ const articleTypes = [
       </div>
 
       <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
-        Why is the database structured like a taxonomy?
+        Why is the database structured this way — and why has Hub 2.0 kept it?
       </p>
       <div class="space-y-3 text-sm text-toned">
         <p>
-          Two practical reasons:
+          If you've used the research hub for any length of time, you've probably noticed that <em>it works</em>. You can find an annual report from 2018. New articles look like the old ones. Search returns sensible results. None of that happens by accident — it happens because the original team, back when <strong>Hub 1.0</strong> was being built, committed to a single architectural choice: every published item gets filed into one of a small number of named buckets, and every record in a bucket carries the same labeled fields. Research reports go in one place, with the same metadata as every other research report. Datasets go in another, with their own consistent shape. Dashboards, the same.
+        </p>
+        <p>
+          That's the taxonomy. It's not flashy — it doesn't show up in a screenshot — but it's the reason the hub doesn't degrade as it grows. A few practical wins that flow directly from that early call:
         </p>
         <ul class="ml-5 list-disc space-y-1">
           <li>
-            <strong>Findability.</strong> When every item is filed in the right bucket (and only the right bucket), pulling up exactly what someone wants is fast. The chip filter on the Home page works because every Article is filed under one of fourteen <code>type</code> values — click "Research Reports" and you skip past everything that isn't one.
+            <strong>Search and filters can do anything useful.</strong> You can type a word in the search box because every article has a <code>title</code> and an <code>abstract</code>. You can click "Research Reports" because every article has a <code>type</code>. None of that works if the hub is a dumping ground of mixed Word docs and PDFs.
           </li>
           <li>
-            <strong>Consistency over time.</strong> The hub grows. New articles, datasets, and dashboards arrive every quarter. A taxonomy gives editors a fixed set of buckets and a fixed set of fields per bucket — same shape, same rules — instead of inventing a new place each time. "Annual Report 2030" lands the same way "Annual Report 2024" did.
+            <strong>The site looks consistent year over year.</strong> Every article card looks like every other article card because every Article record has the same fields. Without that shape, every page would render slightly differently and the hub would feel like a flea market.
+          </li>
+          <li>
+            <strong>Editors can move fast and safely.</strong> A new staff writer doesn't have to invent a structure — the CMS shows them the same form every other writer has filled out. The taxonomy is also editorial guardrails.
+          </li>
+          <li>
+            <strong>The catalog can grow to thousands of items without slowing readers down.</strong> Filters and search work because the database knows the shape ahead of time, not because it's reading every document on every query.
           </li>
         </ul>
         <p>
-          That's what <strong class="text-highlighted">Strapi 5</strong> (the CMS behind Hub 2.0) does. It forces every Article to carry the same fields (<code>title</code>, <code>date</code>, <code>type</code>, <code>categories</code>, …); every Dataset has its own fixed schema; every App/Dashboard has another. The site can then turn that fixed shape into something useful — chips, filters, search, the proposed datahub — because the shape is the same for every record. Take the structure away and the hub becomes a pile of documents again. <strong>The taxonomy is what turns the pile into a research catalog.</strong>
+          When the original team committed to that shape at the start of Hub 1.0, they were investing in everything that came after — every clean filter, every consistent layout, every fast page. None of those features could have been retrofitted later without painful manual cleanup.
         </p>
         <p>
-          And this wasn't an afterthought — it was the plan from day one of <strong>Hub 1.0</strong>. The original team chose a structured catalog over a free-form document dump, and the bones (three big buckets, the idea of an Article summarizing a research report, fixed fields per content type) have held up ever since. What's changed in Hub 2.0 is the toolchain underneath (Strapi 5, richer relationships like the proposed datahub, more <code>type</code> values now that Articles also summarize annual reports, evaluations, and updates) and the editorial polish on top. The structure itself didn't need a rewrite — it just needed updating. That's why moving to Hub 2.0 is an upgrade, not a teardown.
+          That's exactly why <strong class="text-highlighted">Hub 2.0 keeps the same architecture</strong> rather than reinventing it. The bones of the original taxonomy still match what readers and editors need. Hub 2.0 swaps in a more modern CMS (<strong>Strapi 5</strong>), adds richer relationships like the proposed datahub linking datasets to dashboards, and expands the <code>type</code> list so editors can label more kinds of articles. But the three-bucket structure, the labeled fields, the consistent record shape — all of that is intact. <strong>Hub 2.0 is an upgrade, not a teardown, because the original choice was the right one.</strong>
         </p>
       </div>
     </section>
