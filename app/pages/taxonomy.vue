@@ -165,6 +165,9 @@ const articleTypes = [
         <p>
           That's what <strong class="text-highlighted">Strapi 5</strong> (the CMS behind Hub 2.0) does. It forces every Article to carry the same fields (<code>title</code>, <code>date</code>, <code>type</code>, <code>categories</code>, …); every Dataset has its own fixed schema; every App/Dashboard has another. The site can then turn that fixed shape into something useful — chips, filters, search, the proposed datahub — because the shape is the same for every record. Take the structure away and the hub becomes a pile of documents again. <strong>The taxonomy is what turns the pile into a research catalog.</strong>
         </p>
+        <p>
+          And this wasn't an afterthought — it was the plan from day one of <strong>Hub 1.0</strong>. The original team chose a structured catalog over a free-form document dump, and the bones (three big buckets, the idea of an Article summarizing a research report, fixed fields per content type) have held up ever since. What's changed in Hub 2.0 is the toolchain underneath (Strapi 5, richer relationships like the proposed datahub, more <code>type</code> values now that Articles also summarize annual reports, evaluations, and updates) and the editorial polish on top. The structure itself didn't need a rewrite — it just needed updating. That's why moving to Hub 2.0 is an upgrade, not a teardown.
+        </p>
       </div>
     </section>
 

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.37] — 2026-04-25
+
+### Added
+
+- Historical-continuity paragraph in the top callout on `/taxonomy`: the taxonomy approach wasn't an afterthought — it was the plan from day one of Hub 1.0, and the bones held up. What's changed in Hub 2.0 is the toolchain (Strapi 5, richer relationships, more `type` values) and editorial polish, not the architecture. Frames the migration as an upgrade rather than a teardown.
+
 ## [0.1.36] — 2026-04-25
 
 ### Added
