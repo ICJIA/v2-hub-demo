@@ -45,6 +45,8 @@ The same dataset and the same card design are presented three ways so reviewers 
 - **`/alt` (Alt 1) — dropdown-only.** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief.
 - **`/alt2` (Alt 2) — chips with always-on filter bar.** Same chip row as Home, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No advanced toggle.
 
+There's also `/taxonomy`, a non-filter page that explains the underlying Strapi 5 data model in plain English and a Mermaid diagram. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type.
+
 The chip set and the canonical Centers list are shared across pages via `CHIP_TYPES` and `KNOWN_CENTERS` exports in `app/utils/article-format.ts` — adding a new chip or center happens in one place.
 
 Both `ArticleFilterBar` consumers conditionally render Type / Centers based on which item arrays the page passes in.

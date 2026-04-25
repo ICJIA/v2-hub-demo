@@ -27,7 +27,8 @@ const version = useRuntimeConfig().public.appVersion
 const navItems = [
   { label: 'Home', to: '/' },
   { label: 'Alt 1', to: '/alt' },
-  { label: 'Alt 2', to: '/alt2' }
+  { label: 'Alt 2', to: '/alt2' },
+  { label: 'Taxonomy', to: '/taxonomy', icon: 'i-lucide-network' }
 ]
 
 const changes = [

@@ -1,6 +1,6 @@
 {
   "name": "v2-hub-demo",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,6 +16,7 @@
     "@iconify-json/lucide": "^1.2.102",
     "@iconify-json/simple-icons": "^1.2.78",
     "@nuxt/ui": "^4.6.1",
+    "mermaid": "^11.14.0",
     "nuxt": "^4.4.2",
     "tailwindcss": "^4.2.2"
   },

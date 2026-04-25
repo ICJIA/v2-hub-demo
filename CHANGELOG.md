@@ -2,7 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
-## [0.1.25] — 2026-04-25
+## [0.1.26] — 2026-04-25
+
+### Added
+
+- New `/taxonomy` page (`app/pages/taxonomy.vue`) — a plain-English explainer of the Strapi 5 data model for non-technical reviewers. Includes a Mermaid diagram of the three content types (Articles, Datasets, Apps), a per-bucket field breakdown, the full list of fourteen article `type` enum values (with `Research Report` highlighted), and a "Why this matters for the demo" closer.
+- New `MermaidDiagram` component (`app/components/MermaidDiagram.vue`) — small client-side wrapper that dynamically imports `mermaid` on mount, renders the source string into an SVG, and exposes a styled container. Wrapped in `<ClientOnly>` on the page so SSG works.
+- `Taxonomy` link in the header nav (with the `i-lucide-network` icon to set it apart from the filter UX pages).
+
+### Changed
+
+- Added `mermaid@^11.14.0` as a direct dependency.
 
 ### Changed
 
