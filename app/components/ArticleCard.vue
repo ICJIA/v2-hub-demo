@@ -5,8 +5,10 @@ import { articleAuthorNames, authorKey, formatDate, highlightSegments, imageUrl,
 const props = withDefaults(defineProps<{
   article: Article
   searchQuery?: string
+  priority?: boolean
 }>(), {
-  searchQuery: ''
+  searchQuery: '',
+  priority: false
 })
 
 const emit = defineEmits<{
@@ -40,7 +42,11 @@ function separatorBefore(idx: number, total: number): string {
         v-if="splashSrc"
         :src="splashSrc"
         :alt="splashAlt"
-        loading="lazy"
+        :loading="priority ? 'eager' : 'lazy'"
+        :fetchpriority="priority ? 'high' : 'auto'"
+        decoding="async"
+        width="640"
+        height="360"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
       >
     </div>
@@ -60,12 +66,12 @@ function separatorBefore(idx: number, total: number): string {
         />
       </button>
 
-      <h3 class="line-clamp-2 text-lg font-semibold leading-snug text-highlighted">
+      <h2 class="line-clamp-2 text-lg font-semibold leading-snug text-highlighted">
         <template v-for="(seg, i) in titleSegments" :key="`t-${i}`">
           <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
           <span v-else>{{ seg.text }}</span>
         </template>
-      </h3>
+      </h2>
 
       <p v-if="authorNames.length" class="line-clamp-2 text-xs text-toned">
         <span>By </span>
@@ -96,7 +102,7 @@ function separatorBefore(idx: number, total: number): string {
           v-for="tag in article.tags"
           :key="tag"
           type="button"
-          class="cursor-pointer rounded-full transition-opacity hover:opacity-80"
+          class="inline-flex min-h-6 min-w-6 cursor-pointer items-center justify-center rounded-full transition-opacity hover:opacity-80"
           :aria-label="`Filter by tag ${tag}`"
           @click.stop.prevent="emit('select-tag', tag)"
         >

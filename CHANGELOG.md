@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.47] — 2026-04-25
+
+### Fixed
+
+- **a11y / perf (Lighthouse-driven):**
+  - Card title is now `<h2>` instead of `<h3>` so each list page reads as `<h1>` page title → `<h2>` per article (hierarchy is correct without needing the previous sr-only `<h2>`, which has been removed).
+  - Tag buttons inside cards are now `inline-flex min-h-6 min-w-6` so they meet WCAG 2.5.8's 24×24 target size minimum.
+  - Card splash images now carry explicit `width="640" height="360"` (prevents layout shift), `decoding="async"`, and a new `priority` prop. The first card on each list page passes `:priority="i === 0"`, which becomes `loading="eager" fetchpriority="high"` — improves LCP for the above-the-fold image. Other cards remain `loading="lazy"`.
+
+### Added
+
+- `priority` prop on `ArticleCard` (boolean, default `false`) for callers to mark the LCP card.
+
 ## [0.1.46] — 2026-04-25
 
 ### Fixed

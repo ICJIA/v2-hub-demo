@@ -279,19 +279,16 @@ function onTypeChipChange(value: string | null) {
         />
       </p>
 
-      <h2 class="sr-only">
-        Articles
-      </h2>
-
       <div
         v-if="pageItems.length"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
       >
         <ArticleCard
-          v-for="article in pageItems"
+          v-for="(article, i) in pageItems"
           :key="article.documentId"
           :article="article"
           :search-query="searchQuery"
+          :priority="i === 0"
           @select-type="applyTypeFilter"
           @select-tag="applyTagFilter"
           @select-author="applyAuthorFilter"
