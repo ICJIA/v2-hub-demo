@@ -224,7 +224,7 @@ This POC is set up for **fully static** deployment — `nuxt generate` prerender
 
 Already in the repo:
 
-- `netlify.toml` — `command = "pnpm generate"`, `publish = "dist"`, `NODE_VERSION = "22"`. Netlify auto-detects the lockfile and uses pnpm. (`dist` is correct because Netlify's build container sets `NETLIFY=true`, which makes Nitro pick the `netlify-static` preset; that preset outputs to `dist/` rather than the local `.output/public/`.)
+- `netlify.toml` — `command = "pnpm generate"`, `publish = "dist"`, `NODE_VERSION = "22"`, `NODE_OPTIONS = "--max-old-space-size=4096"`. Netlify auto-detects the lockfile and uses pnpm. (`dist` is correct because Netlify's build container sets `NETLIFY=true`, which makes Nitro pick the `netlify-static` preset; that preset outputs to `dist/` rather than the local `.output/public/`.) The 4 GB heap bump is required: Nitro's prerender phase runs ~240 routes (4 list pages + `/taxonomy` + 236 `/articles/<slug>` detail pages) in a single Node process, and the default ~2 GB heap runs out partway through. With 4 GB the build completes cleanly. Raise to 6144 / 8192 if the catalog grows large enough that 4 GB stops being enough.
 - `.nvmrc` — pins Node 22 for local development; matches Netlify's `NODE_VERSION` so local builds and deploys run on the same runtime.
 - `pnpm generate` script — wraps `nuxt generate`, which sets the Nitro preset to `static` and prerenders all crawled routes. No `nitro.preset = 'netlify'` needed; that preset is for the SSR-on-functions path, which we don't want for a fully static demo.
 - `useAsyncData('articles', …)` — the standard Nuxt primitive. At build time it runs once during prerender, the result is serialized into the page payload, and the client hydrates from that without a second fetch.

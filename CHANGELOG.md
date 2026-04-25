@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.49] — 2026-04-25
+
+### Changed
+
+- README's Netlify section now documents the `NODE_OPTIONS=--max-old-space-size=4096` build env var that 0.1.48 introduced, with the rationale (~240 routes in a single Node process exceeds the default ~2 GB heap during Nitro prerender) and the option to raise it further if the catalog grows.
+
 ## [0.1.48] — 2026-04-25
 
 ### Fixed
