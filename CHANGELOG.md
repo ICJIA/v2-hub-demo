@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.31] — 2026-04-25
+
+### Changed
+
+- Throughout `/taxonomy` (prose, headings, both Mermaid diagrams), the term `App` is now written as `App/Dashboard` (or `Apps/Dashboards`) so non-technical readers don't read it as "iPhone app". The CMS field names (`App.datasets`, `Dataset.apps`) are unchanged.
+
 ## [0.1.30] — 2026-04-25
 
 ### Changed

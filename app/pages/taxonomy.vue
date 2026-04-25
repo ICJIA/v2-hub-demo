@@ -12,12 +12,12 @@ const datahubDiagram = `flowchart TB
 
   subgraph p2 [2 — One app, one dataset]
     direction LR
-    A1["📱 App<br/>(dashboard)"]:::app --> D1["📊 Dataset"]:::dataset
+    A1["📱 App / Dashboard"]:::app --> D1["📊 Dataset"]:::dataset
   end
 
   subgraph p3 [3 — One app, many datasets]
     direction LR
-    A2["📱 App<br/>(dashboard)"]:::app
+    A2["📱 App / Dashboard"]:::app
     A2 --> D2a["📊 Dataset A"]:::dataset
     A2 --> D2b["📊 Dataset B"]:::dataset
     A2 --> D2c["📊 Dataset C"]:::dataset
@@ -25,8 +25,8 @@ const datahubDiagram = `flowchart TB
 
   subgraph p4 [4 — Shared dataset across apps]
     direction LR
-    A3a["📱 App 1"]:::app --> Dshared["📊 Dataset"]:::dataset
-    A3b["📱 App 2"]:::app --> Dshared
+    A3a["📱 App / Dashboard 1"]:::app --> Dshared["📊 Dataset"]:::dataset
+    A3b["📱 App / Dashboard 2"]:::app --> Dshared
   end`
 
 const structureDiagram = `flowchart TB
@@ -38,7 +38,7 @@ const structureDiagram = `flowchart TB
   Hub[("Research Hub data")]:::hub
   Articles["Articles<br/>~236 items"]:::content
   Datasets["Datasets"]:::content
-  Apps["Apps"]:::content
+  Apps["Apps / Dashboards"]:::content
 
   Hub --> Articles
   Hub --> Datasets
@@ -85,7 +85,7 @@ const articleTypes = [
 
     <section class="mb-8 space-y-4 text-sm text-toned">
       <p>
-        Every item in the research hub falls into one of three buckets: <strong class="text-highlighted">Articles</strong>, <strong class="text-highlighted">Datasets</strong>, or <strong class="text-highlighted">Apps</strong>. Most of what people search for — research reports, annual reports, newsletters, strategic plans — lives inside <strong class="text-highlighted">Articles</strong>, as one of fourteen possible <em>type</em> values.
+        Every item in the research hub falls into one of three buckets: <strong class="text-highlighted">Articles</strong>, <strong class="text-highlighted">Datasets</strong>, or <strong class="text-highlighted">Apps/Dashboards</strong>. Most of what people search for — research reports, annual reports, newsletters, strategic plans — lives inside <strong class="text-highlighted">Articles</strong>, as one of fourteen possible <em>type</em> values.
       </p>
       <p>
         That's why this demo can give you a one-click "Research Reports" chip: <strong class="text-highlighted">Research Report</strong> is one of those fourteen values. The chips on the Home page just say "show me the Articles whose type equals X."
@@ -150,10 +150,10 @@ const articleTypes = [
 
       <div class="space-y-2">
         <h3 class="text-base font-semibold text-highlighted">
-          Apps
+          Apps / Dashboards
         </h3>
         <p class="text-sm text-toned">
-          Same shape as Datasets — <strong>categories</strong> and <strong>tags</strong> only, no "type" enum. Also out of scope for this demo.
+          Same shape as Datasets — <strong>categories</strong> and <strong>tags</strong> only, no "type" enum. The CMS calls these "Apps"; in plain language they're the dashboards and visualizations on the site. Also out of scope for this demo.
         </p>
       </div>
     </section>
@@ -196,7 +196,7 @@ const articleTypes = [
     <section class="mb-10">
       <div class="mb-3 flex flex-wrap items-center gap-2">
         <h2 class="text-xl font-semibold text-highlighted">
-          Proposed: the "datahub" — Datasets linked to Apps
+          Proposed: the "datahub" — Datasets linked to Apps/Dashboards
         </h2>
         <UBadge
           label="Future"
@@ -208,7 +208,7 @@ const articleTypes = [
 
       <div class="mb-4 space-y-3 text-sm text-toned">
         <p>
-          Right now Datasets and Apps live as separate islands. The team wants them connected: a <strong>Dataset</strong> can stand alone, or it can power an <strong>App</strong> (dashboard); an <strong>App</strong> can pull from one Dataset or several; and the same Dataset can show up in more than one App. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
+          Right now Datasets and Apps/Dashboards live as separate islands. The team wants them connected: a <strong>Dataset</strong> can stand alone, or it can power an <strong>App/Dashboard</strong>; an <strong>App/Dashboard</strong> can pull from one Dataset or several; and the same Dataset can show up in more than one App/Dashboard. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
         </p>
         <p>
           <strong class="text-highlighted">All four of the patterns below are already supported by the Strapi 5 schema today.</strong> Introspection confirms the relation fields are in place — <code>App.datasets</code> and <code>Dataset.apps</code> are bidirectional and accept any number on either side. So the work for Hub 2.0 isn't building anything new at the data layer. It's editorial: <strong>curating</strong> which datasets belong to which apps, <strong>editing</strong> the metadata so the relationships make sense, <strong>adjusting</strong> as the catalog grows, and <strong>oversight</strong> to make sure everything is wired correctly.
@@ -228,15 +228,15 @@ const articleTypes = [
         <p>What the four patterns mean in practice:</p>
         <ul class="ml-5 list-disc space-y-1">
           <li><strong>Solo dataset</strong> — a dataset that stands on its own (raw data, no dashboard yet).</li>
-          <li><strong>One app, one dataset</strong> — a dashboard built around a single dataset.</li>
-          <li><strong>One app, many datasets</strong> — a dashboard that pulls in several datasets (e.g. a crime mapper layering 2024 stats, 2023 stats, and geocoded incidents).</li>
-          <li><strong>Shared dataset across apps</strong> — the same dataset feeding more than one dashboard.</li>
+          <li><strong>One app/dashboard, one dataset</strong> — a dashboard built around a single dataset.</li>
+          <li><strong>One app/dashboard, many datasets</strong> — a dashboard that pulls in several datasets (e.g. a crime mapper layering 2024 stats, 2023 stats, and geocoded incidents).</li>
+          <li><strong>Shared dataset across apps/dashboards</strong> — the same dataset feeding more than one dashboard.</li>
         </ul>
         <p>Once the linking is curated, the hub can:</p>
         <ul class="ml-5 list-disc space-y-1">
-          <li>Show <em>"Datasets used by this app"</em> on each App page.</li>
-          <li>Show <em>"Apps that use this dataset"</em> on each Dataset page.</li>
-          <li>Let visitors jump from a research article straight to the dataset it cites and the app that visualizes it.</li>
+          <li>Show <em>"Datasets used by this app/dashboard"</em> on each App/Dashboard page.</li>
+          <li>Show <em>"Apps/Dashboards that use this dataset"</em> on each Dataset page.</li>
+          <li>Let visitors jump from a research article straight to the dataset it cites and the app/dashboard that visualizes it.</li>
         </ul>
       </div>
     </section>
@@ -246,7 +246,7 @@ const articleTypes = [
         Why this matters for the demo
       </p>
       <p>
-        The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps aren't part of the filter demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report." The datahub above is the next obvious step: connect those reports to the underlying data and apps.
+        The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps/Dashboards aren't part of the filter demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report." The datahub above is the next obvious step: connect those reports to the underlying data and dashboards.
       </p>
     </section>
   </UContainer>
