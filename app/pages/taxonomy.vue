@@ -125,9 +125,28 @@ const articleTypes = [
         Database Taxonomy
       </h1>
       <p class="text-sm text-muted">
-        How the Strapi 5 CMS organizes the data behind this site — explained for non-developers.
+        How the data behind this site is organized — explained for non-developers.
       </p>
     </div>
+
+    <section class="mb-6 rounded-lg border border-default bg-elevated p-5">
+      <p class="mb-2 text-base font-semibold text-highlighted">
+        First — what's a "taxonomy"?
+      </p>
+      <div class="space-y-2 text-sm text-toned">
+        <p>
+          It's a fancy word for <strong class="text-highlighted">how things are organized into groups, from broad to specific</strong>. Think of:
+        </p>
+        <ul class="ml-5 list-disc space-y-1">
+          <li>A <strong>library</strong>: building → section (Fiction, Reference) → subject → individual book.</li>
+          <li>An <strong>org chart</strong>: agency → division → team → person.</li>
+          <li>A <strong>filing cabinet</strong>: cabinet → drawer → folder → document.</li>
+        </ul>
+        <p>
+          That's all this page is doing — walking through how the research hub's content is filed away. The big buckets sit at the top, narrower groupings inside each, and the actual pieces (research reports, datasets, dashboards) at the bottom.
+        </p>
+      </div>
+    </section>
 
     <section class="mb-8 space-y-4 text-sm text-toned">
       <p>

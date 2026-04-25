@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.34] — 2026-04-25
+
+### Added
+
+- Plain-language "First — what's a taxonomy?" callout at the top of `/taxonomy`. Explains the word with three relatable analogies (library shelves, org charts, filing cabinets) so non-technical readers don't bounce off the term. The page subtitle also rephrased from "How the Strapi 5 CMS organizes the data" to the friendlier "How the data behind this site is organized".
+
 ## [0.1.33] — 2026-04-25
 
 ### Added
