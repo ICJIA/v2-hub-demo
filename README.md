@@ -31,7 +31,10 @@ pnpm generate    # static site generation (for Netlify)
   - **Topics** — from the JSON `categories` field on each article.
   - **Authors** — see canonicalization below.
   - **Years** — derived from each article's `date` (or `publishedAt` fallback), descending.
-- Each dropdown leads with an `All …` reset entry. Filters compose AND-style across categories and the **Clear all** button wipes every filter (including the tag pill described below).
+- Each dropdown leads with an `All …` reset entry. Filters compose AND-style across categories and the **Clear all** button wipes every filter (including the tag pills described below).
+- Search results **highlight matched substrings** inside each card's title and abstract via inline `<mark>` elements (no `v-html`, so query strings with HTML/regex chars are safe).
+- Tag filtering is **additive (OR-composed)**. Click multiple tags and the grid shows every article matching *any* of them. Each selected tag becomes a removable pill near the result count; clicking the same card-tag again toggles it off.
+- Starting a search **clears every other filter** (type, topic, author, year, center, tag) so the search runs against the full dataset. Only triggers on the empty→non-empty transition.
 - Pagination shows 12 per page; resets to page 1 on any filter change.
 
 ## Three filter UXs for managers to compare

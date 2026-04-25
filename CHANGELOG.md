@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.24] — 2026-04-25
+
+### Changed
+
+- README's "What the page does" section now lists the features added since the initial dev-doc pass: search highlighting via inline `<mark>`, additive (OR) tag filtering with removable per-tag pills, and the search-starts-and-clears-other-filters behavior. Brings the README in sync with the modal copy.
+
 ## [0.1.23] — 2026-04-25
 
 ### Changed
