@@ -34,6 +34,15 @@ pnpm generate    # static site generation (for Netlify)
 - Each dropdown leads with an `All …` reset entry. Filters compose AND-style across categories and the **Clear all** button wipes every filter (including the tag pill described below).
 - Pagination shows 12 per page; resets to page 1 on any filter change.
 
+## Two filter UXs for managers to compare
+
+The same dataset and the same card design are presented two ways so reviewers can compare:
+
+- **`/` — dropdown-driven.** All filtering, including Publication Type, lives in the filter bar.
+- **`/alt` — chip-driven.** A row of quick-pick chips at the top (`All`, plus Research Report, Annual Report, Update, Strategic Plan) replaces the Publication Type dropdown, and a **Centers** dropdown is added to the filter bar in its place. Clicking the `All` chip is a full reset — clears every filter (topic, author, year, center, tag, search) and returns to the default view.
+
+Both pages share `ArticleFilterBar`, which conditionally renders Type / Centers based on which item arrays the page passes in.
+
 ## Click-to-filter on cards
 
 Three card elements double as filters — click them and the grid narrows without leaving the page. The page also smooth-scrolls back to the top so the filter bar is in view.

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.4] — 2026-04-25
+
+### Added
+
+- New `/alt` page (`app/pages/alt.vue`) showing an alternative filter UX for managers to compare:
+  - A chip row at the top with `All (N)` plus four featured publication types: Research Report, Annual Report, Update, Strategic Plan.
+  - The chip's `All (N)` performs a **full reset** — clears every filter (type, topic, author, year, center, tag, search) and returns to the default view.
+  - The Publication Type dropdown is removed from the filter bar (chips replace it) and a **Centers** dropdown is added in its place.
+- `Centers` filter, derived dynamically from any author whose name contains `Center` or `Unit` (e.g., `Center for Justice Research and Evaluation`, `Research & Analysis Unit`). Variants are canonicalized via the same `authorKey()` used for Authors, so `Research & Analysis Unit` and `Research and Analysis Unit` collapse into one.
+- Top-nav navigation between `/` and `/alt` via `UNavigationMenu`.
+
+### Changed
+
+- `app/components/ArticleFilterBar.vue` now accepts optional `types` and `centers` item arrays. Each dropdown only renders if its array is non-empty, so `/` shows Type but not Centers, and `/alt` shows Centers but not Type. Adds `update:center` and `clear-all` emits.
+- Header (`app/app.vue`): removed the `AppLogo` Nuxt UI mark; the badge is now `PUBLICATION DEMO` (centered via the default slot of `UHeader`); `UNavigationMenu` items live in the `#left` slot. GitHub icon now links to `ICJIA/v2-hub-demo` instead of the Nuxt UI starter.
+- Footer text updated to `ICJIA Publication Type Demo`.
+
 ## [0.1.3] — 2026-04-25
 
 ### Changed

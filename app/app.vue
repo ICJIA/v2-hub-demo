@@ -11,41 +11,42 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'Publication Type Demo'
+const description = 'ICJIA research hub article filter POC.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
-  ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterCard: 'summary_large_image'
+  ogDescription: description
 })
+
+const navItems = [
+  { label: 'Home', to: '/' },
+  { label: 'Alt View', to: '/alt' }
+]
 </script>
 
 <template>
   <UApp>
     <UHeader>
       <template #left>
-        <NuxtLink to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLink>
-
-        <UBadge
-          label="PUBLICATION TYPE DEMO"
-          color="primary"
-          variant="subtle"
-          size="sm"
-          class="font-semibold tracking-wider"
-        />
+        <UNavigationMenu :items="navItems" />
       </template>
+
+      <UBadge
+        label="PUBLICATION DEMO"
+        color="primary"
+        variant="subtle"
+        size="sm"
+        class="font-semibold tracking-wider"
+      />
 
       <template #right>
         <UColorModeButton />
 
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          to="https://github.com/ICJIA/v2-hub-demo"
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
@@ -64,13 +65,13 @@ useSeoMeta({
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          ICJIA Publication Type Demo • © {{ new Date().getFullYear() }}
         </p>
       </template>
 
       <template #right>
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          to="https://github.com/ICJIA/v2-hub-demo"
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"

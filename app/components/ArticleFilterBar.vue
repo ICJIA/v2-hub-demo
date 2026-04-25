@@ -4,23 +4,31 @@ export interface Item {
   value: string
 }
 
-const props = defineProps<{
-  types: Item[]
+const props = withDefaults(defineProps<{
+  types?: Item[]
   topics: Item[]
   authors: Item[]
   years: Item[]
-  type: string
+  centers?: Item[]
+  type?: string
   topic: string
   author: string
   year: string
+  center?: string
   search: string
-}>()
+}>(), {
+  types: () => [],
+  centers: () => [],
+  type: '',
+  center: ''
+})
 
 const emit = defineEmits<{
   'update:type': [value: string]
   'update:topic': [value: string]
   'update:author': [value: string]
   'update:year': [value: string]
+  'update:center': [value: string]
   'update:search': [value: string]
   'clear-all': []
 }>()
@@ -40,6 +48,10 @@ const authorModel = computed<Item | undefined>({
 const yearModel = computed<Item | undefined>({
   get: () => props.years.find(i => i.value === props.year),
   set: v => emit('update:year', v?.value ?? '')
+})
+const centerModel = computed<Item | undefined>({
+  get: () => props.centers.find(i => i.value === props.center),
+  set: v => emit('update:center', v?.value ?? '')
 })
 
 function widthFor(items: Item[]): string {
@@ -65,6 +77,7 @@ function clearAll() {
   emit('update:topic', '')
   emit('update:author', '')
   emit('update:year', '')
+  emit('update:center', '')
   localSearch.value = ''
   emit('update:search', '')
   emit('clear-all')
@@ -75,6 +88,7 @@ const hasActiveFilters = computed(() =>
   || props.topic !== ''
   || props.author !== ''
   || props.year !== ''
+  || props.center !== ''
   || props.search.length > 0
 )
 </script>
@@ -84,6 +98,7 @@ const hasActiveFilters = computed(() =>
     <span class="text-sm font-medium text-muted">Filter by:</span>
 
     <USelectMenu
+      v-if="types.length"
       v-model="typeModel"
       :items="types"
       placeholder="Publication Type"
@@ -96,6 +111,15 @@ const hasActiveFilters = computed(() =>
       :items="topics"
       placeholder="Topics"
       :style="{ minWidth: widthFor(topics) }"
+      size="sm"
+    />
+
+    <USelectMenu
+      v-if="centers.length"
+      v-model="centerModel"
+      :items="centers"
+      placeholder="Centers"
+      :style="{ minWidth: widthFor(centers) }"
       size="sm"
     />
 
