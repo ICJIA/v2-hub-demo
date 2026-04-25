@@ -84,7 +84,7 @@ function separatorBefore(idx: number, total: number): string {
         {{ formatDate(article.date ?? article.publishedAt) }}
       </p>
 
-      <p v-if="article.abstract" class="line-clamp-3 text-sm text-toned">
+      <p v-if="article.abstract" class="line-clamp-5 min-h-[6.25rem] text-sm text-toned">
         <template v-for="(seg, i) in abstractSegments" :key="`a-${i}`">
           <mark v-if="seg.match" class="rounded-sm bg-primary/40 px-0.5 text-inherit">{{ seg.text }}</mark>
           <span v-else>{{ seg.text }}</span>

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.12] — 2026-04-25
+
+### Changed
+
+- Card abstract truncation increased from `line-clamp-3` to `line-clamp-5` so reviewers see ~67% more summary text before the ellipsis. Added `min-h-[6.25rem]` (5 × `text-sm` line-height of 1.25rem) so cards with short abstracts still match the height of cards with long ones — the grid stays aligned across rows.
+
 ## [0.1.11] — 2026-04-25
 
 ### Added
