@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.43] — 2026-04-25
+
+### Changed
+
+- `/taxonomy` page heading retitled from `Database Taxonomy` to `Hub 1.0 / 2.0 taxonomy` so it's immediately obvious which hub it's about. Subtitle updated to `How the Data Behind the Research Hub is organized.` Browser tab title also updated.
+
 ## [0.1.42] — 2026-04-25
 
 ### Changed

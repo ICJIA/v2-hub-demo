@@ -2,7 +2,7 @@
 import type { Article } from '~/composables/useArticles'
 import { formatDate, imageUrl, typeLabel } from '~/utils/article-format'
 
-useHead({ title: 'Database Taxonomy — Research Hub Demo' })
+useHead({ title: 'Hub 1.0 / 2.0 Taxonomy — Research Hub Demo' })
 
 const { data: rawArticles } = await useArticles({ fillRandom: false })
 
@@ -122,10 +122,10 @@ const articleTypes = [
   <UContainer class="py-8">
     <div class="mb-6 space-y-2">
       <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        Database Taxonomy
+        Hub 1.0 / 2.0 taxonomy
       </h1>
       <p class="text-sm text-muted">
-        How the data behind this site is organized — explained for non-developers.
+        How the Data Behind the Research Hub is organized.
       </p>
     </div>
 
