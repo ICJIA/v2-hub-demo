@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.39] — 2026-04-25
+
+### Changed
+
+- Header nav label `Taxonomy` → `Hub Taxonomy` for clarity. The page route stays `/taxonomy`.
+
 ## [0.1.38] — 2026-04-25
 
 ### Changed
