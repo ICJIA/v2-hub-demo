@@ -25,6 +25,7 @@ useSeoMeta({
 
 const isWhatsChangedOpen = ref(false)
 const version = useRuntimeConfig().public.appVersion
+const currentYear = useState('currentYear', () => new Date().getFullYear())
 
 const navItems = [
   { label: 'View 0', to: '/' },
@@ -116,7 +117,7 @@ const changes = [
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          ICJIA Publication Type Filter Demo • v{{ version }} • © {{ new Date().getFullYear() }}
+          ICJIA Publication Type Filter Demo • v{{ version }} • © {{ currentYear }}
         </p>
       </template>
 

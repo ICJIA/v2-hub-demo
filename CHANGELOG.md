@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.59] — 2026-04-25
+
+### Fixed
+
+- Footer's copyright year now reads through `useState('currentYear', () => new Date().getFullYear())` instead of inlining `{{ new Date().getFullYear() }}`. The inline call ran twice — once at SSR / build time and once at client hydration — and could produce different values across the year boundary or under timezone weirdness, contributing to a Vue "Hydration completed but contains mismatches" warning. With `useState`, the year is computed once on the server and the value is serialized into the payload so the client hydrates from the cached value. (Other hydration-mismatch sources may still exist inside Nuxt UI / Reka UI internals; those are upstream.)
+
 ## [0.1.58] — 2026-04-25
 
 ### Fixed
