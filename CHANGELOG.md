@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.13] — 2026-04-25
+
+### Added
+
+- `What's Changed` nav item in the header. Clicking it opens a `UModal` with a checklist explaining the POC's improvements over the current research hub for non-technical reviewers — filterable publication types, clickable author names, normalized author names (one entry per person), several views for publication types, and clickable tags. The list is data-driven (`changes` array in `app.vue`) so new items can be appended easily.
+
+### Changed
+
+- Renamed the header badge / page title / footer label from `Publication Type Demo` → `Publication Type Filter Demo` to make the demo's scope obvious at a glance.
+
 ## [0.1.12] — 2026-04-25
 
 ### Changed
