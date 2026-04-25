@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.41] — 2026-04-25
+
+### Changed
+
+- Header nav label `Home` → `Alt 0` so the four chip/dropdown UX comparisons read in numeric order (Alt 0 / Alt 1 / Alt 2 / Alt 3-to-come). Route stays `/`.
+- The centered `PUBLICATION TYPE FILTER DEMO` badge is now a `NuxtLink` to `/` (Alt 0) — clicking it from anywhere on the demo brings you back to the default view.
+
 ## [0.1.40] — 2026-04-25
 
 ### Changed

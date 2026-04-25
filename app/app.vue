@@ -25,7 +25,7 @@ const isWhatsChangedOpen = ref(false)
 const version = useRuntimeConfig().public.appVersion
 
 const navItems = [
-  { label: 'Home', to: '/' },
+  { label: 'Alt 0', to: '/' },
   { label: 'Alt 1', to: '/alt' },
   { label: 'Alt 2', to: '/alt2' }
 ]
@@ -69,13 +69,19 @@ const changes = [
         <UNavigationMenu :items="navItems" />
       </template>
 
-      <UBadge
-        label="PUBLICATION TYPE FILTER DEMO"
-        color="primary"
-        variant="subtle"
-        size="sm"
-        class="font-semibold tracking-wider"
-      />
+      <NuxtLink
+        to="/"
+        class="rounded-full transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-label="Go to Alt 0 (home)"
+      >
+        <UBadge
+          label="PUBLICATION TYPE FILTER DEMO"
+          color="primary"
+          variant="subtle"
+          size="sm"
+          class="cursor-pointer font-semibold tracking-wider"
+        />
+      </NuxtLink>
 
       <template #right>
         <UButton
