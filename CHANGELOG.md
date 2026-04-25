@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.16] — 2026-04-25
+
+### Changed
+
+- Renamed the header button and modal title from `What's Changed` → `What This Demo Shows`. Frames the modal more clearly for non-technical reviewers (it's about the POC's features, not a release log).
+
 ## [0.1.15] — 2026-04-25
 
 ### Changed

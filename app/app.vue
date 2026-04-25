@@ -69,6 +69,15 @@ const changes = [
       />
 
       <template #right>
+        <UButton
+          label="What This Demo Shows"
+          icon="i-lucide-sparkles"
+          color="primary"
+          variant="ghost"
+          size="sm"
+          @click="isWhatsChangedOpen = true"
+        />
+
         <UColorModeButton />
 
         <UButton
@@ -116,7 +125,7 @@ const changes = [
       </template>
     </UFooter>
 
-    <UModal v-model:open="isWhatsChangedOpen" title="What's changed in this demo">
+    <UModal v-model:open="isWhatsChangedOpen" title="What this demo shows">
       <template #body>
         <div class="space-y-5 text-sm">
           <p class="text-toned">
