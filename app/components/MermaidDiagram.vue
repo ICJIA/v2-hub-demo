@@ -16,6 +16,9 @@ async function render() {
       themeVariables: {
         lineColor: isDark ? '#e2e8f0' : '#334155',
         textColor: isDark ? '#e2e8f0' : '#0f172a',
+        clusterBkg: 'transparent',
+        clusterBorder: isDark ? '#94a3b8' : '#475569',
+        titleColor: isDark ? '#f8fafc' : '#0f172a',
         fontSize: '14px'
       },
       securityLevel: 'loose',
@@ -44,7 +47,7 @@ watch([() => props.source, () => colorMode.value], render)
     </div>
     <div
       ref="containerRef"
-      class="overflow-auto rounded-lg border border-default bg-default p-4 [&_.edgePath_path]:!stroke-2 [&_.flowchart-link]:!stroke-2 [&_.marker]:!fill-current"
+      class="overflow-auto rounded-lg border border-default bg-default p-4 [&_.cluster_rect]:!stroke-2 [&_.edgePath_path]:!stroke-2 [&_.flowchart-link]:!stroke-2 [&_.marker]:!fill-current"
     />
   </div>
 </template>

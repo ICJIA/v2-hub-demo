@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.32] — 2026-04-25
+
+### Changed
+
+- `MermaidDiagram` themeVariables now also drive subgraph appearance: `clusterBkg: 'transparent'` so the page background shows through cleanly, and `clusterBorder` / `titleColor` switched on color mode (slate-400-ish in dark mode, slate-600-ish in light) so the outlines and labels of subgraphs stay readable. The arbitrary-selector that bumps stroke-width to 2 now also applies to `.cluster_rect`. Brings the datahub diagram's contrast in line with the simpler structure diagram in both modes.
+
 ## [0.1.31] — 2026-04-25
 
 ### Changed
