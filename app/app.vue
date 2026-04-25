@@ -78,7 +78,7 @@ const changes = [
         <UBadge
           label="PUBLICATION TYPE FILTER DEMO"
           color="primary"
-          variant="subtle"
+          variant="solid"
           size="sm"
           class="cursor-pointer font-semibold tracking-wider"
         />

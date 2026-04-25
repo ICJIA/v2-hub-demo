@@ -228,7 +228,7 @@ function applyAuthorFilter(key: string) {
           :label="`Tag: ${t}`"
           trailing-icon="i-lucide-x"
           color="primary"
-          variant="soft"
+          variant="solid"
           size="xs"
           @click="removeTag(t)"
         />

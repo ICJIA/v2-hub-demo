@@ -289,7 +289,7 @@ function onTypeChipChange(value: string | null) {
           :label="`Author: ${selectedAuthorLabel}`"
           trailing-icon="i-lucide-x"
           color="primary"
-          variant="soft"
+          variant="solid"
           size="xs"
           @click="selectedAuthor = ''"
         />
@@ -299,7 +299,7 @@ function onTypeChipChange(value: string | null) {
           :label="`Tag: ${t}`"
           trailing-icon="i-lucide-x"
           color="primary"
-          variant="soft"
+          variant="solid"
           size="xs"
           @click="removeTag(t)"
         />

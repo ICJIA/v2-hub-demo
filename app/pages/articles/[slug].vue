@@ -77,7 +77,7 @@ const authorList = computed(() => {
         <UBadge
           :label="typeLabel(article.type)"
           color="primary"
-          variant="subtle"
+          variant="solid"
           size="sm"
         />
 

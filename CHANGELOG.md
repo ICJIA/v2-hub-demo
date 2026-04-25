@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.53] — 2026-04-25
+
+### Fixed
+
+- **a11y `color-contrast` (WCAG 1.4.3 AA)** — axe-core flagged 15 elements per page failing 4.5:1. Root cause: primary-colored `UBadge` and `UButton` elements using `variant="subtle"` or `variant="soft"` produce a light-green tint background with a green-700-ish text label, which fails AA in light mode. Switched to `variant="solid"` (white text on full primary green) for every primary-colored chip/badge/pill that surfaces text:
+  - Header `PUBLICATION TYPE FILTER DEMO` badge.
+  - Card publication-type badge.
+  - Article detail stub publication-type badge.
+  - Active-filter pills near the result count: `Author: …` and `Tag: …` on Views 0 / 1 / 2.
+  - The `Future` proposed-feature badge on `/taxonomy`.
+- Tag pills inside cards (`color="neutral" variant="subtle"`) and inactive chips (`color="neutral"`) keep their existing styling — neutral-on-neutral pairs still meet contrast.
+
 ## [0.1.52] — 2026-04-25
 
 ### Fixed

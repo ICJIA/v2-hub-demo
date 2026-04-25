@@ -61,7 +61,7 @@ function separatorBefore(idx: number, total: number): string {
         <UBadge
           :label="typeLabel(article.type)"
           color="primary"
-          variant="subtle"
+          variant="solid"
           size="sm"
         />
       </button>
