@@ -89,7 +89,7 @@ This POC is set up for **fully static** deployment — `nuxt generate` prerender
 
 Already in the repo:
 
-- `netlify.toml` — `command = "pnpm generate"`, `publish = ".output/public"`, `NODE_VERSION = "20"`. Netlify auto-detects the lockfile and uses pnpm.
+- `netlify.toml` — `command = "pnpm generate"`, `publish = "dist"`, `NODE_VERSION = "20"`. Netlify auto-detects the lockfile and uses pnpm. (`dist` is correct because Netlify's build container sets `NETLIFY=true`, which makes Nitro pick the `netlify-static` preset; that preset outputs to `dist/` rather than the local `.output/public/`.)
 - `pnpm generate` script — wraps `nuxt generate`, which sets the Nitro preset to `static` and prerenders all crawled routes. No `nitro.preset = 'netlify'` needed; that preset is for the SSR-on-functions path, which we don't want for a fully static demo.
 - `useAsyncData('articles', …)` — the standard Nuxt primitive. At build time it runs once during prerender, the result is serialized into the page payload, and the client hydrates from that without a second fetch.
 

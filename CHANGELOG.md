@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] — 2026-04-25
+
+### Fixed
+
+- Netlify deploy: `netlify.toml` `publish` directory updated from `.output/public` to `dist`. On Netlify the `NETLIFY=true` env var makes Nitro auto-select the `netlify-static` preset, which writes to `dist/`; `.output/public/` is only the path locally where no preset override happens.
+
 ## [0.1.0] — 2026-04-25
 
 First end-to-end version of the research hub article filter POC, built on top of the Nuxt UI starter.
