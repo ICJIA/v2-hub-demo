@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.55] — 2026-04-25
+
+### Added
+
+- New subsection on `/taxonomy`: **"Wait — a database is a taxonomy?"** Bridges the cognitive gap between "database" (rows-and-columns) and "taxonomy" (hierarchical buckets) for managers who haven't heard the framing before. Lists four everyday taxonomies they've already used (library catalog, banking app, e-commerce, calendar) and ends on the design principle "the database's shape should mirror what the app needs to show" — which is why the demo's chips, filters, and proposed datahub all work the way they do.
+
 ## [0.1.54] — 2026-04-25
 
 ### Fixed

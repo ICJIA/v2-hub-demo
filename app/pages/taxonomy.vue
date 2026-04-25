@@ -148,6 +148,30 @@ const articleTypes = [
       </div>
 
       <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
+        Wait — a database is a <em>taxonomy</em>?
+      </p>
+      <div class="space-y-3 text-sm text-toned">
+        <p>
+          If "database" makes you think of spreadsheets and rows, this might feel off. But every well-designed database <strong>is</strong> a taxonomy. It sorts records into typed buckets — called <em>tables</em>, <em>collections</em>, or <em>content types</em> depending on the software — and within each bucket every record carries the same labeled fields. Buckets, fields, and the relationships between them: <em>that structure is the taxonomy</em>.
+        </p>
+        <p>
+          And it isn't unique to the research hub. Any time you've used:
+        </p>
+        <ul class="ml-5 list-disc space-y-1">
+          <li>a <strong>library catalog</strong> (Books → ISBN, title, author, subject, year);</li>
+          <li>a <strong>banking app</strong> (Accounts → Transactions → date, amount, payee);</li>
+          <li>an <strong>e-commerce site</strong> (Categories → Products → price, stock, description);</li>
+          <li>a <strong>calendar</strong> (Calendars → Events → start time, end time, attendees);</li>
+        </ul>
+        <p>
+          …you've used a taxonomy. Someone designing those apps decided up front, "items here fall into these buckets, and each bucket has these specific properties." That single decision is what makes the app's filters, search results, and reports possible later.
+        </p>
+        <p>
+          There's a software-design principle behind this: <strong class="text-highlighted">the database's shape should mirror what the app needs to show</strong>. If the home page has a "Filter by publication type" chip, every Article carries a <code>type</code> field. If a dataset's detail page should list "apps that use this dataset", the database holds a relationship between Datasets and Apps. The data shape determines the UX shape. Get the taxonomy right at the start and the app's features more or less write themselves; get it wrong and editorial work fights the data forever.
+        </p>
+      </div>
+
+      <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
         Why is the database structured this way — and why has Hub 2.0 kept it?
       </p>
       <div class="space-y-3 text-sm text-toned">
