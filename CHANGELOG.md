@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.19] — 2026-04-25
+
+### Changed
+
+- README's "Author canonicalization strategy" section rewritten as developer documentation rather than a high-level summary. Adds: source-variant table with reasons, the actual `authorKey()` implementation, a step-by-step regex breakdown with examples, the display-name picking algorithm with code, the filter comparison snippet, an explicit list of cases the algorithm does not merge (typos, middle initials, reordered names, diacritics), and a recommended production path (move canonicalization to Strapi via a stable author ID).
+
 ## [0.1.18] — 2026-04-25
 
 ### Added
