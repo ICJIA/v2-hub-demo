@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.74] — 2026-04-26
+
+### Added
+
+- **AI-readiness package — JSON-LD, llms.txt, freshness, longer description.** Pass on the four failures + one warning from an AI-readiness audit:
+  - Site-wide JSON-LD `@graph` in `app/app.vue` covering `WebSite`, `Organization` (ICJIA + alternateName + url), and the og-image as `ImageObject`. Includes `datePublished`, `dateModified`, `inLanguage`, and stable `@id` references between nodes.
+  - Per-page `WebPage` JSON-LD on the home (`app/pages/index.vue`) with `name`, `description`, `url`, `inLanguage`, `datePublished`, `dateModified`, `primaryImageOfPage`, `isPartOf` → site, `publisher` → ICJIA, and `about`.
+  - Content-freshness `<meta property="article:published_time">` and `article:modified_time` tags in the global `useHead`.
+  - New `public/llms.txt` (per llmstxt.org) with a description, key concepts (articles is the umbrella for 14 types, etc.), per-page links, source / tech-stack info, and a note for AI consumers about the placeholder type-fill.
+  - Home-page `description` expanded from 74 chars to ~270 chars so AI summarizers have enough context.
+
 ## [0.1.73] — 2026-04-26
 
 ### Changed

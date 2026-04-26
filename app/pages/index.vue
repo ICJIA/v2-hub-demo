@@ -1,11 +1,54 @@
 <script setup lang="ts">
-useHead({ title: 'ICJIA Research Hub — Filter Demo' })
+const PAGE_TITLE = 'ICJIA Research Hub — Filter Demo'
+const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: "Articles" is the umbrella for fourteen publication types — research reports, annual reports, program evaluations, updates, strategic plans, and more. Three filter UX layouts compare against the same dataset; every type is one click away.'
+const PAGE_URL = 'https://v2-hub-demo.netlify.app/'
+const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
+
+useHead({
+  title: PAGE_TITLE,
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: PAGE_TITLE,
+        url: PAGE_URL,
+        description: PAGE_DESCRIPTION,
+        inLanguage: 'en-US',
+        datePublished: '2026-04-15',
+        dateModified: '2026-04-26',
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: OG_IMAGE,
+          width: 1200,
+          height: 630
+        },
+        isPartOf: {
+          '@type': 'WebSite',
+          name: 'ICJIA Research Hub Filter Demo',
+          url: 'https://v2-hub-demo.netlify.app'
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Illinois Criminal Justice Information Authority',
+          alternateName: 'ICJIA',
+          url: 'https://icjia.illinois.gov/'
+        },
+        about: {
+          '@type': 'Thing',
+          name: 'ICJIA Research Hub data taxonomy and publication-type filter UX'
+        }
+      })
+    }
+  ]
+})
 
 useSeoMeta({
-  title: 'ICJIA Research Hub — Filter Demo',
-  description: 'How Hub 2.0 organizes ICJIA research, and three filter layouts to compare.',
-  ogTitle: 'ICJIA Research Hub — Filter Demo',
-  ogDescription: 'How Hub 2.0 organizes ICJIA research, and three filter layouts to compare.'
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  ogTitle: PAGE_TITLE,
+  ogDescription: PAGE_DESCRIPTION
 })
 
 // Home uses fillRandom so every type pill in the diagram has examples to show

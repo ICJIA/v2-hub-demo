@@ -1,6 +1,8 @@
 <script setup>
 const SITE_URL = 'https://v2-hub-demo.netlify.app'
 const OG_IMAGE = `${SITE_URL}/og-image.png`
+const PUBLISHED_DATE = '2026-04-15T00:00:00Z'
+const MODIFIED_DATE = '2026-04-26T00:00:00Z'
 
 useHead({
   meta: [
@@ -8,13 +10,56 @@ useHead({
     { name: 'theme-color', content: '#0a0a0a' },
     { name: 'color-scheme', content: 'dark light' },
     { name: 'robots', content: 'index, follow' },
-    { name: 'author', content: 'Illinois Criminal Justice Information Authority (ICJIA)' }
+    { name: 'author', content: 'Illinois Criminal Justice Information Authority (ICJIA)' },
+    // Content freshness for AI / SEO crawlers
+    { property: 'article:published_time', content: PUBLISHED_DATE },
+    { property: 'article:modified_time', content: MODIFIED_DATE }
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', href: '/favicon.ico' },
     { rel: 'canonical', href: SITE_URL }
+  ],
+  script: [
+    {
+      // Site-wide WebSite + Organization schema for AI / search crawlers.
+      // Per-page WebPage schema is emitted by individual pages (e.g. index.vue).
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': `${SITE_URL}/#website`,
+            name: 'ICJIA Research Hub — Publication Type Filter Demo',
+            alternateName: 'ICJIA Research Hub Filter Demo',
+            url: SITE_URL,
+            description: 'Proof-of-concept demonstrating how the ICJIA Research Hub article list could be filtered by publication type, topic, author, year, and tags. Three filter UX flavors compared side-by-side, plus a plain-language explainer of the Hub 2.0 / Strapi 5 taxonomy.',
+            inLanguage: 'en-US',
+            datePublished: PUBLISHED_DATE,
+            dateModified: MODIFIED_DATE,
+            publisher: { '@id': `${SITE_URL}/#organization` },
+            image: { '@id': `${SITE_URL}/#og-image` }
+          },
+          {
+            '@type': 'Organization',
+            '@id': `${SITE_URL}/#organization`,
+            name: 'Illinois Criminal Justice Information Authority',
+            alternateName: 'ICJIA',
+            url: 'https://icjia.illinois.gov/'
+          },
+          {
+            '@type': 'ImageObject',
+            '@id': `${SITE_URL}/#og-image`,
+            url: OG_IMAGE,
+            width: 1200,
+            height: 630,
+            caption: 'ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background'
+          }
+        ]
+      })
+    }
   ],
   htmlAttrs: {
     lang: 'en'

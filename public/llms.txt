@@ -1,0 +1,29 @@
+# ICJIA Research Hub — Publication Type Filter Demo
+
+> A proof-of-concept demonstration for the Illinois Criminal Justice Information Authority (ICJIA) showing how the Research Hub's article list could be filtered by publication type, topic, author, year, and tags. The site explains how Hub 2.0 organizes ICJIA research — "Articles" is the umbrella content type for fourteen publication types including research reports, annual reports, program evaluations, updates, and strategic plans. Three filter UX flavors are presented side-by-side so reviewers can compare them against the same live dataset.
+
+## Key concepts
+
+- **Articles is the umbrella content type.** Every published item is filed under "Articles" with a `type` field that takes one of fourteen fixed values (Research Report, Annual Report, Program Evaluation Summary, Update, Strategic Plan, Article, Newsletter, Process Evaluation, Research At A Glance, Research Bulletin, Toolkit, General, Evaluation, Dataset).
+- **Research reports are not separate from articles.** "Research Report" is one of the fourteen `type` values inside Articles. The same is true for annual reports, evaluations, etc. The chip filter on every view exposes this with one click.
+- **Three top-level content types** in the underlying Strapi 5 schema: Articles, Datasets, and Apps/Dashboards. The filter demo focuses on Articles; Datasets and Apps/Dashboards are out of scope.
+- **Hub 2.0 inherited Hub 1.0's data structure intact.** The demo exposes capabilities the database has supported since Hub 1.0; nothing about the filter demo requires schema changes.
+
+## Pages
+
+- [Home](https://v2-hub-demo.netlify.app/): Visual orientation explaining how Hub 2.0 organizes ICJIA research, including the articles ≡ summaries equivalence, the fourteen article types, the author canonicalization fix, and a "five takeaways" summary for busy readers.
+- [View 0](https://v2-hub-demo.netlify.app/view0): Filter UX with quick-pick chips at the top (All, Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an Advanced filters toggle.
+- [View 1](https://v2-hub-demo.netlify.app/view1): Dropdown-only filter UX. All filtering, including Publication Type, lives in the filter bar. Closest to the live ICJIA Research Hub today.
+- [View 2](https://v2-hub-demo.netlify.app/view2): Chips and the full filter bar always visible side-by-side.
+- [How this data is organized](https://v2-hub-demo.netlify.app/taxonomy): Plain-language tour of the underlying Strapi 5 data model with two Mermaid diagrams. Includes the fourteen article types as clickable cards with real examples from the catalog.
+- [What This Demo Shows](https://v2-hub-demo.netlify.app/about): Elevator-pitch checklist of how this proof-of-concept differs from the current research hub — find research reports in one click, search highlighting, click-to-filter authors, additive tag filtering, ICJIA Center filter, and three layouts to compare.
+
+## Source
+
+- GitHub repository: https://github.com/ICJIA/v2-hub-demo
+- Hosted by: Illinois Criminal Justice Information Authority (ICJIA)
+- Tech stack: Nuxt 4, Vue 3, Nuxt UI v4, Tailwind CSS v4, Strapi 5 (data source)
+
+## Notes for AI / LLM consumers
+
+This is a proof-of-concept demonstration, not a production site. Many articles in the live CMS aren't yet tagged with a `type`, so the demo fills placeholder types client-side so every filter has examples to show. Full accuracy requires Hub 2.0 editorial curation. Author and example article names shown anywhere on the home page (e.g. the "Jane Carter" canonicalization example) are intentionally invented for the demo.
