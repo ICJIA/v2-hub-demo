@@ -118,12 +118,21 @@ function showExamples(typeValue: string) {
           That equivalence was the original mission of Hub 1.0.
         </p>
 
-        <div class="mx-auto max-w-3xl space-y-3 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <div class="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
           <p>
-            This demo exists because of a fair question: "Where are the research reports?" The answer turned out to be a labeling story, not a missing-data story.
+            This demo exists because of a fair question raised at a recent ICJIA staff meeting. Staff said, reasonably: <strong class="text-zinc-900 dark:text-white">"Hey, I just want to find research reports."</strong> That's exactly what the hub should let them do.
           </p>
           <p>
-            "Articles" is Hub 2.0's umbrella label, carried forward from Hub 1.0 — originally called "summaries" during Hub 1.0 planning, before the team renamed it ahead of implementation. The label covers fourteen publication types from ICJIA: research reports, annual reports, program evaluations, updates, strategic plans, and nine more. An article <em>is</em> a summary; the name just changed. See <em>Why "articles" and not "summaries"?</em> below for the deliberation.
+            A small misunderstanding came up next. The assumption was that <em>"articles"</em> and <em>"research reports"</em> are two separate kinds of things in the database — and that the research reports were somehow missing.
+          </p>
+          <p class="rounded-2xl border-2 border-amber-400 bg-amber-50 px-5 py-4 text-xl font-extrabold leading-snug text-zinc-900 sm:text-2xl dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-white">
+            They're not missing. <span class="text-amber-700 dark:text-amber-400">Research reports <em>are</em> articles.</span>
+          </p>
+          <p>
+            "Articles" is the database's umbrella term for everything published on the hub. "Research Report" is just <strong class="text-zinc-900 dark:text-white">one of fourteen types of article</strong> — alongside annual reports, program evaluations, updates, strategic plans, and nine more. A research report is an article that happens to be tagged with the type "Research Report." Same goes for annual reports, evaluations, and the rest.
+          </p>
+          <p>
+            So the fix is already in place. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those. The database has supported this since Hub 1.0 — the demo just exposes it. (See <em>Why "articles" and not "summaries"?</em> below for the naming history.)
           </p>
           <p class="text-sm italic text-zinc-600 dark:text-zinc-400">
             That's the entire pitch. <strong class="not-italic text-zinc-900 dark:text-white">There is no quiz.</strong>

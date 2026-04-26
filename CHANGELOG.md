@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.70] — 2026-04-26
+
+### Changed
+
+- **"Why this demo" copy expanded for clarity.** Replaced the single opening paragraph (*"This demo exists because of a fair question…"*) with a five-paragraph walk-through that explicitly sets the scene of the ICJIA staff meeting where staff asked, *"Hey, I just want to find research reports,"* and the misunderstanding that followed (*"aren't articles and research reports two different things?"*). The punchline — *"They're not missing. **Research reports are articles.**"* — is now a bordered amber callout in the middle of the section, big and bold so it can't be missed. The paragraph that follows explains the umbrella relationship in plain language ("Research Report" is one of fourteen types of article). Closes with the fix being already in place since Hub 1.0 + a pointer to the naming-history section. Treats the dim-skeptical-manager reader as the primary audience without being condescending.
+
 ## [0.1.69] — 2026-04-26
 
 ### Changed
