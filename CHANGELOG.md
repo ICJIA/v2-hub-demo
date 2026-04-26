@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.65] — 2026-04-26
+
+### Added
+
+- **Bold infographic refresh on the home page.** Hero H1 bumped to 5xl/6xl/7xl. Stat strip becomes four colored icon-cards (zinc / amber / sky / violet) with 4xl/5xl numerals and an icon-pill at the top of each. The articles ≡ summaries equivalence visual scales up — larger cards (4xl/5xl text) and a much bigger central ≡ glyph (5xl/7xl). Each section eyebrow now sits beside a circular icon badge for visual punch.
+- **TL;DR section on the home page** ("This is a lot. What's the point?") between the naming note and the view cards. Single-sentence punchline — *"Every research report on the hub is one click away."* — set giant on an amber-bordered band.
+- **Takeaways section on the home page** ("Got other meetings?") — five numbered cards in a 2-column grid (last card spans full width) summarizing the page for the busy reader. Emerald accent.
+- **Quiz-gag setup added to home and `/about`.** Both pages now include "There is no quiz" *before* any "Still no quiz" callback so the running gag — established on `/taxonomy` — lands in order on every info page.
+- **`og:image`, full SEO meta, and brand image asset.**
+  - New `public/og-image.svg` (1200×630, dark) with the articles ≡ summaries equivalence as the centerpiece, plus a "Proof-of-Concept Demo" mark.
+  - Auto-generated `public/og-image.png` (PNG copy for social previews that don't render SVG).
+  - The SVG is embedded at the top of `README.md`.
+  - Expanded `useHead` and `useSeoMeta` in `app/app.vue` to set `theme-color`, `color-scheme`, `robots`, `author`, canonical link, OpenGraph fields (`ogType`, `ogUrl`, `ogSiteName`, `ogLocale`, `ogImage`, `ogImageWidth`, `ogImageHeight`, `ogImageAlt`, `ogImageType`), and Twitter card fields (`twitterCard: summary_large_image`, `twitterTitle`, `twitterDescription`, `twitterImage`, `twitterImageAlt`). The `<title>` and `description` were also rewritten to a fuller pitch ("How Hub 2.0 organizes ICJIA research…") so the social preview reads well.
+
 ## [0.1.64] — 2026-04-26
 
 ### Added

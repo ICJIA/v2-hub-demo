@@ -1,5 +1,9 @@
 # V2 Hub Demo — Research Hub Article Filter POC
 
+<p align="center">
+  <img src="./public/og-image.svg" alt="ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background" width="100%">
+</p>
+
 **Live:** https://v2-hub-demo.netlify.app/
 
 Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, and tags, alongside a free-text search. Three side-by-side "views" let managers compare different filter UX flavors against the same dataset, plus a `/taxonomy` page explaining the underlying Strapi 5 data model in plain English.

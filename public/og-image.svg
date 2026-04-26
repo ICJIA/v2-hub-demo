@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Top badge -->
+  <g transform="translate(80, 64)">
+    <rect width="430" height="44" rx="22" fill="#22c55e"/>
+    <text x="215" y="29" font-size="15" font-weight="800" fill="#0a0a0a" text-anchor="middle" letter-spacing="2.5">
+      ICJIA RESEARCH HUB · FILTER DEMO
+    </text>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="80" y="190" font-size="20" font-weight="800" fill="#38bdf8" letter-spacing="4">
+    EVERY RESEARCH REPORT — ONE CLICK AWAY
+  </text>
+
+  <!-- Equivalence visual: articles card -->
+  <g transform="translate(110, 240)">
+    <rect width="360" height="190" rx="22" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-width="3"/>
+    <text x="180" y="55" font-size="16" font-weight="800" fill="#a1a1aa" text-anchor="middle" letter-spacing="3">
+      DATABASE TERM
+    </text>
+    <text x="180" y="142" font-size="78" font-weight="900" fill="#fbbf24" text-anchor="middle">
+      articles
+    </text>
+  </g>
+
+  <!-- ≡ glyph -->
+  <text x="600" y="375" font-size="120" font-weight="900" fill="#fafafa" text-anchor="middle">≡</text>
+
+  <!-- Equivalence visual: summaries card -->
+  <g transform="translate(730, 240)">
+    <rect width="360" height="190" rx="22" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="3"/>
+    <text x="180" y="55" font-size="16" font-weight="800" fill="#a1a1aa" text-anchor="middle" letter-spacing="3">
+      PLAIN ENGLISH
+    </text>
+    <text x="180" y="142" font-size="78" font-weight="900" fill="#7dd3fc" text-anchor="middle">
+      summaries
+    </text>
+  </g>
+
+  <!-- Caption -->
+  <text x="600" y="500" font-size="26" font-weight="600" fill="#d4d4d8" text-anchor="middle">
+    14 publication types in the Articles bucket. The chip filter exposes them all.
+  </text>
+
+  <!-- Bottom URL -->
+  <text x="1120" y="595" font-size="16" font-weight="700" fill="#71717a" text-anchor="end">
+    v2-hub-demo.netlify.app
+  </text>
+
+  <!-- Subtle corner accent -->
+  <circle cx="80" cy="595" r="6" fill="#22c55e"/>
+  <text x="100" y="600" font-size="15" font-weight="700" fill="#a1a1aa">
+    Proof-of-Concept Demo
+  </text>
+</svg>

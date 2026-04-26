@@ -1,26 +1,50 @@
 <script setup>
+const SITE_URL = 'https://v2-hub-demo.netlify.app'
+const OG_IMAGE = `${SITE_URL}/og-image.png`
+
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'theme-color', content: '#0a0a0a' },
+    { name: 'color-scheme', content: 'dark light' },
+    { name: 'robots', content: 'index, follow' },
+    { name: 'author', content: 'Illinois Criminal Justice Information Authority (ICJIA)' }
   ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
-    { rel: 'apple-touch-icon', href: '/favicon.ico' }
+    { rel: 'apple-touch-icon', href: '/favicon.ico' },
+    { rel: 'canonical', href: SITE_URL }
   ],
   htmlAttrs: {
     lang: 'en'
   }
 })
 
-const title = 'Publication Type Filter Demo'
-const description = 'ICJIA research hub article filter POC.'
+const title = 'ICJIA Research Hub — Publication Type Filter Demo'
+const description = 'How Hub 2.0 organizes ICJIA research. "Articles" is the umbrella for fourteen publication types — research reports, annual reports, program evaluations, and more. Three filter layouts to compare; every type one click away.'
 
 useSeoMeta({
   title,
   description,
+  // OpenGraph
   ogTitle: title,
-  ogDescription: description
+  ogDescription: description,
+  ogType: 'website',
+  ogUrl: SITE_URL,
+  ogSiteName: 'ICJIA Research Hub Filter Demo',
+  ogLocale: 'en_US',
+  ogImage: OG_IMAGE,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: 'ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background',
+  ogImageType: 'image/png',
+  // Twitter / X
+  twitterCard: 'summary_large_image',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: OG_IMAGE,
+  twitterImageAlt: 'ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background'
 })
 
 const version = useRuntimeConfig().public.appVersion
