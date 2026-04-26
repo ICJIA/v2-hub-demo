@@ -2,11 +2,14 @@
 import type { Article } from '~/composables/useArticles'
 import { formatDate, imageUrl, typeLabel } from '~/utils/article-format'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   open: boolean
   typeValue: string | null
   articles: Article[] | null | undefined
-}>()
+  illustrativeFill?: boolean
+}>(), {
+  illustrativeFill: false
+})
 
 const emit = defineEmits<{ 'update:open': [value: boolean] }>()
 
@@ -56,7 +59,20 @@ const modalTotalCount = computed(() => {
   >
     <template #body>
       <div class="space-y-4">
-        <p class="rounded-lg border border-amber-300/40 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/30 dark:text-amber-200">
+        <p
+          v-if="illustrativeFill"
+          class="rounded-lg border border-amber-300/40 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/30 dark:text-amber-200"
+        >
+          <UIcon
+            name="i-lucide-info"
+            class="mr-1 inline size-4"
+          />
+          <strong>POC demo — examples are illustrative.</strong> Most articles in the live CMS aren't yet tagged with a <code>type</code>. For those, the demo assigns a placeholder type client-side so every pill has examples to show. Once editorial curation is complete, only real tagged articles will appear here.
+        </p>
+        <p
+          v-else
+          class="rounded-lg border border-amber-300/40 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/30 dark:text-amber-200"
+        >
           <UIcon
             name="i-lucide-info"
             class="mr-1 inline size-4"

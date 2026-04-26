@@ -8,7 +8,10 @@ useSeoMeta({
   ogDescription: 'How Hub 2.0 organizes ICJIA research, and three filter layouts to compare.'
 })
 
-const { data: rawArticles } = await useArticles({ fillRandom: false })
+// Home uses fillRandom so every type pill in the diagram has examples to show
+// in the modal — this is a POC demo and most articles in the live CMS aren't
+// yet tagged with a type.
+const { data: rawArticles } = await useArticles({ fillRandom: true })
 
 const articleCount = computed(() => rawArticles.value?.length ?? 0)
 
@@ -456,6 +459,7 @@ function showExamples(typeValue: string) {
       v-model:open="isExamplesOpen"
       :type-value="selectedTypeForModal"
       :articles="rawArticles"
+      illustrative-fill
     />
   </div>
 </template>
