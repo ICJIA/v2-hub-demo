@@ -522,6 +522,168 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
+    <!-- 6.5 AUTHOR NORMALIZATION — one more under-the-hood fix -->
+    <section class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-merge"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-violet-700 sm:text-sm dark:text-violet-300">
+            One more thing we fixed
+          </span>
+        </div>
+        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
+          Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
+        </h2>
+        <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
+          Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list one person seven times. The demo merges every variant onto a single canonical key.
+        </p>
+
+        <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
+          <!-- BEFORE -->
+          <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-500">
+              What the CMS delivers
+            </div>
+            <ul class="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
+                Jane Carter
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
+                Jane Carter, Ph.D
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
+                Jane Carter, PhD
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
+                Jane Carter, M.A., M.P.A.
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 font-bold dark:border-zinc-700 dark:bg-zinc-950">
+                JANE CARTER
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 font-mono text-xs dark:border-zinc-700 dark:bg-zinc-950">
+                ··Jane  Carter··
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
+                Jane Carter, MSW, LCSW
+              </li>
+            </ul>
+          </div>
+
+          <!-- ARROW + label -->
+          <div class="flex items-center justify-center py-2">
+            <div class="flex flex-col items-center gap-2 md:gap-3">
+              <UIcon
+                name="i-lucide-arrow-down"
+                class="size-10 text-violet-500 md:hidden"
+              />
+              <UIcon
+                name="i-lucide-arrow-right"
+                class="hidden size-12 text-violet-500 md:block"
+              />
+              <code class="rounded-lg border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-bold text-violet-700 dark:text-violet-300">
+                authorKey()
+              </code>
+            </div>
+          </div>
+
+          <!-- AFTER -->
+          <div class="rounded-2xl border-2 border-violet-500 bg-violet-500/10 p-5">
+            <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
+              What the filter shows
+            </div>
+            <div class="rounded-xl border border-violet-500/40 bg-white p-5 shadow-sm dark:bg-zinc-900">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Jane Carter</span>
+                <span class="rounded-full bg-violet-500/20 px-2.5 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300">7 articles</span>
+              </div>
+              <div class="mt-2 text-xs text-zinc-500">
+                canonical key: <code class="text-violet-700 dark:text-violet-300">jane carter</code>
+              </div>
+            </div>
+            <p class="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              One entry. One click. Every variant on every article matches.
+            </p>
+          </div>
+        </div>
+
+        <!-- The five steps -->
+        <div class="mt-12">
+          <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-500">
+            <UIcon
+              name="i-lucide-list-ordered"
+              class="size-4"
+            />
+            Five normalization steps, in order
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-5">
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                1
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Drop credentials
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                Cut everything after the first comma. <em>Jane Carter, PhD</em> → <em>Jane Carter</em>.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                2
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Unify ampersands
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>Forensics &amp; Policy Lab</em> → <em>Forensics and Policy Lab</em>.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                3
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Collapse spaces
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>Jane &nbsp;&nbsp;Carter</em> (double space) → <em>Jane Carter</em>.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                4
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Trim whitespace
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>"  Jane Carter "</em> → <em>"Jane Carter"</em>.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                5
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Lowercase
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>JANE CARTER</em> → <em>jane carter</em>.
+              </div>
+            </div>
+          </div>
+          <p class="mt-5 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            The display name shown in the dropdown is the most-frequent variant in the dataset (ties go to the shortest, which usually means the clean form without credentials). The same approach merges the five canonical ICJIA Centers across the "&" / "and" split.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- 7. DEEP DIVES -->
     <section class="bg-white px-6 py-14 sm:px-12 lg:px-16 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">

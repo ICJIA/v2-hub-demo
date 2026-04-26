@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.67] — 2026-04-26
+
+### Added
+
+- **Author canonicalization showcase on the home page** — new section "One more thing we fixed" between the view cards and the deep dives. Infographic-styled with a before/after visual: seven phony variants of the same author name on the left (Jane Carter, Jane Carter Ph.D, JANE CARTER, "··Jane  Carter··", etc.) → an `authorKey()` arrow label → a single canonical entry on the right ("Jane Carter · 7 articles · canonical key: jane carter"). Five numbered cards underneath explain the normalization steps (drop credentials, unify ampersands, collapse spaces, trim whitespace, lowercase) with short example transforms. All names are deliberately invented — no real ICJIA authors. Surfaces a fix the manager has been worried about ("the same person shows up six different ways") so it's visibly addressed.
+
 ## [0.1.66] — 2026-04-26
 
 ### Fixed
