@@ -84,14 +84,14 @@ function familyClass(typeValue: string): string {
   if (props.colorFamily !== 'auto') return ''
   if (typeValue === props.highlight) return ''
   const family = COLOR_FAMILY[typeValue] ?? 'violet'
-  if (family === 'sky') return 'border-sky-400/20 bg-sky-400/5 text-sky-200 hover:border-sky-400/40'
-  if (family === 'emerald') return 'border-emerald-400/20 bg-emerald-400/5 text-emerald-200 hover:border-emerald-400/40'
-  return 'border-violet-400/20 bg-violet-400/5 text-violet-200 hover:border-violet-400/40'
+  if (family === 'sky') return 'border-sky-500/30 bg-sky-500/5 text-sky-700 hover:border-sky-500/60 dark:border-sky-400/20 dark:text-sky-200 dark:hover:border-sky-400/40'
+  if (family === 'emerald') return 'border-emerald-500/30 bg-emerald-500/5 text-emerald-700 hover:border-emerald-500/60 dark:border-emerald-400/20 dark:text-emerald-200 dark:hover:border-emerald-400/40'
+  return 'border-violet-500/30 bg-violet-500/5 text-violet-700 hover:border-violet-500/60 dark:border-violet-400/20 dark:text-violet-200 dark:hover:border-violet-400/40'
 }
 
 function highlightClass(typeValue: string): string {
   if (typeValue !== props.highlight) return ''
-  return 'border-amber-500 bg-amber-500/15 text-amber-300 ring-4 ring-amber-500/10 hover:border-amber-400'
+  return 'border-amber-500 bg-amber-500/15 text-amber-700 ring-4 ring-amber-500/10 hover:border-amber-600 dark:text-amber-300 dark:hover:border-amber-400'
 }
 </script>
 

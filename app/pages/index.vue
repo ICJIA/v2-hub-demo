@@ -32,18 +32,18 @@ function showExamples(typeValue: string) {
 </script>
 
 <template>
-  <div class="bg-[#0a0a0a] text-[#fafafa]">
+  <div class="bg-white text-zinc-900 dark:bg-[#0a0a0a] dark:text-[#fafafa]">
     <!-- 1. HERO -->
     <section class="px-6 pt-16 pb-8 sm:px-12 lg:px-16">
       <div class="mx-auto max-w-5xl">
-        <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-400">
+        <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           A short orientation
         </div>
-        <h1 class="mb-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        <h1 class="mb-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
           How Hub 2.0 organizes<br>ICJIA research.
         </h1>
-        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
-          "Articles" is the umbrella for everything published on the hub — research reports, annual reports, program evaluations, and ten more types. <span class="font-semibold text-white">The Hub 2.0 migration carried Hub 1.0's structure forward intact</span>, so all of it is already here. This demo just shows how to pull out exactly what you need in one click.
+        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
+          "Articles" is the umbrella for everything published on the hub — research reports, annual reports, program evaluations, and ten more types. <span class="font-semibold text-zinc-900 dark:text-white">The Hub 2.0 migration carried Hub 1.0's structure forward intact</span>, so all of it is already here. This demo just shows how to pull out exactly what you need in one click.
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -52,7 +52,7 @@ function showExamples(typeValue: string) {
             trailing-icon="i-lucide-arrow-right"
             color="neutral"
             variant="solid"
-            class="bg-white text-zinc-950 hover:bg-zinc-200"
+            class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             size="lg"
           />
           <UButton
@@ -60,7 +60,7 @@ function showExamples(typeValue: string) {
             label="How the data is organized"
             color="neutral"
             variant="outline"
-            class="border-zinc-700 text-white hover:bg-zinc-900"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
             size="lg"
           />
         </div>
@@ -68,45 +68,45 @@ function showExamples(typeValue: string) {
     </section>
 
     <!-- 2. WHY THIS DEMO -->
-    <section class="border-y border-zinc-800 bg-gradient-to-b from-[#0a0a0a] to-[#0e0e10] px-6 py-12 sm:px-12 lg:px-16">
+    <section class="border-y border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-12 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-400">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
           Why this demo
         </div>
-        <h2 class="mb-6 text-2xl font-bold leading-tight text-white sm:text-3xl">
+        <h2 class="mb-6 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           Every research report on the hub is already an article.
         </h2>
 
         <!-- Equivalence visual -->
         <div class="my-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
           <div class="rounded-xl border-2 border-amber-500 bg-amber-500/10 px-7 py-4 text-center">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-400">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
               Database term
             </div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-amber-400 sm:text-3xl">
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-amber-600 sm:text-3xl dark:text-amber-400">
               articles
             </div>
           </div>
           <div
-            class="text-3xl font-extrabold text-white sm:text-4xl"
+            class="text-3xl font-extrabold text-zinc-900 sm:text-4xl dark:text-white"
             aria-hidden="true"
           >
             ≡
           </div>
-          <div class="rounded-xl border-2 border-sky-400 bg-sky-400/10 px-7 py-4 text-center">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-400">
+          <div class="rounded-xl border-2 border-sky-500 bg-sky-500/10 px-7 py-4 text-center dark:border-sky-400">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
               Plain English
             </div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-sky-300 sm:text-3xl">
+            <div class="mt-1 text-2xl font-extrabold tracking-tight text-sky-700 sm:text-3xl dark:text-sky-300">
               summaries
             </div>
           </div>
         </div>
-        <p class="mb-6 text-center text-sm text-zinc-400">
+        <p class="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
           That equivalence was the original mission of Hub 1.0.
         </p>
 
-        <div class="mx-auto max-w-3xl space-y-3 text-base leading-relaxed text-zinc-300">
+        <div class="mx-auto max-w-3xl space-y-3 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
           <p>
             This demo exists because of a fair question: "Where are the research reports?" The answer turned out to be a labeling story, not a missing-data story.
           </p>
@@ -118,10 +118,10 @@ function showExamples(typeValue: string) {
     </section>
 
     <!-- 3. STAT STRIP -->
-    <section class="border-b border-zinc-800 px-6 py-6 sm:px-12 lg:px-16">
+    <section class="border-b border-zinc-200 px-6 py-6 sm:px-12 lg:px-16 dark:border-zinc-800">
       <div class="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-4">
         <div>
-          <div class="text-3xl font-extrabold tracking-tight text-white">
+          <div class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
             {{ articleCountLabel }}
           </div>
           <div class="mt-1 text-xs text-zinc-500">
@@ -129,7 +129,7 @@ function showExamples(typeValue: string) {
           </div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold tracking-tight text-amber-500">
+          <div class="text-3xl font-extrabold tracking-tight text-amber-600 dark:text-amber-500">
             14
           </div>
           <div class="mt-1 text-xs text-zinc-500">
@@ -137,7 +137,7 @@ function showExamples(typeValue: string) {
           </div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold tracking-tight text-sky-400">
+          <div class="text-3xl font-extrabold tracking-tight text-sky-600 dark:text-sky-400">
             3
           </div>
           <div class="mt-1 text-xs text-zinc-500">
@@ -145,7 +145,7 @@ function showExamples(typeValue: string) {
           </div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold tracking-tight text-violet-400">
+          <div class="text-3xl font-extrabold tracking-tight text-violet-600 dark:text-violet-400">
             1
           </div>
           <div class="mt-1 text-xs text-zinc-500">
@@ -156,41 +156,41 @@ function showExamples(typeValue: string) {
     </section>
 
     <!-- 4. THE DIAGRAM -->
-    <section class="border-b border-zinc-800 bg-[#0e0e10] px-6 py-14 sm:px-12 lg:px-16">
+    <section class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-400">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           The hub at a glance
         </div>
-        <h2 class="mb-2 text-2xl font-bold leading-tight text-white sm:text-3xl">
+        <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           Three top-level content types. We're zooming into Articles.
         </h2>
-        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           The hub holds three peer buckets. Datasets and Apps/Dashboards are out of scope for this filter demo — but they exist alongside Articles, not inside it.
         </p>
 
         <!-- 3-content-type ribbon -->
         <div class="mb-4 grid gap-3 sm:grid-cols-3">
           <div class="rounded-xl border-2 border-amber-500 bg-amber-500/10 p-4">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-amber-400">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-amber-700 dark:text-amber-400">
               Content type 1 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-extrabold text-white">
+            <div class="mt-1 flex items-baseline gap-2 text-base font-extrabold text-zinc-900 dark:text-white">
               <UIcon
                 name="i-lucide-library"
-                class="size-5 text-amber-400"
+                class="size-5 text-amber-600 dark:text-amber-400"
               />
               Articles
-              <span class="text-xs font-medium text-zinc-400">{{ articleCountLabel }} items</span>
+              <span class="text-xs font-medium text-zinc-600 dark:text-zinc-400">{{ articleCountLabel }} items</span>
             </div>
-            <div class="mt-1 text-xs font-semibold text-amber-400">
+            <div class="mt-1 text-xs font-semibold text-amber-700 dark:text-amber-400">
               ↓ filter demo focuses here
             </div>
           </div>
-          <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 opacity-70">
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/50 p-4 opacity-70 dark:border-zinc-800 dark:bg-zinc-900/50">
             <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500">
               Content type 2 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-300">
+            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
               <UIcon
                 name="i-lucide-database"
                 class="size-5 text-zinc-500"
@@ -201,11 +201,11 @@ function showExamples(typeValue: string) {
               separate top-level type
             </div>
           </div>
-          <div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-4 opacity-70">
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/50 p-4 opacity-70 dark:border-zinc-800 dark:bg-zinc-900/50">
             <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500">
               Content type 3 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-300">
+            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
               <UIcon
                 name="i-lucide-layout-dashboard"
                 class="size-5 text-zinc-500"
@@ -219,19 +219,19 @@ function showExamples(typeValue: string) {
         </div>
 
         <!-- Zoom cue -->
-        <div class="mb-2 text-center text-amber-500">
+        <div class="mb-2 text-center text-amber-600 dark:text-amber-500">
           <UIcon
             name="i-lucide-chevron-down"
             class="size-6"
           />
         </div>
 
-        <h3 class="mb-4 text-lg font-bold leading-tight text-white sm:text-xl">
+        <h3 class="mb-4 text-lg font-bold leading-tight text-zinc-900 sm:text-xl dark:text-white">
           Inside Articles: 14 types of summaries.
         </h3>
 
         <!-- Articles bucket with type grid -->
-        <div class="relative rounded-2xl border-2 border-amber-500 bg-zinc-900 p-7">
+        <div class="relative rounded-2xl border-2 border-amber-500 bg-white p-7 dark:bg-zinc-900">
           <div class="absolute -top-3 left-5 rounded bg-amber-500 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-zinc-950">
             <UIcon
               name="i-lucide-library"
@@ -248,14 +248,14 @@ function showExamples(typeValue: string) {
             @select="showExamples"
           />
 
-          <div class="mt-4 flex flex-col gap-3 border-t border-dashed border-zinc-800 pt-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="mt-4 flex flex-col gap-3 border-t border-dashed border-zinc-300 pt-3 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800">
             <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-500">
-              <span><span class="text-amber-400">●</span> chip on every view</span>
-              <span><span class="text-sky-400">●</span> research / evaluation</span>
-              <span><span class="text-emerald-400">●</span> reports &amp; plans</span>
-              <span><span class="text-violet-400">●</span> communications</span>
+              <span><span class="text-amber-600 dark:text-amber-400">●</span> chip on every view</span>
+              <span><span class="text-sky-600 dark:text-sky-400">●</span> research / evaluation</span>
+              <span><span class="text-emerald-600 dark:text-emerald-400">●</span> reports &amp; plans</span>
+              <span><span class="text-violet-600 dark:text-violet-400">●</span> communications</span>
             </div>
-            <div class="text-xs font-semibold text-amber-500">
+            <div class="text-xs font-semibold text-amber-700 dark:text-amber-500">
               <UIcon
                 name="i-lucide-mouse-pointer-click"
                 class="-mt-0.5 mr-1 inline size-4"
@@ -265,29 +265,29 @@ function showExamples(typeValue: string) {
           </div>
         </div>
 
-        <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+        <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           All fourteen are in here. The chip row on every view filters to whichever one you need — pick "Research Report," click it, you're done. Same goes for any other type.
         </p>
       </div>
     </section>
 
     <!-- 5. NAMING NOTE -->
-    <section class="border-b border-amber-500/15 bg-amber-500/5 px-6 py-8 sm:px-12 lg:px-16">
+    <section class="border-b border-amber-300/50 bg-amber-50 px-6 py-8 sm:px-12 lg:px-16 dark:border-amber-500/15 dark:bg-amber-500/5">
       <div class="mx-auto flex max-w-5xl gap-4">
         <UIcon
           name="i-lucide-notebook-pen"
-          class="mt-1 size-5 shrink-0 text-amber-400"
+          class="mt-1 size-5 shrink-0 text-amber-600 dark:text-amber-400"
         />
         <div>
-          <h3 class="mb-2 text-base font-bold text-amber-400">
+          <h3 class="mb-2 text-base font-bold text-amber-700 dark:text-amber-400">
             Why "articles" — and not "summaries"?
           </h3>
-          <div class="space-y-2.5 text-sm leading-relaxed text-zinc-300">
+          <div class="space-y-2.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
               "Summaries" was on the table during Hub 1.0 planning. Over several weeks and several name changes, we kept running into the same problem: an article <em>can</em> be a summary of an attached research report or annual report — but it can also stand on its own, a standalone piece with no attached PDF at all. "Summaries" didn't fit that case.
             </p>
             <p>
-              We landed on <strong class="text-amber-400">articles</strong> because it was both <strong>more general</strong> (a publishing platform can carry many kinds of digital pieces, including standalone articles) and <strong>more specific</strong> (an "article" is a familiar concept — exactly what you'd expect on a publishing platform). The hub was always meant to be a publishing platform first; "articles" was the umbrella that fit that identity.
+              We landed on <strong class="text-amber-700 dark:text-amber-400">articles</strong> because it was both <strong>more general</strong> (a publishing platform can carry many kinds of digital pieces, including standalone articles) and <strong>more specific</strong> (an "article" is a familiar concept — exactly what you'd expect on a publishing platform). The hub was always meant to be a publishing platform first; "articles" was the umbrella that fit that identity.
             </p>
           </div>
         </div>
@@ -297,41 +297,41 @@ function showExamples(typeValue: string) {
     <!-- 6. THREE VIEWS -->
     <section
       id="views"
-      class="border-b border-zinc-800 bg-[#0e0e10] px-6 py-14 sm:px-12 lg:px-16"
+      class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
     >
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-400">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           Try the three layouts
         </div>
-        <h2 class="mb-2 text-2xl font-bold leading-tight text-white sm:text-3xl">
+        <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           Three filter UXs. Same data.
         </h2>
-        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           Same dataset, three layouts to compare. Click any one and try filtering to "Research Report" — that's the headline test.
         </p>
 
         <div class="grid gap-4 md:grid-cols-3">
           <NuxtLink
             to="/view0"
-            class="group block overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 transition-colors hover:border-sky-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+            class="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-colors hover:border-sky-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-sky-400/60 dark:focus-visible:ring-sky-400"
           >
-            <div class="h-1 bg-sky-400" />
+            <div class="h-1 bg-sky-500 dark:bg-sky-400" />
             <div class="p-4">
-              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-sky-400">
+              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-sky-600 dark:text-sky-400">
                 View 0 · /view0
               </div>
-              <div class="my-2 text-lg font-bold text-white">
+              <div class="my-2 text-lg font-bold text-zinc-900 dark:text-white">
                 Chips + Advanced
               </div>
               <div class="my-3 flex flex-wrap gap-1.5">
-                <span class="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold text-zinc-950">All</span>
-                <span class="rounded-full border border-amber-500 bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-amber-300">Research Reports</span>
-                <span class="rounded-full bg-zinc-800 px-2.5 py-0.5 text-[10px] text-zinc-400">Annual</span>
+                <span class="rounded-full bg-zinc-900 px-2.5 py-0.5 text-[10px] font-bold text-white dark:bg-white dark:text-zinc-950">All</span>
+                <span class="rounded-full border border-amber-500 bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-amber-700 dark:text-amber-300">Research Reports</span>
+                <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">Annual</span>
               </div>
-              <p class="text-xs leading-relaxed text-zinc-400">
+              <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Quick chips at the top. Full filter bar hidden behind a toggle. Friendliest first impression.
               </p>
-              <div class="mt-3 text-xs font-semibold text-sky-400 group-hover:underline">
+              <div class="mt-3 text-xs font-semibold text-sky-600 group-hover:underline dark:text-sky-400">
                 Open View 0 →
               </div>
             </div>
@@ -339,25 +339,25 @@ function showExamples(typeValue: string) {
 
           <NuxtLink
             to="/view1"
-            class="group block overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 transition-colors hover:border-emerald-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            class="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-colors hover:border-emerald-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-400/60 dark:focus-visible:ring-emerald-400"
           >
-            <div class="h-1 bg-emerald-400" />
+            <div class="h-1 bg-emerald-500 dark:bg-emerald-400" />
             <div class="p-4">
-              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-emerald-400">
+              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-emerald-600 dark:text-emerald-400">
                 View 1 · /view1
               </div>
-              <div class="my-2 text-lg font-bold text-white">
+              <div class="my-2 text-lg font-bold text-zinc-900 dark:text-white">
                 Dropdowns only
               </div>
               <div class="my-3 flex flex-col gap-1">
-                <span class="rounded border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-[10px] text-zinc-300">Type ▾</span>
-                <span class="rounded border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-[10px] text-zinc-300">Topic ▾</span>
-                <span class="rounded border border-zinc-700 bg-zinc-800 px-2.5 py-1 text-[10px] text-zinc-300">Year ▾</span>
+                <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Type ▾</span>
+                <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Topic ▾</span>
+                <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Year ▾</span>
               </div>
-              <p class="text-xs leading-relaxed text-zinc-400">
+              <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 All filtering in dropdowns. Closest to the live site today.
               </p>
-              <div class="mt-3 text-xs font-semibold text-emerald-400 group-hover:underline">
+              <div class="mt-3 text-xs font-semibold text-emerald-600 group-hover:underline dark:text-emerald-400">
                 Open View 1 →
               </div>
             </div>
@@ -365,28 +365,28 @@ function showExamples(typeValue: string) {
 
           <NuxtLink
             to="/view2"
-            class="group block overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 transition-colors hover:border-violet-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+            class="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-colors hover:border-violet-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-violet-400/60 dark:focus-visible:ring-violet-400"
           >
-            <div class="h-1 bg-violet-400" />
+            <div class="h-1 bg-violet-500 dark:bg-violet-400" />
             <div class="p-4">
-              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-violet-400">
+              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-violet-600 dark:text-violet-400">
                 View 2 · /view2
               </div>
-              <div class="my-2 text-lg font-bold text-white">
+              <div class="my-2 text-lg font-bold text-zinc-900 dark:text-white">
                 Chips + always-on bar
               </div>
               <div class="my-3 flex flex-wrap gap-1.5">
-                <span class="rounded-full bg-white px-2.5 py-0.5 text-[10px] font-bold text-zinc-950">All</span>
-                <span class="rounded-full border border-amber-500 bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-amber-300">Research</span>
+                <span class="rounded-full bg-zinc-900 px-2.5 py-0.5 text-[10px] font-bold text-white dark:bg-white dark:text-zinc-950">All</span>
+                <span class="rounded-full border border-amber-500 bg-amber-500/15 px-2.5 py-0.5 text-[10px] font-semibold text-amber-700 dark:text-amber-300">Research</span>
               </div>
               <div class="my-3 flex gap-1.5">
-                <span class="rounded border border-zinc-700 bg-zinc-800 px-2 py-0.5 text-[9px] text-zinc-300">Topic ▾</span>
-                <span class="rounded border border-zinc-700 bg-zinc-800 px-2 py-0.5 text-[9px] text-zinc-300">Years ▾</span>
+                <span class="rounded border border-zinc-300 bg-zinc-100 px-2 py-0.5 text-[9px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Topic ▾</span>
+                <span class="rounded border border-zinc-300 bg-zinc-100 px-2 py-0.5 text-[9px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Years ▾</span>
               </div>
-              <p class="text-xs leading-relaxed text-zinc-400">
+              <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Both at once. Maximum flexibility, more visual weight.
               </p>
-              <div class="mt-3 text-xs font-semibold text-violet-400 group-hover:underline">
+              <div class="mt-3 text-xs font-semibold text-violet-600 group-hover:underline dark:text-violet-400">
                 Open View 2 →
               </div>
             </div>
@@ -396,58 +396,58 @@ function showExamples(typeValue: string) {
     </section>
 
     <!-- 7. DEEP DIVES -->
-    <section class="bg-[#0a0a0a] px-6 py-14 sm:px-12 lg:px-16">
+    <section class="bg-white px-6 py-14 sm:px-12 lg:px-16 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-400">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           Deeper look
         </div>
-        <h2 class="mb-7 text-2xl font-bold leading-tight text-white sm:text-3xl">
+        <h2 class="mb-7 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           More to explore.
         </h2>
 
         <div class="grid gap-4 md:grid-cols-2">
           <NuxtLink
             to="/taxonomy"
-            class="group block rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition-colors hover:border-sky-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-sky-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-sky-400/60 dark:focus-visible:ring-sky-400"
           >
             <div class="mb-2 flex items-center gap-2.5">
-              <div class="flex size-7 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10 text-sky-400">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10 text-sky-600 dark:border-sky-400/30 dark:bg-sky-400/10 dark:text-sky-400">
                 <UIcon
                   name="i-lucide-network"
                   class="size-4"
                 />
               </div>
-              <div class="text-base font-bold text-white">
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
                 How the data is organized
               </div>
             </div>
-            <p class="mb-3 text-sm leading-relaxed text-zinc-400">
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               A plain-language tour of the underlying data model. Two diagrams. The fourteen article types as clickable cards with real examples from the catalog.
             </p>
-            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-sky-400 group-hover:underline">
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-sky-600 group-hover:underline dark:text-sky-400">
               /taxonomy →
             </div>
           </NuxtLink>
 
           <NuxtLink
             to="/about"
-            class="group block rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition-colors hover:border-amber-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-amber-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 dark:border-zinc-800 dark:bg-zinc-900"
           >
             <div class="mb-2 flex items-center gap-2.5">
-              <div class="flex size-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-500">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-500">
                 <UIcon
                   name="i-lucide-sparkles"
                   class="size-4"
                 />
               </div>
-              <div class="text-base font-bold text-white">
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
                 What else this demo shows
               </div>
             </div>
-            <p class="mb-3 text-sm leading-relaxed text-zinc-400">
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               Search highlighting, click-to-filter authors, additive tags, the five ICJIA centers — seven small upgrades that make the catalog easier to navigate.
             </p>
-            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-500 group-hover:underline">
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-600 group-hover:underline dark:text-amber-500">
               /about →
             </div>
           </NuxtLink>

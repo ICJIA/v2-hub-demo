@@ -1,5 +1,5 @@
 <script setup lang="ts">
-useHead({ title: 'Hub 1.0 / 2.0 Taxonomy — Research Hub Demo' })
+useHead({ title: 'How this data is organized — Research Hub Demo' })
 
 const { data: rawArticles } = await useArticles({ fillRandom: false })
 
@@ -69,28 +69,32 @@ const structureDiagram = `flowchart TB
   <UContainer class="py-8">
     <div class="mb-6 space-y-2">
       <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        Hub 1.0 / 2.0 taxonomy
+        How this data is organized
       </h1>
-      <p class="text-sm text-muted">
-        How the Data Behind the Research Hub is organized.
+      <p class="text-base italic text-toned">
+        Everything you ever wanted to know about the Research Hub, databases, and taxonomies but were afraid to ask.
       </p>
     </div>
 
     <section class="mb-6 rounded-lg border border-default bg-elevated p-5">
       <p class="mb-2 text-base font-semibold text-highlighted">
-        First — what's a "taxonomy"?
+        Why we said "taxonomy" (and why we're not sorry)
       </p>
       <div class="space-y-3 text-sm text-toned">
         <p>
-          It's a fancy word for <strong class="text-highlighted">how things are organized into groups, from broad to specific</strong>. Think of:
+          "Taxonomy" is one of those words that sounds intimidating in the same way that <em>thermodynamics</em> or <em>quarterly review</em> sound intimidating: not because the underlying idea is particularly difficult, but because it suggests there might be a quiz at the end.
         </p>
-        <ul class="ml-5 list-disc space-y-1">
-          <li>A <strong>library</strong>: building → section (Fiction, Reference) → subject → individual book.</li>
-          <li>An <strong>org chart</strong>: agency → division → team → person.</li>
-          <li>A <strong>filing cabinet</strong>: cabinet → drawer → folder → document.</li>
-        </ul>
         <p>
-          That's all this page is doing — walking through how the research hub's content is filed away. The big buckets sit at the top, narrower groupings inside each, and the actual pieces (research reports, datasets, dashboards) at the bottom.
+          <strong class="text-highlighted">There is no quiz.</strong>
+        </p>
+        <p>
+          In plain English, a taxonomy is the system someone decided on for sorting things into labeled boxes. <strong>Biologists</strong> use one to sort animals — Kingdom, Phylum, Class, Order, Family, Genus, Species, ending eventually with the platypus, which the system never really knew what to do with. <strong>Librarians</strong> use one to sort books: building → section → subject → individual title. <strong>Hardware stores</strong> use one to sort screws, plus several adjacent categories of small metal things that are technically not screws but ended up here anyway. The <strong>Research Hub</strong> uses one to sort everything it publishes — research reports, annual reports, evaluations, datasets, dashboards, and so on — into a small number of named buckets, where every item in a bucket shares the same predictable labeled fields.
+        </p>
+        <p>
+          We could have called this page <em>"How the data is organized,"</em> which is in fact what it is, and what it now says at the top. But "taxonomy" is the word people in this field actually use. Hearing it from us now means you'll recognize it later, when someone in a CMS configuration screen starts shouting it at you. So: taxonomy. <strong class="text-highlighted">Don't panic.</strong>
+        </p>
+        <p>
+          The rest of this page walks through, in order: a quick reminder that databases <em>are</em> taxonomies and you've used a few before; why the original team committed to this shape and why Hub 2.0 has kept it; the three top-level buckets the hub holds; a note on the word "articles"; what's inside each bucket; the fourteen article types as clickable cards; and a proposed future linking of Datasets to Apps/Dashboards. Still no quiz.
         </p>
       </div>
 
