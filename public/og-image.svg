@@ -27,7 +27,7 @@
     <text x="180" y="55" font-size="16" font-weight="800" fill="#a1a1aa" text-anchor="middle" letter-spacing="3">
       DATABASE TERM
     </text>
-    <text x="180" y="142" font-size="78" font-weight="900" fill="#fbbf24" text-anchor="middle">
+    <text x="180" y="142" font-size="64" font-weight="900" fill="#fbbf24" text-anchor="middle">
       articles
     </text>
   </g>
@@ -41,14 +41,14 @@
     <text x="180" y="55" font-size="16" font-weight="800" fill="#a1a1aa" text-anchor="middle" letter-spacing="3">
       PLAIN ENGLISH
     </text>
-    <text x="180" y="142" font-size="78" font-weight="900" fill="#7dd3fc" text-anchor="middle">
+    <text x="180" y="142" font-size="64" font-weight="900" fill="#7dd3fc" text-anchor="middle">
       summaries
     </text>
   </g>
 
   <!-- Caption -->
-  <text x="600" y="500" font-size="26" font-weight="600" fill="#d4d4d8" text-anchor="middle">
-    14 publication types in the Articles bucket. The chip filter exposes them all.
+  <text x="600" y="500" font-size="24" font-weight="600" fill="#d4d4d8" text-anchor="middle">
+    14 publication types in the Articles bucket — and the UI filter exposes them all.
   </text>
 
   <!-- Bottom URL -->
