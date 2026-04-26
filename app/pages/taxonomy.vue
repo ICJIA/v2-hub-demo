@@ -85,19 +85,16 @@ const structureDiagram = `flowchart TB
       </p>
       <div class="space-y-3 text-sm text-toned">
         <p>
-          "Taxonomy" is one of those words that sounds intimidating in the same way that <em>thermodynamics</em> or <em>quarterly review</em> sound intimidating: not because the underlying idea is particularly difficult, but because it suggests there might be a quiz at the end.
-        </p>
-        <p>
-          <strong class="text-highlighted">There is no quiz.</strong>
+          "Taxonomy" is one of those words that sounds intimidating in the same way that <em>thermodynamics</em> or <em>quarterly review</em> sound intimidating — not because the underlying idea is particularly difficult, but because the word itself feels like it comes with homework attached. It doesn't.
         </p>
         <p>
           In plain English, a taxonomy is the system someone decided on for sorting things into labeled boxes. <strong>Biologists</strong> use one to sort animals — Kingdom, Phylum, Class, Order, Family, Genus, Species, ending eventually with the platypus, which the system never really knew what to do with. <strong>Librarians</strong> use one to sort books: building → section → subject → individual title. <strong>Hardware stores</strong> use one to sort screws, plus several adjacent categories of small metal things that are technically not screws but ended up here anyway. The <strong>Research Hub</strong> uses one to sort everything it publishes — research reports, annual reports, evaluations, datasets, dashboards, and so on — into a small number of named buckets, where every item in a bucket shares the same predictable labeled fields.
         </p>
         <p>
-          We could have called this page <em>"How the data is organized,"</em> which is in fact what it is, and what it now says at the top. But "taxonomy" is the word people in this field actually use. Hearing it from us now means you'll recognize it later, when someone in a CMS configuration screen starts shouting it at you. So: taxonomy. <strong class="text-highlighted">Don't panic.</strong>
+          We could have called this page <em>"How the data is organized,"</em> which is in fact what it is, and what it now says at the top. But "taxonomy" is the word people in this field actually use. Hearing it from us now means you'll recognize it later, when someone in a CMS configuration screen starts shouting it at you.
         </p>
         <p>
-          The rest of this page walks through, in order: a quick reminder that databases <em>are</em> taxonomies and you've used a few before; why the original team committed to this shape and why Hub 2.0 has kept it; the three top-level buckets the hub holds; a note on the word "articles"; what's inside each bucket; the fourteen article types as clickable cards; and a proposed future linking of Datasets to Apps/Dashboards. Still no quiz.
+          The rest of this page walks through, in order: a quick reminder that databases <em>are</em> taxonomies and you've used a few before; why the original team committed to this shape and why Hub 2.0 has kept it; the three top-level buckets the hub holds; a note on the word "articles"; what's inside each bucket; the fourteen article types as clickable cards; and a proposed future linking of Datasets to Apps/Dashboards.
         </p>
       </div>
 

@@ -64,18 +64,6 @@ function showExamples(typeValue: string) {
             size="lg"
           />
         </div>
-        <div class="mt-8 inline-flex items-center gap-3 rounded-2xl border-2 border-amber-400 bg-amber-50 px-5 py-3 sm:gap-4 sm:px-6 sm:py-4 dark:border-amber-600/60 dark:bg-amber-950/30">
-          <UIcon
-            name="i-lucide-life-buoy"
-            class="size-6 text-amber-600 sm:size-7 dark:text-amber-400"
-          />
-          <span class="text-2xl font-black uppercase tracking-tight text-amber-700 sm:text-3xl dark:text-amber-400">
-            Don't panic.
-          </span>
-          <span class="text-sm italic text-zinc-700 sm:text-base dark:text-amber-100/80">
-            There won't be a quiz.
-          </span>
-        </div>
       </div>
     </section>
 
@@ -133,9 +121,6 @@ function showExamples(typeValue: string) {
           </p>
           <p>
             So the fix is already in place. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those. The database has supported this since Hub 1.0 — the demo just exposes it. (See <em>Why "articles" and not "summaries"?</em> below for the naming history.)
-          </p>
-          <p class="text-sm italic text-zinc-600 dark:text-zinc-400">
-            That's the entire pitch. <strong class="not-italic text-zinc-900 dark:text-white">There is no quiz.</strong>
           </p>
         </div>
       </div>
@@ -455,7 +440,7 @@ function showExamples(typeValue: string) {
           Here are three layouts. Same data behind all of them.
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to "Research Report" — that's the test. <em>Still no quiz.</em>
+          They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to "Research Report" — that's the test.
         </p>
 
         <div class="grid gap-4 md:grid-cols-3">

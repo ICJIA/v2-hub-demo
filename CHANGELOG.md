@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.71] — 2026-04-26
+
+### Removed
+
+- **All "Don't panic" and "no quiz" references across the site.** On reflection these read as a bit condescending. Removed: the hero "DON'T PANIC. There won't be a quiz." callout on the home page, the "That's the entire pitch. There is no quiz." line in the home's "Why this demo" section, the "Still no quiz." callback in the home's "Try it yourself" subhead, the "There is no quiz." line in the `/about` subhead, and the "There is no quiz" / "Don't panic." / "Still no quiz." markers in the `/taxonomy` opener. The Adams-y warmth in the taxonomy intro stays (thermodynamics, quarterly review, the platypus, hardware-store screws); only the quiz/panic running gag is gone.
+
 ## [0.1.70] — 2026-04-26
 
 ### Changed
