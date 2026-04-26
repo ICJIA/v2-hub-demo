@@ -67,7 +67,9 @@ useHead({
 })
 
 const title = 'ICJIA Research Hub — Publication Type Filter Demo'
-const description = 'How Hub 2.0 organizes ICJIA research. "Articles" is the umbrella for fourteen publication types — research reports, annual reports, program evaluations, and more. Three filter layouts to compare; every type one click away.'
+// Kept under 160 chars for SEO/social-preview tools. Longer prose for
+// AI summarizers lives in the JSON-LD WebSite description above.
+const description = 'How Hub 2.0 organizes ICJIA research: "Articles" is the umbrella for fourteen publication types. Three filter layouts compared side-by-side.'
 
 useSeoMeta({
   title,

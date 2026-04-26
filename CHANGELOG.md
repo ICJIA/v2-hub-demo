@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.75] — 2026-04-26
+
+### Fixed
+
+- **Meta description trimmed under 160 chars** for SEO / social-preview tools (MetaPeek flagged 276 → exceeds 160). Home page meta description is now ~155 chars: *"How Hub 2.0 organizes ICJIA research: 'Articles' is the umbrella for fourteen publication types — including research reports. Three filter layouts to try."* Global `app.vue` description trimmed to ~140 chars. The richer ~270-char descriptions used by AI summarizers stay in the JSON-LD `WebPage` and `WebSite` blocks (where length isn't constrained).
+
 ## [0.1.74] — 2026-04-26
 
 ### Added

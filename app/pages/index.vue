@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const PAGE_TITLE = 'ICJIA Research Hub — Filter Demo'
-const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: "Articles" is the umbrella for fourteen publication types — research reports, annual reports, program evaluations, updates, strategic plans, and more. Three filter UX layouts compare against the same dataset; every type is one click away.'
+// Short description for the <meta name="description"> tag — kept under
+// 160 chars for SEO/social-preview tools. The richer prose for AI
+// summarizers lives in the JSON-LD WebPage block below.
+const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: "Articles" is the umbrella for fourteen publication types — including research reports. Three filter layouts to try.'
+const PAGE_DESCRIPTION_LONG = 'How Hub 2.0 organizes ICJIA research: "Articles" is the umbrella for fourteen publication types — research reports, annual reports, program evaluations, updates, strategic plans, and more. Three filter UX layouts compare against the same dataset; every type is one click away.'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/'
 const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
@@ -14,7 +18,7 @@ useHead({
         '@type': 'WebPage',
         'name': PAGE_TITLE,
         'url': PAGE_URL,
-        'description': PAGE_DESCRIPTION,
+        'description': PAGE_DESCRIPTION_LONG,
         'inLanguage': 'en-US',
         'datePublished': '2026-04-15',
         'dateModified': '2026-04-26',
