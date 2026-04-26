@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.68] — 2026-04-26
+
+### Changed
+
+- **Quiz-gag setup at the very top of the home page.** Added a small italic line beneath the hero CTAs — *"There won't be a quiz."* — so the running gag has a clear setup for the manager who lands on the home page first. Order across the page: hero ("won't be") → "Why this demo" closer ("There is no quiz") → "Try it yourself" subhead ("Still no quiz").
+
 ## [0.1.67] — 2026-04-26
 
 ### Added
