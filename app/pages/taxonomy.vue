@@ -1,20 +1,7 @@
 <script setup lang="ts">
-import type { Article } from '~/composables/useArticles'
-
 useHead({ title: 'Hub 1.0 / 2.0 Taxonomy — Research Hub Demo' })
 
 const { data: rawArticles } = await useArticles({ fillRandom: false })
-
-const examplesByType = computed(() => {
-  const map = new Map<string, Article[]>()
-  for (const a of rawArticles.value ?? []) {
-    if (!a.type) continue
-    const list = map.get(a.type) ?? []
-    list.push(a)
-    map.set(a.type, list)
-  }
-  return map
-})
 
 const selectedTypeForModal = ref<string | null>(null)
 const isExamplesOpen = ref(false)
@@ -76,23 +63,6 @@ const structureDiagram = `flowchart TB
 
   Apps --> APCat["categories<br/>free-form labels"]:::freeform
   Apps --> APTag["tags<br/>free-form keywords"]:::freeform`
-
-const articleTypes = [
-  { value: 'researchReport', label: 'Research Report' },
-  { value: 'annualReport', label: 'Annual Report' },
-  { value: 'article', label: 'Article' },
-  { value: 'dataset', label: 'Dataset (article subtype)', note: 'Yes, confusingly there is a "Dataset" type inside Articles AND a separate Datasets content type. They are different.' },
-  { value: 'evaluation', label: 'Evaluation' },
-  { value: 'general', label: 'General' },
-  { value: 'newsletter', label: 'Newsletter' },
-  { value: 'process_evaluation', label: 'Process Evaluation' },
-  { value: 'programEvaluationSummary', label: 'Program Evaluation Summary' },
-  { value: 'researchAtAGlance', label: 'Research At A Glance' },
-  { value: 'researchBulletin', label: 'Research Bulletin' },
-  { value: 'strategicPlan', label: 'Strategic Plan' },
-  { value: 'toolkit', label: 'Toolkit' },
-  { value: 'update', label: 'Update' }
-]
 </script>
 
 <template>
@@ -272,39 +242,11 @@ const articleTypes = [
         Click any type to see real examples from the live database.
       </p>
 
-      <div class="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2">
-        <button
-          v-for="t in articleTypes"
-          :key="t.value"
-          type="button"
-          class="flex w-full items-start gap-2 rounded border border-default bg-default px-3 py-2 text-left transition-all hover:border-primary/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          @click="showExamples(t.value)"
-        >
-          <UIcon
-            name="i-lucide-tag"
-            class="mt-0.5 size-4 shrink-0 text-muted"
-          />
-          <div class="flex-1">
-            <div class="text-toned">
-              {{ t.label }}
-              <span class="ml-1 text-xs font-normal text-muted">({{ examplesByType.get(t.value)?.length ?? 0 }})</span>
-            </div>
-            <div class="text-xs text-muted">
-              <code>{{ t.value }}</code>
-            </div>
-            <div
-              v-if="t.note"
-              class="mt-1 text-xs text-muted"
-            >
-              {{ t.note }}
-            </div>
-          </div>
-          <UIcon
-            name="i-lucide-chevron-right"
-            class="mt-1 size-4 shrink-0 text-muted"
-          />
-        </button>
-      </div>
+      <HubArticleTypeGrid
+        :articles="rawArticles"
+        variant="list"
+        @select="showExamples"
+      />
     </section>
 
     <section class="mb-10">
