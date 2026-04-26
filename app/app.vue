@@ -19,7 +19,12 @@ useHead({
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', href: '/favicon.ico' },
-    { rel: 'canonical', href: SITE_URL }
+    { rel: 'canonical', href: SITE_URL },
+    // Preconnect to the Strapi origin — every article splash image is
+    // fetched from there, so warming the TLS handshake early shaves
+    // perceptible time off the View 0/1/2 grid render.
+    { rel: 'preconnect', href: 'https://v2.hub.icjia-api.cloud', crossorigin: '' },
+    { rel: 'dns-prefetch', href: 'https://v2.hub.icjia-api.cloud' }
   ],
   script: [
     {
@@ -123,43 +128,48 @@ function dismissPocBanner() {
 
 <template>
   <UApp>
-    <ClientOnly>
-      <div
-        v-if="pocBannerVisible"
-        class="border-b-2 border-amber-300 bg-amber-50 px-6 py-5 text-amber-900 dark:border-amber-600/40 dark:bg-amber-950/40 dark:text-amber-100"
-      >
-        <div class="mx-auto flex max-w-5xl items-start gap-3 sm:items-center sm:gap-4">
-          <div class="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-200 text-amber-900 dark:bg-amber-500/20 dark:text-amber-200">
-            <UIcon
-              name="i-lucide-construction"
-              class="size-5"
-            />
-          </div>
-          <div class="flex-1 text-sm leading-relaxed sm:text-base">
-            <strong class="font-bold">Proof-of-Concept demo.</strong>
-            Examples are <em>illustrative</em>. Many articles in the live CMS aren't yet tagged with a type, so the demo fills placeholders client-side so every filter has examples to show.
-            <strong>Full accuracy requires Hub 2.0 editorial curation.</strong>
-            <NuxtLink
-              to="/taxonomy"
-              class="ml-1 inline-block font-semibold underline underline-offset-2 hover:text-amber-700 dark:hover:text-amber-50"
-            >
-              How the data is organized →
-            </NuxtLink>
-          </div>
-          <button
-            type="button"
-            aria-label="Dismiss this banner for the session"
-            class="flex size-8 shrink-0 items-center justify-center rounded-full text-amber-900 transition-colors hover:bg-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 dark:text-amber-100 dark:hover:bg-amber-500/20"
-            @click="dismissPocBanner"
-          >
-            <UIcon
-              name="i-lucide-x"
-              class="size-5"
-            />
-          </button>
+    <!-- POC banner is SSR-rendered (no ClientOnly) so it doesn't pop in
+         after hydration and cause CLS. Wrapped in <aside> so all the
+         banner copy lives inside a landmark (axe `region` rule). The
+         dismiss state is read in onMounted; previously-dismissed users
+         see the banner briefly and then it hides — Lighthouse runs in
+         a fresh sessionStorage-empty context so it sees the banner. -->
+    <aside
+      v-if="pocBannerVisible"
+      aria-label="Proof-of-concept demo notice"
+      class="border-b-2 border-amber-300 bg-amber-50 px-6 py-5 text-amber-900 dark:border-amber-600/40 dark:bg-amber-950/40 dark:text-amber-100"
+    >
+      <div class="mx-auto flex max-w-5xl items-start gap-3 sm:items-center sm:gap-4">
+        <div class="flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-200 text-amber-900 dark:bg-amber-500/20 dark:text-amber-200">
+          <UIcon
+            name="i-lucide-construction"
+            class="size-5"
+          />
         </div>
+        <div class="flex-1 text-sm leading-relaxed sm:text-base">
+          <strong class="font-bold">Proof-of-Concept demo.</strong>
+          Examples are <em>illustrative</em>. Many articles in the live CMS aren't yet tagged with a type, so the demo fills placeholders client-side so every filter has examples to show.
+          <strong>Full accuracy requires Hub 2.0 editorial curation.</strong>
+          <NuxtLink
+            to="/taxonomy"
+            class="ml-1 inline-block font-semibold underline underline-offset-2 hover:text-amber-700 dark:hover:text-amber-50"
+          >
+            How the data is organized →
+          </NuxtLink>
+        </div>
+        <button
+          type="button"
+          aria-label="Dismiss this banner for the session"
+          class="flex size-8 shrink-0 items-center justify-center rounded-full text-amber-900 transition-colors hover:bg-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 dark:text-amber-100 dark:hover:bg-amber-500/20"
+          @click="dismissPocBanner"
+        >
+          <UIcon
+            name="i-lucide-x"
+            class="size-5"
+          />
+        </button>
       </div>
-    </ClientOnly>
+    </aside>
 
     <UHeader>
       <template #left>

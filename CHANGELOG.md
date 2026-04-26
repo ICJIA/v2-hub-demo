@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.77] — 2026-04-26
+
+### Fixed
+
+- **CLS on the home page.** The POC banner was wrapped in `<ClientOnly>`, which meant it was absent from the prerendered HTML and pushed all page content downward when it appeared on hydration — directly causing the Cumulative Layout Shift score of 0.106. Removed the `<ClientOnly>` wrapper so the banner ships in the SSR/prerendered HTML and is in place from first paint. Previously-dismissed users will see a brief flash before `onMounted` hides it, but Lighthouse runs in a fresh sessionStorage-empty context so the audit always sees the banner from the start.
+- **axe `region` (WCAG 2.1 AA).** Wrapped the banner content in `<aside aria-label="Proof-of-concept demo notice">` so all banner copy sits inside a landmark.
+- **Critical-request chain — preconnect to Strapi.** Added `<link rel="preconnect" href="https://v2.hub.icjia-api.cloud" crossorigin>` plus a `dns-prefetch` fallback. Every article splash image on `/view0`, `/view1`, `/view2` is fetched from that origin, so warming the TLS handshake during HTML download shaves perceptible time off the grid render.
+
 ## [0.1.76] — 2026-04-26
 
 ### Fixed
