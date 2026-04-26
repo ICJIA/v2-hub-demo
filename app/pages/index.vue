@@ -39,7 +39,7 @@ function showExamples(typeValue: string) {
         <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           A short orientation
         </div>
-        <h1 class="mb-4 text-4xl font-extrabold leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+        <h1 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
           How Hub 2.0 organizes<br>ICJIA research.
         </h1>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
@@ -78,26 +78,26 @@ function showExamples(typeValue: string) {
         </h2>
 
         <!-- Equivalence visual -->
-        <div class="my-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
-          <div class="rounded-xl border-2 border-amber-500 bg-amber-500/10 px-7 py-4 text-center">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
+        <div class="my-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+          <div class="w-full max-w-xs rounded-2xl border-2 border-amber-500 bg-amber-500/10 px-8 py-6 text-center sm:w-auto">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
               Database term
             </div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-amber-600 sm:text-3xl dark:text-amber-400">
+            <div class="mt-2 text-4xl font-black tracking-tight text-amber-600 sm:text-5xl dark:text-amber-400">
               articles
             </div>
           </div>
           <div
-            class="text-3xl font-extrabold text-zinc-900 sm:text-4xl dark:text-white"
+            class="text-5xl font-black text-zinc-900 sm:text-7xl dark:text-white"
             aria-hidden="true"
           >
             ≡
           </div>
-          <div class="rounded-xl border-2 border-sky-500 bg-sky-500/10 px-7 py-4 text-center dark:border-sky-400">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
+          <div class="w-full max-w-xs rounded-2xl border-2 border-sky-500 bg-sky-500/10 px-8 py-6 text-center sm:w-auto dark:border-sky-400">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
               Plain English
             </div>
-            <div class="mt-1 text-2xl font-extrabold tracking-tight text-sky-700 sm:text-3xl dark:text-sky-300">
+            <div class="mt-2 text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-300">
               summaries
             </div>
           </div>
@@ -113,43 +113,70 @@ function showExamples(typeValue: string) {
           <p>
             "Articles" is Hub 2.0's umbrella label, carried forward from Hub 1.0 — originally called "summaries" during Hub 1.0 planning, before the team renamed it ahead of implementation. The label covers fourteen publication types from ICJIA: research reports, annual reports, program evaluations, updates, strategic plans, and nine more. An article <em>is</em> a summary; the name just changed. See <em>Why "articles" and not "summaries"?</em> below for the deliberation.
           </p>
+          <p class="text-sm italic text-zinc-600 dark:text-zinc-400">
+            That's the entire pitch. <strong class="not-italic text-zinc-900 dark:text-white">There is no quiz.</strong>
+          </p>
         </div>
       </div>
     </section>
 
     <!-- 3. STAT STRIP -->
-    <section class="border-b border-zinc-200 px-6 py-6 sm:px-12 lg:px-16 dark:border-zinc-800">
-      <div class="mx-auto grid max-w-5xl grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-4">
-        <div>
-          <div class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+    <section class="border-b border-zinc-200 bg-white px-6 py-10 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-newspaper"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
             {{ articleCountLabel }}
           </div>
-          <div class="mt-1 text-xs text-zinc-500">
-            articles already in the catalog
+          <div class="mt-2 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+            articles in the catalog
           </div>
         </div>
-        <div>
-          <div class="text-3xl font-extrabold tracking-tight text-amber-600 dark:text-amber-500">
+        <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+            <UIcon
+              name="i-lucide-tags"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
             14
           </div>
-          <div class="mt-1 text-xs text-zinc-500">
-            types inside the Articles bucket
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            types inside Articles
           </div>
         </div>
-        <div>
-          <div class="text-3xl font-extrabold tracking-tight text-sky-600 dark:text-sky-400">
+        <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+            <UIcon
+              name="i-lucide-layout-grid"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
             3
           </div>
-          <div class="mt-1 text-xs text-zinc-500">
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
             filter layouts to compare
           </div>
         </div>
-        <div>
-          <div class="text-3xl font-extrabold tracking-tight text-violet-600 dark:text-violet-400">
+        <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+            <UIcon
+              name="i-lucide-mouse-pointer-click"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
             1
           </div>
-          <div class="mt-1 text-xs text-zinc-500">
-            click to find what you want
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            click to find what you need
           </div>
         </div>
       </div>
@@ -288,6 +315,106 @@ function showExamples(typeValue: string) {
             </p>
             <p>
               We landed on <strong class="text-amber-700 dark:text-amber-400">articles</strong> because it was both <strong>more general</strong> (a publishing platform can carry many kinds of digital pieces, including standalone articles) and <strong>more specific</strong> (an "article" is a familiar concept — exactly what you'd expect on a publishing platform). The hub was always meant to be a publishing platform first; "articles" was the umbrella that fit that identity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5.5 TL;DR — the point, in one breath -->
+    <section class="border-y-4 border-amber-500 bg-amber-100/40 px-6 py-16 sm:px-12 lg:px-16 dark:border-amber-500/80 dark:bg-amber-500/10">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-zap"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-amber-800 sm:text-sm dark:text-amber-300">
+            This is a lot. What's the point?
+          </span>
+        </div>
+        <h2 class="mb-6 text-4xl font-black leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+          Every research report on the hub is <span class="text-amber-700 dark:text-amber-400">one click</span> away.
+        </h2>
+        <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
+          They're filed under <strong class="text-amber-700 dark:text-amber-400">"Articles"</strong> alongside thirteen other publication types. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any of the three layouts below. Done.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5.7 TAKEAWAYS — for the busy manager -->
+    <section class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-list-checks"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700 sm:text-sm dark:text-emerald-300">
+            Got other meetings?
+          </span>
+        </div>
+        <h2 class="mb-8 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
+          Five takeaways. <span class="text-emerald-700 dark:text-emerald-400">Skim and go.</span>
+        </h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <span class="text-lg font-black">1</span>
+            </div>
+            <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              All research reports are already on the hub.
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              They're filed under "Articles" — the database's umbrella label for everything published.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <span class="text-lg font-black">2</span>
+            </div>
+            <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              "Articles" holds 14 publication types.
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Research reports, annual reports, program evaluations, updates, strategic plans, plus nine more.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <span class="text-lg font-black">3</span>
+            </div>
+            <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              Click any type to filter.
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              The chip row on every view ("Research Reports," "Annual Reports," etc.) is the one-click answer.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <span class="text-lg font-black">4</span>
+            </div>
+            <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              Three layouts to compare.
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              View 0 (chips + advanced toggle), View 1 (dropdowns only), View 2 (chips + always-on bar). Pick a winner.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 md:col-span-2 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <span class="text-lg font-black">5</span>
+            </div>
+            <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              Hub 2.0 inherited Hub 1.0's data structure intact.
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Nothing's missing — the demo just exposes what's already there.
             </p>
           </div>
         </div>

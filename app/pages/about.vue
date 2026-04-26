@@ -40,7 +40,7 @@ const changes = [
         What this demo shows
       </h1>
       <p class="text-sm text-muted">
-        How this proof-of-concept differs from the current research hub. The goal: anyone — staff, partners, the public — can find the article they're looking for in one or two clicks.
+        How this proof-of-concept differs from the current research hub. The goal: anyone — staff, partners, the public — can find the article they're looking for in one or two clicks. <strong>There is no quiz.</strong>
       </p>
     </div>
 
