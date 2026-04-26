@@ -12,32 +12,32 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        name: PAGE_TITLE,
-        url: PAGE_URL,
-        description: PAGE_DESCRIPTION,
-        inLanguage: 'en-US',
-        datePublished: '2026-04-15',
-        dateModified: '2026-04-26',
-        primaryImageOfPage: {
+        'name': PAGE_TITLE,
+        'url': PAGE_URL,
+        'description': PAGE_DESCRIPTION,
+        'inLanguage': 'en-US',
+        'datePublished': '2026-04-15',
+        'dateModified': '2026-04-26',
+        'primaryImageOfPage': {
           '@type': 'ImageObject',
-          url: OG_IMAGE,
-          width: 1200,
-          height: 630
+          'url': OG_IMAGE,
+          'width': 1200,
+          'height': 630
         },
-        isPartOf: {
+        'isPartOf': {
           '@type': 'WebSite',
-          name: 'ICJIA Research Hub Filter Demo',
-          url: 'https://v2-hub-demo.netlify.app'
+          'name': 'ICJIA Research Hub Filter Demo',
+          'url': 'https://v2-hub-demo.netlify.app'
         },
-        publisher: {
+        'publisher': {
           '@type': 'Organization',
-          name: 'Illinois Criminal Justice Information Authority',
-          alternateName: 'ICJIA',
-          url: 'https://icjia.illinois.gov/'
+          'name': 'Illinois Criminal Justice Information Authority',
+          'alternateName': 'ICJIA',
+          'url': 'https://icjia.illinois.gov/'
         },
-        about: {
+        'about': {
           '@type': 'Thing',
-          name: 'ICJIA Research Hub data taxonomy and publication-type filter UX'
+          'name': 'ICJIA Research Hub data taxonomy and publication-type filter UX'
         }
       })
     }

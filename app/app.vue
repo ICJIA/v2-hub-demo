@@ -32,30 +32,30 @@ useHead({
           {
             '@type': 'WebSite',
             '@id': `${SITE_URL}/#website`,
-            name: 'ICJIA Research Hub — Publication Type Filter Demo',
-            alternateName: 'ICJIA Research Hub Filter Demo',
-            url: SITE_URL,
-            description: 'Proof-of-concept demonstrating how the ICJIA Research Hub article list could be filtered by publication type, topic, author, year, and tags. Three filter UX flavors compared side-by-side, plus a plain-language explainer of the Hub 2.0 / Strapi 5 taxonomy.',
-            inLanguage: 'en-US',
-            datePublished: PUBLISHED_DATE,
-            dateModified: MODIFIED_DATE,
-            publisher: { '@id': `${SITE_URL}/#organization` },
-            image: { '@id': `${SITE_URL}/#og-image` }
+            'name': 'ICJIA Research Hub — Publication Type Filter Demo',
+            'alternateName': 'ICJIA Research Hub Filter Demo',
+            'url': SITE_URL,
+            'description': 'Proof-of-concept demonstrating how the ICJIA Research Hub article list could be filtered by publication type, topic, author, year, and tags. Three filter UX flavors compared side-by-side, plus a plain-language explainer of the Hub 2.0 / Strapi 5 taxonomy.',
+            'inLanguage': 'en-US',
+            'datePublished': PUBLISHED_DATE,
+            'dateModified': MODIFIED_DATE,
+            'publisher': { '@id': `${SITE_URL}/#organization` },
+            'image': { '@id': `${SITE_URL}/#og-image` }
           },
           {
             '@type': 'Organization',
             '@id': `${SITE_URL}/#organization`,
-            name: 'Illinois Criminal Justice Information Authority',
-            alternateName: 'ICJIA',
-            url: 'https://icjia.illinois.gov/'
+            'name': 'Illinois Criminal Justice Information Authority',
+            'alternateName': 'ICJIA',
+            'url': 'https://icjia.illinois.gov/'
           },
           {
             '@type': 'ImageObject',
             '@id': `${SITE_URL}/#og-image`,
-            url: OG_IMAGE,
-            width: 1200,
-            height: 630,
-            caption: 'ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background'
+            'url': OG_IMAGE,
+            'width': 1200,
+            'height': 630,
+            'caption': 'ICJIA Research Hub Filter Demo — articles ≡ summaries equivalence visual on a dark background'
           }
         ]
       })
