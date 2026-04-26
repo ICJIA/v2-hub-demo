@@ -176,14 +176,14 @@ const structureDiagram = `flowchart TB
 
     <section class="mb-10 rounded-lg border border-default bg-elevated p-5">
       <p class="mb-2 text-base font-semibold text-highlighted">
-        A note on the word "Article"
+        Why "articles" — and not "summaries"?
       </p>
       <div class="space-y-3 text-sm text-toned">
         <p>
-          In <strong>Hub 1.0</strong>, an <em>article</em> was specifically a summary of a <strong>research report</strong> — the public-facing write-up that pointed back at the underlying research document. That was the original meaning when the term was chosen.
+          During <strong>Hub 1.0</strong> planning, <em>summaries</em> was a candidate label. It was rejected after several weeks of deliberation because articles can also stand on their own — published pieces with no attached source PDF, just an article in the everyday sense. "Summaries" didn't fit that case.
         </p>
         <p>
-          Over the years the scope quietly widened. Articles started covering <strong>annual reports</strong>, <strong>program evaluation summaries</strong>, <strong>updates</strong>, and so on. The core idea is still the same — an article is a summary of something — but today that "something" can be any one of the fourteen <code>type</code> values, not just <code>researchReport</code>.
+          The team landed on <strong>articles</strong> because it was both more general (a publishing platform carries many kinds of digital pieces, including standalone articles) and more specific (an "article" is a familiar concept on a publishing platform). The core scope was anticipated by that choice: an article can be a summary of a research report, an annual report, a program evaluation, a strategic plan, or one of fourteen <code>type</code> values total — and it can also be a piece with no source attachment at all.
         </p>
         <p>
           That history is exactly why the chips in this demo matter. Without a way to filter by <code>type</code>, an article that summarizes a formal research report and an article that summarizes a quarterly newsletter look identical in the list. With the chips, "show me only the formal research reports" is one click.
