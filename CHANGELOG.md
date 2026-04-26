@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.76] — 2026-04-26
+
+### Fixed
+
+- **Lighthouse a11y `color-contrast` (WCAG 1.4.3 AA) on the home page** — six elements were failing in light mode. Bumped every bare `text-zinc-500` to `text-zinc-600 dark:text-zinc-400` (4.83:1 → 7.6:1 against white) — covers the equivalence eyebrows, the 3-content-type ribbon copy on the de-emphasized Datasets/Apps cards, the four legend chips at the bottom of the Articles bucket, the author-canonicalization eyebrows ("WHAT THE CMS DELIVERS", "FIVE NORMALIZATION STEPS, IN ORDER"), and the "canonical key" small text. Removed `opacity-70` from the Datasets/Apps content-type cards (the opacity was multiplying foreground contrast down to 2.45:1); replaced with `bg-zinc-100/70` so the de-emphasis still reads visually without crushing readable contrast. Lighthouse a11y goes from 96 → 100.
+
 ## [0.1.75] — 2026-04-26
 
 ### Fixed

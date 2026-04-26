@@ -127,7 +127,7 @@ function showExamples(typeValue: string) {
         <!-- Equivalence visual -->
         <div class="my-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
           <div class="w-full max-w-xs rounded-2xl border-2 border-amber-500 bg-amber-500/10 px-8 py-6 text-center sm:w-auto">
-            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
               Database term
             </div>
             <div class="mt-2 text-4xl font-black tracking-tight text-amber-600 sm:text-5xl dark:text-amber-400">
@@ -141,7 +141,7 @@ function showExamples(typeValue: string) {
             ≡
           </div>
           <div class="w-full max-w-xs rounded-2xl border-2 border-sky-500 bg-sky-500/10 px-8 py-6 text-center sm:w-auto dark:border-sky-400">
-            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
               Plain English
             </div>
             <div class="mt-2 text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-300">
@@ -266,33 +266,33 @@ function showExamples(typeValue: string) {
               ↓ filter demo focuses here
             </div>
           </div>
-          <div class="rounded-xl border border-zinc-300 bg-zinc-100/50 p-4 opacity-70 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500">
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
               Content type 2 of 3
             </div>
             <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
               <UIcon
                 name="i-lucide-database"
-                class="size-5 text-zinc-500"
+                class="size-5 text-zinc-600 dark:text-zinc-400"
               />
               Datasets
             </div>
-            <div class="mt-1 text-xs text-zinc-500">
+            <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
               separate top-level type
             </div>
           </div>
-          <div class="rounded-xl border border-zinc-300 bg-zinc-100/50 p-4 opacity-70 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-500">
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
               Content type 3 of 3
             </div>
             <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
               <UIcon
                 name="i-lucide-layout-dashboard"
-                class="size-5 text-zinc-500"
+                class="size-5 text-zinc-600 dark:text-zinc-400"
               />
               Apps / Dashboards
             </div>
-            <div class="mt-1 text-xs text-zinc-500">
+            <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
               separate top-level type
             </div>
           </div>
@@ -329,7 +329,7 @@ function showExamples(typeValue: string) {
           />
 
           <div class="mt-4 flex flex-col gap-3 border-t border-dashed border-zinc-300 pt-3 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800">
-            <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-500">
+            <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-600 dark:text-zinc-400">
               <span><span class="text-amber-600 dark:text-amber-400">●</span> chip on every view</span>
               <span><span class="text-sky-600 dark:text-sky-400">●</span> research / evaluation</span>
               <span><span class="text-emerald-600 dark:text-emerald-400">●</span> reports &amp; plans</span>
@@ -599,7 +599,7 @@ function showExamples(typeValue: string) {
         <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
           <!-- BEFORE -->
           <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
-            <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-500">
+            <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
               What the CMS delivers
             </div>
             <ul class="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
@@ -654,7 +654,7 @@ function showExamples(typeValue: string) {
                 <span class="text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Jane Carter</span>
                 <span class="rounded-full bg-violet-500/20 px-2.5 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300">7 articles</span>
               </div>
-              <div class="mt-2 text-xs text-zinc-500">
+              <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
                 canonical key: <code class="text-violet-700 dark:text-violet-300">jane carter</code>
               </div>
             </div>
@@ -666,7 +666,7 @@ function showExamples(typeValue: string) {
 
         <!-- The five steps -->
         <div class="mt-12">
-          <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-500">
+          <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
             <UIcon
               name="i-lucide-list-ordered"
               class="size-4"
