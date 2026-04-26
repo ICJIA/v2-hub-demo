@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.66] — 2026-04-26
+
+### Fixed
+
+- **`og-image.svg` — `articles` and `summaries` now fit inside their card boxes.** Reduced the card-label font-size from 78px to 64px so both labels render cleanly with margin to spare at native 1200×630. Re-ran `rsvg-convert` to regenerate `og-image.png`.
+- **Caption is now layout-accurate.** "The chip filter exposes them all" → "and the UI filter exposes them all" — View 1 uses dropdowns, not chips, so "UI filter" is the correct umbrella term.
+
 ## [0.1.65] — 2026-04-26
 
 ### Added
