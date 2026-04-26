@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.69] — 2026-04-26
+
+### Changed
+
+- **Hero quiz-gag is now visual.** Replaced the small italic line ("There won't be a quiz.") with a Hitchhiker's-style bordered callout: amber border + amber surface, life-buoy icon, **DON'T PANIC.** in big extrabold uppercase amber, followed by a smaller italic *"There won't be a quiz."* The Adams reference is direct now (it's literally the front of the *Hitchhiker's Guide*), and the gag has enough visual weight at the top of the page that the later "Still no quiz" callback in the "Try it yourself" section reads as a callback.
+
 ## [0.1.68] — 2026-04-26
 
 ### Changed
