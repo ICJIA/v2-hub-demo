@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.73] — 2026-04-26
+
+### Changed
+
+- **"Try it yourself" heading nudge.** The H2 now reads *"Here are three layouts. Same data behind all of them. Go ahead. Click."* — the trailing prompt is muted-grey so the cards below read as the obvious next step.
+
 ## [0.1.72] — 2026-04-26
 
 ### Fixed

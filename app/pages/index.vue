@@ -437,7 +437,7 @@ function showExamples(typeValue: string) {
           Try it yourself
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Here are three layouts. Same data behind all of them.
+          Here are three layouts. Same data behind all of them. <span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to "Research Report" — that's the test.
