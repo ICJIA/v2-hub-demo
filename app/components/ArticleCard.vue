@@ -6,9 +6,11 @@ const props = withDefaults(defineProps<{
   article: Article
   searchQuery?: string
   priority?: boolean
+  from?: string
 }>(), {
   searchQuery: '',
-  priority: false
+  priority: false,
+  from: ''
 })
 
 const emit = defineEmits<{
@@ -17,7 +19,10 @@ const emit = defineEmits<{
   'select-author': [key: string]
 }>()
 
-const href = computed(() => `/articles/${props.article.slug}`)
+const href = computed(() => {
+  const base = `/articles/${props.article.slug}`
+  return props.from ? `${base}?from=${props.from}` : base
+})
 const splashSrc = computed(() => imageUrl(props.article.splash?.url))
 const splashAlt = computed(() => props.article.splash?.alternativeText ?? props.article.title)
 const authorNames = computed(() => articleAuthorNames(props.article))

@@ -27,13 +27,34 @@ const authorList = computed(() => {
   if (names.length === 2) return `${names[0]} and ${names[1]}`
   return `${names.slice(0, -1).join(', ')}, and ${names.at(-1)}`
 })
+
+// Back-link target: derived from ?from= query (set by ArticleCard on view0/1/2).
+// We resolve it in onMounted to avoid an SSR/CSR hydration mismatch on
+// prerendered static pages — the prerender has no query, so the default
+// values match what the static HTML carries; the client updates after mount.
+const ALLOWED_VIEWS = ['view0', 'view1', 'view2'] as const
+type FromView = typeof ALLOWED_VIEWS[number]
+const fromView = ref<FromView | ''>('')
+
+onMounted(() => {
+  const raw = String(route.query.from ?? '')
+  if ((ALLOWED_VIEWS as readonly string[]).includes(raw)) {
+    fromView.value = raw as FromView
+  }
+})
+
+const backTo = computed(() => fromView.value ? `/${fromView.value}` : '/view0')
+const backLabel = computed(() => {
+  if (!fromView.value) return 'Back to articles'
+  return `Back to View ${fromView.value.replace('view', '')}`
+})
 </script>
 
 <template>
   <UContainer class="py-8">
     <UButton
-      to="/"
-      label="Back to articles"
+      :to="backTo"
+      :label="backLabel"
       icon="i-lucide-arrow-left"
       variant="ghost"
       size="sm"

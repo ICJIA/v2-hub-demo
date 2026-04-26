@@ -318,6 +318,7 @@ function onTypeChipChange(value: string | null) {
           :article="article"
           :search-query="searchQuery"
           :priority="i === 0"
+          from="view0"
           @select-type="applyTypeFilter"
           @select-tag="applyTagFilter"
           @select-author="applyAuthorFilter"

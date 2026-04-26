@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.72] — 2026-04-26
+
+### Fixed
+
+- **"Back to articles" on `/articles/<slug>` now returns to the view the article was launched from.** `ArticleCard` accepts a new `from` prop (`view0` / `view1` / `view2`); each view passes its own value when rendering the grid, and the link becomes `/articles/<slug>?from=viewN`. The detail page reads `route.query.from` in `onMounted` (avoids any SSR/prerender hydration mismatch on static pages) and updates the back button to `/view0`, `/view1`, or `/view2` with a matching label ("Back to View 0" / "Back to View 1" / "Back to View 2"). If no `from` is set (e.g. arriving via a shared URL or from the `/taxonomy` examples modal), the button falls back to the previous behaviour: "Back to articles" → `/view0`.
+
 ## [0.1.71] — 2026-04-26
 
 ### Removed

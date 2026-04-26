@@ -246,6 +246,7 @@ function applyAuthorFilter(key: string) {
           :article="article"
           :search-query="searchQuery"
           :priority="i === 0"
+          from="view1"
           @select-type="applyTypeFilter"
           @select-tag="applyTagFilter"
           @select-author="applyAuthorFilter"
