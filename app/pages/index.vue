@@ -301,13 +301,13 @@ function showExamples(typeValue: string) {
     >
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
-          Try the three layouts
+          Try it yourself
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Three filter UXs. Same data.
+          Here are three layouts. Same data behind all of them.
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          Same dataset, three layouts to compare. Click any one and try filtering to "Research Report" — that's the headline test.
+          They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to "Research Report" — that's the test. <em>Still no quiz.</em>
         </p>
 
         <div class="grid gap-4 md:grid-cols-3">
