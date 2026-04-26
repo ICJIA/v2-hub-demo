@@ -227,7 +227,7 @@ function showExamples(typeValue: string) {
         </div>
 
         <h3 class="mb-4 text-lg font-bold leading-tight text-zinc-900 sm:text-xl dark:text-white">
-          Inside Articles: 14 types of summaries.
+          Inside Articles: 14 types of summaries. <span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Try it. Click.</span>
         </h3>
 
         <!-- Articles bucket with type grid -->

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 useHead({ title: 'How this data is organized — Research Hub Demo' })
 
-const { data: rawArticles } = await useArticles({ fillRandom: false })
+// Use fillRandom so every article type has at least one example to show
+// in the grid count and the modal. This is a POC demo; the modal banner
+// (illustrative-fill) explains the placeholder fill honestly.
+const { data: rawArticles } = await useArticles({ fillRandom: true })
 
 const selectedTypeForModal = ref<string | null>(null)
 const isExamplesOpen = ref(false)
@@ -232,7 +235,7 @@ const structureDiagram = `flowchart TB
 
     <section class="mb-10">
       <h2 class="mb-3 text-xl font-semibold text-highlighted">
-        The fourteen Article types
+        The fourteen Article types. Try it. Click.
       </h2>
       <p class="mb-4 text-sm text-toned">
         These are the only valid values for an article's <em>type</em> field. Editors can't add new ones in the CMS without a code change. The View 0 chips surface five of these (the most-asked-for); the dropdown on View 1 surfaces all of them.
@@ -314,6 +317,7 @@ const structureDiagram = `flowchart TB
       v-model:open="isExamplesOpen"
       :type-value="selectedTypeForModal"
       :articles="rawArticles"
+      illustrative-fill
     />
   </UContainer>
 </template>

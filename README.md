@@ -58,13 +58,14 @@ Each dropdown leads with an `All …` reset entry, sized to fit the longest item
 - **Smooth scroll-to-top** when a card-click filter is applied so the filter bar comes back into view.
 - **Pagination** via `UPagination`, 12 per page, resets to page 1 on any filter change. Has `aria-label="Article pagination"` for screen-reader landmark uniqueness.
 
-## Three filter UXs for managers to compare
+## Routes
 
-The same dataset and the same card design are presented three ways so reviewers can pick a winner:
-
-- **`/` — View 0 (chips with optional advanced filters).** Default landing page. A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
+- **`/` — Home page.** Visual orientation built for non-technical managers landing on the demo for the first time. Seven sections: hero, "Why this demo" with an `articles ≡ summaries` equivalence visual, stat strip (article count, 14 types, 3 layouts, 1 click), "Three top-level content types" diagram zooming into the Articles bucket with all fourteen type pills (each clickable to open a live-examples modal), naming note, three clickable view cards, and two clickable deep-dive cards (`/taxonomy` and `/about`). Lands the conceptual point that "Articles" is the umbrella content type holding fourteen named types — research reports, annual reports, program evaluations, etc. Respects the dark/light toggle (default dark).
+- **`/view0` — View 0 (chips with optional advanced filters).** A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
 - **`/view1` — View 1 (dropdown-only).** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief, closest to the live site today.
 - **`/view2` — View 2 (chips with always-on filter bar).** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No Advanced toggle.
+
+The home page sells the *why* of the demo; Views 0–2 are three filter-UX flavors for managers to compare against the same dataset.
 
 There's also a separate `/taxonomy` page (linked as **Hub Taxonomy** on the right side of the header) that explains the underlying Strapi 5 data model in plain English with two Mermaid diagrams. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type. Each of the fourteen types is clickable and opens a modal showing the top two real examples currently tagged with that type.
 
@@ -274,17 +275,20 @@ app/
                                        #   link + Hub Taxonomy link + color-mode toggle), main,
                                        #   footer (version + Changelog + GitHub)
   pages/
-    index.vue                          # View 0 — chips with Advanced toggle for the bar
+    index.vue                          # / — visual orientation home page
+    view0.vue                          # View 0 — chips with Advanced toggle for the bar
     view1.vue                          # View 1 — dropdown-only bar (no chips, no Centers)
     view2.vue                          # View 2 — chips with always-on bar
     about.vue                          # /about — What This Demo Shows pitch page
-    taxonomy.vue                       # Hub Taxonomy explainer (Mermaid + interactive type list)
+    taxonomy.vue                       # /taxonomy — "How this data is organized" explainer
     articles/[slug].vue                # internal stub article detail page
   components/
     ArticleCard.vue                    # single card with click-to-filter on type/author/tag
     ArticleFilterBar.vue               # conditional Type / Topics / Centers / Authors / Years
                                        #   / search + Clear all
     ArticleTypeChips.vue               # the chip row used by View 0 and View 2
+    ArticleTypeExamplesModal.vue       # modal showing top-2 examples for a clicked type
+    HubArticleTypeGrid.vue             # interactive grid of 14 article types (list/compact)
     MermaidDiagram.vue                 # client-only Mermaid wrapper, color-mode aware
   composables/
     useArticles.ts                     # GraphQL query + fetch with optional random-type fill
@@ -296,7 +300,7 @@ app/
 
 ## Deploying to Netlify (static)
 
-This POC is set up for **fully static** deployment — `nuxt generate` prerenders every route at build time (View 0, View 1, View 2, `/taxonomy`, and all 236 `/articles/<slug>` detail pages discovered by the crawler), baking the GraphQL response into the HTML. No Netlify Functions, no runtime fetches needed. The Strapi endpoint just has to be reachable from Netlify's build container (it's public, so it is).
+This POC is set up for **fully static** deployment — `nuxt generate` prerenders every route at build time (Home, View 0, View 1, View 2, `/about`, `/taxonomy`, and the `/articles/<slug>` detail pages discovered by the crawler), baking the GraphQL response into the HTML. No Netlify Functions, no runtime fetches needed. The Strapi endpoint just has to be reachable from Netlify's build container (it's public, so it is).
 
 Already in the repo:
 

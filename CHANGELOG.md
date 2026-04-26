@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.64] — 2026-04-26
+
+### Added
+
+- **New visual orientation home page at `/`** (`app/pages/index.vue`). Seven sections — hero, "Why this demo" with an `articles ≡ summaries` equivalence visual, four-stat strip, "Three top-level content types" diagram zooming into the fourteen-pill Articles bucket, naming note, three view cards, and two deep-dive cards. Designed to land one specific manager-facing point on first scroll: "Articles" is the umbrella for everything published; "Research Report" is one type inside it; nothing is missing. Each of the fourteen type pills opens the same examples modal `/taxonomy` uses, with `fillRandom: true` so types with no real CMS tags get illustrative placeholders.
+- **App-wide Proof-of-Concept banner** above every page's header. Icon-in-circle plus dual-line copy explaining that examples are illustrative and full accuracy requires Hub 2.0 editorial curation. **Dismissable per session** via `sessionStorage` — once a manager closes the banner it stays closed for the rest of that tab session, but a new tab or new browser session shows it again.
+- **`/taxonomy` whimsical opener.** New section "Why we said 'taxonomy' (and why we're not sorry)" written for non-technical readers in a Douglas Adams voice — thermodynamics, the platypus, hardware-store screws, "Don't panic," "Still no quiz." Sets up the rest of the page for managers who haven't met the word before.
+- **Two extracted components for reuse:**
+  - `app/components/HubArticleTypeGrid.vue` — the interactive grid of fourteen article-type cards. `list` variant (used by `/taxonomy`) matches the original full-text rendering with counts. `compact` variant (used by the new home) is a denser pill layout with optional family color-coding (sky / emerald / violet / amber-highlight) and an optional `highlight` prop for the headline test case.
+  - `app/components/ArticleTypeExamplesModal.vue` — the modal showing top-2 most-recent articles for a clicked type. Now driven by props (`open`, `typeValue`, `articles`) so any page can mount it. New `illustrativeFill` prop swaps in a different curation banner when the underlying article list has been client-side type-filled (home) vs. real-tagged only (taxonomy).
+- **Design spec + implementation plan** under `docs/superpowers/specs/2026-04-26-home-page-design.md` and `docs/superpowers/plans/2026-04-26-home-page.md` so the home-page redesign decisions and step-by-step build are versioned alongside the code.
+
+### Changed
+
+- **Route swap.** The previous View 0 (chips + advanced filters) moved from `/` to `/view0`. The new home page now lives at `/`. View 1 and View 2 unchanged. Header nav adds a "Home" entry pointing at `/`.
+- **Default color mode flipped to dark, app-wide.** `nuxt.config.ts` now sets `colorMode.preference = 'dark'` and `colorMode.fallback = 'dark'`. The `UColorModeButton` toggle still works on every page; user preference still persists in localStorage. Fresh browsers land in dark.
+- **Home page respects the dark/light toggle.** The new home page uses Tailwind `dark:` prefixes throughout so toggling light mode flips its palette to a clean white-with-dark-text variant. Other pages already do this via Nuxt UI tokens.
+- **`/taxonomy` page renamed and re-toned.** H1 changed from "Hub 1.0 / 2.0 taxonomy" → **"How this data is organized"**. Subhead is now an italic Adams-ish quip ("Everything you ever wanted to know about the Research Hub, databases, and taxonomies but were afraid to ask").
+- **Naming-history copy corrected on `README.md` and `/taxonomy`.** Previous framing said articles "started as summaries of research reports" and "scope quietly widened." Corrected framing: during Hub 1.0 planning the team considered "summaries," rejected it after several weeks of deliberation because articles can stand alone with no attached source PDF, and chose "articles" deliberately as both more general (a publishing platform carries many kinds of digital pieces) and more specific (an "article" is a familiar concept).
+- **Home page diagram heading nudge.** "Inside Articles: 14 types of summaries." now ends with a soft prompt — *Go ahead. Try it. Click.* — to invite the click on the type pills.
+- **"Try it yourself" section copy** rewritten Adams-ish: *"Here are three layouts. Same data behind all of them. They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to 'Research Report' — that's the test. Still no quiz."*
+
+### Fixed
+
+- **Every type pill now has illustrative examples** on both the home page and `/taxonomy`. Earlier, types with zero real CMS tags (Toolkit, Newsletter, General, etc.) opened a modal saying "No tagged examples for this type in the live data yet," and on `/taxonomy` they showed `(0)` next to the label. Both pages now call `useArticles({ fillRandom: true })` so every type gets ~14 placeholder fills, and the shared modal's `illustrative-fill` banner says so honestly. The persistent app-wide POC banner reinforces the message.
+- **Click prompts on the type-grid headings.** Home: *"Inside Articles: 14 types of summaries. Go ahead. Try it. Click."* `/taxonomy`: *"The fourteen Article types. Try it. Click."* — small nudges so the interactive grid reads as interactive.
+
 ## [0.1.63] — 2026-04-25
 
 ### Fixed
