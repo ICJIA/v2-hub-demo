@@ -27,7 +27,8 @@ const version = useRuntimeConfig().public.appVersion
 const currentYear = useState('currentYear', () => new Date().getFullYear())
 
 const navItems = [
-  { label: 'View 0', to: '/' },
+  { label: 'Home', to: '/' },
+  { label: 'View 0', to: '/view0' },
   { label: 'View 1', to: '/view1' },
   { label: 'View 2', to: '/view2' }
 ]
