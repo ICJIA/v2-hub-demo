@@ -163,6 +163,22 @@ const accentClasses: Record<Upgrade['accent'], { ring: string, hoverBorder: stri
             class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
             size="lg"
           />
+          <UButton
+            to="/view1"
+            label="Open View 1"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
+            size="lg"
+          />
+          <UButton
+            to="/view2"
+            label="Open View 2"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
+            size="lg"
+          />
         </div>
       </div>
     </section>
