@@ -60,6 +60,13 @@ const articleCountLabel = computed(() => {
 const selectedTypeForModal = ref<string | null>(null)
 const isExamplesOpen = ref(false)
 
+type ContentTypeId = 'articles' | 'datasets' | 'apps'
+const selectedContentType = ref<ContentTypeId>('articles')
+
+function selectContentType(id: ContentTypeId) {
+  selectedContentType.value = id
+}
+
 function showExamples(typeValue: string) {
   selectedTypeForModal.value = typeValue
   isExamplesOpen.value = true
@@ -88,6 +95,14 @@ function showExamples(typeValue: string) {
             color="neutral"
             variant="solid"
             class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            size="lg"
+          />
+          <UButton
+            to="/current"
+            label="Open Current"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
             size="lg"
           />
           <UButton
@@ -261,37 +276,95 @@ function showExamples(typeValue: string) {
           The hub holds three top-level buckets. Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
         </p>
 
-        <!-- 3-content-type ribbon -->
-        <div class="mb-10 grid gap-3 sm:grid-cols-3">
-          <div class="rounded-xl border-2 border-amber-500 bg-amber-500/10 p-4">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-amber-700 dark:text-amber-400">
+        <!-- 3-content-type ribbon — interactive tabs -->
+        <div class="mb-1 grid gap-3 sm:grid-cols-3">
+          <button
+            type="button"
+            :class="[
+              'group block w-full rounded-xl p-4 text-left transition-all focus:outline-none focus-visible:ring-2',
+              selectedContentType === 'articles'
+                ? 'border-2 border-amber-500 bg-amber-500/10 focus-visible:ring-amber-500 dark:focus-visible:ring-amber-400'
+                : 'border border-zinc-300 bg-zinc-100/70 hover:border-amber-500/60 hover:shadow-lg hover:shadow-amber-500/15 focus-visible:ring-amber-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-amber-400/60 dark:focus-visible:ring-amber-400'
+            ]"
+            :aria-pressed="selectedContentType === 'articles'"
+            @click="selectContentType('articles')"
+          >
+            <div
+              :class="[
+                'text-[10px] font-bold uppercase tracking-[0.1em]',
+                selectedContentType === 'articles' ? 'text-amber-700 dark:text-amber-400' : 'text-zinc-600 dark:text-zinc-400'
+              ]"
+            >
               Content type 1 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-extrabold text-zinc-900 dark:text-white">
+            <div
+              :class="[
+                'mt-1 flex items-baseline gap-2 text-base',
+                selectedContentType === 'articles' ? 'font-extrabold text-zinc-900 dark:text-white' : 'font-bold text-zinc-700 dark:text-zinc-300'
+              ]"
+            >
               <UIcon
                 name="i-lucide-library"
-                class="size-5 text-amber-600 dark:text-amber-400"
+                :class="['size-5', selectedContentType === 'articles' ? 'text-amber-600 dark:text-amber-400' : 'text-zinc-600 dark:text-zinc-400']"
               />
               Articles
               <span class="text-xs font-medium text-zinc-600 dark:text-zinc-400">{{ articleCountLabel }} items</span>
             </div>
             <div class="mt-2 flex flex-wrap gap-1.5">
-              <span class="rounded-full border border-amber-500 bg-amber-500/20 px-2.5 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">type</span>
+              <span
+                :class="[
+                  'rounded-full px-2.5 py-0.5 text-[10px] font-bold',
+                  selectedContentType === 'articles' ? 'border border-amber-500 bg-amber-500/20 text-amber-700 dark:text-amber-300' : 'bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300'
+                ]"
+              >type</span>
               <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">categories</span>
               <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">tags</span>
             </div>
             <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
-              <code class="text-amber-700 dark:text-amber-300">type</code>: 14 fixed values · the rest: free-form
+              <code :class="selectedContentType === 'articles' ? 'text-amber-700 dark:text-amber-300' : ''">type</code>: 14 fixed values · the rest: free-form
             </div>
-          </div>
-          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
+            <div
+              :class="[
+                'mt-2 flex items-center gap-1 text-[10px] font-bold',
+                selectedContentType === 'articles' ? 'text-amber-700 dark:text-amber-400' : 'text-zinc-500 dark:text-zinc-500 group-hover:text-amber-700 dark:group-hover:text-amber-400'
+              ]"
+            >
+              <UIcon
+                :name="selectedContentType === 'articles' ? 'i-lucide-arrow-down' : 'i-lucide-mouse-pointer-click'"
+                class="size-3"
+              />
+              {{ selectedContentType === 'articles' ? 'Showing details below' : 'Click for details' }}
+            </div>
+          </button>
+
+          <button
+            type="button"
+            :class="[
+              'group block w-full rounded-xl p-4 text-left transition-all focus:outline-none focus-visible:ring-2',
+              selectedContentType === 'datasets'
+                ? 'border-2 border-sky-500 bg-sky-500/10 focus-visible:ring-sky-500 dark:focus-visible:ring-sky-400'
+                : 'border border-zinc-300 bg-zinc-100/70 hover:border-sky-500/60 hover:shadow-lg hover:shadow-sky-500/15 focus-visible:ring-sky-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-sky-400/60 dark:focus-visible:ring-sky-400'
+            ]"
+            :aria-pressed="selectedContentType === 'datasets'"
+            @click="selectContentType('datasets')"
+          >
+            <div
+              :class="[
+                'text-[10px] font-bold uppercase tracking-[0.1em]',
+                selectedContentType === 'datasets' ? 'text-sky-700 dark:text-sky-400' : 'text-zinc-600 dark:text-zinc-400'
+              ]"
+            >
               Content type 2 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
+            <div
+              :class="[
+                'mt-1 flex items-baseline gap-2 text-base',
+                selectedContentType === 'datasets' ? 'font-extrabold text-zinc-900 dark:text-white' : 'font-bold text-zinc-700 dark:text-zinc-300'
+              ]"
+            >
               <UIcon
                 name="i-lucide-database"
-                class="size-5 text-zinc-600 dark:text-zinc-400"
+                :class="['size-5', selectedContentType === 'datasets' ? 'text-sky-600 dark:text-sky-400' : 'text-zinc-600 dark:text-zinc-400']"
               />
               Datasets
             </div>
@@ -302,15 +375,48 @@ function showExamples(typeValue: string) {
             <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
               free-form labels · no <code>type</code> enum
             </div>
-          </div>
-          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
+            <div
+              :class="[
+                'mt-2 flex items-center gap-1 text-[10px] font-bold',
+                selectedContentType === 'datasets' ? 'text-sky-700 dark:text-sky-400' : 'text-zinc-500 dark:text-zinc-500 group-hover:text-sky-700 dark:group-hover:text-sky-400'
+              ]"
+            >
+              <UIcon
+                :name="selectedContentType === 'datasets' ? 'i-lucide-arrow-down' : 'i-lucide-mouse-pointer-click'"
+                class="size-3"
+              />
+              {{ selectedContentType === 'datasets' ? 'Showing details below' : 'Click for the datahub roadmap' }}
+            </div>
+          </button>
+
+          <button
+            type="button"
+            :class="[
+              'group block w-full rounded-xl p-4 text-left transition-all focus:outline-none focus-visible:ring-2',
+              selectedContentType === 'apps'
+                ? 'border-2 border-violet-500 bg-violet-500/10 focus-visible:ring-violet-500 dark:focus-visible:ring-violet-400'
+                : 'border border-zinc-300 bg-zinc-100/70 hover:border-violet-500/60 hover:shadow-lg hover:shadow-violet-500/15 focus-visible:ring-violet-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-violet-400/60 dark:focus-visible:ring-violet-400'
+            ]"
+            :aria-pressed="selectedContentType === 'apps'"
+            @click="selectContentType('apps')"
+          >
+            <div
+              :class="[
+                'text-[10px] font-bold uppercase tracking-[0.1em]',
+                selectedContentType === 'apps' ? 'text-violet-700 dark:text-violet-400' : 'text-zinc-600 dark:text-zinc-400'
+              ]"
+            >
               Content type 3 of 3
             </div>
-            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
+            <div
+              :class="[
+                'mt-1 flex items-baseline gap-2 text-base',
+                selectedContentType === 'apps' ? 'font-extrabold text-zinc-900 dark:text-white' : 'font-bold text-zinc-700 dark:text-zinc-300'
+              ]"
+            >
               <UIcon
                 name="i-lucide-layout-dashboard"
-                class="size-5 text-zinc-600 dark:text-zinc-400"
+                :class="['size-5', selectedContentType === 'apps' ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-600 dark:text-zinc-400']"
               />
               Apps / Dashboards
             </div>
@@ -320,6 +426,172 @@ function showExamples(typeValue: string) {
             </div>
             <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
               free-form labels · no <code>type</code> enum
+            </div>
+            <div
+              :class="[
+                'mt-2 flex items-center gap-1 text-[10px] font-bold',
+                selectedContentType === 'apps' ? 'text-violet-700 dark:text-violet-400' : 'text-zinc-500 dark:text-zinc-500 group-hover:text-violet-700 dark:group-hover:text-violet-400'
+              ]"
+            >
+              <UIcon
+                :name="selectedContentType === 'apps' ? 'i-lucide-arrow-down' : 'i-lucide-mouse-pointer-click'"
+                class="size-3"
+              />
+              {{ selectedContentType === 'apps' ? 'Showing details below' : 'Click for details (more coming soon)' }}
+            </div>
+          </button>
+        </div>
+
+        <!-- Inline detail panel — content swaps based on selectedContentType -->
+        <div
+          :class="[
+            'mb-10 rounded-xl border-2 p-5 sm:p-6',
+            selectedContentType === 'articles' && 'border-amber-500 bg-amber-50 dark:bg-amber-500/10',
+            selectedContentType === 'datasets' && 'border-sky-500 bg-sky-50 dark:bg-sky-500/10',
+            selectedContentType === 'apps' && 'border-violet-500 bg-violet-50 dark:bg-violet-500/10'
+          ]"
+        >
+          <!-- Articles -->
+          <div
+            v-if="selectedContentType === 'articles'"
+            class="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+          >
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+                What it is
+              </div>
+              <p>
+                <strong class="text-zinc-900 dark:text-white">Articles is the umbrella for everything published as text on the hub.</strong> ~240 records, organized into <strong>14 fixed type values</strong> (Research Report, Annual Report, Program Evaluation Summary, Update, Strategic Plan, plus nine more). Every Article carries the same labeled fields: <code class="rounded bg-amber-500/10 px-1 text-amber-700 dark:text-amber-300">type</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">categories</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">tags</code>, plus title/abstract/authors/date.
+              </p>
+            </div>
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+                Why this is the bucket the demo focuses on
+              </div>
+              <p>
+                Articles is the only content type with a fixed <code class="rounded bg-amber-500/10 px-1 text-amber-700 dark:text-amber-300">type</code> enum (the 14 named values). That's what lets the chips on every view filter in one click. Hub 1.0 has the same 14 types in the same data — Hub 2.0 just exposes them as chips at the top of the page instead of buried in a menu.
+              </p>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400">
+              <UIcon
+                name="i-lucide-arrow-down"
+                class="-mt-0.5 mr-1 inline size-3.5"
+              />
+              All 14 types are listed and clickable in the
+              <a
+                href="#types"
+                class="font-semibold text-amber-700 underline-offset-2 hover:underline dark:text-amber-400"
+              >"Inside Articles" section</a>
+              further down this page.
+            </p>
+          </div>
+
+          <!-- Datasets -->
+          <div
+            v-else-if="selectedContentType === 'datasets'"
+            class="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+          >
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
+                What it is
+              </div>
+              <p>
+                <strong class="text-zinc-900 dark:text-white">Datasets are raw data — CSVs, structured tables, files ICJIA publishes for download or visualization.</strong> Distinct top-level content type, separate from Articles. They carry <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">categories</code> and <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">tags</code> — but no <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">type</code> enum, so no chip filter for them.
+              </p>
+            </div>
+            <div>
+              <div class="mb-1 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+                <span>Where Hub 2.0 takes them next</span>
+                <UBadge
+                  label="Future"
+                  color="warning"
+                  variant="soft"
+                  size="sm"
+                />
+              </div>
+              <p class="mb-3">
+                Hub 2.0 proposes connecting Datasets to Apps/Dashboards under the <strong class="text-zinc-900 dark:text-white">"datahub"</strong> moniker. Four patterns the Strapi 5 schema already supports today:
+              </p>
+              <ul class="ml-1 space-y-2">
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded bg-sky-500/15 text-[10px] font-black text-sky-700 dark:text-sky-300">1</span>
+                  <span><strong class="text-zinc-900 dark:text-white">Solo dataset.</strong> A dataset that stands on its own — raw data, no dashboard yet.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded bg-emerald-500/15 text-[10px] font-black text-emerald-700 dark:text-emerald-300">2</span>
+                  <span><strong class="text-zinc-900 dark:text-white">One app, one dataset.</strong> A dashboard built around a single dataset.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded bg-amber-500/15 text-[10px] font-black text-amber-700 dark:text-amber-300">3</span>
+                  <span><strong class="text-zinc-900 dark:text-white">One app, many datasets.</strong> A dashboard pulling in several — e.g., layered crime stats by year.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded bg-violet-500/15 text-[10px] font-black text-violet-700 dark:text-violet-300">4</span>
+                  <span><strong class="text-zinc-900 dark:text-white">Shared dataset.</strong> The same dataset feeding more than one dashboard.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-emerald-500 bg-emerald-500/10 p-3">
+              <div class="flex items-start gap-2.5">
+                <UIcon
+                  name="i-lucide-circle-check-big"
+                  class="mt-0.5 size-4 shrink-0 text-emerald-700 dark:text-emerald-300"
+                />
+                <div class="text-xs leading-snug">
+                  <strong class="text-zinc-900 dark:text-white">All four patterns are schema-supported in Strapi 5 today.</strong>
+                  <span class="block pt-0.5 font-normal text-zinc-700 dark:text-zinc-300">
+                    Hub 2.0's work on Datasets is editorial — curating which datasets belong to which apps — not building anything new at the data layer.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Apps / Dashboards -->
+          <div
+            v-else-if="selectedContentType === 'apps'"
+            class="space-y-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+          >
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+                What it is
+              </div>
+              <p>
+                <strong class="text-zinc-900 dark:text-white">Apps and Dashboards are the interactive visualizations on the hub</strong> — charts, maps, drill-downs that render one or more datasets. Distinct top-level content type, separate from Articles and Datasets. Like Datasets, they carry <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">categories</code> and <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">tags</code> but no <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">type</code> enum.
+              </p>
+            </div>
+            <div class="rounded-lg border-2 border-amber-500 bg-amber-50 p-3 dark:border-amber-500/60 dark:bg-amber-500/10">
+              <div class="flex items-start gap-2.5">
+                <UIcon
+                  name="i-lucide-construction"
+                  class="mt-0.5 size-4 shrink-0 text-amber-700 dark:text-amber-300"
+                />
+                <div class="text-xs leading-snug">
+                  <strong class="text-amber-800 dark:text-amber-200">More detail coming soon.</strong>
+                  <span class="block pt-0.5 font-normal text-zinc-700 dark:text-zinc-300">
+                    This proof-of-concept demo focuses on the Articles filter UX. The Apps/Dashboards story is part of the Hub 2.0 <strong class="text-zinc-900 dark:text-white">"datahub"</strong> roadmap — linking them to Datasets via the four patterns above — but the editorial details (which apps consume which datasets, browsing UX) are a separate workstream that hasn't been scoped for this POC yet.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+                What we know so far
+              </div>
+              <ul class="ml-1 space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
+                  <span>The Strapi 5 schema treats Apps/Dashboards as a peer of Articles and Datasets, not nested under either.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
+                  <span>Apps already support bidirectional relations with Datasets (<code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">App.datasets</code> and <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Dataset.apps</code>) — so the four datahub patterns work out of the box.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
+                  <span>Browsing UX for Apps/Dashboards (filters, list page, detail page) is open territory — TBD as Hub 2.0 progresses.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
