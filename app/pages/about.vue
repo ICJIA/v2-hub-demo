@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const PAGE_TITLE = 'What this demo shows — ICJIA Research Hub Demo'
-const PAGE_DESCRIPTION = 'Seven small upgrades the live hub doesn\'t have yet — one-click filters, author normalization, click-to-filter tags, and three layouts to try.'
+const PAGE_DESCRIPTION = 'Seven friction-reducers Hub 2.0 brings to Hub 1.0\'s existing catalog — one-click filters, author normalization, click-to-filter tags, and three layouts to try.'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/about'
 const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
@@ -68,7 +68,7 @@ const upgrades: Upgrade[] = [
     title: 'Find research reports in one click',
     shortBody: 'Click "Research Reports" on any view and the list narrows to exactly those. Same one-click filter for every type.',
     description: 'Every view has a row of chips at the top — Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans. Click one and the list filters to that type. The chips work the same way for every one of the 14 article types.',
-    whyItMatters: 'Finding a research report on the live hub today takes 5+ clicks: open menu, scroll the list, find the type, click, then click again. Here it\'s one click. Same data, exposed via a chip instead of buried in a menu.',
+    whyItMatters: 'On the current Hub 2.0 demo, finding a research report takes one click — the "Research Reports" chip at the top of every view. Hub 1.0 doesn\'t have this ability: finding one there takes 5+ clicks (open menu, scroll, click, click). Hub 2.0 builds on Hub 1.0\'s catalog by streamlining how visitors find what\'s in it.',
     links: [{ label: 'Try it on /view0', to: '/view0' }],
     accent: 'amber',
     visual: 'click-equivalence'
@@ -77,7 +77,7 @@ const upgrades: Upgrade[] = [
     title: 'Search highlights what it matched',
     shortBody: 'Type a word and matching articles surface, with the word highlighted in title and summary.',
     description: 'Type a word in the search box — try "opioid". Articles mentioning it surface in the list, and the word itself is visibly highlighted in their title and summary.',
-    whyItMatters: 'On the live hub, search returns articles but doesn\'t show why they matched. Here you can see at a glance — saves the time you\'d otherwise spend scanning each article looking for your search term.',
+    whyItMatters: 'On the current Hub 2.0 demo, search highlights the matching word in title and summary so you see at a glance why each result was included. Hub 1.0 returns the same articles but doesn\'t show you the matches — you\'d scan each one yourself looking for your term.',
     links: [{ label: 'Try it on /view0', to: '/view0' }],
     accent: 'emerald'
   },
@@ -85,7 +85,7 @@ const upgrades: Upgrade[] = [
     title: 'Click any author for their work',
     shortBody: 'Every author name on a card is a one-click filter. See everything that person has published.',
     description: 'Author names on every article card are clickable. Click one and the list narrows to every article that author worked on. Click another author to switch. Click the active author chip near the result count to clear it.',
-    whyItMatters: 'Useful when you remember a researcher\'s name but not the article — or when you want to read everything by one person without searching for each piece by hand.',
+    whyItMatters: 'On Hub 1.0, author names are plain text on the card. The current Hub 2.0 demo turns each one into a clickable filter, so when you remember a researcher\'s name but not the article you\'re looking for, one click pulls up every piece they\'ve worked on.',
     links: [{ label: 'Try it on /view0', to: '/view0' }],
     accent: 'violet'
   },
@@ -93,7 +93,7 @@ const upgrades: Upgrade[] = [
     title: 'One author entry, every variant matched',
     shortBody: '"Riley Calder", "Riley Calder, Ph.D", "Riley Calder, PhD" all merge to one entry. The count and click work across all of them.',
     description: 'The CMS sometimes credits the same person three or four different ways — with credentials, without, with stray whitespace, in ALL CAPS. Without normalization the dropdown lists them as separate people. This demo merges every variant onto a single canonical entry, so you see one author, one count, one click — and clicking matches every variant on every article.',
-    whyItMatters: 'On the live hub today, prolific researchers are scattered across multiple dropdown entries. Their work fragments. Here it consolidates: one Riley Carter, the full body of work, one click away.',
+    whyItMatters: 'On Hub 1.0, prolific researchers are scattered across multiple dropdown entries because the same name appears several ways — their work fragments. The current Hub 2.0 demo consolidates: one Riley Carter, the full body of work, one click away.',
     links: [{ label: 'See the breakdown on /', to: '/#author-normalization' }],
     accent: 'violet',
     visual: 'author-merge'
@@ -102,7 +102,7 @@ const upgrades: Upgrade[] = [
     title: 'Click tags. Stack them.',
     shortBody: 'Click one tag to filter. Click another to widen. Each active tag shows as a removable pill near the result count.',
     description: 'Tags on every article card are clickable. Click one and the list narrows to articles with that tag. Click another and the list widens — articles with either tag now appear. Each active tag shows as a removable pill near the result count, so you can clear them one at a time.',
-    whyItMatters: 'Lets you explore a topic from multiple angles without losing your place. Stacking tags is "OR" not "AND" — you keep accumulating possible reads, not narrowing them away.',
+    whyItMatters: 'Hub 1.0 displays tags as plain text. The current Hub 2.0 demo makes them clickable and stackable, so you can explore a topic from multiple angles without losing your place. Stacking is "OR" — accumulating possible reads, not narrowing them away.',
     links: [{ label: 'Try it on /view0', to: '/view0' }],
     accent: 'amber'
   },
@@ -110,7 +110,7 @@ const upgrades: Upgrade[] = [
     title: 'Filter by ICJIA Center',
     shortBody: 'Narrow articles to a specific division — Center for Justice Research and Evaluation, Center for Victim Studies, the rest. All five always visible.',
     description: 'Each article is published by one of five ICJIA Centers. The Centers filter is a dropdown that\'s always visible on the home page and View 2. All five Centers are listed regardless of how much each one has published; clicking one narrows the article list to that Center.',
-    whyItMatters: 'See one Center\'s body of work without hunting for it. Useful for stakeholders who care about a specific division\'s output, and for quickly answering "what has this Center put out?"',
+    whyItMatters: 'Hub 1.0 doesn\'t expose Centers as a top-level filter — visitors have to know they exist. The current Hub 2.0 demo makes the Centers filter always visible, so stakeholders can answer "what has this Center put out?" in one click.',
     links: [{ label: 'Try it on /view2', to: '/view2' }],
     accent: 'sky'
   },
@@ -118,7 +118,7 @@ const upgrades: Upgrade[] = [
     title: 'Three layouts to compare',
     shortBody: 'Same data, three filter UX flavors. View 0 (chips + advanced toggle), View 1 (dropdowns only), View 2 (chips + always-on bar). Pick a winner.',
     description: 'View 0 has chips at the top and an "Advanced filters" toggle that hides the full filter bar by default — the friendliest first impression. View 1 uses dropdown menus exclusively (closest to the live site today). View 2 shows chips and the full filter bar side by side, always visible — maximum flexibility, more visual weight.',
-    whyItMatters: 'The team can pick the layout that works best in side-by-side review — and that becomes the live hub experience. The decision affects every visitor for years; comparing three live mockups is the way to make it.',
+    whyItMatters: 'The team can pick the layout that works best in side-by-side review — and that becomes the Hub 2.0 production experience. The decision affects every visitor for years; comparing three live mockups is the way to make it.',
     links: [
       { label: 'View 0', to: '/view0' },
       { label: 'View 1', to: '/view1' },
@@ -187,7 +187,7 @@ function openUpgrade(index: number) {
           Seven small upgrades.<br>One big difference.
         </h1>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          What this proof-of-concept does that the live hub doesn't — so anyone can find what they're looking for in <span class="font-semibold text-zinc-900 dark:text-white">one or two clicks</span>.
+          <span class="font-semibold text-zinc-900 dark:text-white">Hub 2.0 builds on Hub 1.0's success</span> by streamlining and sharpening the UI/UX. This proof-of-concept demo reduces the friction to find articles in the existing Hub 1.0 catalog — so anyone can find what they're looking for in <span class="font-semibold text-zinc-900 dark:text-white">one or two clicks</span>.
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -256,7 +256,7 @@ function openUpgrade(index: number) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Seven specific changes</strong> between the live hub and this demo: one-click filters by article type, search highlighting, click-to-filter authors, author normalization, stackable tag filters, ICJIA Center filters, and three side-by-side filter UX layouts to compare. Each one is detailed in the cards below.
+                <strong class="text-zinc-900 dark:text-white">Seven friction-reducers Hub 2.0 brings to Hub 1.0's existing catalog:</strong> one-click filters by article type, search highlighting, click-to-filter authors, author normalization, stackable tag filters, ICJIA Center filters, and three side-by-side filter UX layouts to compare. Each one is detailed in the cards below.
               </p>
             </div>
           </template>
@@ -287,7 +287,7 @@ function openUpgrade(index: number) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                On the live hub today, finding a research report takes <strong class="text-zinc-900 dark:text-white">5+ clicks</strong>: open menu, scroll the list, find the type, click, click again. Here it's a single click on the "Research Reports" chip at the top of every view. Same data, exposed via a chip instead of buried in a menu.
+                On the current Hub 2.0 demo, finding a research report takes <strong class="text-zinc-900 dark:text-white">one click</strong> — the "Research Reports" chip at the top of every view. Hub 1.0 doesn't have this ability: finding one there takes 5+ clicks (open menu, scroll, click, click). Hub 2.0 keeps Hub 1.0's catalog intact and just streamlines the path to it.
               </p>
             </div>
           </template>
@@ -318,7 +318,7 @@ function openUpgrade(index: number) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                The CMS sometimes credits the same author <strong class="text-zinc-900 dark:text-white">three or four ways</strong> — "Riley Carter", "Riley Carter, Ph.D", "RILEY CARTER". Without normalization the dropdown lists them as separate people. Here every variant merges into one canonical entry, so you see one author, one count, one click.
+                Hub 1.0's author dropdown sometimes lists the same person <strong class="text-zinc-900 dark:text-white">three or four ways</strong> — "Riley Carter", "Riley Carter, Ph.D", "RILEY CARTER" — because the CMS records authors with stray credentials and casing differences. Hub 2.0 merges every variant into one canonical entry: one author, one count, one click.
               </p>
             </div>
           </template>
@@ -349,7 +349,7 @@ function openUpgrade(index: number) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                Each article is published by one of <strong class="text-zinc-900 dark:text-white">five ICJIA Centers</strong> — Center for Justice Research and Evaluation, Center for Victim Studies, and three others. The Centers filter is always visible (not hidden behind a menu) so visitors can see one Center's body of work in one click.
+                Each article is published by one of <strong class="text-zinc-900 dark:text-white">five ICJIA Centers</strong> — Center for Justice Research and Evaluation, Center for Victim Studies, and three others. Hub 1.0 doesn't expose Centers as a top-level filter; Hub 2.0 makes them always visible (not menu-buried) so visitors see one Center's body of work in one click.
               </p>
             </div>
           </template>
@@ -534,7 +534,7 @@ function openUpgrade(index: number) {
             >
               <div class="w-full max-w-[10rem] rounded-xl border border-zinc-300 bg-zinc-100/70 px-4 py-3 text-center sm:w-auto dark:border-zinc-700 dark:bg-zinc-800/70">
                 <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
-                  Live hub today
+                  Hub 1.0
                 </div>
                 <div class="mt-1 text-2xl font-black tracking-tight text-zinc-700 dark:text-zinc-300">
                   many clicks
@@ -547,7 +547,7 @@ function openUpgrade(index: number) {
               />
               <div class="w-full max-w-[10rem] rounded-xl border-2 border-amber-500 bg-amber-500/10 px-4 py-3 text-center sm:w-auto dark:border-amber-400">
                 <div class="text-[9px] font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
-                  This demo
+                  Hub 2.0
                 </div>
                 <div class="mt-1 text-2xl font-black tracking-tight text-amber-700 dark:text-amber-400">
                   one click
