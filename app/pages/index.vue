@@ -852,6 +852,192 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
+    <!-- 3.7 URL STABILITY / SEO — why we keep the same URLs -->
+    <section class="border-b border-zinc-200 bg-white px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
+          Why the URLs stay the same
+        </div>
+        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
+          Stable URLs = <span class="text-amber-700 dark:text-amber-400">preserved SEO.</span> That's the point.
+        </h2>
+        <p class="mb-7 max-w-3xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
+          Hub 1.0's article URLs at <code class="text-amber-700 dark:text-amber-400">/researchhub/articles/…</code> carry years of Google ranking signal, AI-assistant citations (ChatGPT, Bing), external backlinks, and bookmarks. <strong class="text-zinc-900 dark:text-white">Hub 2.0 keeps every URL intact</strong> — that's not laziness, it's how you protect a content catalog's traffic.
+        </p>
+
+        <!-- URL stability examples -->
+        <div class="mb-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
+            These URLs already work — and they keep working
+          </div>
+          <div class="space-y-2">
+            <div class="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+              <code class="block break-all text-xs text-zinc-700 sm:text-sm dark:text-zinc-300">
+                icjia.illinois.gov/researchhub/articles/<span class="font-bold text-zinc-900 dark:text-white">understanding-police-officer-stress…</span>
+              </code>
+              <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-zinc-600 dark:text-zinc-400">
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-search"
+                    class="size-3"
+                  />
+                  Indexed by Google
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-bot"
+                    class="size-3"
+                  />
+                  Cited by ChatGPT
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-eye"
+                    class="size-3"
+                  />
+                  3,200 readers / 6 mo
+                </span>
+              </div>
+            </div>
+            <div class="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+              <code class="block break-all text-xs text-zinc-700 sm:text-sm dark:text-zinc-300">
+                icjia.illinois.gov/researchhub/articles/<span class="font-bold text-zinc-900 dark:text-white">the-2021-safe-t-act-icjia-roles-and-responsibilities</span>
+              </code>
+              <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-zinc-600 dark:text-zinc-400">
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-search"
+                    class="size-3"
+                  />
+                  Indexed by Google
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-link"
+                    class="size-3"
+                  />
+                  External backlinks
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-eye"
+                    class="size-3"
+                  />
+                  3,000 readers / 6 mo
+                </span>
+              </div>
+            </div>
+            <div class="rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-3">
+              <code class="block break-all text-xs text-zinc-700 sm:text-sm dark:text-zinc-300">
+                icjia.illinois.gov/researchhub/articles/<span class="font-bold text-zinc-900 dark:text-white">mental-illness-and-violence-is-there-a-link</span>
+              </code>
+              <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-zinc-600 dark:text-zinc-400">
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-search"
+                    class="size-3"
+                  />
+                  Indexed by Google
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-bot"
+                    class="size-3"
+                  />
+                  Cited by ChatGPT
+                </span>
+                <span class="flex items-center gap-1">
+                  <UIcon
+                    name="i-lucide-eye"
+                    class="size-3"
+                  />
+                  2,400 readers / 6 mo
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-xs text-zinc-600 dark:text-zinc-400">
+            These three articles alone pulled <strong class="text-zinc-900 dark:text-white">8,600 readers</strong> in the last 6 months because Google has been ranking them on these exact URLs for years. Renaming the path resets that signal.
+          </p>
+        </div>
+
+        <!-- Why URL stability matters — 3 cards -->
+        <div class="mb-8 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-2 flex size-9 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
+              <UIcon
+                name="i-lucide-search"
+                class="size-5"
+              />
+            </div>
+            <h3 class="mb-1 text-sm font-bold text-zinc-900 dark:text-white">
+              Google rankings stay
+            </h3>
+            <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Search-ranking signals attach to specific URLs over time. Move the URL, the signal restarts — even with 301 redirects, equity leaks.
+            </p>
+          </div>
+          <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-2 flex size-9 items-center justify-center rounded-lg bg-sky-500/15 text-sky-700 dark:text-sky-300">
+              <UIcon
+                name="i-lucide-bot"
+                class="size-5"
+              />
+            </div>
+            <h3 class="mb-1 text-sm font-bold text-zinc-900 dark:text-white">
+              AI citations stay
+            </h3>
+            <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              ChatGPT, Bing, and other assistants cite specific URLs. The hub already gets 1,200 visits over six months from ChatGPT — real readers reaching specific articles via specific links.
+            </p>
+          </div>
+          <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-2 flex size-9 items-center justify-center rounded-lg bg-violet-500/15 text-violet-700 dark:text-violet-300">
+              <UIcon
+                name="i-lucide-link"
+                class="size-5"
+              />
+            </div>
+            <h3 class="mb-1 text-sm font-bold text-zinc-900 dark:text-white">
+              Backlinks stay
+            </h3>
+            <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Government and academic sites link to specific Hub 1.0 article URLs. Rename the path and those links break (or 301-redirect with equity loss).
+            </p>
+          </div>
+        </div>
+
+        <!-- The summary===article connection -->
+        <div class="rounded-2xl border border-amber-300/60 bg-amber-50 px-6 py-5 dark:border-amber-500/20 dark:bg-amber-500/5">
+          <div class="flex gap-3">
+            <UIcon
+              name="i-lucide-key-round"
+              class="mt-0.5 size-5 shrink-0 text-amber-600 dark:text-amber-400"
+            />
+            <div>
+              <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+                Why "summary === article" matters here too
+              </div>
+              <h3 class="mb-3 text-base font-bold text-zinc-900 sm:text-lg dark:text-white">
+                Renaming URLs to "fix" the labels would cost more than it solves.
+              </h3>
+              <div class="space-y-2.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <p>
+                  We <em>could</em> map certain articles to <code class="text-amber-700 dark:text-amber-300">/researchhub/summaries/…</code> URLs based on which ones "feel like" summaries. But that introduces a fragile mapping layer: someone has to decide which article is a summary, the database has to track the decision, the redirect rules have to keep up. Every editorial change becomes an SEO landmine.
+                </p>
+                <p>
+                  The cleaner answer: <strong class="text-zinc-900 dark:text-white">accept that the database label is "article" and let the UI use "summary" where it makes sense.</strong> Hub 2.0's chip filter surfaces research reports in one click without changing a single URL. The taxonomy is correct; the language is plain. No mapping, no redirects, no broken citations.
+                </p>
+                <p class="rounded-xl border-2 border-amber-400 bg-amber-100/60 px-4 py-3 text-base font-extrabold leading-snug text-zinc-900 dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-white">
+                  <span class="text-amber-700 dark:text-amber-400">URL stability matters.</span> Confusion doesn't. Fragile mapping doesn't.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 4. THE DIAGRAM -->
     <section class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
