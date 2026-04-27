@@ -118,10 +118,10 @@ function showExamples(typeValue: string) {
     <section class="border-y border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-12 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
-          Why this demo
+          Want a summary?
         </div>
         <h2 class="mb-6 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Every research report on the hub is already an article.
+          On the hub, "summary" and "article" mean the same thing.
         </h2>
 
         <!-- Equivalence visual -->
@@ -150,24 +150,21 @@ function showExamples(typeValue: string) {
           </div>
         </div>
         <p class="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          That equivalence was the original mission of Hub 1.0.
+          Same content. Two different words for it.
         </p>
 
         <div class="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
           <p>
-            This demo exists because of a fair question raised at a recent ICJIA staff meeting. Staff said, reasonably: <strong class="text-zinc-900 dark:text-white">"Hey, I just want to find research reports."</strong> That's exactly what the hub should let them do.
-          </p>
-          <p>
-            A small misunderstanding came up next. The assumption was that <em>"articles"</em> and <em>"research reports"</em> are two separate kinds of things in the database — and that the research reports were somehow missing.
+            This demo exists because of a fair question at a recent ICJIA staff meeting. Someone said, reasonably: <strong class="text-zinc-900 dark:text-white">"I don't want articles. I want a summary."</strong>
           </p>
           <p class="rounded-2xl border-2 border-amber-400 bg-amber-50 px-5 py-4 text-xl font-extrabold leading-snug text-zinc-900 sm:text-2xl dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-white">
-            They're not missing. <span class="text-amber-700 dark:text-amber-400">Research reports <em>are</em> articles.</span>
+            That's exactly the right thing to ask. <span class="text-amber-700 dark:text-amber-400">Summary === article.</span> Same thing.
           </p>
           <p>
-            "Articles" is the database's umbrella term for everything published on the hub. "Research Report" is just <strong class="text-zinc-900 dark:text-white">one of fourteen types of article</strong> — alongside annual reports, program evaluations, updates, strategic plans, and nine more. A research report is an article that happens to be tagged with the type "Research Report." Same goes for annual reports, evaluations, and the rest.
+            Every summary on the hub <strong class="text-zinc-900 dark:text-white">is</strong> an article. Every article <strong class="text-zinc-900 dark:text-white">is</strong> a summary of something published by ICJIA. "Article" is the database's word for what's stored; "summary" is the plain English word for what's in it. Same content, two labels. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those summaries — same goes for Annual Reports, Program Evaluations, Updates, Strategic Plans, and nine more. Fourteen flavors of summary, all in the same bucket.
           </p>
           <p>
-            So the fix is already in place. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those. The database has supported this since Hub 1.0 — the demo just exposes it. (See <em>Why "articles" and not "summaries"?</em> below for the naming history.)
+            <strong class="text-zinc-900 dark:text-white">Why "articles" and not just "summaries"?</strong> "Summaries" was on the table during Hub 1.0 planning. The team rejected it because some articles stand on their own — pieces with no attached source PDF — and "summaries" didn't fit those edge cases. "Articles" was both more general (covers standalone pieces too) and more specific (a familiar word for a publishing platform). The label stuck through Hub 2.0. <em>Functionally, it doesn't matter:</em> when you ask for a summary, you're asking for an article.
           </p>
         </div>
       </div>
@@ -348,29 +345,6 @@ function showExamples(typeValue: string) {
         <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           All fourteen are in here. The chip row on every view filters to whichever one you need — pick "Research Report," click it, you're done. Same goes for any other type.
         </p>
-      </div>
-    </section>
-
-    <!-- 5. NAMING NOTE -->
-    <section class="border-b border-amber-300/50 bg-amber-50 px-6 py-8 sm:px-12 lg:px-16 dark:border-amber-500/15 dark:bg-amber-500/5">
-      <div class="mx-auto flex max-w-5xl gap-4">
-        <UIcon
-          name="i-lucide-notebook-pen"
-          class="mt-1 size-5 shrink-0 text-amber-600 dark:text-amber-400"
-        />
-        <div>
-          <h3 class="mb-2 text-base font-bold text-amber-700 dark:text-amber-400">
-            Why "articles" — and not "summaries"?
-          </h3>
-          <div class="space-y-2.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-            <p>
-              "Summaries" was on the table during Hub 1.0 planning. Over several weeks and several name changes, we kept running into the same problem: an article <em>can</em> be a summary of an attached research report or annual report — but it can also stand on its own, a standalone piece with no attached PDF at all. "Summaries" didn't fit that case.
-            </p>
-            <p>
-              We landed on <strong class="text-amber-700 dark:text-amber-400">articles</strong> because it was both <strong>more general</strong> (a publishing platform can carry many kinds of digital pieces, including standalone articles) and <strong>more specific</strong> (an "article" is a familiar concept — exactly what you'd expect on a publishing platform). The hub was always meant to be a publishing platform first; "articles" was the umbrella that fit that identity.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
 
