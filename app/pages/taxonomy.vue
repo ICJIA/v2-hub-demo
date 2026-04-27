@@ -209,7 +209,7 @@ function showExamples(typeValue: string) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three top-level buckets, same 14 article types. The CMS is new (Strapi 5), but the bones are the ones that already worked.
+                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three top-level buckets, same 14 article types. The CMS is new (Strapi 5), but the bones are the ones that already work.
               </p>
             </div>
           </template>
@@ -601,10 +601,10 @@ function showExamples(typeValue: string) {
           </span>
         </div>
         <h2 class="mb-6 text-4xl font-black leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
-          Hub 2.0 inherited the structure that <span class="text-sky-700 dark:text-sky-400">already worked.</span>
+          Hub 2.0 inherited the structure that <span class="text-sky-700 dark:text-sky-400">already works.</span>
         </h2>
         <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
-          This demo exposes the shape so visitors can filter by it. The bones haven't changed since Hub 1.0 — and that's why filters and search work at all.
+          This demo exposes the shape so visitors can filter by it. <strong class="text-zinc-900 dark:text-white">"Works"</strong> isn't abstract — it's measurable: <strong class="text-zinc-900 dark:text-white">18,400 hub visitors and 116K pageviews</strong> in the last six months, top articles ranking on Google for years, plus citations now coming in from ChatGPT and external sites. Hub 2.0 keeps every URL, every ranking, and every citation intact — and streamlines the path to all of it.
         </p>
       </div>
     </section>
