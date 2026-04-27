@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.86] — 2026-04-27
+
+### Added
+
+- **New `/current` route** — a baseline view positioned in the nav between `Home` and `View 0`, framed as **"Hub 2.0 today, work in progress"**. Shows the filter bar with dropdowns (Type, Topic, Author, Year) and search — no chips of any kind, no clickable card affordances. Visitors land on it to see what Hub 2.0 looks like as it stands, then jump to View 0 / View 1 / View 2 to see the proposed friction-reducing tweaks layered on top. Page itself includes "Proposed tweaks:" buttons that link out to all three views.
+- **`Current` nav entry** in `app/app.vue` between `Home` and `View 0`. Surfaced as a button in the hero CTAs of `/about` and `/taxonomy` and as a full-width "Start here" card above the three view cards on the home page (with a "↓ Three proposed friction-reducers" divider beneath leading into View 0/1/2).
+
+### Changed
+
+- **`/taxonomy` content-type cards switched from modal to inline tab panel.** All three cards (Articles / Datasets / Apps/Dashboards) are now buttons; clicking any card swaps the content of an inline detail panel directly below the ribbon. Selected card gets full accent treatment (amber/sky/violet border + bg + bold text + arrow-down indicator); unselected cards default to dimmed zinc with hover lift toward their accent. Defaults to Articles selected on page load. The previous modal markup was removed.
+- **`/about` Upgrade #7** renamed from "Three layouts to compare" to **"Current + three proposed views"** — shortBody, description, and the in-modal links list all reflect the four-up framing (Current, View 0, View 1, View 2).
+- **`/about` and `/taxonomy` hero CTA rows** now include an `Open Current` button as the first secondary CTA, before the three view buttons.
+- **Home-page "Try it yourself" section** restructured: H2 reads "Current + three proposed views"; intro sentence pivots to "Start with Current — Hub 2.0 as it stands today"; the section now leads with a full-width zinc-bordered Current card (Search + four dropdown previews, "Hub 2.0 today" framing) followed by a small "↓ Three proposed friction-reducers" divider and the existing three view cards (View 0 / View 1 / View 2).
+- **`/view0` Advanced filters toggle** wrapped in a violet-bordered, violet-tinted box with a sliders icon and bolded violet "Advanced filters" label so it can't be missed against the surrounding chip row. Toggle behavior unchanged.
+
 ## [0.1.85] — 2026-04-27
 
 ### Added
