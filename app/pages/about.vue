@@ -102,34 +102,29 @@ const upgrades: Upgrade[] = [
   }
 ]
 
-const accentClasses: Record<Upgrade['accent'], { ring: string, text: string, hoverBorder: string, ctaText: string }> = {
+const accentClasses: Record<Upgrade['accent'], { ring: string, hoverBorder: string, ctaText: string }> = {
   sky: {
     ring: 'bg-sky-500/15 text-sky-700 dark:text-sky-300',
-    text: 'text-sky-700 dark:text-sky-400',
     hoverBorder: 'hover:border-sky-500/60 dark:hover:border-sky-400/60 focus-visible:ring-sky-500 dark:focus-visible:ring-sky-400',
     ctaText: 'text-sky-700 dark:text-sky-400'
   },
   emerald: {
     ring: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300',
-    text: 'text-emerald-700 dark:text-emerald-400',
     hoverBorder: 'hover:border-emerald-500/60 dark:hover:border-emerald-400/60 focus-visible:ring-emerald-500 dark:focus-visible:ring-emerald-400',
     ctaText: 'text-emerald-700 dark:text-emerald-400'
   },
   violet: {
     ring: 'bg-violet-500/15 text-violet-700 dark:text-violet-300',
-    text: 'text-violet-700 dark:text-violet-400',
     hoverBorder: 'hover:border-violet-500/60 dark:hover:border-violet-400/60 focus-visible:ring-violet-500 dark:focus-visible:ring-violet-400',
     ctaText: 'text-violet-700 dark:text-violet-400'
   },
   amber: {
     ring: 'bg-amber-500/15 text-amber-700 dark:text-amber-300',
-    text: 'text-amber-700 dark:text-amber-400',
     hoverBorder: 'hover:border-amber-500/60 dark:hover:border-amber-400/60 focus-visible:ring-amber-500 dark:focus-visible:ring-amber-400',
     ctaText: 'text-amber-700 dark:text-amber-400'
   },
   zinc: {
     ring: 'bg-zinc-500/15 text-zinc-700 dark:text-zinc-300',
-    text: 'text-zinc-700 dark:text-zinc-300',
     hoverBorder: 'hover:border-zinc-500/60 dark:hover:border-zinc-400/60 focus-visible:ring-zinc-500 dark:focus-visible:ring-zinc-400',
     ctaText: 'text-zinc-700 dark:text-zinc-300'
   }
