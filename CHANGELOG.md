@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.88] — 2026-04-27
+
+### Added
+
+- **`/taxonomy` "Hub 1.0 by the numbers" section** between the TL;DR and the Deep Dives section. The TL;DR claims the structure works; this new section shows it. Same eyebrow + 4-tile stat strip + top-five-articles bar chart pattern as the home page (deliberate duplication for emphasis), plus a sky-bordered closing tile linking to the home page for the deeper traffic context.
+
+### Changed
+
+- **Plausible numbers updated from a 6-month window to a 12-month window** across both the home page and `/taxonomy`, since the longer timeframe is more persuasive. New 12-month numbers (May 2025 – Apr 2026, queried fresh from the Plausible MCP):
+  - **Hub-wide:** 232K pageviews on hub articles · 36.8K unique visitors · ~70% of all icjia.illinois.gov visitors · 16-min average reading time · 63% overall hub bounce · 27% bounce on the `/researchhub/` root.
+  - **Top 5 articles (reordered for the longer window):** Police Reform now leads at 6,400 readers, then Police Officer Stress (6,200), Victim-Offender Overlap (5,900), 2021 SAFE-T Act (5,800), Mental Illness & Violence (4,300). Bounce rates 60–67%, all per-article numbers refreshed.
+  - **Sources:** Google sends 24,100 visits, Direct 17,100, ChatGPT 2,600, Bing 860, Facebook 587 (Facebook replaces DuckDuckGo as the #5 source over the longer window).
+  - **Devices:** 65% desktop / 31% mobile / 4% tablet (refreshed counts).
+  - **Monthly trend bar chart** expanded from 6 bars to 12 bars (May 2025 → Apr 2026), still responsive across `grid-cols-4 sm:grid-cols-6 md:grid-cols-12`. Annotation now mentions Sep/Nov peaks aligning with academic and budget cycles.
+  - **URL stability section example URLs:** per-URL reader counts updated (3,200/3,000/2,400 → 6,200/5,800/4,300); rolled-up "8,600 readers in 6 months" updated to "16,300 readers in 12 months." ChatGPT card mentions 2,600 visits.
+  - **Closing "Why these matter" tile** updated to `36,800 Illinois research-seekers came to Hub 1.0 in the last twelve months`.
+
 ## [0.1.87] — 2026-04-27
 
 ### Added
