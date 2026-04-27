@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const PAGE_TITLE = 'What this demo shows — ICJIA Research Hub Demo'
-const PAGE_DESCRIPTION = 'Seven friction-reducers Hub 2.0 brings to Hub 1.0\'s existing catalog — one-click filters, author normalization, click-to-filter tags, and three layouts to try.'
+const PAGE_DESCRIPTION = 'Seven friction-reducers Hub 2.0 brings to Hub 1.0\'s existing catalog — one-click filters, author normalization, click-to-filter tags, and four UX takes to try (Current + three proposed views).'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/about'
 const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
@@ -487,7 +487,7 @@ function openUpgrade(index: number) {
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              The visual orientation: articles ≡ summaries, the 14-type bucket, and three filter layouts to try.
+              The visual orientation: articles ≡ summaries, the 14-type bucket, and four UX takes to try (Current + three proposed views).
             </p>
             <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-600 group-hover:underline dark:text-amber-500">
               / →

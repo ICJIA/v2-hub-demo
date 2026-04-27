@@ -1226,7 +1226,7 @@ function showExamples(typeValue: string) {
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              The visual orientation: articles ≡ summaries, the 14-type bucket, and three filter layouts to try.
+              The visual orientation: articles ≡ summaries, the 14-type bucket, and four UX takes to try (Current + three proposed views).
             </p>
             <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-600 group-hover:underline dark:text-amber-500">
               / →

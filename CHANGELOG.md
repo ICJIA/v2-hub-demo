@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.96] — 2026-04-27
+
+### Changed
+
+- **Pre-demo cleanup pass.** Five lingering "three layouts" references that didn't get updated when `/current` was added are now consistent with the rest of the demo's "Current + three proposed views" framing:
+  - Home page Five Takeaways card #4: "Three layouts to compare." → "**Current + three proposed views.**" (body now leads with Current as baseline)
+  - Home page `<meta description>`: "Three filter layouts to try." → "**Current + three proposed UX views to try.**"
+  - Home page JSON-LD long description: same swap
+  - `/about` `<meta description>`: "and three layouts to try." → "**and four UX takes to try (Current + three proposed views).**"
+  - `/about` and `/taxonomy` deep-dive cards back to home: same swap
+
 ## [0.1.95] — 2026-04-27
 
 ### Changed
