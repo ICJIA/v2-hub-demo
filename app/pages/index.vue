@@ -242,18 +242,18 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 3.5 HUB 1.0 IN NUMBERS — Plausible analytics, last 6 months -->
+    <!-- 3.5 HUB 1.0 IN NUMBERS — Plausible analytics, last 12 months -->
     <section class="border-b border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
           <span>Hub 1.0 in numbers</span>
-          <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-emerald-700 dark:text-emerald-300">last 6 months (Oct 2025 – Apr 2026) · Plausible analytics</span>
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-emerald-700 dark:text-emerald-300">last 12 months (May 2025 – Apr 2026) · Plausible analytics</span>
         </div>
         <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
           The hub is the <span class="text-emerald-700 dark:text-emerald-400">busiest part</span> of icjia.illinois.gov.
         </h2>
         <p class="mb-7 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">six months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close.
+          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">twelve months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close.
         </p>
 
         <!-- 4-tile stat strip: hub-specific traffic -->
@@ -266,7 +266,7 @@ function showExamples(typeValue: string) {
               />
             </div>
             <div class="text-4xl font-black tracking-tight text-emerald-700 sm:text-5xl dark:text-emerald-400">
-              116K
+              232K
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
               pageviews on hub articles
@@ -280,7 +280,7 @@ function showExamples(typeValue: string) {
               />
             </div>
             <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
-              18.4K
+              36.8K
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
               unique visitors to the hub
@@ -294,7 +294,7 @@ function showExamples(typeValue: string) {
               />
             </div>
             <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
-              ~66%
+              ~70%
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
               of all icjia.illinois.gov visitors land on the hub
@@ -322,10 +322,10 @@ function showExamples(typeValue: string) {
             The hub's evergreen hits
           </div>
           <h3 class="mb-1 text-lg font-bold text-zinc-900 sm:text-xl dark:text-white">
-            Five most-read articles, last 6 months
+            Five most-read articles, last 12 months
           </h3>
           <p class="mb-5 text-sm text-zinc-600 dark:text-zinc-400">
-            Each one is exactly the kind of article a manager would search for as a "summary" or "research report" — and each one's bounce rate (60–66%) is in line with the hub-wide average, meaning these readers come, read, and leave satisfied.
+            Each one is exactly the kind of article a manager would search for as a "summary" or "research report" — and each one's bounce rate (60–67%) is in line with the hub-wide average, meaning these readers come, read, and leave satisfied.
           </p>
 
           <ol class="space-y-4">
@@ -334,19 +334,19 @@ function showExamples(typeValue: string) {
               <div class="flex-1">
                 <div class="flex items-start justify-between gap-3">
                   <a
-                    href="https://icjia.illinois.gov/researchhub/articles/understanding-police-officer-stress-a-review-of-the-literature/"
+                    href="https://icjia.illinois.gov/researchhub/articles/the-effectiveness-and-implications-of-police-reform-a-review-of-the-literature/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
                   >
-                    Understanding Police Officer Stress
+                    The Effectiveness and Implications of Police Reform
                   </a>
                   <div class="shrink-0 text-right">
                     <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                      3,200 readers
+                      6,400 readers
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      63% bounce
+                      62% bounce
                     </div>
                   </div>
                 </div>
@@ -366,19 +366,19 @@ function showExamples(typeValue: string) {
               <div class="flex-1">
                 <div class="flex items-start justify-between gap-3">
                   <a
-                    href="https://icjia.illinois.gov/researchhub/articles/the-victim-offender-overlap-examining-the-relationship-between-victimization-and-offending/"
+                    href="https://icjia.illinois.gov/researchhub/articles/understanding-police-officer-stress-a-review-of-the-literature/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
                   >
-                    The Victim-Offender Overlap
+                    Understanding Police Officer Stress
                   </a>
                   <div class="shrink-0 text-right">
                     <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                      3,100 readers
+                      6,200 readers
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      66% bounce
+                      62% bounce
                     </div>
                   </div>
                 </div>
@@ -398,19 +398,19 @@ function showExamples(typeValue: string) {
               <div class="flex-1">
                 <div class="flex items-start justify-between gap-3">
                   <a
-                    href="https://icjia.illinois.gov/researchhub/articles/the-2021-safe-t-act-icjia-roles-and-responsibilities/"
+                    href="https://icjia.illinois.gov/researchhub/articles/the-victim-offender-overlap-examining-the-relationship-between-victimization-and-offending/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
                   >
-                    The 2021 SAFE-T Act: ICJIA Roles and Responsibilities
+                    The Victim-Offender Overlap
                   </a>
                   <div class="shrink-0 text-right">
                     <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                      3,000 readers
+                      5,900 readers
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      63% bounce
+                      67% bounce
                     </div>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ function showExamples(typeValue: string) {
                 >
                   <div
                     class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
-                    style="width: 94%"
+                    style="width: 92%"
                   />
                 </div>
               </div>
@@ -430,19 +430,19 @@ function showExamples(typeValue: string) {
               <div class="flex-1">
                 <div class="flex items-start justify-between gap-3">
                   <a
-                    href="https://icjia.illinois.gov/researchhub/articles/the-effectiveness-and-implications-of-police-reform-a-review-of-the-literature/"
+                    href="https://icjia.illinois.gov/researchhub/articles/the-2021-safe-t-act-icjia-roles-and-responsibilities/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
                   >
-                    The Effectiveness and Implications of Police Reform
+                    The 2021 SAFE-T Act: ICJIA Roles and Responsibilities
                   </a>
                   <div class="shrink-0 text-right">
                     <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                      3,000 readers
+                      5,800 readers
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      60% bounce
+                      64% bounce
                     </div>
                   </div>
                 </div>
@@ -452,7 +452,7 @@ function showExamples(typeValue: string) {
                 >
                   <div
                     class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
-                    style="width: 94%"
+                    style="width: 91%"
                   />
                 </div>
               </div>
@@ -471,7 +471,7 @@ function showExamples(typeValue: string) {
                   </a>
                   <div class="shrink-0 text-right">
                     <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-                      2,400 readers
+                      4,300 readers
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
                       62% bounce
@@ -484,7 +484,7 @@ function showExamples(typeValue: string) {
                 >
                   <div
                     class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
-                    style="width: 75%"
+                    style="width: 67%"
                   />
                 </div>
               </div>
@@ -496,7 +496,7 @@ function showExamples(typeValue: string) {
               name="i-lucide-external-link"
               class="-mt-0.5 mr-1 inline size-3.5"
             />
-            Each title links to the live article on the production hub. Reader counts are unique visitors over the last 6 months. Bounce rates explained in the callout below.
+            Each title links to the live article on the production hub. Reader counts are unique visitors over the last 12 months. Bounce rates explained in the callout below.
           </p>
         </div>
 
@@ -522,7 +522,7 @@ function showExamples(typeValue: string) {
                   <strong class="text-zinc-900 dark:text-white">High bounce isn't always bad.</strong> For a research catalog, a visitor who Googles a specific article, reads it carefully, and leaves satisfied counts as a bounce — and that's a successful visit. Low bounce on a content site is the unusual signal, not high bounce.
                 </p>
                 <p>
-                  Last 6 months: the hub's overall bounce is <strong class="text-amber-700 dark:text-amber-400">63%</strong> — typical for content sites and consistent year over year. The more telling number is the hub's homepage at <code class="text-amber-700 dark:text-amber-300">/researchhub/</code>: only <strong class="text-emerald-700 dark:text-emerald-400">25% bounce</strong>. <em>When visitors land at the hub root instead of a specific article, three out of four navigate further.</em> That's exactly the audience the chips below are built for — people looking around for the right thing.
+                  Last 12 months: the hub's overall bounce is <strong class="text-amber-700 dark:text-amber-400">63%</strong> — typical for content sites and consistent year over year. The more telling number is the hub's homepage at <code class="text-amber-700 dark:text-amber-300">/researchhub/</code>: only <strong class="text-emerald-700 dark:text-emerald-400">27% bounce</strong>. <em>When visitors land at the hub root instead of a specific article, nearly three out of four navigate further.</em> That's exactly the audience the chips below are built for — people looking around for the right thing.
                 </p>
               </div>
             </div>
@@ -546,7 +546,7 @@ function showExamples(typeValue: string) {
                 Click here for more from Plausible
               </span>
               <span class="text-xs text-zinc-600 dark:text-zinc-400">
-                — traffic sources, devices, monthly trend (same 6-month period)
+                — traffic sources, devices, monthly trend (same 12-month period)
               </span>
             </div>
             <UIcon
@@ -575,7 +575,7 @@ function showExamples(typeValue: string) {
                   <li>
                     <div class="flex items-baseline justify-between gap-3 text-xs">
                       <span class="font-semibold text-zinc-900 dark:text-white">Google</span>
-                      <span class="font-bold text-emerald-700 dark:text-emerald-400">11,700 visits</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">24,100 visits</span>
                     </div>
                     <div
                       class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
@@ -590,7 +590,7 @@ function showExamples(typeValue: string) {
                   <li>
                     <div class="flex items-baseline justify-between gap-3 text-xs">
                       <span class="font-semibold text-zinc-900 dark:text-white">Direct (typed URL or bookmark)</span>
-                      <span class="font-bold text-emerald-700 dark:text-emerald-400">9,200 visits</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">17,100 visits</span>
                     </div>
                     <div
                       class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
@@ -598,14 +598,14 @@ function showExamples(typeValue: string) {
                     >
                       <div
                         class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
-                        style="width: 79%"
+                        style="width: 71%"
                       />
                     </div>
                   </li>
                   <li>
                     <div class="flex items-baseline justify-between gap-3 text-xs">
                       <span class="font-semibold text-zinc-900 dark:text-white">ChatGPT.com</span>
-                      <span class="font-bold text-emerald-700 dark:text-emerald-400">1,200 visits</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">2,600 visits</span>
                     </div>
                     <div
                       class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
@@ -613,14 +613,14 @@ function showExamples(typeValue: string) {
                     >
                       <div
                         class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
-                        style="width: 10%"
+                        style="width: 11%"
                       />
                     </div>
                   </li>
                   <li>
                     <div class="flex items-baseline justify-between gap-3 text-xs">
                       <span class="font-semibold text-zinc-900 dark:text-white">Bing</span>
-                      <span class="font-bold text-emerald-700 dark:text-emerald-400">474 visits</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">860 visits</span>
                     </div>
                     <div
                       class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
@@ -634,8 +634,8 @@ function showExamples(typeValue: string) {
                   </li>
                   <li>
                     <div class="flex items-baseline justify-between gap-3 text-xs">
-                      <span class="font-semibold text-zinc-900 dark:text-white">DuckDuckGo</span>
-                      <span class="font-bold text-emerald-700 dark:text-emerald-400">244 visits</span>
+                      <span class="font-semibold text-zinc-900 dark:text-white">Facebook</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">587 visits</span>
                     </div>
                     <div
                       class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
@@ -649,7 +649,7 @@ function showExamples(typeValue: string) {
                   </li>
                 </ol>
                 <p class="mt-3 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  Worth noting: <strong class="text-zinc-900 dark:text-white">ChatGPT.com sends 1,200 visits</strong> — measurable AI-search traffic. Hub articles are showing up as citations in AI assistants and driving real readers back to the catalog.
+                  Worth noting: <strong class="text-zinc-900 dark:text-white">ChatGPT.com sends 2,600 visits</strong> over 12 months — measurable AI-search traffic. Hub articles are showing up as citations in AI assistants and driving real readers back to the catalog.
                 </p>
               </div>
 
@@ -671,10 +671,10 @@ function showExamples(typeValue: string) {
                       Desktop
                     </div>
                     <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
-                      66%
+                      65%
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      12,200 visitors
+                      23,800 visitors
                     </div>
                   </div>
                   <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-800/50">
@@ -682,10 +682,10 @@ function showExamples(typeValue: string) {
                       Mobile
                     </div>
                     <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
-                      29%
+                      31%
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      5,400 visitors
+                      11,500 visitors
                     </div>
                   </div>
                   <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-800/50">
@@ -693,10 +693,10 @@ function showExamples(typeValue: string) {
                       Tablet
                     </div>
                     <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
-                      3%
+                      4%
                     </div>
                     <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      625 visitors
+                      1,300 visitors
                     </div>
                   </div>
                 </div>
@@ -712,9 +712,111 @@ function showExamples(typeValue: string) {
                   Monthly trend
                 </div>
                 <h4 class="mb-3 text-sm font-bold text-zinc-900 dark:text-white">
-                  Hub visitors per month, last 6 months
+                  Hub visitors per month, last 12 months
                 </h4>
-                <div class="grid grid-cols-6 gap-2">
+                <div class="grid grid-cols-4 gap-1.5 sm:grid-cols-6 md:grid-cols-12">
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 91%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.2K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      May
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 77%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      2.7K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Jun
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 80%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      2.8K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Jul
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 86%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.0K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Aug
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 100%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.5K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Sep
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 94%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.3K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Oct
+                    </div>
+                  </div>
                   <div class="text-center">
                     <div
                       class="mb-1 flex h-20 items-end"
@@ -819,7 +921,7 @@ function showExamples(typeValue: string) {
                   </div>
                 </div>
                 <p class="mt-3 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  Steady traffic — mid-3K visitors a month. The Jan dip and recovery is the typical seasonal pattern for state-government sites. Stable demand is exactly what you want for a content catalog.
+                  Steady traffic across the full year — mid-2.6K to 3.5K visitors a month. The Jan dip and recovery is the typical seasonal pattern for state-government sites; the Sep/Nov peaks line up with the start of academic and budget cycles. Stable demand is exactly what you want for a content catalog.
                 </p>
               </div>
 
@@ -828,7 +930,7 @@ function showExamples(typeValue: string) {
                   name="i-lucide-database"
                   class="-mt-0.5 mr-1 inline size-3"
                 />
-                Source: Plausible analytics on icjia.illinois.gov, filtered to <code>/researchhub/*</code>, period Oct 2025 – Apr 2026.
+                Source: Plausible analytics on icjia.illinois.gov, filtered to <code>/researchhub/*</code>, period May 2025 – Apr 2026.
               </p>
             </div>
           </div>
@@ -844,7 +946,7 @@ function showExamples(typeValue: string) {
             <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
               Hub 2.0 builds on Hub 1.0's success.
               <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
-                <strong class="text-zinc-900 dark:text-white">18,400 Illinois research-seekers</strong> came to Hub 1.0 in the last six months — and the most-read articles are exactly the kind of "summary" managers ask for. Hub 2.0 streamlines the UI/UX so they find what they want faster, on the same catalog. The chips below are the difference between two clicks and ten, for every one of them.
+                <strong class="text-zinc-900 dark:text-white">36,800 Illinois research-seekers</strong> came to Hub 1.0 in the last twelve months — and the most-read articles are exactly the kind of "summary" managers ask for. Hub 2.0 streamlines the UI/UX so they find what they want faster, on the same catalog. The chips below are the difference between two clicks and ten, for every one of them.
               </span>
             </p>
           </div>
@@ -895,7 +997,7 @@ function showExamples(typeValue: string) {
                     name="i-lucide-eye"
                     class="size-3"
                   />
-                  3,200 readers / 6 mo
+                  6,200 readers / 12 mo
                 </span>
               </div>
             </div>
@@ -923,7 +1025,7 @@ function showExamples(typeValue: string) {
                     name="i-lucide-eye"
                     class="size-3"
                   />
-                  3,000 readers / 6 mo
+                  5,800 readers / 12 mo
                 </span>
               </div>
             </div>
@@ -951,13 +1053,13 @@ function showExamples(typeValue: string) {
                     name="i-lucide-eye"
                     class="size-3"
                   />
-                  2,400 readers / 6 mo
+                  4,300 readers / 12 mo
                 </span>
               </div>
             </div>
           </div>
           <p class="mt-4 text-xs text-zinc-600 dark:text-zinc-400">
-            These three articles alone pulled <strong class="text-zinc-900 dark:text-white">8,600 readers</strong> in the last 6 months because Google has been ranking them on these exact URLs for years. Renaming the path resets that signal.
+            These three articles alone pulled <strong class="text-zinc-900 dark:text-white">16,300 readers</strong> in the last 12 months because Google has been ranking them on these exact URLs for years. Renaming the path resets that signal.
           </p>
         </div>
 
@@ -988,7 +1090,7 @@ function showExamples(typeValue: string) {
               AI citations stay
             </h3>
             <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-              ChatGPT, Bing, and other assistants cite specific URLs. The hub already gets 1,200 visits over six months from ChatGPT — real readers reaching specific articles via specific links.
+              ChatGPT, Bing, and other assistants cite specific URLs. The hub already gets 2,600 visits over twelve months from ChatGPT — real readers reaching specific articles via specific links.
             </p>
           </div>
           <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
