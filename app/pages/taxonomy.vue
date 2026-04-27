@@ -1,10 +1,61 @@
 <script setup lang="ts">
-useHead({ title: 'How this data is organized — Research Hub Demo' })
+const PAGE_TITLE = 'How the data is organized — ICJIA Research Hub Demo'
+const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: three top-level buckets, 14 named article types, and a proposed dataset-to-dashboard datahub.'
+const PAGE_URL = 'https://v2-hub-demo.netlify.app/taxonomy'
+const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
-// Use fillRandom so every article type has at least one example to show
-// in the grid count and the modal. This is a POC demo; the modal banner
-// (illustrative-fill) explains the placeholder fill honestly.
+useHead({
+  title: PAGE_TITLE,
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        'name': PAGE_TITLE,
+        'url': PAGE_URL,
+        'description': PAGE_DESCRIPTION,
+        'inLanguage': 'en-US',
+        'datePublished': '2026-04-15',
+        'dateModified': '2026-04-27',
+        'primaryImageOfPage': {
+          '@type': 'ImageObject',
+          'url': OG_IMAGE,
+          'width': 1200,
+          'height': 630
+        },
+        'isPartOf': {
+          '@type': 'WebSite',
+          'name': 'ICJIA Research Hub Filter Demo',
+          'url': 'https://v2-hub-demo.netlify.app'
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Illinois Criminal Justice Information Authority',
+          'alternateName': 'ICJIA',
+          'url': 'https://icjia.illinois.gov/'
+        }
+      })
+    }
+  ]
+})
+
+useSeoMeta({
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  ogTitle: PAGE_TITLE,
+  ogDescription: PAGE_DESCRIPTION
+})
+
 const { data: rawArticles } = await useArticles({ fillRandom: true })
+
+const articleCount = computed(() => rawArticles.value?.length ?? 0)
+const articleCountLabel = computed(() => {
+  const n = articleCount.value
+  if (n === 0) return '—'
+  const rounded = Math.round(n / 10) * 10
+  return '~' + new Intl.NumberFormat('en-US').format(rounded)
+})
 
 const selectedTypeForModal = ref<string | null>(null)
 const isExamplesOpen = ref(false)
@@ -13,301 +64,523 @@ function showExamples(typeValue: string) {
   selectedTypeForModal.value = typeValue
   isExamplesOpen.value = true
 }
-
-const datahubDiagram = `flowchart TB
-  classDef app fill:#fef3c7,stroke:#d97706,color:#78350f,stroke-width:2px
-  classDef dataset fill:#dbeafe,stroke:#2563eb,color:#1e3a8a,stroke-width:2px
-
-  subgraph p1 [1 — Solo dataset]
-    direction LR
-    Dsolo["📊 Dataset<br/>(no app)"]:::dataset
-  end
-
-  subgraph p2 [2 — One app, one dataset]
-    direction LR
-    A1["📱 App / Dashboard"]:::app --> D1["📊 Dataset"]:::dataset
-  end
-
-  subgraph p3 [3 — One app, many datasets]
-    direction LR
-    A2["📱 App / Dashboard"]:::app
-    A2 --> D2a["📊 Dataset A"]:::dataset
-    A2 --> D2b["📊 Dataset B"]:::dataset
-    A2 --> D2c["📊 Dataset C"]:::dataset
-  end
-
-  subgraph p4 [4 — Shared dataset across apps]
-    direction LR
-    A3a["📱 App / Dashboard 1"]:::app --> Dshared["📊 Dataset"]:::dataset
-    A3b["📱 App / Dashboard 2"]:::app --> Dshared
-  end`
-
-const structureDiagram = `flowchart TB
-  classDef hub fill:#1e293b,stroke:#334155,color:#fff,stroke-width:2px
-  classDef content fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:2px
-  classDef typeEnum fill:#bbf7d0,stroke:#16a34a,color:#14532d,stroke-width:2px
-  classDef freeform fill:#f1f5f9,stroke:#94a3b8,color:#1e293b
-
-  Hub[("Research Hub data")]:::hub
-  Articles["Articles<br/>~236 items"]:::content
-  Datasets["Datasets"]:::content
-  Apps["Apps / Dashboards"]:::content
-
-  Hub --> Articles
-  Hub --> Datasets
-  Hub --> Apps
-
-  Articles --> AType["<b>type</b><br/>14 fixed values<br/>(Research Report,<br/>Annual Report, etc.)"]:::typeEnum
-  Articles --> ACat["categories<br/>free-form labels"]:::freeform
-  Articles --> ATag["tags<br/>free-form keywords"]:::freeform
-
-  Datasets --> DCat["categories<br/>free-form labels"]:::freeform
-  Datasets --> DTag["tags<br/>free-form keywords"]:::freeform
-
-  Apps --> APCat["categories<br/>free-form labels"]:::freeform
-  Apps --> APTag["tags<br/>free-form keywords"]:::freeform`
 </script>
 
 <template>
-  <UContainer class="py-8">
-    <div class="mb-6 space-y-2">
-      <h1 class="text-3xl font-bold tracking-tight text-highlighted">
-        How this data is organized
-      </h1>
-      <p class="text-base italic text-toned">
-        Everything you ever wanted to know about the Research Hub, databases, and taxonomies but were afraid to ask.
-      </p>
-    </div>
-
-    <section class="mb-6 rounded-lg border border-default bg-elevated p-5">
-      <p class="mb-2 text-base font-semibold text-highlighted">
-        Why we said "taxonomy" (and why we're not sorry)
-      </p>
-      <div class="space-y-3 text-sm text-toned">
-        <p>
-          "Taxonomy" is one of those words that sounds intimidating in the same way that <em>thermodynamics</em> or <em>quarterly review</em> sound intimidating — not because the underlying idea is particularly difficult, but because the word itself feels like it comes with homework attached. It doesn't.
+  <div class="bg-white text-zinc-900 dark:bg-[#0a0a0a] dark:text-[#fafafa]">
+    <!-- 1. HERO -->
+    <section class="px-6 pt-16 pb-8 sm:px-12 lg:px-16">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
+          The structure
+        </div>
+        <h1 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
+          How Hub 2.0 organizes<br>everything it publishes.
+        </h1>
+        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
+          Three top-level buckets. Articles holds 14 named types. <span class="font-semibold text-zinc-900 dark:text-white">Hub 2.0 inherited the shape from Hub 1.0</span> — and that's why it works.
         </p>
-        <p>
-          In plain English, a taxonomy is the system someone decided on for sorting things into labeled boxes. <strong>Biologists</strong> use one to sort animals — Kingdom, Phylum, Class, Order, Family, Genus, Species, ending eventually with the platypus, which the system never really knew what to do with. <strong>Librarians</strong> use one to sort books: building → section → subject → individual title. <strong>Hardware stores</strong> use one to sort screws, plus several adjacent categories of small metal things that are technically not screws but ended up here anyway. The <strong>Research Hub</strong> uses one to sort everything it publishes — research reports, annual reports, evaluations, datasets, dashboards, and so on — into a small number of named buckets, where every item in a bucket shares the same predictable labeled fields.
-        </p>
-        <p>
-          We could have called this page <em>"How the data is organized,"</em> which is in fact what it is, and what it now says at the top. But "taxonomy" is the word people in this field actually use. Hearing it from us now means you'll recognize it later, when someone in a CMS configuration screen starts shouting it at you.
-        </p>
-        <p>
-          The rest of this page walks through, in order: a quick reminder that databases <em>are</em> taxonomies and you've used a few before; why the original team committed to this shape and why Hub 2.0 has kept it; the three top-level buckets the hub holds; a note on the word "articles"; what's inside each bucket; the fourteen article types as clickable cards; and a proposed future linking of Datasets to Apps/Dashboards.
-        </p>
-      </div>
-
-      <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
-        Wait — a database is a <em>taxonomy</em>?
-      </p>
-      <div class="space-y-3 text-sm text-toned">
-        <p>
-          If "database" makes you think of spreadsheets and rows, this might feel off. But every well-designed database <strong>is</strong> a taxonomy. It sorts records into typed buckets — called <em>tables</em>, <em>collections</em>, or <em>content types</em> depending on the software — and within each bucket every record carries the same labeled fields. Buckets, fields, and the relationships between them: <em>that structure is the taxonomy</em>.
-        </p>
-        <p>
-          And it isn't unique to the research hub. Any time you've used:
-        </p>
-        <ul class="ml-5 list-disc space-y-1">
-          <li>a <strong>library catalog</strong> (Books → ISBN, title, author, subject, year);</li>
-          <li>a <strong>banking app</strong> (Accounts → Transactions → date, amount, payee);</li>
-          <li>an <strong>e-commerce site</strong> (Categories → Products → price, stock, description);</li>
-          <li>a <strong>calendar</strong> (Calendars → Events → start time, end time, attendees);</li>
-        </ul>
-        <p>
-          …you've used a taxonomy. Someone designing those apps decided up front, "items here fall into these buckets, and each bucket has these specific properties." That single decision is what makes the app's filters, search results, and reports possible later.
-        </p>
-        <p>
-          There's a software-design principle behind this: <strong class="text-highlighted">the database's shape should mirror what the app needs to show</strong>. If the home page has a "Filter by publication type" chip, every Article carries a <code>type</code> field. If a dataset's detail page should list "apps that use this dataset", the database holds a relationship between Datasets and Apps. The data shape determines the UX shape. Get the taxonomy right at the start and the app's features more or less write themselves; get it wrong and editorial work fights the data forever.
-        </p>
-      </div>
-
-      <p class="mt-5 mb-2 text-base font-semibold text-highlighted">
-        Why is the database structured this way — and why has Hub 2.0 kept it?
-      </p>
-      <div class="space-y-3 text-sm text-toned">
-        <p>
-          If you've used the research hub for any length of time, you've probably noticed that <em>it works</em>. You can find an annual report from 2018. New articles look like the old ones. Search returns sensible results. None of that happens by accident — it happens because the original team, back when <strong>Hub 1.0</strong> was being built, committed to a single architectural choice: every published item gets filed into one of a small number of named buckets, and every record in a bucket carries the same labeled fields. Research reports go in one place, with the same metadata as every other research report. Datasets go in another, with their own consistent shape. Dashboards, the same.
-        </p>
-        <p>
-          That's the taxonomy. It's not flashy — it doesn't show up in a screenshot — but it's the reason the hub doesn't degrade as it grows. A few practical wins that flow directly from that early call:
-        </p>
-        <ul class="ml-5 list-disc space-y-1">
-          <li>
-            <strong>Search and filters can do anything useful.</strong> You can type a word in the search box because every article has a <code>title</code> and an <code>abstract</code>. You can click "Research Reports" because every article has a <code>type</code>. None of that works if the hub is a dumping ground of mixed Word docs and PDFs.
-          </li>
-          <li>
-            <strong>The site looks consistent year over year.</strong> Every article card looks like every other article card because every Article record has the same fields. Without that shape, every page would render slightly differently and the hub would feel like a flea market.
-          </li>
-          <li>
-            <strong>Editors can move fast and safely.</strong> A new staff writer doesn't have to invent a structure — the CMS shows them the same form every other writer has filled out. The taxonomy is also editorial guardrails.
-          </li>
-          <li>
-            <strong>The catalog can grow to thousands of items without slowing readers down.</strong> Filters and search work because the database knows the shape ahead of time, not because it's reading every document on every query.
-          </li>
-        </ul>
-        <p>
-          When the original team committed to that shape at the start of Hub 1.0, they were investing in everything that came after — every clean filter, every consistent layout, every fast page. None of those features could have been retrofitted later without painful manual cleanup.
-        </p>
-        <p>
-          That's exactly why <strong class="text-highlighted">Hub 2.0 keeps the same architecture</strong> rather than reinventing it. The bones of the original taxonomy still match what readers and editors need. Hub 2.0 swaps in a more modern CMS (<strong>Strapi 5</strong>), adds richer relationships like the proposed datahub linking datasets to dashboards, and expands the <code>type</code> list so editors can label more kinds of articles. But the three-bucket structure, the labeled fields, the consistent record shape — all of that is intact. <strong>Hub 2.0 is an upgrade, not a teardown, because the original choice was the right one.</strong>
-        </p>
+        <div class="flex flex-wrap gap-3">
+          <UButton
+            to="#types"
+            label="See the 14 types"
+            trailing-icon="i-lucide-arrow-right"
+            color="neutral"
+            variant="solid"
+            class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            size="lg"
+          />
+          <UButton
+            to="/"
+            label="Try filtering"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
+            size="lg"
+          />
+        </div>
       </div>
     </section>
 
-    <section class="mb-8 space-y-4 text-sm text-toned">
-      <p>
-        Every item in the research hub falls into one of three buckets: <strong class="text-highlighted">Articles</strong>, <strong class="text-highlighted">Datasets</strong>, or <strong class="text-highlighted">Apps/Dashboards</strong>. Most of what people search for — research reports, annual reports, newsletters, strategic plans — lives inside <strong class="text-highlighted">Articles</strong>, as one of fourteen possible <em>type</em> values.
-      </p>
-      <p>
-        That's why this demo can give you a one-click "Research Reports" chip: <strong class="text-highlighted">Research Report</strong> is one of those fourteen values. The chips on the Home page just say "show me the Articles whose type equals X."
-      </p>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="mb-3 text-xl font-semibold text-highlighted">
-        How the data is structured
-      </h2>
-      <ClientOnly>
-        <MermaidDiagram :source="structureDiagram" />
-        <template #fallback>
-          <div class="rounded-lg border border-default bg-elevated p-8 text-center text-sm text-muted">
-            Loading diagram…
+    <!-- 2. STAT STRIP -->
+    <section class="border-y border-zinc-200 bg-white px-6 py-10 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+            <UIcon
+              name="i-lucide-layout-grid"
+              class="size-5"
+            />
           </div>
-        </template>
-      </ClientOnly>
-    </section>
-
-    <section class="mb-10 rounded-lg border border-default bg-elevated p-5">
-      <p class="mb-2 text-base font-semibold text-highlighted">
-        Why "articles" — and not "summaries"?
-      </p>
-      <div class="space-y-3 text-sm text-toned">
-        <p>
-          During <strong>Hub 1.0</strong> planning, <em>summaries</em> was a candidate label. It was rejected after several weeks of deliberation because articles can also stand on their own — published pieces with no attached source PDF, just an article in the everyday sense. "Summaries" didn't fit that case.
-        </p>
-        <p>
-          The team landed on <strong>articles</strong> because it was both more general (a publishing platform carries many kinds of digital pieces, including standalone articles) and more specific (an "article" is a familiar concept on a publishing platform). The core scope was anticipated by that choice: an article can be a summary of a research report, an annual report, a program evaluation, a strategic plan, or one of fourteen <code>type</code> values total — and it can also be a piece with no source attachment at all.
-        </p>
-        <p>
-          That history is exactly why the chips in this demo matter. Without a way to filter by <code>type</code>, an article that summarizes a formal research report and an article that summarizes a quarterly newsletter look identical in the list. With the chips, "show me only the formal research reports" is one click.
-        </p>
+          <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
+            3
+          </div>
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            top-level content types
+          </div>
+        </div>
+        <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+            <UIcon
+              name="i-lucide-tags"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
+            14
+          </div>
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            named article types
+          </div>
+        </div>
+        <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-5 dark:bg-emerald-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+            <UIcon
+              name="i-lucide-link"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-emerald-700 sm:text-5xl dark:text-emerald-400">
+            1
+          </div>
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            shape inherited from Hub 1.0
+          </div>
+        </div>
+        <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+            <UIcon
+              name="i-lucide-share-2"
+              class="size-5"
+            />
+          </div>
+          <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
+            4
+          </div>
+          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+            patterns proposed for the datahub
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="mb-10 space-y-6">
-      <h2 class="text-xl font-semibold text-highlighted">
-        What each bucket means
-      </h2>
-
-      <div class="space-y-2">
-        <h3 class="text-base font-semibold text-highlighted">
-          Articles <span class="text-sm font-normal text-muted">(~236 items)</span>
-        </h3>
-        <ul class="ml-5 list-disc space-y-1 text-sm text-toned">
-          <li><strong>type</strong> — one of fourteen fixed values. <em>This is what the chips on the Home page filter by.</em></li>
-          <li><strong>categories</strong> — free-form topical labels editors can type in (e.g. "youth", "deflection", "violence prevention").</li>
-          <li><strong>tags</strong> — more free-form keywords for search and surfacing.</li>
-        </ul>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-base font-semibold text-highlighted">
-          Datasets
-        </h3>
-        <p class="text-sm text-toned">
-          Datasets do <strong>not</strong> have a "type" enum. They only carry <strong>categories</strong> and <strong>tags</strong>. This demo doesn't touch Datasets — it focuses on Articles.
-        </p>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-base font-semibold text-highlighted">
-          Apps / Dashboards
-        </h3>
-        <p class="text-sm text-toned">
-          Same shape as Datasets — <strong>categories</strong> and <strong>tags</strong> only, no "type" enum. The CMS calls these "Apps"; in plain language they're the dashboards and visualizations on the site. Also out of scope for this demo.
-        </p>
-      </div>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="mb-3 text-xl font-semibold text-highlighted">
-        The fourteen Article types. Try it. Click.
-      </h2>
-      <p class="mb-4 text-sm text-toned">
-        These are the only valid values for an article's <em>type</em> field. Editors can't add new ones in the CMS without a code change. The View 0 chips surface five of these (the most-asked-for); the dropdown on View 1 surfaces all of them.
-      </p>
-
-      <p class="mb-3 text-xs text-muted">
-        <UIcon
-          name="i-lucide-mouse-pointer-click"
-          class="mr-1 inline size-4"
-        />
-        Click any type to see real examples from the live database.
-      </p>
-
-      <HubArticleTypeGrid
-        :articles="rawArticles"
-        variant="list"
-        @select="showExamples"
-      />
-    </section>
-
-    <section class="mb-10">
-      <div class="mb-3 flex flex-wrap items-center gap-2">
-        <h2 class="text-xl font-semibold text-highlighted">
-          Proposed: the "datahub" — Datasets linked to Apps/Dashboards
+    <!-- 3. THE ARCHITECTURE -->
+    <section class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
+          Inherited from Hub 1.0
+        </div>
+        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl dark:text-white">
+          Same bones. Modern CMS.
         </h2>
-        <UBadge
-          label="Future"
-          color="warning"
-          variant="soft"
-          size="md"
-        />
-      </div>
-
-      <div class="mb-4 space-y-3 text-sm text-toned">
-        <p>
-          Right now Datasets and Apps/Dashboards live as separate islands. The team wants them connected: a <strong>Dataset</strong> can stand alone, or it can power an <strong>App/Dashboard</strong>; an <strong>App/Dashboard</strong> can pull from one Dataset or several; and the same Dataset can show up in more than one App/Dashboard. Managers are calling this the <strong class="text-highlighted">datahub</strong>.
+        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
+          The hub holds three top-level buckets. Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
         </p>
-        <p>
-          <strong class="text-highlighted">All four of the patterns below are already supported by the Strapi 5 schema today.</strong> Introspection confirms the relation fields are in place — <code>App.datasets</code> and <code>Dataset.apps</code> are bidirectional and accept any number on either side. So the work for Hub 2.0 isn't building anything new at the data layer. It's editorial: <strong>curating</strong> which datasets belong to which apps, <strong>editing</strong> the metadata so the relationships make sense, <strong>adjusting</strong> as the catalog grows, and <strong>oversight</strong> to make sure everything is wired correctly.
-        </p>
-      </div>
 
-      <ClientOnly>
-        <MermaidDiagram :source="datahubDiagram" />
-        <template #fallback>
-          <div class="rounded-lg border border-default bg-elevated p-8 text-center text-sm text-muted">
-            Loading diagram…
+        <!-- 3-content-type ribbon -->
+        <div class="mb-10 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-xl border-2 border-amber-500 bg-amber-500/10 p-4">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-amber-700 dark:text-amber-400">
+              Content type 1 of 3
+            </div>
+            <div class="mt-1 flex items-baseline gap-2 text-base font-extrabold text-zinc-900 dark:text-white">
+              <UIcon
+                name="i-lucide-library"
+                class="size-5 text-amber-600 dark:text-amber-400"
+              />
+              Articles
+              <span class="text-xs font-medium text-zinc-600 dark:text-zinc-400">{{ articleCountLabel }} items</span>
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <span class="rounded-full border border-amber-500 bg-amber-500/20 px-2.5 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">type</span>
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">categories</span>
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">tags</span>
+            </div>
+            <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
+              <code class="text-amber-700 dark:text-amber-300">type</code>: 14 fixed values · the rest: free-form
+            </div>
           </div>
-        </template>
-      </ClientOnly>
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
+              Content type 2 of 3
+            </div>
+            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
+              <UIcon
+                name="i-lucide-database"
+                class="size-5 text-zinc-600 dark:text-zinc-400"
+              />
+              Datasets
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">categories</span>
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">tags</span>
+            </div>
+            <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
+              free-form labels · no <code>type</code> enum
+            </div>
+          </div>
+          <div class="rounded-xl border border-zinc-300 bg-zinc-100/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
+              Content type 3 of 3
+            </div>
+            <div class="mt-1 flex items-baseline gap-2 text-base font-bold text-zinc-700 dark:text-zinc-300">
+              <UIcon
+                name="i-lucide-layout-dashboard"
+                class="size-5 text-zinc-600 dark:text-zinc-400"
+              />
+              Apps / Dashboards
+            </div>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">categories</span>
+              <span class="rounded-full bg-zinc-200 px-2.5 py-0.5 text-[10px] text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">tags</span>
+            </div>
+            <div class="mt-2 text-[10px] text-zinc-600 dark:text-zinc-400">
+              free-form labels · no <code>type</code> enum
+            </div>
+          </div>
+        </div>
 
-      <div class="mt-4 space-y-3 text-sm text-toned">
-        <p>What the four patterns mean in practice:</p>
-        <ul class="ml-5 list-disc space-y-1">
-          <li><strong>Solo dataset</strong> — a dataset that stands on its own (raw data, no dashboard yet).</li>
-          <li><strong>One app/dashboard, one dataset</strong> — a dashboard built around a single dataset.</li>
-          <li><strong>One app/dashboard, many datasets</strong> — a dashboard that pulls in several datasets (e.g. a crime mapper layering 2024 stats, 2023 stats, and geocoded incidents).</li>
-          <li><strong>Shared dataset across apps/dashboards</strong> — the same dataset feeding more than one dashboard.</li>
-        </ul>
-        <p>Once the linking is curated, the hub can:</p>
-        <ul class="ml-5 list-disc space-y-1">
-          <li>Show <em>"Datasets used by this app/dashboard"</em> on each App/Dashboard page.</li>
-          <li>Show <em>"Apps/Dashboards that use this dataset"</em> on each Dataset page.</li>
-          <li>Let visitors jump from a research article straight to the dataset it cites and the app/dashboard that visualizes it.</li>
-        </ul>
+        <!-- Equivalence visual: Hub 1.0 ≡ Hub 2.0 -->
+        <div class="my-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+          <div class="w-full max-w-xs rounded-2xl border-2 border-zinc-300 bg-zinc-100/70 px-8 py-6 text-center sm:w-auto dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              Hub 1.0 shape
+            </div>
+            <div class="mt-2 text-3xl font-black tracking-tight text-zinc-700 sm:text-4xl dark:text-zinc-300">
+              3 buckets · 14 types
+            </div>
+          </div>
+          <div
+            class="text-5xl font-black text-zinc-900 sm:text-7xl dark:text-white"
+            aria-hidden="true"
+          >
+            ≡
+          </div>
+          <div class="w-full max-w-xs rounded-2xl border-2 border-sky-500 bg-sky-500/10 px-8 py-6 text-center sm:w-auto">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              Hub 2.0 shape
+            </div>
+            <div class="mt-2 text-3xl font-black tracking-tight text-sky-700 sm:text-4xl dark:text-sky-300">
+              3 buckets · 14 types
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-sm text-zinc-600 dark:text-zinc-400">
+          <span class="font-semibold text-zinc-900 dark:text-white">The structure is identical.</span> The CMS is new (Strapi 5). Hub 2.0 is an upgrade, not a teardown.
+        </p>
       </div>
     </section>
 
-    <section class="rounded-lg border border-default bg-elevated p-5 text-sm text-toned">
-      <p class="mb-2 font-semibold text-highlighted">
-        Why this matters for the demo
-      </p>
-      <p>
-        The "Publication Type Filter Demo" is doing one specific thing: it's filtering the <strong>Articles</strong> list by the <strong>type</strong> field. Datasets and Apps/Dashboards aren't part of the filter demo — they're separate content types with no "type" of their own. Once Research Reports (and the other types) are tagged consistently in the CMS, the chip on the Home page becomes a one-click answer to "show me everything our researchers have published as a formal report." The datahub above is the next obvious step: connect those reports to the underlying data and dashboards.
-      </p>
+    <!-- 4. WHY 'ARTICLES' AND NOT 'SUMMARIES' -->
+    <section class="border-b border-amber-300/50 bg-amber-50 px-6 py-8 sm:px-12 lg:px-16 dark:border-amber-500/15 dark:bg-amber-500/5">
+      <div class="mx-auto flex max-w-5xl gap-4">
+        <UIcon
+          name="i-lucide-notebook-pen"
+          class="mt-1 size-5 shrink-0 text-amber-600 dark:text-amber-400"
+        />
+        <div>
+          <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+            The naming decision
+          </div>
+          <h3 class="mb-2 text-base font-bold text-amber-700 dark:text-amber-400">
+            Why "articles" — and not "summaries"?
+          </h3>
+          <div class="space-y-2.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            <p>
+              "Summaries" was on the table during Hub 1.0 planning. Over several weeks and several name changes, we kept running into the same problem: an article <em>can</em> be a summary of an attached research report or annual report — but it can also stand on its own, a standalone piece with no attached PDF at all. "Summaries" didn't fit that case.
+            </p>
+            <p>
+              We landed on <strong class="text-amber-700 dark:text-amber-400">articles</strong> because it was both <strong>more general</strong> (a publishing platform can carry many kinds of digital pieces, including standalone articles) and <strong>more specific</strong> (an "article" is a familiar concept — exactly what you'd expect on a publishing platform).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. THE 14 ARTICLE TYPES (interactive) -->
+    <section
+      id="types"
+      class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
+    >
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
+          Inside Articles
+        </div>
+        <h2 class="mb-2 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl dark:text-white">
+          Fourteen types. <span class="text-amber-700 dark:text-amber-400">Click any one.</span>
+        </h2>
+        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
+          These are the only valid values for an article's <code>type</code> field. Real examples open in a modal.
+        </p>
+
+        <div class="relative rounded-2xl border-2 border-amber-500 bg-white p-7 dark:bg-zinc-900">
+          <div class="absolute -top-3 left-5 rounded bg-amber-500 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.06em] text-zinc-950">
+            <UIcon
+              name="i-lucide-library"
+              class="-mt-1 mr-0.5 inline size-4"
+            />
+            Articles · {{ articleCountLabel }} items
+          </div>
+
+          <HubArticleTypeGrid
+            :articles="rawArticles"
+            variant="list"
+            @select="showExamples"
+          />
+
+          <div class="mt-4 flex flex-col gap-3 border-t border-dashed border-zinc-300 pt-3 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800">
+            <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-zinc-600 dark:text-zinc-400">
+              <span><span class="text-amber-600 dark:text-amber-400">●</span> highlighted</span>
+              <span><span class="text-sky-600 dark:text-sky-400">●</span> research / evaluation</span>
+              <span><span class="text-emerald-600 dark:text-emerald-400">●</span> reports &amp; plans</span>
+              <span><span class="text-violet-600 dark:text-violet-400">●</span> communications</span>
+            </div>
+            <div class="text-xs font-semibold text-amber-700 dark:text-amber-500">
+              <UIcon
+                name="i-lucide-mouse-pointer-click"
+                class="-mt-0.5 mr-1 inline size-4"
+              />
+              Click any type for live examples
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PROPOSED DATAHUB -->
+    <section class="border-b border-zinc-200 bg-white px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-600 dark:text-violet-400">
+          <span>What's next</span>
+          <UBadge
+            label="Future"
+            color="warning"
+            variant="soft"
+            size="sm"
+          />
+        </div>
+        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl dark:text-white">
+          Connecting datasets to dashboards. <span class="text-violet-700 dark:text-violet-400">Four patterns.</span>
+        </h2>
+        <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Right now Datasets and Apps live as separate islands. The team wants them connected. The Strapi 5 schema already supports all four shapes today — the work for Hub 2.0 is editorial.
+        </p>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Card 1: Solo dataset (sky) -->
+          <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
+            <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">
+              Pattern 1
+            </div>
+            <div class="mb-4 flex items-center justify-center gap-2 py-3">
+              <UIcon
+                name="i-lucide-database"
+                class="size-12 text-sky-600 dark:text-sky-300"
+              />
+            </div>
+            <div class="text-base font-bold text-zinc-900 dark:text-white">
+              Solo dataset
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              A dataset that stands on its own — raw data, no dashboard yet.
+            </p>
+          </div>
+
+          <!-- Card 2: One app, one dataset (emerald) -->
+          <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-5 dark:bg-emerald-500/10">
+            <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+              Pattern 2
+            </div>
+            <div class="mb-4 flex items-center justify-center gap-2 py-3">
+              <UIcon
+                name="i-lucide-layout-dashboard"
+                class="size-10 text-emerald-600 dark:text-emerald-300"
+              />
+              <UIcon
+                name="i-lucide-arrow-right"
+                class="size-5 text-emerald-600 dark:text-emerald-300"
+              />
+              <UIcon
+                name="i-lucide-database"
+                class="size-10 text-emerald-600 dark:text-emerald-300"
+              />
+            </div>
+            <div class="text-base font-bold text-zinc-900 dark:text-white">
+              One app, one dataset
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              A dashboard built around a single dataset.
+            </p>
+          </div>
+
+          <!-- Card 3: One app, many datasets (amber) -->
+          <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+            <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
+              Pattern 3
+            </div>
+            <div class="mb-4 flex items-center justify-center gap-1.5 py-3">
+              <UIcon
+                name="i-lucide-layout-dashboard"
+                class="size-10 text-amber-600 dark:text-amber-300"
+              />
+              <UIcon
+                name="i-lucide-arrow-right"
+                class="size-5 text-amber-600 dark:text-amber-300"
+              />
+              <div class="flex flex-col gap-0.5">
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-5 text-amber-600 dark:text-amber-300"
+                />
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-5 text-amber-600 dark:text-amber-300"
+                />
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-5 text-amber-600 dark:text-amber-300"
+                />
+              </div>
+            </div>
+            <div class="text-base font-bold text-zinc-900 dark:text-white">
+              One app, many datasets
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              A dashboard pulling in several datasets — e.g., layered crime stats by year.
+            </p>
+          </div>
+
+          <!-- Card 4: Shared dataset (violet) -->
+          <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+            <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
+              Pattern 4
+            </div>
+            <div class="mb-4 flex items-center justify-center gap-1.5 py-3">
+              <div class="flex flex-col gap-0.5">
+                <UIcon
+                  name="i-lucide-layout-dashboard"
+                  class="size-7 text-violet-600 dark:text-violet-300"
+                />
+                <UIcon
+                  name="i-lucide-layout-dashboard"
+                  class="size-7 text-violet-600 dark:text-violet-300"
+                />
+              </div>
+              <UIcon
+                name="i-lucide-arrow-right"
+                class="size-5 text-violet-600 dark:text-violet-300"
+              />
+              <UIcon
+                name="i-lucide-database"
+                class="size-10 text-violet-600 dark:text-violet-300"
+              />
+            </div>
+            <div class="text-base font-bold text-zinc-900 dark:text-white">
+              Shared dataset
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              The same dataset feeding more than one dashboard.
+            </p>
+          </div>
+        </div>
+
+        <!-- Schema-supported tile -->
+        <div class="mt-6 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 p-5">
+          <div class="flex items-start gap-3">
+            <UIcon
+              name="i-lucide-circle-check-big"
+              class="mt-0.5 size-6 shrink-0 text-emerald-700 dark:text-emerald-300"
+            />
+            <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              All four patterns: schema-supported in Strapi 5 today.
+              <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
+                The work for Hub 2.0 is editorial — curating which datasets belong to which apps, not building anything new at the data layer.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TL;DR -->
+    <section class="border-y-4 border-sky-500 bg-sky-100/40 px-6 py-16 sm:px-12 lg:px-16 dark:border-sky-500/80 dark:bg-sky-500/10">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-6 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-sky-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-zap"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-sky-800 sm:text-sm dark:text-sky-300">
+            The point
+          </span>
+        </div>
+        <h2 class="mb-6 text-4xl font-black leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+          Hub 2.0 inherited the structure that <span class="text-sky-700 dark:text-sky-400">already worked.</span>
+        </h2>
+        <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
+          This demo exposes the shape so visitors can filter by it. The bones haven't changed since Hub 1.0 — and that's why filters and search work at all.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. DEEP DIVES -->
+    <section class="bg-white px-6 py-14 sm:px-12 lg:px-16 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
+          Deeper look
+        </div>
+        <h2 class="mb-7 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
+          More to explore.
+        </h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <NuxtLink
+            to="/about"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-emerald-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-400/60 dark:focus-visible:ring-emerald-400"
+          >
+            <div class="mb-2 flex items-center gap-2.5">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:border-emerald-400/30 dark:bg-emerald-400/10 dark:text-emerald-400">
+                <UIcon
+                  name="i-lucide-sparkles"
+                  class="size-4"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                What else this demo shows
+              </div>
+            </div>
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Search highlighting, click-to-filter authors, additive tags, the five ICJIA Centers — seven small upgrades that make the catalog easier to navigate.
+            </p>
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-emerald-600 group-hover:underline dark:text-emerald-400">
+              /about →
+            </div>
+          </NuxtLink>
+          <NuxtLink
+            to="/"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-amber-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-amber-400/60 dark:focus-visible:ring-amber-400"
+          >
+            <div class="mb-2 flex items-center gap-2.5">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-500">
+                <UIcon
+                  name="i-lucide-home"
+                  class="size-4"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                Back to the home page
+              </div>
+            </div>
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The visual orientation: articles ≡ summaries, the 14-type bucket, and three filter layouts to try.
+            </p>
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-600 group-hover:underline dark:text-amber-500">
+              / →
+            </div>
+          </NuxtLink>
+        </div>
+      </div>
     </section>
 
     <ArticleTypeExamplesModal
@@ -316,5 +589,5 @@ const structureDiagram = `flowchart TB
       :articles="rawArticles"
       illustrative-fill
     />
-  </UContainer>
+  </div>
 </template>
