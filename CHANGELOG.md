@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.85] — 2026-04-27
+
+### Added
+
+- **New "URL stability / SEO" section on the home page**, between the Plausible numbers and the diagram. Explains why Hub 2.0 keeps Hub 1.0's `/researchhub/articles/...` URLs untouched: SEO ranking signals attach to specific URLs over time, AI assistants (ChatGPT, Bing) cite specific URLs, and government/academic backlinks point to specific URLs — all of which leak equity if the URL path is renamed. Surfaces three real article URLs with their indexed/cited status and 6-month reader counts (totaling 8,600 readers across just three pages). Three-card "why URL stability matters" grid (Google rankings stay, AI citations stay, backlinks stay), then an amber "Why 'summary === article' matters here too" callout that explains the alternative — mapping certain articles to `/summaries/` URLs — would create a fragile redirect layer with editorial-decision-driven SEO landmines. Closes with the user's exact wording: **"URL stability matters. Confusion doesn't. Fragile mapping doesn't."**
+
+### Changed
+
+- **`/taxonomy` TL;DR tense fix.** "Hub 2.0 inherited the structure that **already worked**." → "...that **already works**." Hub 1.0 is currently live and presently working, so the present tense is correct. The supporting paragraph was expanded with concrete "what 'works' means" evidence: 18,400 hub visitors and 116K pageviews in the last 6 months, top articles ranking on Google for years, plus AI citations now coming in from ChatGPT and external sites. Hub 2.0 keeps every URL, every ranking, and every citation intact.
+- **`/taxonomy` architecture popover** picked up the same tense fix: "the bones are the ones that **already work**" (was "worked").
+
 ## [0.1.84] — 2026-04-27
 
 ### Changed
