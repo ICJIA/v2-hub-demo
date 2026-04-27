@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.79] — 2026-04-27
+
+### Changed
+
+- **`/about` and `/taxonomy` hero CTAs** now link to all three views (View 0, View 1, View 2), not just View 0. Visitors can jump straight from either page into any of the three filter UX flavors. The redundant "Try filtering" → `/` button on `/taxonomy` was dropped, since clicking any view IS trying filtering. `/about` keeps its "See it on the home page" primary CTA alongside the three view buttons.
+
 ## [0.1.78] — 2026-04-27
 
 ### Changed
