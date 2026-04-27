@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.81] — 2026-04-27
+
+### Changed
+
+- **`/about` page** restructured into a single "All seven, at a glance" interactive grid. Each of the seven upgrades is now a card that opens a detail modal explaining what the upgrade does, why it matters, and where to try it (with the view CTA inside the modal). The earlier "headline fix" equivalence visual is folded into upgrade #1's modal; the author-merge before/after is folded into upgrade #4's modal. The page hero's H1 ("Seven small upgrades. One big difference.") is now backed by a single source of truth — the 7-card grid — rather than split across two sections labeled "headline fix" and "six more."
+- **Home page "Hub 1.0 in numbers" section** refreshed to a 6-month window (Oct 2025 – Apr 2026) with explicit time-interval framing throughout. Stats updated: 116K pageviews on hub articles, 18.4K unique visitors, ~66% of all icjia.illinois.gov visitors land on the hub, 16-min average reading time. The top-five articles list is reordered for the 6-month window (Police Officer Stress now leads at 3,200 readers; Mental Illness & Violence remains #5 at 2,400) and **each article now shows its bounce rate** (60–66% across the five) so the "What's a bounce rate?" callout has concrete data to anchor against. The bounce-rate callout itself updated to reference the hub root's 25% bounce (6-month figure) and the closing "why this matters" tile is rewritten to call out the 18,400-visitor figure explicitly rather than the previous "tens of thousands per year."
+
 ## [0.1.80] — 2026-04-27
 
 ### Added
