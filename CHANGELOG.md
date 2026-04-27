@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.92] — 2026-04-27
+
+### Changed
+
+- **Header nav labels renamed for clarity:**
+  - "What This Demo Shows" → **"Why this demo app?"**
+  - "Hub Taxonomy" → **"How is the Hub organized?"**
+- **Author-normalization explainer line on home** rewritten to frame the section as a meeting-driven concrete fix: "**This came up in a meeting.** An author's name shows up in the dropdown three or four different ways, the same person fragments across entries, the count looks wrong. Below: how we fixed it, and why the fix works." (was: a one-line aside about being separate from the database-naming issue.)
+- **README refreshed end-to-end** to reflect the current state of the demo:
+  - Intro now describes the seven pages and the skeptic-first narrative explicitly, with the Plausible 12-month numbers (36.8K visitors, 232K pageviews, ~70% of icjia.illinois.gov) called out as evidence.
+  - Routes section rewrites for `/`, `/current` (new), `/about`, and `/taxonomy` — home page now lists all 11 infograph sections in order; `/current` documented as the Hub 2.0 baseline; `/about` documented as a 7-card interactive grid with detail modals; `/taxonomy` documented as interactive content-type tabs with the inline detail panel and the "Hub 1.0 by the numbers" proof section. Mermaid mention updated to note both diagrams were replaced with bespoke infograph treatments in v0.1.85+ (the component file remains in place for any future use).
+  - Project-layout snippet adds `current.vue` and updates the page descriptions to match the rebuilt content.
+  - All references to the old nav labels were updated to the new ones.
+
 ## [0.1.91] — 2026-04-27
 
 ### Changed

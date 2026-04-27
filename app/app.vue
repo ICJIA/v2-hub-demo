@@ -103,7 +103,12 @@ const version = useRuntimeConfig().public.appVersion
 const currentYear = useState('currentYear', () => new Date().getFullYear())
 
 const navItems = [
-  { label: 'Home', to: '/' },
+  {
+    label: 'Home',
+    to: '/',
+    icon: 'i-lucide-home',
+    class: 'font-bold'
+  },
   { label: 'Current', to: '/current' },
   { label: 'View 0', to: '/view0' },
   { label: 'View 1', to: '/view1' },
@@ -137,7 +142,7 @@ const navItems = [
       <template #right>
         <UButton
           to="/about"
-          label="What This Demo Shows"
+          label="Why this demo app?"
           icon="i-lucide-sparkles"
           color="primary"
           variant="ghost"
@@ -146,7 +151,7 @@ const navItems = [
 
         <UButton
           to="/taxonomy"
-          label="Hub Taxonomy"
+          label="How is the Hub organized?"
           icon="i-lucide-network"
           color="neutral"
           variant="ghost"

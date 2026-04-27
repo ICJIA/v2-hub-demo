@@ -6,9 +6,11 @@
 
 **Live:** https://v2-hub-demo.netlify.app/
 
-Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, and tags, alongside a free-text search. Three side-by-side "views" let managers compare different filter UX flavors against the same dataset, plus a `/taxonomy` page explaining the underlying Strapi 5 data model in plain English.
+Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, ICJIA Center, and tags, alongside a free-text search. The demo is built around a **skeptic-first narrative for non-technical managers**: lead with live Plausible traffic data and URL-stability evidence, then explain the architecture that made it work, then show the proposed UX tweaks.
 
-The pages fetch live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, hold all published articles in memory, and apply every filter client-side. Cards link to an internal stub detail page at `/articles/<slug>` so the demo is fully self-contained — no runtime traffic leaves this app.
+Seven pages total. The narrative pages (`/`, `/about`, `/taxonomy`) are infographic-heavy explanations aimed at a manager who hasn't been close to the system; `/current` shows Hub 2.0 as it stands today (a baseline filter bar with no chips); `/view0`, `/view1`, `/view2` are three side-by-side filter-UX variants that layer the proposed friction-reducers on top of `/current`.
+
+The article-list pages fetch live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, hold all published articles in memory, and apply every filter client-side. Cards link to an internal stub detail page at `/articles/<slug>` so the demo is fully self-contained — no runtime traffic leaves this app. The narrative pages additionally pull live traffic data from a self-hosted Plausible instance via the `@icjia/plausible-mcp` tooling to ground claims in real numbers (last 12 months: 36.8K visitors, 232K pageviews, ~70% of all icjia.illinois.gov traffic).
 
 ## Quick start
 
@@ -64,14 +66,32 @@ Each dropdown leads with an `All …` reset entry, sized to fit the longest item
 
 ## Routes
 
-- **`/` — Home page.** Visual orientation built for non-technical managers landing on the demo for the first time. Seven sections: hero, "Why this demo" with an `articles ≡ summaries` equivalence visual, stat strip (article count, 14 types, 3 layouts, 1 click), "Three top-level content types" diagram zooming into the Articles bucket with all fourteen type pills (each clickable to open a live-examples modal), naming note, three clickable view cards, and two clickable deep-dive cards (`/taxonomy` and `/about`). Lands the conceptual point that "Articles" is the umbrella content type holding fourteen named types — research reports, annual reports, program evaluations, etc. Respects the dark/light toggle (default dark).
-- **`/view0` — View 0 (chips with optional advanced filters).** A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind an **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
+- **`/` — Home page.** Visual orientation aimed at a skeptical non-technical manager. Eleven infographic sections in evidence-first order:
+  1. Hero — orientation
+  2. **Why this demo** — `articles ≡ summaries` equivalence answering "I want a summary, not an article"
+  3. **Hub 1.0 in numbers** ("Proof — the hub already works") — live Plausible traffic for the production hub: 36.8K visitors, 232K pageviews, ~70% of icjia.illinois.gov traffic, 16-min average read time, top-five-articles bar chart with bounce rates, plain-English "What's a 'bounce'?" explainer, expandable "More from Plausible" with sources / devices / 12-month trend
+  4. **URL stability / SEO** — why Hub 2.0 keeps `/researchhub/articles/…` URLs (Google rankings, ChatGPT citations, external backlinks all attached to specific URLs; renaming costs traffic)
+  5. **Architecture diagram** — three interactive content-type cards (Articles / Datasets / Apps-Dashboards as tabs that swap content panel below); zoom into Articles with the 14 type pills (each clickable to open a live-examples modal)
+  6. **What this demo adds** stat strip — POC counts (`~240` articles · `14` types · `3` filter layouts · `1` click)
+  7. **"And one more thing… Author names."** — Steve Jobs-style reveal with a 6xl/7xl/8xl `font-black` infographic title, then a Problem/Solution split: "Riley Calder, Riley Calder PhD, JANE CARTER" 7-variant CMS dump (the Problem) vs. one canonical entry + five normalization steps (the Solution)
+  8. TL;DR — "Every research report is one click away. *(Remember — articles **are** summaries.)*"
+  9. Five takeaways — busy-manager skim cards
+  10. **Current + three proposed views** — full-width "Start here · /current" card on top, then three view cards below with chip / dropdown / always-on previews
+  11. Deep dives — links to `/taxonomy` and `/about`
+
+  Respects the dark/light toggle (default dark).
+
+- **`/current` — Current view (Hub 2.0 baseline).** Lives between Home and View 0 in the nav. Filter bar with Type / Topic / Author / Year / Center dropdowns + search — no chips, no chip-stacking. Framed as "Hub 2.0 as it stands today" — visitors land here to see the baseline before jumping into the three proposed views. Includes inline "Proposed tweaks:" buttons linking to View 0 / 1 / 2.
+
+- **`/view0` — View 0 (chips + Advanced filters toggle).** A row of quick-pick chips (`All`, plus pluralized Research Reports, Annual Reports, Program Evaluation Summaries, Updates, Strategic Plans). The full filter bar (Topics, Centers, Authors, Years, Search) is hidden behind a violet-bordered, high-contrast **Advanced filters** toggle. The hypothesis: chips are usually enough; reveal the bar only when needed. Clicking the `All` chip is a full reset.
+
 - **`/view1` — View 1 (dropdown-only).** All filtering, including Publication Type, lives in the filter bar. No chip row, no Centers dropdown — this is the "centers removed" UX from the original brief, closest to the live site today.
+
 - **`/view2` — View 2 (chips with always-on filter bar).** Same chip row as View 0, with the full filter bar (Topics, Centers, Authors, Years, Search) always visible alongside. No Advanced toggle.
 
-The home page sells the *why* of the demo; Views 0–2 are three filter-UX flavors for managers to compare against the same dataset.
+The home page makes the *case* for the demo with evidence; `/current` is the baseline; Views 0–2 are three filter-UX flavors for managers to compare against the same dataset.
 
-There's also a separate `/taxonomy` page (linked as **Hub Taxonomy** on the right side of the header) that explains the underlying Strapi 5 data model in plain English with two Mermaid diagrams. Audience: managers who don't yet understand that "Research Reports" is one of fourteen `type` values inside the `Articles` content type. Each of the fourteen types is clickable and opens a modal showing the top two real examples currently tagged with that type.
+There's also a separate `/taxonomy` page (linked as **How is the Hub organized?** on the right side of the header) that explains the underlying Strapi 5 data model in plain English using infograph treatments — three interactive content-type tabs (Articles / Datasets / Apps-Dashboards) with content that swaps in place, a 14-type interactive grid (clickable to modal with real examples), and a "Hub 1.0 by the numbers" section mirroring the home page's Plausible evidence as proof that the structure works.
 
 The chip set and the canonical Centers list are shared across pages via `CHIP_TYPES` and `KNOWN_CENTERS` exports in `app/utils/article-format.ts` — adding a new chip or center happens in one place.
 
@@ -85,34 +105,47 @@ The Centers dropdown is hardcoded to the five canonical ICJIA divisions so all o
 - Center for Violence Prevention and Intervention Research
 - Research & Analysis Unit
 
-## "What This Demo Shows" page (`/about`)
+## "Why this demo app?" page (`/about`)
 
-Top-right of the header, the **What This Demo Shows** button links to `/about` (`app/pages/about.vue`). The page carries a non-jargon checklist aimed at managers who haven't seen the demo yet — this is the elevator pitch, and it's a real route so the link can be shared:
+Top-right of the header, the **Why this demo app?** button links to `/about` (`app/pages/about.vue`). Five infograph sections aimed at the same skeptical manager:
 
-1. **Find research reports in one click** — the headline benefit, mapped to the chips on View 0 / View 2.
-2. **Search highlights what it matched** — yellow `<mark>` inside title and abstract.
-3. **Click an author's name to see their other work** — clickable bylines.
-4. **One entry per author, even when their name varies** — author canonicalization (see section below).
-5. **Click any tag — and stack them** — additive (OR) tag filtering with removable pills.
-6. **Filter by ICJIA Center** — the five canonical centers, listed even when count is zero.
-7. **Three layouts to compare** — Views 0, 1, and 2.
+1. **Hero** — H1 "Seven small upgrades. One big difference." with four CTAs (Home / Current / View 0 / View 1 / View 2)
+2. **Stat strip** — four interactive popover tiles (`7 upgrades · 1 click to find research reports · 1 entry per author · 5 ICJIA Centers always visible`); each tile reveals a 1-2 sentence explainer in a UPopover on click/focus
+3. **The seven upgrades** — interactive grid where each card opens a detail modal with "What it does" + "Why it matters" + "Try it →" CTAs (the modal carries the Hub 1.0 / Hub 2.0 framing positively: what Hub 2.0 *does*, and how Hub 1.0 doesn't yet have it)
+4. **TL;DR** — "Everything's already on the hub. This proof-of-concept demo just exposes it."
+5. **Deep dives** — `/taxonomy` and `/`
 
-The page content is data-driven (a `changes: { title, body }[]` array in `app/pages/about.vue`), so adding a bullet is one object literal — no template changes.
+Upgrade content lives in a typed `Upgrade[]` array in the script setup: `title`, `shortBody`, `description`, `whyItMatters`, `links: { label, to }[]`, `accent`, optional `visual: 'click-equivalence' | 'author-merge'` for two upgrades that get richer in-modal visuals. Adding a card is one array entry plus an accent class lookup. Modal markup is inline in the SFC (no extracted component) so each upgrade can have its own copy and visual treatment without a prop explosion.
 
-## Hub Taxonomy page (`/taxonomy`)
+The seven upgrades:
 
-A non-filter explainer page accessible via the **Hub Taxonomy** button on the right side of the header. Audience: non-technical managers who use the research hub but have never thought about how the data behind it is organized. The page walks through, in this order:
+1. **Find research reports in one click** (amber, click-equivalence visual) — chips at the top of every view
+2. **Search highlights what it matched** (emerald) — yellow `<mark>` inside title and abstract
+3. **Click any author for their work** (violet) — clickable bylines
+4. **One author entry, every variant matched** (violet, author-merge visual) — canonicalization (see section below)
+5. **Click tags. Stack them.** (amber) — additive (OR) tag filtering with removable pills
+6. **Filter by ICJIA Center** (sky) — the five canonical centers, always visible
+7. **Current + three proposed views** (zinc, full-width) — Current baseline + Views 0/1/2 with three sub-CTAs in the modal
 
-1. **"First — what's a taxonomy?"** Plain-language definition with three analogies (library, org chart, filing cabinet).
-2. **"Why is the database structured this way — and why has Hub 2.0 kept it?"** Persuasive but kind. Frames the architecture as Hub 1.0's original choice, lists practical wins it produced (findability, consistency over time, fast onboarding for editors, scalable catalog), and explains why Hub 2.0 is an upgrade rather than a teardown.
-3. **The three top-level content types.** A Mermaid diagram (themed for both light and dark mode) showing Articles / Datasets / Apps-Dashboards with their respective fields. Notes that only Articles have a `type` enum; Datasets and Apps/Dashboards just have categories and tags.
-4. **"Why 'articles' and not 'summaries'?"** Naming context — during Hub 1.0 planning the team considered "summaries" and rejected it after several weeks of deliberation because articles can also stand alone with no attached source PDF. "Articles" was chosen as both a more general label (a publishing platform carries many kinds of digital pieces) and a more specific one (an "article" is a familiar concept on a publishing platform).
-5. **What each bucket means.** Per-content-type field breakdown.
-6. **Proposed: the "datahub" — Datasets linked to Apps/Dashboards.** A second Mermaid diagram with four labeled subgraphs covering the four real relationship patterns: solo dataset, one app/dashboard with one dataset, one app/dashboard with many datasets, shared dataset across apps/dashboards. The copy emphasizes that **all four are already supported by the Strapi 5 schema today** (introspection confirms `App.datasets` and `Dataset.apps` are bidirectional and accept any number on either side) — the work for Hub 2.0 is editorial: curation, editing, adjustment, oversight.
-7. **The fourteen Article types.** A grid of clickable cards. Each opens a modal listing the top two most-recent real articles tagged with that type (pulled via `useArticles({ fillRandom: false })` so the random-fill demo helper doesn't pollute the examples). Empty types show a "no tagged examples yet — needs curation" message. The modal also includes a banner explaining that examples are illustrative and curation is ongoing.
-8. **"Why this matters for the demo."** A closer that ties everything back to the chip filter on View 0.
+## How is the Hub organized? page (`/taxonomy`)
 
-The page uses the shared `MermaidDiagram` component (`app/components/MermaidDiagram.vue`), which dynamically imports `mermaid` only when the component mounts — so the ~1 MB library doesn't ship with the other pages — and reactively re-renders when the user toggles light / dark mode. Cluster (subgraph) borders, line color, and text color are all driven by `useColorMode()`.
+A non-filter explainer page accessible via the **How is the Hub organized?** button on the right side of the header. Audience: non-technical managers who use the research hub but have never thought about how the data behind it is organized. Eight infograph sections in this order:
+
+1. **Hero** — "How Hub 2.0 organizes everything it publishes" with four CTAs (Current / View 0 / 1 / 2)
+2. **Stat strip** — four interactive popover tiles (`3` top-level content types · `14` named article types · `1` shape inherited from Hub 1.0 · `4` patterns proposed for the datahub)
+3. **The architecture** — H2 "Same bones. Updated CMS. *Click the content types.*" Three interactive content-type cards (Articles / Datasets / Apps-Dashboards) function as **tabs** that swap content in an inline detail panel directly below. Selected card gets full accent treatment (amber / sky / violet); unselected cards are dimmed zinc. Defaults to Articles selected. Content panels:
+   - **Articles** (amber) — what it is, why the demo focuses on it, anchor link to the 14-type grid below
+   - **Datasets** (sky) — what it is, then the full datahub roadmap with all four patterns inline (Solo dataset · One app, one dataset · One app, many datasets · Shared dataset) plus the emerald "schema-supported in Strapi 5 today" callout
+   - **Apps/Dashboards** (violet) — what it is + amber-bordered "More detail coming soon" warning + "What we know so far" bullet list of schema-level facts
+4. **Hub 1.0 ≡ Hub 2.0 equivalence visual** — `3 buckets · 14 types` on both sides
+5. **"Why 'articles' and not 'summaries'?"** — amber-tinted callout with the historical naming decision verbatim from the home page
+6. **The 14 Article types (interactive grid)** — `id="types"` anchor; clickable to a modal listing real top-2 examples from `useArticles({ fillRandom: true })`
+7. **Proposed datahub** — eyebrow "What's next" with a Future badge; four colored relationship cards (Solo dataset · One app, one dataset · One app, many datasets · Shared dataset) using Lucide icon-relationship art (`i-lucide-database`, `i-lucide-layout-dashboard`, `i-lucide-arrow-right`); emerald-bordered closing tile reinforcing schema-supported-today
+8. **TL;DR** — "Hub 2.0 inherited the structure that **already works**." Supporting paragraph cites concrete evidence: `36,800 hub visitors and 232K pageviews` in the last twelve months, top articles ranking on Google for years, ChatGPT and external citations
+9. **Hub 1.0 by the numbers** — full mirror of the home page's Plausible section (4-tile stat strip, top-five-articles bar chart with bounce rates) deliberately duplicated here so the TL;DR's "already works" claim has its receipt right beside it
+10. **Deep dives** — `/about` and `/`
+
+Mermaid diagrams that originally lived on this page (the structure ribbon and the datahub four-pattern flowchart) were replaced in v0.1.85+ with bespoke infograph treatments — the `MermaidDiagram` component is no longer imported by `/taxonomy`, but the file is still present in `app/components/` for any future use. The `mermaid` package itself remains in `dependencies` against any future need.
 
 ## Click-to-filter on cards
 
@@ -275,16 +308,17 @@ The demo is targeted at WCAG 2.1 AA. Recent fixes:
 
 ```
 app/
-  app.vue                              # shell — header (nav + demo badge + What This Demo Shows
-                                       #   link + Hub Taxonomy link + color-mode toggle), main,
+  app.vue                              # shell — header (nav + demo badge + Why this demo app?
+                                       #   link + How-is-the-hub-organized? link + color-mode toggle), main,
                                        #   footer (version + Changelog + GitHub)
   pages/
-    index.vue                          # / — visual orientation home page
+    index.vue                          # / — visual orientation home page (11 infograph sections)
+    current.vue                        # /current — Hub 2.0 baseline (filter bar, no chips)
     view0.vue                          # View 0 — chips with Advanced toggle for the bar
     view1.vue                          # View 1 — dropdown-only bar (no chips, no Centers)
     view2.vue                          # View 2 — chips with always-on bar
-    about.vue                          # /about — What This Demo Shows pitch page
-    taxonomy.vue                       # /taxonomy — "How this data is organized" explainer
+    about.vue                          # /about — Why this demo app? (interactive 7-card grid + modals)
+    taxonomy.vue                       # /taxonomy — How is the Hub organized? (interactive content-type tabs)
     articles/[slug].vue                # internal stub article detail page
   components/
     ArticleCard.vue                    # single card with click-to-filter on type/author/tag

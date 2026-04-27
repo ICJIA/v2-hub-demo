@@ -1560,7 +1560,7 @@ function showExamples(typeValue: string) {
             Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
           </p>
           <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Separate from the database-naming issue above — this is about how the CMS stores author names with credentials, casing, and stray whitespace differences. Worth its own moment.
+            <strong class="text-zinc-900 dark:text-white">This came up in a meeting.</strong> An author's name shows up in the dropdown three or four different ways, the same person fragments across entries, the count looks wrong. Below: how we fixed it, and why the fix works.
           </p>
         </div>
         <!-- THE PROBLEM -->
