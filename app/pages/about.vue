@@ -230,62 +230,130 @@ function openUpgrade(index: number) {
     <!-- 2. STAT STRIP -->
     <section class="border-y border-zinc-200 bg-white px-6 py-10 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
       <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-        <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-5 dark:bg-emerald-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+        <UPopover>
+          <button
+            type="button"
+            class="relative w-full cursor-help rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-5 text-left transition-shadow hover:shadow-lg hover:shadow-emerald-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:bg-emerald-500/10 dark:focus-visible:ring-emerald-400"
+          >
             <UIcon
-              name="i-lucide-list-checks"
-              class="size-5"
+              name="i-lucide-info"
+              class="absolute right-3 top-3 size-3.5 text-emerald-600/60 dark:text-emerald-400/60"
+              aria-hidden="true"
             />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-emerald-700 sm:text-5xl dark:text-emerald-400">
-            7
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            upgrades shipping in this POC
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+              <UIcon
+                name="i-lucide-list-checks"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-emerald-700 sm:text-5xl dark:text-emerald-400">
+              7
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              upgrades shipping in this POC
+            </div>
+          </button>
+          <template #content>
+            <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p>
+                <strong class="text-zinc-900 dark:text-white">Seven specific changes</strong> between the live hub and this demo: one-click filters by article type, search highlighting, click-to-filter authors, author normalization, stackable tag filters, ICJIA Center filters, and three side-by-side filter UX layouts to compare. Each one is detailed in the cards below.
+              </p>
+            </div>
+          </template>
+        </UPopover>
+        <UPopover>
+          <button
+            type="button"
+            class="relative w-full cursor-help rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 text-left transition-shadow hover:shadow-lg hover:shadow-sky-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-sky-500/10 dark:focus-visible:ring-sky-400"
+          >
             <UIcon
-              name="i-lucide-mouse-pointer-click"
-              class="size-5"
+              name="i-lucide-info"
+              class="absolute right-3 top-3 size-3.5 text-sky-600/60 dark:text-sky-400/60"
+              aria-hidden="true"
             />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
-            1
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            click to find research reports
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+              <UIcon
+                name="i-lucide-mouse-pointer-click"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
+              1
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              click to find research reports
+            </div>
+          </button>
+          <template #content>
+            <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p>
+                On the live hub today, finding a research report takes <strong class="text-zinc-900 dark:text-white">5+ clicks</strong>: open menu, scroll the list, find the type, click, click again. Here it's a single click on the "Research Reports" chip at the top of every view. Same data, exposed via a chip instead of buried in a menu.
+              </p>
+            </div>
+          </template>
+        </UPopover>
+        <UPopover>
+          <button
+            type="button"
+            class="relative w-full cursor-help rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 text-left transition-shadow hover:shadow-lg hover:shadow-violet-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:bg-violet-500/10 dark:focus-visible:ring-violet-400"
+          >
             <UIcon
-              name="i-lucide-merge"
-              class="size-5"
+              name="i-lucide-info"
+              class="absolute right-3 top-3 size-3.5 text-violet-600/60 dark:text-violet-400/60"
+              aria-hidden="true"
             />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
-            1
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            entry per author, every variant counted
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+              <UIcon
+                name="i-lucide-merge"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
+              1
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              entry per author, every variant counted
+            </div>
+          </button>
+          <template #content>
+            <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p>
+                The CMS sometimes credits the same author <strong class="text-zinc-900 dark:text-white">three or four ways</strong> — "Riley Carter", "Riley Carter, Ph.D", "RILEY CARTER". Without normalization the dropdown lists them as separate people. Here every variant merges into one canonical entry, so you see one author, one count, one click.
+              </p>
+            </div>
+          </template>
+        </UPopover>
+        <UPopover>
+          <button
+            type="button"
+            class="relative w-full cursor-help rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 text-left transition-shadow hover:shadow-lg hover:shadow-amber-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 dark:bg-amber-500/10 dark:focus-visible:ring-amber-400"
+          >
             <UIcon
-              name="i-lucide-building-2"
-              class="size-5"
+              name="i-lucide-info"
+              class="absolute right-3 top-3 size-3.5 text-amber-600/60 dark:text-amber-400/60"
+              aria-hidden="true"
             />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
-            5
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            ICJIA Centers always visible
-          </div>
-        </div>
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+              <UIcon
+                name="i-lucide-building-2"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
+              5
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              ICJIA Centers always visible
+            </div>
+          </button>
+          <template #content>
+            <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p>
+                Each article is published by one of <strong class="text-zinc-900 dark:text-white">five ICJIA Centers</strong> — Center for Justice Research and Evaluation, Center for Victim Studies, and three others. The Centers filter is always visible (not hidden behind a menu) so visitors can see one Center's body of work in one click.
+              </p>
+            </div>
+          </template>
+        </UPopover>
       </div>
     </section>
 
@@ -354,7 +422,7 @@ function openUpgrade(index: number) {
           </span>
         </div>
         <h2 class="mb-6 text-4xl font-black leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
-          Everything's already on the hub. The demo just <span class="text-emerald-700 dark:text-emerald-400">exposes</span> it.
+          Everything's already on the hub. This proof-of-concept demo just <span class="text-emerald-700 dark:text-emerald-400">exposes</span> it.
         </h2>
         <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
           Every research report. Every author's full body of work. Every tag. The structure was always there — Hub 2.0 just gave you the chips to click.
