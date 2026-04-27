@@ -510,7 +510,12 @@ function showExamples(typeValue: string) {
                 />
               </div>
               <p class="mb-3">
-                Hub 2.0 proposes connecting Datasets to Apps/Dashboards under the <strong class="text-zinc-900 dark:text-white">"datahub"</strong> moniker. Four patterns the Strapi 5 schema already supports today:
+                The Strapi 5 schema already wires Apps to Datasets bidirectionally (and to Articles too — see <NuxtLink
+                  to="/schema"
+                  class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
+                >
+                  Inside the Hub
+                </NuxtLink>). The proposed <strong class="text-zinc-900 dark:text-white">"datahub"</strong> is the editorial work of curating which dataset belongs to which app, across four patterns:
               </p>
               <ul class="ml-1 space-y-2">
                 <li class="flex items-start gap-2.5">
@@ -585,7 +590,12 @@ function showExamples(typeValue: string) {
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
-                  <span>Apps already support bidirectional relations with Datasets (<code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">App.datasets</code> and <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Dataset.apps</code>) — so the four datahub patterns work out of the box.</span>
+                  <span>Apps support bidirectional <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">manyToMany</code> relations with Datasets <em>and</em> with Articles (the schema is a 3-way relational triangle). The four datahub patterns work out of the box on the App ↔ Dataset edge; Articles citing apps and datasets work today too. <NuxtLink
+                    to="/schema"
+                    class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
+                  >
+                    Schema details →
+                  </NuxtLink></span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
@@ -719,7 +729,7 @@ function showExamples(typeValue: string) {
           Connecting datasets to dashboards. <span class="text-violet-700 dark:text-violet-400">Four patterns.</span>
         </h2>
         <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Right now Datasets and Apps live as separate islands. The team wants them connected. The Strapi 5 schema already supports all four shapes today — the work for Hub 2.0 is editorial.
+          Apps and Datasets <em>can</em> already link to each other in the Strapi 5 schema (the relation is bidirectional and supports any cardinality). The proposed <strong class="text-zinc-900 dark:text-white">datahub</strong> is the editorial work to actually curate which dataset belongs to which app, in which of the four patterns below.
         </p>
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

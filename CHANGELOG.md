@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.94] — 2026-04-27
+
+### Changed
+
+Live GraphQL introspection of the production Strapi 5 schema (queried via the read-only API token the user provided in-session, never persisted to git) revealed three things the previous schema page got wrong. All four narrative pages were updated to match what's actually there.
+
+- **`/schema` Mermaid `erDiagram` redrawn** as a 3-way relational triangle (`Article ↔ App`, `Article ↔ Dataset`, `App ↔ Dataset` — all bidirectional `manyToMany`), not a single App ↔ Dataset edge. Plus a fourth standalone `PAGE` entity for static pages, which had been missing entirely. Field lists per entity also expanded to match what's actually on the wire (`markdown`, `mainfile`, `doi`, `citation` on Article; `description`, `datafile` on Dataset; `description`, `url`, `image` on App).
+- **`/schema` "Authors" callout corrected.** Authors had been drawn as a separate `AUTHOR` entity with a "credited" relation to Article. In reality, `Article.authors` is a single `json` field — no Strapi component, no relation, no schema-enforced structure. That's exactly *why* the demo needs the canonical-key trick to merge "Riley Calder" / "Riley Calder, Ph.D" / "RILEY CARTER" into one dropdown entry. The "Three things that matter" cards updated: Thing #2 is now "Article ↔ App ↔ Dataset, all three ways"; Thing #3 is now "Authors aren't a relation — they're typed in." Stat-strip tile #4 changed from "1 bidirectional relation" to "3 bidirectional relations." TL;DR updated: "Three core boxes. Fourteen named types. **A relational triangle.**"
+- **`/schema` "The triangle, visually" section** rebuilt as three stacked relation-pair cards (Article ↔ App "cited by" · Article ↔ Dataset "cited by" · App ↔ Dataset "datahub") instead of the previous single App ↔ Dataset card. Closing emerald tile reframed: all three relations are `manyToMany` and schema-supported today; the proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge, not the Article-side connections (those work as-is).
+- **`/schema` developer notes** updated to reflect the actual schema: `Article.authors` is `json`; the three relations are named `Article.apps`/`App.articles`, `Article.datasets`/`Dataset.articles`, `App.datasets`/`Dataset.apps`; all collection types include the new `api::page.page`. Added a paragraph listing the per-entity fields the filter demo doesn't use (Article's `markdown`, `mainfile`, `doi`, etc.; Dataset's `project`, `sources`, `unit`, etc.; App's `contributors`, `url`, etc.) so readers know the full record shape.
+- **`/taxonomy` "Proposed datahub" section** reframed: dropped the inaccurate "Right now Datasets and Apps live as separate islands" line. New copy: "Apps and Datasets *can* already link to each other in the schema — the proposed datahub is the editorial work of curating which dataset belongs to which app." Same four patterns; correct framing.
+- **`/taxonomy` Apps/Dashboards content-type tab "What we know so far"** bullet about bidirectional relations expanded to mention all three edges of the triangle (App ↔ Dataset *and* Article ↔ App / Dataset), with a "Schema details →" deep-link to `/schema`.
+- **`/index` Datasets and Apps content-type modals** updated with the same triangle framing + `/schema` deep-links.
+
 ## [0.1.93] — 2026-04-27
 
 ### Added

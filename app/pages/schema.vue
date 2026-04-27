@@ -37,34 +37,46 @@ useSeoMeta({
 })
 
 const schemaDiagram = `erDiagram
-  ARTICLE ||--o{ AUTHOR : "credited"
-  APP }o--o{ DATASET : "datahub (bidirectional)"
+  ARTICLE }o--o{ APP : "cites"
+  ARTICLE }o--o{ DATASET : "cites"
+  APP }o--o{ DATASET : "datahub"
 
   ARTICLE {
     string title
     string slug
-    string abstract
     enum type "14 fixed values"
-    string_array categories "free-form"
-    string_array tags "free-form"
+    string abstract
+    string markdown "body"
+    json authors "free-form JSON"
+    json categories "free-form"
+    json tags "free-form"
+    UploadFile splash
+    UploadFile mainfile "PDF"
+    string doi
+    string citation
     date publishedAt
-    image splash
   }
   DATASET {
     string title
     string description
-    string_array categories "free-form"
-    string_array tags "free-form"
+    json categories "free-form"
+    json tags "free-form"
+    json sources
+    UploadFile datafile
   }
   APP {
     string title
     string description
-    string_array categories "free-form"
-    string_array tags "free-form"
+    string url "dashboard URL"
+    json categories "free-form"
+    json tags "free-form"
+    UploadFile image
   }
-  AUTHOR {
-    string name
-    string description "bio / affiliation"
+  PAGE {
+    string title
+    string summary
+    string body
+    string slug
   }`
 
 const enumValues = [
@@ -97,7 +109,7 @@ const enumValues = [
           Inside the Hub.
         </h1>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          A faithful structural view of the catalog: <strong class="text-zinc-900 dark:text-white">three content types, fourteen named article types, one bidirectional relation.</strong> The plain-English shape the rest of the demo sits on.
+          A faithful structural view of the catalog: <strong class="text-zinc-900 dark:text-white">three core content types interconnected as a triangle</strong>, fourteen named article types, plus a fourth standalone <code>Page</code> entity for static pages. The plain-English shape the rest of the demo sits on.
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -178,10 +190,10 @@ const enumValues = [
               />
             </div>
             <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
-              1
+              3
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-              bidirectional App ↔ Dataset relation
+              bidirectional relations (Article ↔ App ↔ Dataset)
             </div>
           </div>
         </div>
@@ -198,7 +210,7 @@ const enumValues = [
           The plain-English shape.
         </h2>
         <p class="mb-8 max-w-3xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          Three boxes. One main connecting line. <strong class="text-zinc-900 dark:text-white">That's the whole picture.</strong>
+          Three core boxes interconnected as a triangle. A fourth standalone box for static pages. <strong class="text-zinc-900 dark:text-white">That's the whole picture.</strong>
         </p>
 
         <div class="grid gap-3 md:grid-cols-3">
@@ -207,10 +219,10 @@ const enumValues = [
               <span class="text-base font-black">1</span>
             </div>
             <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              The boxes are the content types
+              The core boxes are the content types
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Article, Dataset, App (apps and dashboards). Three buckets, one of which (Article) is the focus of this demo.
+              Article, Dataset, App (apps and dashboards). Three buckets, one of which (Article) is the focus of this demo. A fourth, <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">Page</code>, holds static pages and stands alone.
             </p>
           </div>
           <div class="rounded-2xl border-2 border-zinc-300 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
@@ -218,10 +230,10 @@ const enumValues = [
               <span class="text-base font-black">2</span>
             </div>
             <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              The connecting line is the datahub
+              The triangle is three relations, not one
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Apps and Datasets know about each other in both directions — Hub 2.0's proposed datahub. Already wired in the schema; the work is editorial.
+              Article ↔ App, Article ↔ Dataset, and App ↔ Dataset are <strong class="text-zinc-900 dark:text-white">all bidirectional</strong> in the schema. Articles cite apps and datasets; apps and datasets show up in the articles that cite them; and the App ↔ Dataset edge is the proposed Hub 2.0 datahub.
             </p>
           </div>
           <div class="rounded-2xl border-2 border-zinc-300 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
@@ -232,7 +244,7 @@ const enumValues = [
               The fields are what each record carries
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Inside each box: title, abstract, type, categories, tags, etc. <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">string[]</code> means "a list of strings, free-form" — typed in by an editor.
+              Inside each box: title, abstract, type, categories, tags, etc. <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">json</code> means free-form structured data — categories, tags, and authors are all stored this way.
             </p>
           </div>
         </div>
@@ -301,7 +313,7 @@ const enumValues = [
             </p>
           </div>
 
-          <!-- 2: bidirectional relation -->
+          <!-- 2: relational triangle -->
           <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-6 dark:bg-violet-500/10">
             <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 dark:text-violet-300">
               <UIcon
@@ -310,32 +322,32 @@ const enumValues = [
               />
             </div>
             <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
-              Thing #2 — The bidirectional relation
+              Thing #2 — The relational triangle
             </div>
             <h3 class="mb-3 text-2xl font-black leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-              <span class="text-violet-700 dark:text-violet-400">App ↔ Dataset</span> works both ways.
+              <span class="text-violet-700 dark:text-violet-400">Article ↔ App ↔ Dataset</span> — all three ways.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
-              From an App you can list its Datasets. From a Dataset you can list its Apps. <strong class="text-zinc-900 dark:text-white">Both sides know about the other.</strong> That's what makes all four datahub patterns work today — solo dataset, one-to-one, one-to-many, shared — without any new schema work. The remaining work is editorial: curating which datasets belong to which apps.
+              Articles cite apps. Apps visualize datasets. Datasets are referenced by both articles and apps — and every one of those connections is bidirectional. <strong class="text-zinc-900 dark:text-white">All three relationships are already wired in the schema.</strong> The proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge; the Article-side connections work today.
             </p>
           </div>
 
-          <!-- 3: free-form arrays -->
+          <!-- 3: authors as JSON -->
           <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-6 dark:bg-sky-500/10">
             <div class="mb-3 flex size-10 items-center justify-center rounded-xl bg-sky-500/20 text-sky-700 dark:text-sky-300">
               <UIcon
-                name="i-lucide-list"
+                name="i-lucide-users"
                 class="size-6"
               />
             </div>
             <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
-              Thing #3 — The free-form fields
+              Thing #3 — Authors live in free-form JSON
             </div>
             <h3 class="mb-3 text-2xl font-black leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-              <span class="text-sky-700 dark:text-sky-400">Categories &amp; tags</span> are typed in by hand.
+              <span class="text-sky-700 dark:text-sky-400">Authors</span> aren't a relation. They're typed in.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
-              Every type carries <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">categories</code> and <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">tags</code> as free-form string lists, not fixed picklists. That's flexible — but variants of the "same" tag don't merge automatically. (Same root reason the demo needs a canonical-key trick for author names.)
+              <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">Article.authors</code> is a <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">json</code> field — not a Strapi component, not a relation to a separate Author table. Editors type names in by hand, which is exactly why "Riley Calder," "Riley Calder, Ph.D," and "RILEY CARTER" can all appear for the same person — and why the demo needs the canonical-key trick to merge variants. (Same applies to <code>categories</code> and <code>tags</code>: free-form, no central taxonomy.)
             </p>
           </div>
         </div>
@@ -377,71 +389,152 @@ const enumValues = [
       </div>
     </section>
 
-    <!-- 7. WHY THE DATAHUB RELATION IS A BIG DEAL — visual -->
+    <!-- 7. THE RELATIONAL TRIANGLE — visual -->
     <section class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-violet-600 dark:text-violet-400">
-          The bidirectional relation, visually
+          The triangle, visually
         </div>
         <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
-          Both sides <span class="text-violet-700 dark:text-violet-400">know about each other.</span>
+          Three relations. <span class="text-violet-700 dark:text-violet-400">All bidirectional.</span>
         </h2>
         <p class="mb-8 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
-          That's the foundation of the proposed datahub. Same record from two angles — query Apps, see their Datasets; query Datasets, see their Apps. No new schema work needed.
+          Same `manyToMany` mechanism, three different semantic purposes. Articles cite apps and datasets; apps visualize datasets. Each side of every line knows about the other.
         </p>
 
-        <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
-          <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-6 text-center dark:bg-violet-500/10">
-            <div class="mb-3 flex justify-center">
-              <div class="flex size-12 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 dark:text-violet-300">
-                <UIcon
-                  name="i-lucide-layout-dashboard"
-                  class="size-7"
-                />
+        <div class="space-y-3">
+          <!-- Article ↔ App -->
+          <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+            <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300">
+                  <UIcon
+                    name="i-lucide-file-text"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+                    Article.apps
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Apps cited by this article"
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
-              From an App
-            </div>
-            <div class="text-xl font-black text-zinc-900 dark:text-white">
-              App.datasets
-            </div>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              List the Datasets this dashboard pulls from.
-            </p>
-          </div>
-
-          <div class="flex items-center justify-center">
-            <div class="flex flex-col items-center gap-2">
               <UIcon
                 name="i-lucide-arrow-left-right"
-                class="size-10 text-violet-500"
+                class="mx-auto size-7 text-amber-600 dark:text-amber-400"
                 aria-hidden="true"
               />
-              <code class="rounded-lg border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-bold text-violet-700 dark:text-violet-300">
-                manyToMany
-              </code>
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 dark:text-violet-300">
+                  <UIcon
+                    name="i-lucide-layout-dashboard"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+                    App.articles
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Articles citing this app"
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-6 text-center dark:bg-sky-500/10">
-            <div class="mb-3 flex justify-center">
-              <div class="flex size-12 items-center justify-center rounded-xl bg-sky-500/20 text-sky-700 dark:text-sky-300">
-                <UIcon
-                  name="i-lucide-database"
-                  class="size-7"
-                />
+          <!-- Article ↔ Dataset -->
+          <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+            <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300">
+                  <UIcon
+                    name="i-lucide-file-text"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
+                    Article.datasets
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Datasets cited by this article"
+                  </div>
+                </div>
+              </div>
+              <UIcon
+                name="i-lucide-arrow-left-right"
+                class="mx-auto size-7 text-amber-600 dark:text-amber-400"
+                aria-hidden="true"
+              />
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 text-sky-700 dark:text-sky-300">
+                  <UIcon
+                    name="i-lucide-database"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
+                    Dataset.articles
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Articles citing this dataset"
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
-              From a Dataset
+          </div>
+
+          <!-- App ↔ Dataset (the datahub) -->
+          <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+            <div class="grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-center">
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 dark:text-violet-300">
+                  <UIcon
+                    name="i-lucide-layout-dashboard"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+                    App.datasets
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Datasets this app pulls from"
+                  </div>
+                </div>
+              </div>
+              <div class="mx-auto flex flex-col items-center gap-1">
+                <UIcon
+                  name="i-lucide-arrow-left-right"
+                  class="size-7 text-violet-600 dark:text-violet-400"
+                  aria-hidden="true"
+                />
+                <code class="rounded border border-violet-500/30 bg-violet-500/10 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+                  the datahub
+                </code>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 text-sky-700 dark:text-sky-300">
+                  <UIcon
+                    name="i-lucide-database"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
+                    Dataset.apps
+                  </div>
+                  <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                    "Apps that consume this dataset"
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="text-xl font-black text-zinc-900 dark:text-white">
-              Dataset.apps
-            </div>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              List the Apps that consume this raw data.
-            </p>
           </div>
         </div>
 
@@ -452,9 +545,9 @@ const enumValues = [
               class="mt-0.5 size-6 shrink-0 text-emerald-700 dark:text-emerald-300"
             />
             <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              All four datahub patterns are schema-supported in Strapi 5 today.
+              All three relations are <code class="rounded bg-emerald-500/15 px-1 text-emerald-700 dark:text-emerald-300">manyToMany</code> in Strapi 5 — schema-supported today.
               <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
-                Solo dataset · One app, one dataset · One app, many datasets · Shared dataset feeding multiple apps. The work for Hub 2.0 is editorial — curating which datasets belong to which apps — not engineering.
+                The Article ↔ App and Article ↔ Dataset edges work without curation. The proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge — picking which datasets belong to which apps. Four patterns: solo dataset · one app, one dataset · one app, many datasets · shared dataset.
               </span>
             </p>
           </div>
@@ -477,7 +570,7 @@ const enumValues = [
           </span>
         </div>
         <h2 class="mb-6 text-4xl font-black leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
-          Three boxes. <span class="text-sky-700 dark:text-sky-400">Fourteen named types.</span> One bidirectional relation.
+          Three core boxes. <span class="text-sky-700 dark:text-sky-400">Fourteen named types.</span> A relational triangle.
         </h2>
         <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
           That's the whole shape. Hub 1.0 designed it; Hub 2.0 carried it forward intact. Every chip, every dropdown, every datahub pattern in this demo lives on top of those three sentences.
@@ -498,13 +591,19 @@ const enumValues = [
           </div>
           <div class="space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
-              Strapi names: <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::article.article</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::dataset.dataset</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::app.app</code> — all collection types with draft &amp; publish enabled. Standard Strapi metadata (<code>createdAt</code>, <code>updatedAt</code>, <code>publishedAt</code>, <code>locale</code>, <code>documentId</code>) is on every record but omitted from the diagram for clarity.
+              Strapi names: <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::article.article</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::dataset.dataset</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::app.app</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::page.page</code> — all collection types with draft &amp; publish enabled. Standard Strapi metadata (<code>createdAt</code>, <code>updatedAt</code>, <code>publishedAt</code>, <code>locale</code>, <code>documentId</code>) lives on every record but is omitted from the diagram for clarity.
             </p>
             <p>
-              <strong class="text-zinc-900 dark:text-white">Authors</strong> are a Strapi <em>component</em> (a repeatable embedded object) on Article, not a separate collection. Each author has a <code>title</code> (display name) and <code>description</code> (bio / affiliation). The demo's <code>authorKey()</code> in <code>app/utils/article-format.ts</code> normalizes credential / casing / whitespace differences at query time.
+              <strong class="text-zinc-900 dark:text-white">Authors</strong> on Article is a single <code>json</code> field — <em>not</em> a relation, <em>not</em> a Strapi component. Editors type names directly into a JSON list. There is no schema-enforced structure: a name like "Riley Calder, Ph.D" is just a string, and "Riley Calder, PhD" beside it is another string. The demo's <code>authorKey()</code> in <code>app/utils/article-format.ts</code> normalizes credential / casing / whitespace differences at query time. <strong class="text-zinc-900 dark:text-white">categories</strong> and <strong class="text-zinc-900 dark:text-white">tags</strong> are also <code>json</code> fields on every entity, free-form.
             </p>
             <p>
-              <strong class="text-zinc-900 dark:text-white">App.datasets</strong> is a <code>manyToMany</code> relation; <strong class="text-zinc-900 dark:text-white">Dataset.apps</strong> is its inverse (<code>mappedBy: 'apps'</code>). Both accept any cardinality on either side. <strong class="text-zinc-900 dark:text-white">categories</strong> and <strong class="text-zinc-900 dark:text-white">tags</strong> are JSON string arrays on each entity, not relations. The GraphQL endpoint the demo hits is at <code>https://v2.hub.icjia-api.cloud/graphql</code> — see <code>app/composables/useArticles.ts</code> for the full query.
+              <strong class="text-zinc-900 dark:text-white">Three bidirectional <code>manyToMany</code> relations</strong> form the schema's relational triangle: <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Article.apps</code> ↔ <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">App.articles</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Article.datasets</code> ↔ <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Dataset.articles</code>, and <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">App.datasets</code> ↔ <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">Dataset.apps</code>. Each accepts any cardinality on either side.
+            </p>
+            <p>
+              <strong class="text-zinc-900 dark:text-white">Beyond what the diagram shows</strong>, every record carries additional fields not used by the filter demo: Article has <code>markdown</code> (body), <code>mainfile</code> / <code>extrafile</code> (PDF attachments), <code>doi</code>, <code>citation</code>, <code>funding</code>, <code>thumbnail</code>, <code>images</code>, <code>legacyId</code> (Hub 1.0 migration tracker), <code>external</code>, <code>hideFromBanner</code>; Dataset has <code>project</code> (boolean), <code>sources</code>, <code>unit</code>, <code>timeperiod</code>, <code>variables</code>, <code>notes</code>, <code>datafile</code>, <code>funding</code>, <code>citation</code>; App has <code>contributors</code>, <code>url</code>, <code>image</code>, <code>funding</code>, <code>citation</code>. The GraphQL endpoint is at <code>https://v2.hub.icjia-api.cloud/graphql</code> — see <code>app/composables/useArticles.ts</code> for the full query.
+            </p>
+            <p>
+              <strong class="text-zinc-900 dark:text-white">Page</strong> (<code>api::page.page</code>) is a fourth content type — <code>title</code>, <code>summary</code>, <code>body</code>, <code>slug</code>. Used for static pages on the live hub (About, Contact, etc.). Not part of the filter demo's data model.
             </p>
           </div>
         </div>
