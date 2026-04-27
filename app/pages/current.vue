@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Article } from '~/composables/useArticles'
-import { articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
+import { KNOWN_CENTERS, articleAuthorNames, authorKey, typeLabel } from '~/utils/article-format'
 
 useHead({ title: 'Research Hub — Current view (Hub 2.0, work in progress)' })
 
@@ -19,6 +19,7 @@ const selectedType = ref('')
 const selectedTopic = ref('')
 const selectedAuthor = ref('')
 const selectedYear = ref('')
+const selectedCenter = ref('')
 const searchQuery = ref('')
 const currentPage = ref(1)
 const pageSize = 12
@@ -93,12 +94,35 @@ const yearItems = computed(() => {
   return [{ label: 'All Years', value: '' }, ...items]
 })
 
+const centerItems = computed(() => {
+  const counts = new Map<string, number>()
+  for (const center of KNOWN_CENTERS) {
+    counts.set(authorKey(center), 0)
+  }
+  for (const a of articles.value) {
+    for (const name of articleAuthorNames(a)) {
+      const key = authorKey(name)
+      if (counts.has(key)) {
+        counts.set(key, counts.get(key)! + 1)
+      }
+    }
+  }
+  const items = KNOWN_CENTERS
+    .map(center => ({
+      label: `${center} (${counts.get(authorKey(center)) ?? 0})`,
+      value: authorKey(center)
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label))
+  return [{ label: 'All Centers', value: '' }, ...items]
+})
+
 const filtered = computed<Article[]>(() => {
   let r = articles.value
   if (selectedType.value) r = r.filter(a => a.type === selectedType.value)
   if (selectedTopic.value) r = r.filter(a => asStrings(a.categories).includes(selectedTopic.value))
   if (selectedAuthor.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedAuthor.value))
   if (selectedYear.value) r = r.filter(a => articleYear(a) === selectedYear.value)
+  if (selectedCenter.value) r = r.filter(a => articleAuthorNames(a).some(n => authorKey(n) === selectedCenter.value))
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
     r = r.filter(a =>
@@ -114,7 +138,7 @@ const pageItems = computed(() => {
   return filtered.value.slice(start, start + pageSize)
 })
 
-watch([selectedType, selectedTopic, selectedAuthor, selectedYear, searchQuery], () => {
+watch([selectedType, selectedTopic, selectedAuthor, selectedYear, selectedCenter, searchQuery], () => {
   currentPage.value = 1
 })
 </script>
@@ -129,7 +153,7 @@ watch([selectedType, selectedTopic, selectedAuthor, selectedYear, searchQuery], 
         Research Hub — current view
       </h1>
       <p class="max-w-3xl text-sm leading-relaxed text-muted">
-        This is what Hub 2.0 looks like as it stands today — a filter bar with dropdowns, no chips, no shortcuts. The same baseline visitors get on Hub 1.0 in production. Visitors search by typing or by selecting from <strong>Publication Type</strong>, <strong>Topic</strong>, <strong>Author</strong>, or <strong>Year</strong>. Use this as your starting point — then jump to the views below to see the proposed friction-reducing tweaks.
+        This is what Hub 2.0 looks like as it stands today — a filter bar with dropdowns, no chips, no shortcuts. The same baseline visitors get on Hub 1.0 in production. Visitors search by typing or by selecting from <strong>Publication Type</strong>, <strong>Topic</strong>, <strong>Author</strong>, <strong>Year</strong>, or <strong>ICJIA Center</strong>. Use this as your starting point — then jump to the views below to see the proposed friction-reducing tweaks.
       </p>
       <div class="flex flex-wrap items-center gap-2 pt-2 text-xs">
         <span class="font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
@@ -193,12 +217,14 @@ watch([selectedType, selectedTopic, selectedAuthor, selectedYear, searchQuery], 
         v-model:topic="selectedTopic"
         v-model:author="selectedAuthor"
         v-model:year="selectedYear"
+        v-model:center="selectedCenter"
         v-model:search="searchQuery"
         class="mb-4"
         :types="typeItems"
         :topics="topicItems"
         :authors="authorItems"
         :years="yearItems"
+        :centers="centerItems"
       />
 
       <p class="mb-4 text-sm text-muted">
