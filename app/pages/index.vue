@@ -1312,7 +1312,7 @@ function showExamples(typeValue: string) {
           Every research report on the hub is <span class="text-amber-700 dark:text-amber-400">one click</span> away.
         </h2>
         <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
-          They're filed under <strong class="text-amber-700 dark:text-amber-400">"Articles"</strong> alongside thirteen other publication types. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any of the three layouts below. Done.
+          They're filed under <strong class="text-amber-700 dark:text-amber-400">"Articles"</strong> alongside thirteen other publication types. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any of the three layouts below. Done. <em class="text-zinc-600 dark:text-zinc-400">(Remember — articles <strong class="text-zinc-900 dark:text-white">are</strong> summaries.)</em>
         </p>
       </div>
     </section>
@@ -1351,7 +1351,7 @@ function showExamples(typeValue: string) {
               <span class="text-lg font-black">2</span>
             </div>
             <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              "Articles" holds 14 publication types.
+              "Articles" holds 14 publication types, including Research Reports.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               Research reports, annual reports, program evaluations, updates, strategic plans, plus nine more.
@@ -1404,7 +1404,7 @@ function showExamples(typeValue: string) {
           Try it yourself
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Current + three proposed views. Same data behind all of them. <span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
+          Current + three proposed views. Same data behind all of them.<br><span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           Start with <strong class="text-zinc-900 dark:text-white">Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views to see the friction-reducers layered on top. Click any one and try filtering to "Research Report" — that's the test.
@@ -1546,23 +1546,29 @@ function showExamples(typeValue: string) {
             />
           </div>
           <span class="text-xs font-bold uppercase tracking-[0.18em] text-violet-700 sm:text-sm dark:text-violet-300">
-            One more thing we fixed
+            One more thing we fixed. Author names.
           </span>
         </div>
         <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
           Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
         </h2>
-        <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list one person seven times. This demo merges every variant onto a single canonical key.
-        </p>
-
-        <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
-          <!-- BEFORE -->
+        <!-- THE PROBLEM -->
+        <div class="mb-6">
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-alert-triangle"
+              class="size-3.5"
+            />
+            The problem
+          </div>
+          <p class="mb-5 max-w-2xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
+            Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list <strong class="text-zinc-900 dark:text-white">one person seven times</strong>.
+          </p>
           <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-              What the CMS delivers
+              What the CMS delivers — seven entries, one researcher
             </div>
-            <ul class="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+            <ul class="grid gap-2 text-sm text-zinc-700 sm:grid-cols-2 dark:text-zinc-300">
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
                 Jane Carter
               </li>
@@ -1586,28 +1592,38 @@ function showExamples(typeValue: string) {
               </li>
             </ul>
           </div>
+        </div>
 
-          <!-- ARROW + label -->
-          <div class="flex items-center justify-center py-2">
-            <div class="flex flex-col items-center gap-2 md:gap-3">
-              <UIcon
-                name="i-lucide-arrow-down"
-                class="size-10 text-violet-500 md:hidden"
-              />
-              <UIcon
-                name="i-lucide-arrow-right"
-                class="hidden size-12 text-violet-500 md:block"
-              />
-              <code class="rounded-lg border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-bold text-violet-700 dark:text-violet-300">
-                authorKey()
-              </code>
-            </div>
+        <!-- Transition -->
+        <div class="my-6 flex items-center justify-center gap-3">
+          <UIcon
+            name="i-lucide-arrow-down"
+            class="size-8 text-violet-500"
+          />
+          <code class="rounded-lg border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-bold text-violet-700 dark:text-violet-300">
+            authorKey()
+          </code>
+          <UIcon
+            name="i-lucide-arrow-down"
+            class="size-8 text-violet-500"
+          />
+        </div>
+
+        <!-- THE SOLUTION -->
+        <div class="mb-2">
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
+            <UIcon
+              name="i-lucide-check-circle-2"
+              class="size-3.5"
+            />
+            The solution
           </div>
-
-          <!-- AFTER -->
+          <p class="mb-5 max-w-2xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
+            This demo merges every variant onto a <strong class="text-zinc-900 dark:text-white">single canonical key</strong> — one author, one count, one click.
+          </p>
           <div class="rounded-2xl border-2 border-violet-500 bg-violet-500/10 p-5">
             <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
-              What the filter shows
+              What the filter shows — one entry, all seven variants matched
             </div>
             <div class="rounded-xl border border-violet-500/40 bg-white p-5 shadow-sm dark:bg-zinc-900">
               <div class="flex items-center justify-between gap-3">
