@@ -1538,20 +1538,31 @@ function showExamples(typeValue: string) {
       class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
     >
       <div class="mx-auto max-w-5xl">
-        <div class="mb-6 flex items-center gap-3">
-          <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
-            <UIcon
-              name="i-lucide-merge"
-              class="size-6"
-            />
+        <div class="mb-8">
+          <!-- "One more thing..." Steve Jobs reveal -->
+          <div class="mb-3 flex items-center gap-3">
+            <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
+              <UIcon
+                name="i-lucide-merge"
+                class="size-6"
+              />
+            </div>
+            <span class="text-base font-medium italic text-zinc-600 sm:text-lg dark:text-zinc-400">
+              And one more thing…
+            </span>
           </div>
-          <span class="text-xs font-bold uppercase tracking-[0.18em] text-violet-700 sm:text-sm dark:text-violet-300">
-            One more thing we fixed. Author names.
-          </span>
+          <!-- BIG INFOGRAPHIC TITLE -->
+          <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
+            <span class="text-violet-700 dark:text-violet-400">Author</span>
+            <br>names.
+          </h2>
+          <p class="mt-5 max-w-2xl text-xl font-bold leading-snug text-zinc-700 sm:text-2xl dark:text-zinc-300">
+            Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
+          </p>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Separate from the database-naming issue above — this is about how the CMS stores author names with credentials, casing, and stray whitespace differences. Worth its own moment.
+          </p>
         </div>
-        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
-          Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
-        </h2>
         <!-- THE PROBLEM -->
         <div class="mb-6">
           <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
