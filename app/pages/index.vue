@@ -243,7 +243,7 @@ function showExamples(typeValue: string) {
           The hub is the <span class="text-emerald-700 dark:text-emerald-400">busiest part</span> of icjia.illinois.gov.
         </h2>
         <p class="mb-7 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">six months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close. This is the audience the demo is built to serve better.
+          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">six months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close.
         </p>
 
         <!-- 4-tile stat strip: hub-specific traffic -->
