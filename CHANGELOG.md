@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.93] — 2026-04-27
+
+### Added
+
+- **New `/schema` page — "Inside the Hub"** — a manager-facing infographic deep-dive into the Strapi 5 schema. Same big-font / high-contrast vocabulary as the rest of the demo, with a Mermaid `erDiagram` as the visual anchor. Ten infograph sections: hero · 4-tile stat strip · "the plain-English shape" 3-card numbered breakdown · the ER diagram · "Three things that matter" big-typography cards (the only enum, the bidirectional relation, free-form arrays) · 14 article-type enum values as a visual grid (label + technical value) · bidirectional relation visual with App and Dataset cards plus a `manyToMany` arrow between them · TL;DR · small-print developer notes · deep-dive cards. The `MermaidDiagram` component is reused from its long-orphaned state (it lazy-loads Mermaid only on this page).
+- **`/schema` linked from the navbar** as a third right-side button: **"Inside the Hub"** with an `i-lucide-database` icon, joining "Why this demo app?" and "How is the Hub organized?". Header container widened via `:ui="{ container: 'max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 gap-3 lg:gap-4' }"` so all three header buttons + the color-mode toggle + the badge + the left nav menu fit comfortably on standard laptop widths.
+
 ## [0.1.92] — 2026-04-27
 
 ### Changed

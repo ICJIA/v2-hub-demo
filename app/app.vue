@@ -118,7 +118,11 @@ const navItems = [
 
 <template>
   <UApp>
-    <UHeader>
+    <UHeader
+      :ui="{
+        container: 'max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 gap-3 lg:gap-4'
+      }"
+    >
       <template #left>
         <UNavigationMenu
           :items="navItems"
@@ -153,6 +157,15 @@ const navItems = [
           to="/taxonomy"
           label="How is the Hub organized?"
           icon="i-lucide-network"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+        />
+
+        <UButton
+          to="/schema"
+          label="Inside the Hub"
+          icon="i-lucide-database"
           color="neutral"
           variant="ghost"
           size="sm"
