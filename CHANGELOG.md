@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.89] — 2026-04-27
+
+### Changed
+
+- **Home page reorganized for an evidence-first narrative aimed at a skeptical non-technical manager.** Section content is unchanged — only the order and three eyebrows. New flow: Hero → Why this demo (summary === article) → **Hub 1.0 in numbers** (was #4) → **URL stability / SEO** (was #5) → **The diagram / architecture** (was #6) → **POC stat-strip** (was #3, now positioned as "what this demo adds" once the manager has bought in) → Author normalization → TL;DR → Takeaways → Three views → Deep dives. The skeptic now sees real Plausible traffic data (36.8K visitors, 232K pageviews, ChatGPT citations, ~70% of icjia.illinois.gov) and the URL-stability argument before they read any architecture story.
+- **Three eyebrow rewrites** to telegraph evidence:
+  - **Hub 1.0 in numbers** eyebrow: `Hub 1.0 in numbers` → **`Proof — the hub already works`**
+  - **The diagram** eyebrow: `The hub at a glance` → **`The structure underneath all that traffic`**
+  - **POC stat strip** gained an eyebrow it never had: **`What this demo adds`** (the strip used to drop in cold; it now reads as the demo's specific additions, sequenced after the proof rather than before).
+- **`/about` and `/taxonomy`** narratives audited and left as-is — both already read cleanly for the target audience.
+
 ## [0.1.88] — 2026-04-27
 
 ### Added
