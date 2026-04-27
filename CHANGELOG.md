@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.83] — 2026-04-27
+
+### Changed
+
+- **`/about` reframed in Hub 1.0 / Hub 2.0 terms.** Replaced "the live hub today" / "this demo" with explicit "Hub 1.0" (predecessor, no friction-reducers) and "the current Hub 2.0 demo" / "Hub 2.0" (this POC) wording across the page hero subhead, all four stat-tile popovers, all seven upgrade modal "What it does"/"Why it matters" descriptions, and the equivalence-visual labels in upgrade #1's modal ("Live hub today" → "Hub 1.0", "This demo" → "Hub 2.0"). The new framing leads positively with what Hub 2.0 *does* and notes Hub 1.0's missing capability — "Hub 2.0 builds on Hub 1.0's success by streamlining and sharpening the UI/UX" appears in the hero subhead and is reinforced in several modals.
+- **Home page "What's a 'bounce'?" rewrite.** Renamed the bounce explainer heading from "What's a 'bounce rate'?" to "What's a 'bounce'?" and re-led the body with the bounce definition first, then introduced "bounce rate" as a standard, normal way to analyze website interaction (per Plausible). Same data, sharper sequence.
+- **Home page "Why these matter" closing tile** picked up explicit Hub 2.0 framing: "Hub 2.0 builds on Hub 1.0's success" replaces "This is why getting the filter right matters" as the lead line, with the 18,400-visitor figure repositioned as evidence of the Hub 1.0 audience that Hub 2.0 streamlines for.
+
+### Added
+
+- **"Click here for more from Plausible" expandable section** on the home page, between the bounce-rate callout and the "Why these matter" tile. When expanded, shows three sub-sections of additional Plausible data over the same 6-month window: top traffic sources to the hub (Google 11.7K visits, Direct 9.2K, ChatGPT.com 1.2K — flagged as a notable AI-search signal, Bing 474, DuckDuckGo 244), device breakdown (66% desktop, 29% mobile, 3% tablet), and a 6-month visitors-per-month bar chart (3.5K → 2.9K → 2.6K → 3.0K → 3.2K → 3.2K, with brief commentary on the typical state-government seasonal dip and recovery).
+
 ## [0.1.82] — 2026-04-27
 
 ### Changed
