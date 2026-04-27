@@ -105,9 +105,12 @@ const enumValues = [
         <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           The bones — in one diagram
         </div>
-        <h1 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
+        <h1 class="mb-2 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
           Inside the Hub.
         </h1>
+        <p class="mb-5 text-2xl font-bold tracking-tight text-sky-700 sm:text-3xl lg:text-4xl dark:text-sky-400">
+          A Deep Dive.
+        </p>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
           A faithful structural view of the hub: <strong class="text-zinc-900 dark:text-white">three core catalog content types interconnected as a triangle</strong>, fourteen named article types, plus a fourth <code>Page</code> bucket — the catch-all for everything the hub publishes that isn't a catalog item (the live hub homepage, landing pages, etc.). The plain-English shape the rest of the demo sits on.
         </p>
