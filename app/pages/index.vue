@@ -71,6 +71,7 @@ const articleCountLabel = computed(() => {
 
 const selectedTypeForModal = ref<string | null>(null)
 const isExamplesOpen = ref(false)
+const morePlausibleOpen = ref(false)
 
 function showExamples(typeValue: string) {
   selectedTypeForModal.value = typeValue
@@ -502,19 +503,324 @@ function showExamples(typeValue: string) {
                 Background you might want
               </div>
               <h3 class="mb-3 text-base font-bold text-zinc-900 sm:text-lg dark:text-white">
-                What's a "bounce rate"?
+                What's a "bounce"?
               </h3>
               <div class="space-y-2.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
                 <p>
-                  A <strong class="text-zinc-900 dark:text-white">bounce</strong> is when someone visits a single page and leaves without clicking anything else. The <strong class="text-zinc-900 dark:text-white">bounce rate</strong> is the share of visits that do that.
+                  A <strong class="text-zinc-900 dark:text-white">bounce</strong> is when someone visits a single page on a website and leaves without clicking anything else. The percentage of visits that do that is called the <strong class="text-zinc-900 dark:text-white">bounce rate</strong> — a standard, normal way to analyze website interaction. Plausible reports it on every page.
                 </p>
                 <p>
-                  <strong class="text-zinc-900 dark:text-white">High bounce isn't always bad.</strong> For a research catalog, a visitor who Googles a specific article, reads it carefully, and leaves satisfied counts as a "bounce" — and that's a successful visit. Low bounce on a content site is the unusual signal, not high bounce.
+                  <strong class="text-zinc-900 dark:text-white">High bounce isn't always bad.</strong> For a research catalog, a visitor who Googles a specific article, reads it carefully, and leaves satisfied counts as a bounce — and that's a successful visit. Low bounce on a content site is the unusual signal, not high bounce.
                 </p>
                 <p>
                   Last 6 months: the hub's overall bounce is <strong class="text-amber-700 dark:text-amber-400">63%</strong> — typical for content sites and consistent year over year. The more telling number is the hub's homepage at <code class="text-amber-700 dark:text-amber-300">/researchhub/</code>: only <strong class="text-emerald-700 dark:text-emerald-400">25% bounce</strong>. <em>When visitors land at the hub root instead of a specific article, three out of four navigate further.</em> That's exactly the audience the chips below are built for — people looking around for the right thing.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More from Plausible — expandable -->
+        <div class="mb-6 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+          <button
+            type="button"
+            class="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition-colors hover:bg-zinc-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:hover:bg-zinc-800/50 dark:focus-visible:ring-emerald-400"
+            :aria-expanded="morePlausibleOpen"
+            @click="morePlausibleOpen = !morePlausibleOpen"
+          >
+            <div class="flex flex-1 flex-wrap items-center gap-x-2.5 gap-y-1">
+              <UIcon
+                name="i-lucide-bar-chart-3"
+                class="size-5 shrink-0 text-emerald-600 dark:text-emerald-400"
+              />
+              <span class="text-sm font-bold text-zinc-900 dark:text-white">
+                Click here for more from Plausible
+              </span>
+              <span class="text-xs text-zinc-600 dark:text-zinc-400">
+                — traffic sources, devices, monthly trend (same 6-month period)
+              </span>
+            </div>
+            <UIcon
+              :name="morePlausibleOpen ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
+              class="size-5 shrink-0 text-zinc-500 dark:text-zinc-400"
+            />
+          </button>
+          <div
+            v-show="morePlausibleOpen"
+            class="border-t border-zinc-200 px-5 py-6 dark:border-zinc-800"
+          >
+            <div class="space-y-7">
+              <!-- Traffic sources -->
+              <div>
+                <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
+                  <UIcon
+                    name="i-lucide-globe"
+                    class="size-3.5"
+                  />
+                  Where visitors come from
+                </div>
+                <h4 class="mb-3 text-sm font-bold text-zinc-900 dark:text-white">
+                  Top traffic sources to the hub
+                </h4>
+                <ol class="space-y-2.5">
+                  <li>
+                    <div class="flex items-baseline justify-between gap-3 text-xs">
+                      <span class="font-semibold text-zinc-900 dark:text-white">Google</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">11,700 visits</span>
+                    </div>
+                    <div
+                      class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        style="width: 100%"
+                      />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-baseline justify-between gap-3 text-xs">
+                      <span class="font-semibold text-zinc-900 dark:text-white">Direct (typed URL or bookmark)</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">9,200 visits</span>
+                    </div>
+                    <div
+                      class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        style="width: 79%"
+                      />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-baseline justify-between gap-3 text-xs">
+                      <span class="font-semibold text-zinc-900 dark:text-white">ChatGPT.com</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">1,200 visits</span>
+                    </div>
+                    <div
+                      class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        style="width: 10%"
+                      />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-baseline justify-between gap-3 text-xs">
+                      <span class="font-semibold text-zinc-900 dark:text-white">Bing</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">474 visits</span>
+                    </div>
+                    <div
+                      class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        style="width: 4%"
+                      />
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-baseline justify-between gap-3 text-xs">
+                      <span class="font-semibold text-zinc-900 dark:text-white">DuckDuckGo</span>
+                      <span class="font-bold text-emerald-700 dark:text-emerald-400">244 visits</span>
+                    </div>
+                    <div
+                      class="mt-1 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                        style="width: 2%"
+                      />
+                    </div>
+                  </li>
+                </ol>
+                <p class="mt-3 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  Worth noting: <strong class="text-zinc-900 dark:text-white">ChatGPT.com sends 1,200 visits</strong> — measurable AI-search traffic. Hub articles are showing up as citations in AI assistants and driving real readers back to the catalog.
+                </p>
+              </div>
+
+              <!-- Devices -->
+              <div>
+                <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
+                  <UIcon
+                    name="i-lucide-monitor"
+                    class="size-3.5"
+                  />
+                  How they read it
+                </div>
+                <h4 class="mb-3 text-sm font-bold text-zinc-900 dark:text-white">
+                  Device breakdown
+                </h4>
+                <div class="grid gap-2.5 sm:grid-cols-3">
+                  <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-800/50">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+                      Desktop
+                    </div>
+                    <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
+                      66%
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      12,200 visitors
+                    </div>
+                  </div>
+                  <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-800/50">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+                      Mobile
+                    </div>
+                    <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
+                      29%
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      5,400 visitors
+                    </div>
+                  </div>
+                  <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-800/50">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+                      Tablet
+                    </div>
+                    <div class="mt-1 text-2xl font-black tracking-tight text-sky-700 dark:text-sky-400">
+                      3%
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      625 visitors
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Monthly trend -->
+              <div>
+                <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-600 dark:text-violet-400">
+                  <UIcon
+                    name="i-lucide-trending-up"
+                    class="size-3.5"
+                  />
+                  Monthly trend
+                </div>
+                <h4 class="mb-3 text-sm font-bold text-zinc-900 dark:text-white">
+                  Hub visitors per month, last 6 months
+                </h4>
+                <div class="grid grid-cols-6 gap-2">
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 100%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.5K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Nov
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 83%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      2.9K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Dec
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 74%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      2.6K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Jan
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 86%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.0K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Feb
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 91%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.2K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Mar
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div
+                      class="mb-1 flex h-20 items-end"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="w-full rounded-t-md bg-violet-500/80 dark:bg-violet-400/80"
+                        style="height: 91%"
+                      />
+                    </div>
+                    <div class="text-[10px] font-bold text-zinc-900 dark:text-white">
+                      3.2K
+                    </div>
+                    <div class="text-[9px] text-zinc-600 dark:text-zinc-400">
+                      Apr
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-3 text-[11px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  Steady traffic — mid-3K visitors a month. The Jan dip and recovery is the typical seasonal pattern for state-government sites. Stable demand is exactly what you want for a content catalog.
+                </p>
+              </div>
+
+              <p class="border-t border-zinc-200 pt-4 text-[11px] text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
+                <UIcon
+                  name="i-lucide-database"
+                  class="-mt-0.5 mr-1 inline size-3"
+                />
+                Source: Plausible analytics on icjia.illinois.gov, filtered to <code>/researchhub/*</code>, period Oct 2025 – Apr 2026.
+              </p>
             </div>
           </div>
         </div>
@@ -527,9 +833,9 @@ function showExamples(typeValue: string) {
               class="mt-0.5 size-6 shrink-0 text-emerald-700 dark:text-emerald-300"
             />
             <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              This is why getting the filter right matters.
+              Hub 2.0 builds on Hub 1.0's success.
               <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
-                <strong class="text-zinc-900 dark:text-white">18,400 Illinois research-seekers</strong> came here in the last six months — and the most-read articles are exactly the kind of "summary" managers ask for. The chips below are the difference between two clicks and ten, for every one of them.
+                <strong class="text-zinc-900 dark:text-white">18,400 Illinois research-seekers</strong> came to Hub 1.0 in the last six months — and the most-read articles are exactly the kind of "summary" managers ask for. Hub 2.0 streamlines the UI/UX so they find what they want faster, on the same catalog. The chips below are the difference between two clicks and ten, for every one of them.
               </span>
             </p>
           </div>
