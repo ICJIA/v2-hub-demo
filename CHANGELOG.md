@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.78] — 2026-04-27
+
+### Changed
+
+- **`/about` page** rewritten as an infograph matching the home page's vocabulary. Six numbered upgrade cards (each linking to the view that demos the feature), a "many clicks → one click" headline-fix equivalence visual, stat strip, TL;DR callout, deep-dive cards. Replaces the previous flat 7-item checkmark list. Every clickable card carries an explicit `🖱 Try it →` affordance.
+- **`/taxonomy` page** rewritten as an infograph matching the home page's vocabulary. Drops the long taxonomy analogy and the "every database is a taxonomy" walkthrough. Replaces both Mermaid diagrams (`structureDiagram`, `datahubDiagram`) with bespoke infograph treatments — a 3-content-type ribbon showing each bucket's fields, plus four datahub-pattern cards with Lucide icon-relationship art. Keeps the 14-type interactive grid + modal exactly as they were. Sky-dominant accent.
+- **Home page WHY THIS DEMO section** reframed to answer the manager's framing — "I don't want articles. I want a summary." — head-on. Stresses that summary and article mean the same thing on this hub: the database calls them articles; people call them summaries; same content, two labels. The standalone "Why 'articles' and not 'summaries'?" NAMING NOTE section was folded (compressed) into the top section since both were saying the same thing.
+- **Home page** gained an `id="author-normalization"` anchor on the author-canonicalization section so `/about` can deep-link visitors to it.
+
 ## [0.1.77] — 2026-04-26
 
 ### Fixed
