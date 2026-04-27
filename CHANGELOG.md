@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.87] — 2026-04-27
+
+### Added
+
+- **ICJIA Center filter on `/current`.** The baseline view's filter bar now exposes the Centers dropdown (all five always visible) alongside Type / Topic / Author / Year / Search. Same `KNOWN_CENTERS` / `authorKey` plumbing as `/view2`. The hero subhead text was updated to list ICJIA Center as one of the filterable dimensions.
+
+### Removed
+
+- **Proof-of-Concept demo banner.** The site-wide amber dismissable banner at the top of every page is gone, along with its `pocBannerVisible` state, `SESSION_KEY` storage, and `dismissPocBanner` handler in `app/app.vue`. The "this demo" framing is already established throughout the page copy and modal callouts where it matters; the standalone banner was redundant.
+
 ## [0.1.86] — 2026-04-27
 
 ### Added
