@@ -2,7 +2,11 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
-## [0.1.79] — 2026-04-27
+## [0.1.80] — 2026-04-27
+
+### Added
+
+- **"Hub 1.0 in numbers" section** on the home page (between the existing stat strip and the diagram). Pulls live traffic data from Plausible analytics for the production research hub at `icjia.illinois.gov/researchhub/*`. Four headline stats (232K pageviews, 36.8K visitors, ~70% share of all icjia.illinois.gov traffic, 14 min average reading time, all over the last 12 months), a top-five-articles bar chart with links to the live articles on the production hub, a plain-English "What's a bounce rate?" callout aimed at managers who haven't seen the term before, and an emerald-bordered "Why this matters" closing tile that ties the traffic numbers back to why getting the filter right matters. Establishes that the hub already pulls enormous traffic — and therefore that any UX improvement to it touches a lot of readers.
 
 ### Changed
 
