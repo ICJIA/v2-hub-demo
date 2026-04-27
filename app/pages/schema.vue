@@ -109,7 +109,7 @@ const enumValues = [
           Inside the Hub.
         </h1>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          A faithful structural view of the catalog: <strong class="text-zinc-900 dark:text-white">three core content types interconnected as a triangle</strong>, fourteen named article types, plus a fourth standalone <code>Page</code> entity for static pages. The plain-English shape the rest of the demo sits on.
+          A faithful structural view of the hub: <strong class="text-zinc-900 dark:text-white">three core catalog content types interconnected as a triangle</strong>, fourteen named article types, plus a fourth <code>Page</code> bucket — the catch-all for everything the hub publishes that isn't a catalog item (the live hub homepage, landing pages, etc.). The plain-English shape the rest of the demo sits on.
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -151,7 +151,7 @@ const enumValues = [
               3
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-              top-level content types
+              core catalog content types
             </div>
           </div>
           <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
@@ -210,7 +210,7 @@ const enumValues = [
           The plain-English shape.
         </h2>
         <p class="mb-8 max-w-3xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          Three core boxes interconnected as a triangle. A fourth standalone box for static pages. <strong class="text-zinc-900 dark:text-white">That's the whole picture.</strong>
+          Three core catalog boxes interconnected as a triangle. A fourth catch-all box for everything else the hub publishes (homepage, landing pages, etc.). <strong class="text-zinc-900 dark:text-white">That's the whole picture.</strong>
         </p>
 
         <div class="grid gap-3 md:grid-cols-3">
@@ -219,10 +219,10 @@ const enumValues = [
               <span class="text-base font-black">1</span>
             </div>
             <h3 class="mb-2 text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              The core boxes are the content types
+              The core boxes are the catalog content types
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Article, Dataset, App (apps and dashboards). Three buckets, one of which (Article) is the focus of this demo. A fourth, <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">Page</code>, holds static pages and stands alone.
+              Article, Dataset, App (apps and dashboards). Three buckets of browseable / filterable content, one of which (Article) is the focus of this demo. A fourth, <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">Page</code>, is the catch-all for everything else the hub publishes — the homepage, landing pages, anything that isn't an Article, Dataset, or App.
             </p>
           </div>
           <div class="rounded-2xl border-2 border-zinc-300 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
@@ -603,7 +603,7 @@ const enumValues = [
               <strong class="text-zinc-900 dark:text-white">Beyond what the diagram shows</strong>, every record carries additional fields not used by the filter demo: Article has <code>markdown</code> (body), <code>mainfile</code> / <code>extrafile</code> (PDF attachments), <code>doi</code>, <code>citation</code>, <code>funding</code>, <code>thumbnail</code>, <code>images</code>, <code>legacyId</code> (Hub 1.0 migration tracker), <code>external</code>, <code>hideFromBanner</code>; Dataset has <code>project</code> (boolean), <code>sources</code>, <code>unit</code>, <code>timeperiod</code>, <code>variables</code>, <code>notes</code>, <code>datafile</code>, <code>funding</code>, <code>citation</code>; App has <code>contributors</code>, <code>url</code>, <code>image</code>, <code>funding</code>, <code>citation</code>. The GraphQL endpoint is at <code>https://v2.hub.icjia-api.cloud/graphql</code> — see <code>app/composables/useArticles.ts</code> for the full query.
             </p>
             <p>
-              <strong class="text-zinc-900 dark:text-white">Page</strong> (<code>api::page.page</code>) is a fourth content type — <code>title</code>, <code>summary</code>, <code>body</code>, <code>slug</code>. Used for static pages on the live hub (About, Contact, etc.). Not part of the filter demo's data model.
+              <strong class="text-zinc-900 dark:text-white">Page</strong> (<code>api::page.page</code>) is a fourth content type — <code>title</code>, <code>summary</code>, <code>body</code>, <code>slug</code>. The <strong class="text-zinc-900 dark:text-white">catch-all</strong> for everything the hub publishes that isn't a catalog item: the live hub homepage, landing pages, anything that's not an Article / Dataset / App. Not part of the filter demo's data model — but a real top-level Strapi collection type with its own draft / publish lifecycle.
             </p>
           </div>
         </div>

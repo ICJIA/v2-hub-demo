@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.95] — 2026-04-27
+
+### Changed
+
+- **Sharpened "3 top-level content types" → "3 core catalog content types"** across the demo. Strapi-mechanically there are *four* top-level collection types (Article / Dataset / App / Page); but only the first three are catalog content (browseable, filterable, datahub-relational). Page is the catch-all for everything else the hub publishes — the homepage, landing pages, anything that isn't an Article / Dataset / App. The "3" framing now consistently means "the three that matter for the catalog and the demo," with Page mentioned as the standalone fourth on `/schema`.
+- **Updated:**
+  - Home page architecture H2: "Three top-level content types..." → "**Three core catalog content types...**"
+  - `/taxonomy` hero subhead, "Same bones" subhead (now mentions Page with a `/schema` deep-link), inherited-from-Hub-1.0 popover text, page meta description, and stat-strip tile #1 caption — all switched from "top-level" to "core catalog."
+  - `/schema` stat-strip tile #1 caption: "top-level content types" → "core catalog content types."
+- **`/schema` Page description rewritten** to match the user's framing: the catch-all for hub-published content that isn't a catalog item — homepage, landing pages, anything outside the three core types. Reflected in the hero subhead, plain-English shape card, and developer notes.
+
 ## [0.1.94] — 2026-04-27
 
 ### Changed

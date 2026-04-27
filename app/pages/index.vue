@@ -1085,7 +1085,7 @@ function showExamples(typeValue: string) {
           The structure underneath all that traffic
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Three top-level content types. In this web demo, we're zooming into Articles.
+          Three core catalog content types. In this web demo, we're zooming into Articles.
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           The hub holds three peer buckets. Datasets and Apps/Dashboards are out of scope for this filter demo — but they exist alongside Articles, not inside it.

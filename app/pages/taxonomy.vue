@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const PAGE_TITLE = 'How the data is organized — ICJIA Research Hub Demo'
-const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: three top-level buckets, 14 named article types, and a proposed dataset-to-dashboard datahub.'
+const PAGE_DESCRIPTION = 'How Hub 2.0 organizes ICJIA research: three core catalog buckets, 14 named article types, and a proposed dataset-to-dashboard datahub.'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/taxonomy'
 const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
@@ -85,7 +85,7 @@ function showExamples(typeValue: string) {
           How Hub 2.0 organizes<br>everything it publishes.
         </h1>
         <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          Three top-level buckets. Articles holds 14 named types. <span class="font-semibold text-zinc-900 dark:text-white">Hub 2.0 inherited the shape from Hub 1.0</span> — and that's why it works.
+          Three core catalog buckets. Articles holds 14 named types. <span class="font-semibold text-zinc-900 dark:text-white">Hub 2.0 inherited the shape from Hub 1.0</span> — and that's why it works.
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -156,7 +156,7 @@ function showExamples(typeValue: string) {
               3
             </div>
             <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-              top-level content types
+              core catalog content types
             </div>
           </button>
           <template #content>
@@ -224,7 +224,7 @@ function showExamples(typeValue: string) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three top-level buckets, same 14 article types. The CMS is new (Strapi 5), but the bones are the ones that already work.
+                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three core catalog buckets, same 14 article types. The CMS is new (Strapi 5), but the bones are the ones that already work.
               </p>
             </div>
           </template>
@@ -273,7 +273,12 @@ function showExamples(typeValue: string) {
           Same bones. Updated CMS. <span class="text-sky-700 dark:text-sky-400">Click the content types.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          The hub holds three top-level buckets. Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
+          The hub holds three core catalog buckets — plus a fourth catch-all <code>Page</code> entity for the homepage and landing pages (covered on <NuxtLink
+            to="/schema"
+            class="font-semibold text-sky-700 underline-offset-2 hover:underline dark:text-sky-400"
+          >
+            Inside the Hub
+          </NuxtLink>). Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
         </p>
 
         <!-- 3-content-type ribbon — interactive tabs -->
