@@ -876,8 +876,290 @@ function showExamples(typeValue: string) {
           Hub 2.0 inherited the structure that <span class="text-sky-700 dark:text-sky-400">already works.</span>
         </h2>
         <p class="text-xl leading-relaxed text-zinc-700 sm:text-2xl dark:text-zinc-300">
-          This demo exposes the shape so visitors can filter by it. <strong class="text-zinc-900 dark:text-white">"Works"</strong> isn't abstract — it's measurable: <strong class="text-zinc-900 dark:text-white">18,400 hub visitors and 116K pageviews</strong> in the last six months, top articles ranking on Google for years, plus citations now coming in from ChatGPT and external sites. Hub 2.0 keeps every URL, every ranking, and every citation intact — and streamlines the path to all of it.
+          This demo exposes the shape so visitors can filter by it. <strong class="text-zinc-900 dark:text-white">"Works"</strong> isn't abstract — it's measurable: <strong class="text-zinc-900 dark:text-white">36,800 hub visitors and 232K pageviews</strong> in the last twelve months, top articles ranking on Google for years, plus citations now coming in from ChatGPT and external sites. Hub 2.0 keeps every URL, every ranking, and every citation intact — and streamlines the path to all of it.
         </p>
+      </div>
+    </section>
+
+    <!-- 7.5 HUB 1.0 BY THE NUMBERS — proof of the 'works' claim above -->
+    <section class="border-b border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
+          <span>Hub 1.0 by the numbers</span>
+          <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-emerald-700 dark:text-emerald-300">last 12 months · Plausible analytics</span>
+        </div>
+        <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
+          Don't just say it <span class="text-emerald-700 dark:text-emerald-400">works</span>. Show it.
+        </h2>
+        <p class="mb-8 max-w-3xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
+          The TL;DR above claims the structure works. Here's the receipt — twelve months of live traffic on <code class="text-emerald-700 dark:text-emerald-400">/researchhub/</code>, pulled straight from Plausible analytics on icjia.illinois.gov.
+        </p>
+
+        <!-- 4-tile stat strip -->
+        <div class="mb-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-5 dark:bg-emerald-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+              <UIcon
+                name="i-lucide-eye"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-emerald-700 sm:text-5xl dark:text-emerald-400">
+              232K
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              pageviews on hub articles
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+              <UIcon
+                name="i-lucide-users"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
+              36.8K
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              unique visitors to the hub
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+              <UIcon
+                name="i-lucide-pie-chart"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
+              ~70%
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              of all icjia.illinois.gov visitors land on the hub
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+              <UIcon
+                name="i-lucide-clock"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
+              16 min
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              average time spent reading on the hub
+            </div>
+          </div>
+        </div>
+
+        <!-- Top 5 articles -->
+        <div class="mb-8 rounded-2xl border-2 border-emerald-500 bg-white p-7 dark:bg-zinc-900">
+          <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-400">
+            The hub's evergreen hits
+          </div>
+          <h3 class="mb-1 text-lg font-bold text-zinc-900 sm:text-xl dark:text-white">
+            Five most-read articles, last 12 months
+          </h3>
+          <p class="mb-5 text-sm text-zinc-600 dark:text-zinc-400">
+            Each one is exactly the kind of article a manager would search for as a "summary" or "research report" — and each one's bounce rate (60–67%) is in line with the hub-wide average, meaning these readers come, read, and leave satisfied.
+          </p>
+
+          <ol class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">1</span>
+              <div class="flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <a
+                    href="https://icjia.illinois.gov/researchhub/articles/the-effectiveness-and-implications-of-police-reform-a-review-of-the-literature/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
+                  >
+                    The Effectiveness and Implications of Police Reform
+                  </a>
+                  <div class="shrink-0 text-right">
+                    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                      6,400 readers
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      62% bounce
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    style="width: 100%"
+                  />
+                </div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">2</span>
+              <div class="flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <a
+                    href="https://icjia.illinois.gov/researchhub/articles/understanding-police-officer-stress-a-review-of-the-literature/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
+                  >
+                    Understanding Police Officer Stress
+                  </a>
+                  <div class="shrink-0 text-right">
+                    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                      6,200 readers
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      62% bounce
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    style="width: 97%"
+                  />
+                </div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">3</span>
+              <div class="flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <a
+                    href="https://icjia.illinois.gov/researchhub/articles/the-victim-offender-overlap-examining-the-relationship-between-victimization-and-offending/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
+                  >
+                    The Victim-Offender Overlap
+                  </a>
+                  <div class="shrink-0 text-right">
+                    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                      5,900 readers
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      67% bounce
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    style="width: 92%"
+                  />
+                </div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">4</span>
+              <div class="flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <a
+                    href="https://icjia.illinois.gov/researchhub/articles/the-2021-safe-t-act-icjia-roles-and-responsibilities/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
+                  >
+                    The 2021 SAFE-T Act: ICJIA Roles and Responsibilities
+                  </a>
+                  <div class="shrink-0 text-right">
+                    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                      5,800 readers
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      64% bounce
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    style="width: 91%"
+                  />
+                </div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">5</span>
+              <div class="flex-1">
+                <div class="flex items-start justify-between gap-3">
+                  <a
+                    href="https://icjia.illinois.gov/researchhub/articles/mental-illness-and-violence-is-there-a-link/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-semibold text-zinc-900 hover:text-emerald-700 hover:underline dark:text-white dark:hover:text-emerald-400"
+                  >
+                    Mental Illness and Violence: Is There a Link?
+                  </a>
+                  <div class="shrink-0 text-right">
+                    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                      4,300 readers
+                    </div>
+                    <div class="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      62% bounce
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="h-full rounded-full bg-emerald-500 dark:bg-emerald-400"
+                    style="width: 67%"
+                  />
+                </div>
+              </div>
+            </li>
+          </ol>
+
+          <p class="mt-5 text-xs text-zinc-600 dark:text-zinc-400">
+            <UIcon
+              name="i-lucide-external-link"
+              class="-mt-0.5 mr-1 inline size-3.5"
+            />
+            Each title links to the live article on the production hub. Reader counts are unique visitors over the last 12 months.
+          </p>
+        </div>
+
+        <!-- Closing — back to the point -->
+        <div class="rounded-2xl border-2 border-sky-500 bg-sky-500/10 p-5">
+          <div class="flex items-start gap-3">
+            <UIcon
+              name="i-lucide-target"
+              class="mt-0.5 size-6 shrink-0 text-sky-700 dark:text-sky-300"
+            />
+            <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
+              That's what "already works" looks like.
+              <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
+                Real visitors. Real reading time. Real Google rankings. Real AI citations. Hub 2.0 keeps the entire stack — URLs, rankings, citations, content — and just streamlines the path to it.
+                <NuxtLink
+                  to="/"
+                  class="ml-1 inline-block font-semibold text-sky-700 underline-offset-2 hover:underline dark:text-sky-400"
+                >
+                  More traffic context on the home page →
+                </NuxtLink>
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
