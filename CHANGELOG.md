@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.91] — 2026-04-27
+
+### Changed
+
+- **Author normalization section opens with a Steve Jobs-style "And one more thing…" reveal** instead of the small uppercase eyebrow it had before. The merge-icon disc + small italic "And one more thing…" lead-in expands into a 6xl/7xl/8xl `font-black` infographic main title — **"Author" / "names."** — with the "Author" word in violet to match the section accent. The previous H2 ("Same person, listed seven different ways.") becomes a bold subhead beneath the big title. A small explainer line clarifies why the section gets its own moment: it's separate from the database-naming issue above and is specifically about CMS-layer credential / casing / whitespace differences.
+
 ## [0.1.90] — 2026-04-27
 
 ### Changed
