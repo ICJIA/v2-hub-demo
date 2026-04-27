@@ -270,7 +270,7 @@ function showExamples(typeValue: string) {
           Inherited from Hub 1.0
         </div>
         <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl dark:text-white">
-          Same bones. Modern CMS.
+          Same bones. Updated CMS. <span class="text-sky-700 dark:text-sky-400">Click the content types.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
           The hub holds three top-level buckets. Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
