@@ -180,73 +180,11 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 3. STAT STRIP -->
-    <section class="border-b border-zinc-200 bg-white px-6 py-10 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
-      <div class="mx-auto grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-        <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-            <UIcon
-              name="i-lucide-newspaper"
-              class="size-5"
-            />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-            {{ articleCountLabel }}
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-            articles in the catalog
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
-            <UIcon
-              name="i-lucide-tags"
-              class="size-5"
-            />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
-            14
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            types inside Articles
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
-            <UIcon
-              name="i-lucide-layout-grid"
-              class="size-5"
-            />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
-            3
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            filter layouts to compare
-          </div>
-        </div>
-        <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
-          <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
-            <UIcon
-              name="i-lucide-mouse-pointer-click"
-              class="size-5"
-            />
-          </div>
-          <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
-            1
-          </div>
-          <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            click to find what you need
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3.5 HUB 1.0 IN NUMBERS — Plausible analytics, last 12 months -->
+    <!-- 3. HUB 1.0 IN NUMBERS — Plausible analytics, last 12 months (proof first) -->
     <section class="border-b border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-600 dark:text-emerald-400">
-          <span>Hub 1.0 in numbers</span>
+          <span>Proof — the hub already works</span>
           <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium normal-case tracking-normal text-emerald-700 dark:text-emerald-300">last 12 months (May 2025 – Apr 2026) · Plausible analytics</span>
         </div>
         <h2 class="mb-3 text-3xl font-extrabold leading-tight text-zinc-900 sm:text-4xl lg:text-5xl dark:text-white">
@@ -954,7 +892,7 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 3.7 URL STABILITY / SEO — why we keep the same URLs -->
+    <!-- 4. URL STABILITY / SEO — why we keep the same URLs -->
     <section class="border-b border-zinc-200 bg-white px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
@@ -1140,11 +1078,11 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 4. THE DIAGRAM -->
+    <!-- 5. THE DIAGRAM — the structure that powers all that traffic -->
     <section class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
-          The hub at a glance
+          The structure underneath all that traffic
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           Three top-level content types. We're zooming into Articles.
@@ -1289,7 +1227,74 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 5.5 TL;DR — the point, in one breath -->
+    <!-- 6. STAT STRIP — what this demo adds -->
+    <section class="border-b border-zinc-200 bg-white px-6 py-10 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+          What this demo adds
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+          <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+              <UIcon
+                name="i-lucide-newspaper"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
+              {{ articleCountLabel }}
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+              articles in the catalog
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-amber-500 bg-amber-50 p-5 dark:bg-amber-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300">
+              <UIcon
+                name="i-lucide-tags"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-amber-700 sm:text-5xl dark:text-amber-400">
+              14
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              types inside Articles
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-sky-500 bg-sky-50 p-5 dark:bg-sky-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-sky-500/20 text-sky-700 dark:text-sky-300">
+              <UIcon
+                name="i-lucide-layout-grid"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-400">
+              3
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              filter layouts to compare
+            </div>
+          </div>
+          <div class="rounded-2xl border-2 border-violet-500 bg-violet-50 p-5 dark:bg-violet-500/10">
+            <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
+              <UIcon
+                name="i-lucide-mouse-pointer-click"
+                class="size-5"
+              />
+            </div>
+            <div class="text-4xl font-black tracking-tight text-violet-700 sm:text-5xl dark:text-violet-400">
+              1
+            </div>
+            <div class="mt-2 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+              click to find what you need
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TL;DR — the point, in one breath -->
     <section class="border-y-4 border-amber-500 bg-amber-100/40 px-6 py-16 sm:px-12 lg:px-16 dark:border-amber-500/80 dark:bg-amber-500/10">
       <div class="mx-auto max-w-4xl">
         <div class="mb-6 flex items-center gap-3">
@@ -1312,7 +1317,7 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 5.7 TAKEAWAYS — for the busy manager -->
+    <!-- 8. TAKEAWAYS — for the busy manager -->
     <section class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-6 flex items-center gap-3">
@@ -1389,7 +1394,7 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 6. THREE VIEWS -->
+    <!-- 9. THREE VIEWS -->
     <section
       id="views"
       class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
@@ -1527,7 +1532,7 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 6.5 AUTHOR NORMALIZATION — one more under-the-hood fix -->
+    <!-- 10. AUTHOR NORMALIZATION — one more under-the-hood fix -->
     <section
       id="author-normalization"
       class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
@@ -1692,7 +1697,7 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
-    <!-- 7. DEEP DIVES -->
+    <!-- 11. DEEP DIVES -->
     <section class="bg-white px-6 py-14 sm:px-12 lg:px-16 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
