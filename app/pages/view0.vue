@@ -261,10 +261,19 @@ function onTypeChipChange(value: string | null) {
             @update:model-value="onTypeChipChange"
           />
 
-          <USwitch
-            v-model="advancedMode"
-            label="Advanced filters"
-          />
+          <div class="flex shrink-0 items-center gap-2 rounded-lg border-2 border-violet-500 bg-violet-500/10 px-3 py-2 dark:border-violet-400">
+            <UIcon
+              name="i-lucide-sliders-horizontal"
+              class="size-4 text-violet-700 dark:text-violet-300"
+            />
+            <USwitch
+              v-model="advancedMode"
+              :ui="{
+                label: 'text-sm font-bold text-violet-700 dark:text-violet-300'
+              }"
+              label="Advanced filters"
+            />
+          </div>
         </div>
 
         <ArticleFilterBar

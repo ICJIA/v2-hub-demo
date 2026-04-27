@@ -115,11 +115,12 @@ const upgrades: Upgrade[] = [
     accent: 'sky'
   },
   {
-    title: 'Three layouts to compare',
-    shortBody: 'Same data, three filter UX flavors. View 0 (chips + advanced toggle), View 1 (dropdowns only), View 2 (chips + always-on bar). Pick a winner.',
-    description: 'View 0 has chips at the top and an "Advanced filters" toggle that hides the full filter bar by default — the friendliest first impression. View 1 uses dropdown menus exclusively (closest to the live site today). View 2 shows chips and the full filter bar side by side, always visible — maximum flexibility, more visual weight.',
-    whyItMatters: 'The team can pick the layout that works best in side-by-side review — and that becomes the Hub 2.0 production experience. The decision affects every visitor for years; comparing three live mockups is the way to make it.',
+    title: 'Current + three proposed views',
+    shortBody: 'Same data, four UX takes. Current (Hub 2.0 today: filter bar baseline) + View 0 (chips + advanced), View 1 (dropdowns only), View 2 (chips + always-on bar). Pick a winner.',
+    description: 'Current is Hub 2.0 as it stands today — a filter bar with dropdowns, no chips. The three proposed views layer the friction-reducing tweaks on top: View 0 has chips at the top and an "Advanced filters" toggle (the friendliest first impression), View 1 keeps dropdowns only with chip filtering moved into the bar, View 2 shows chips and the full bar side by side (maximum flexibility).',
+    whyItMatters: 'The team can pick the layout that works best in side-by-side review — and that becomes the Hub 2.0 production experience. The decision affects every visitor for years; comparing four live mockups is the way to make it.',
     links: [
+      { label: 'Current', to: '/current' },
       { label: 'View 0', to: '/view0' },
       { label: 'View 1', to: '/view1' },
       { label: 'View 2', to: '/view2' }
@@ -197,6 +198,14 @@ function openUpgrade(index: number) {
             color="neutral"
             variant="solid"
             class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            size="lg"
+          />
+          <UButton
+            to="/current"
+            label="Open Current"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
             size="lg"
           />
           <UButton

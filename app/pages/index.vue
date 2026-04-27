@@ -1297,11 +1297,48 @@ function showExamples(typeValue: string) {
           Try it yourself
         </div>
         <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Here are three layouts. Same data behind all of them. <span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
+          Current + three proposed views. Same data behind all of them. <span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          They differ only in how much filter machinery sits on screen at any given moment. Click any one and try filtering to "Research Report" — that's the test.
+          Start with <strong class="text-zinc-900 dark:text-white">Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views to see the friction-reducers layered on top. Click any one and try filtering to "Research Report" — that's the test.
         </p>
+
+        <!-- Current view (baseline) — full-width starting point -->
+        <NuxtLink
+          to="/current"
+          class="group mb-4 block overflow-hidden rounded-xl border-2 border-zinc-400 bg-white transition-colors hover:border-zinc-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:border-zinc-600 dark:bg-zinc-900 dark:hover:border-zinc-400 dark:focus-visible:ring-zinc-400"
+        >
+          <div class="h-1 bg-zinc-500 dark:bg-zinc-400" />
+          <div class="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:gap-5">
+            <div class="shrink-0">
+              <div class="text-[10px] font-bold uppercase tracking-[0.1em] text-zinc-600 dark:text-zinc-400">
+                Start here · /current
+              </div>
+              <div class="mt-1 text-lg font-bold text-zinc-900 dark:text-white">
+                Current — Hub 2.0 today
+              </div>
+            </div>
+            <div class="flex flex-1 flex-wrap gap-1.5">
+              <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Search</span>
+              <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Type ▾</span>
+              <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Topic ▾</span>
+              <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Author ▾</span>
+              <span class="rounded border border-zinc-300 bg-zinc-100 px-2.5 py-1 text-[10px] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">Year ▾</span>
+            </div>
+            <div class="shrink-0 sm:max-w-[14rem]">
+              <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Filter bar with dropdowns. No chips. Hub 2.0's current state — the baseline the views below build on.
+              </p>
+              <div class="mt-2 text-xs font-semibold text-zinc-700 group-hover:underline dark:text-zinc-300">
+                Open Current →
+              </div>
+            </div>
+          </div>
+        </NuxtLink>
+
+        <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-sky-700 dark:text-sky-400">
+          ↓ Three proposed friction-reducers
+        </div>
 
         <div class="grid gap-4 md:grid-cols-3">
           <NuxtLink
