@@ -576,7 +576,10 @@ function showExamples(typeValue: string) {
     </section>
 
     <!-- 6.5 AUTHOR NORMALIZATION — one more under-the-hood fix -->
-    <section class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
+    <section
+      id="author-normalization"
+      class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
+    >
       <div class="mx-auto max-w-5xl">
         <div class="mb-6 flex items-center gap-3">
           <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
