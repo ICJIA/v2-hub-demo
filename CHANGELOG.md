@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.82] — 2026-04-27
+
+### Changed
+
+- **Stat-strip tiles on `/taxonomy` and `/about` are now interactive.** Each tile is wrapped in a `UPopover` and rendered as a button — clicking (or focusing) any tile opens a small popover that explains the number in a sentence or two. A subtle info icon and `cursor-help` styling signal the affordance. Drives home for managers what `3 top-level content types`, `14 named article types`, `1 click to find research reports`, etc. actually mean without forcing them to read the page top-to-bottom.
+- **Copy: "the demo" → "this demo".** Renamed all five user-facing instances. The two TL;DR moments — home's "Five takeaways" closing and `/about`'s TL;DR — now read **"this proof-of-concept demo just exposes [it / what's already there]"**, making the POC framing explicit at the punchline. The other three references (POC banner, examples-modal disclaimer, author-normalization showcase intro) became plain "this demo".
+
 ## [0.1.81] — 2026-04-27
 
 ### Changed
