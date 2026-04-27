@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.84] — 2026-04-27
+
+### Changed
+
+- **All three content-type cards in "The hub at a glance" are now interactive.** Articles, Datasets, and Apps/Dashboards are each clickable buttons that open a detail modal. Each card has a subtle "Click for details" affordance, hover-shadow lift, and focus-visible ring matching the card's accent color (amber/sky/violet).
+
+### Added
+
+- **Articles modal:** Explains that Articles is the umbrella for everything published as text — 14 named types, the only content type with a `type` enum (which is what makes the chip filter possible). Includes a deep-link to `/taxonomy#types` for the full 14-type interactive grid.
+- **Datasets modal:** Explains Datasets as a separate top-level content type (raw CSVs/tables, no `type` enum), then surfaces the full Hub 2.0 "datahub" roadmap with all four patterns (solo dataset, one-app/one-dataset, one-app/many-datasets, shared-dataset) inline. Includes the "All four patterns: schema-supported in Strapi 5 today" callout — same content as the `/taxonomy` proposed-datahub section, summarized for first-touch on the home page.
+- **Apps/Dashboards modal:** Explains what Apps/Dashboards are as a content type, then surfaces a prominent "**More detail coming soon**" warning callout (amber-bordered with a construction icon) acknowledging that the demo focuses on Articles UX and the dashboards story is part of the broader datahub roadmap that hasn't been fully scoped for this POC yet. Includes a "What we know so far" bullet list — schema-level facts that ARE known.
+
 ## [0.1.83] — 2026-04-27
 
 ### Changed
