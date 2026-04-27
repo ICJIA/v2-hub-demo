@@ -148,7 +148,7 @@ function dismissPocBanner() {
         </div>
         <div class="flex-1 text-sm leading-relaxed sm:text-base">
           <strong class="font-bold">Proof-of-Concept demo.</strong>
-          Examples are <em>illustrative</em>. Many articles in the live CMS aren't yet tagged with a type, so the demo fills placeholders client-side so every filter has examples to show.
+          Examples are <em>illustrative</em>. Many articles in the live CMS aren't yet tagged with a type, so this demo fills placeholders client-side so every filter has examples to show.
           <strong>Full accuracy requires Hub 2.0 editorial curation.</strong>
           <NuxtLink
             to="/taxonomy"

@@ -67,7 +67,7 @@ const modalTotalCount = computed(() => {
             name="i-lucide-info"
             class="mr-1 inline size-4"
           />
-          <strong>POC demo — examples are illustrative.</strong> Most articles in the live CMS aren't yet tagged with a <code>type</code>. For those, the demo assigns a placeholder type client-side so every pill has examples to show. Once editorial curation is complete, only real tagged articles will appear here.
+          <strong>POC demo — examples are illustrative.</strong> Most articles in the live CMS aren't yet tagged with a <code>type</code>. For those, this demo assigns a placeholder type client-side so every pill has examples to show. Once editorial curation is complete, only real tagged articles will appear here.
         </p>
         <p
           v-else

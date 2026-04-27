@@ -746,7 +746,7 @@ function showExamples(typeValue: string) {
               Hub 2.0 inherited Hub 1.0's data structure intact.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Nothing's missing — the demo just exposes what's already there.
+              Nothing's missing — this proof-of-concept demo just exposes what's already there.
             </p>
           </div>
         </div>
@@ -875,7 +875,7 @@ function showExamples(typeValue: string) {
           Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
         </h2>
         <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list one person seven times. The demo merges every variant onto a single canonical key.
+          Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list one person seven times. This demo merges every variant onto a single canonical key.
         </p>
 
         <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
