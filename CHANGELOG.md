@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.90] — 2026-04-27
+
+### Changed
+
+- **Author normalization section restructured into "The Problem" + "The Solution".** The old side-by-side before/after grid is now stacked vertically with explicit problem/solution badges (zinc + violet, with alert-triangle and check-circle icons). The 7-variant CMS dump is part of "The Problem"; the canonical-entry card and the five normalization steps live under "The Solution." Eyebrow updated: "One more thing we fixed" → "**One more thing we fixed. Author names.**"
+- **TL;DR closing line** gained a parenthetical reminder: "Click `Research Reports` on any of the three layouts below. Done. *(Remember — articles **are** summaries.)*" — keeps the home page's central equivalence top-of-mind right at the punchline.
+- **Takeaway #2** clarified: "'Articles' holds 14 publication types." → "**'Articles' holds 14 publication types, including Research Reports.**" Anchors the takeaway in the most-asked-for type.
+- **"Three views" section heading** picked up a line break: "Current + three proposed views. Same data behind all of them.<br>Go ahead. Click." — separates the structural framing from the call-to-action visually.
+- **Architecture diagram H2** clarified: "Three top-level content types. We're zooming into Articles." → "**Three top-level content types. In this web demo, we're zooming into Articles.**" — makes the scoping explicit.
+
 ## [0.1.89] — 2026-04-27
 
 ### Changed
