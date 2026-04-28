@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.105] — 2026-04-28
+
+### Changed
+
+- **`/site` deployment section** — entire rose (red/pink) accent swapped to violet (purple). Red was reading as a danger/caution signal, which clashes with the meaning of the deployment section (it's the *correct fit*, not a warning). Affected elements: the *03 · Deployment* pill, the cloud icon circle, the big *"Netlify. / Static-only."* infographic h2, the *"Why static is the correct fit for Hub 2.0"* container border + heading + 9 reason-card titles + their icons. The *"Net result"* summary callout stays emerald (green = ready-to-go) — set in v0.1.104 — and the alternative-deployment-models comparison cards remain neutral zinc, so the violet now reads as the section's signature without competing with the green affirmation at the end.
+
 ## [0.1.104] — 2026-04-28
 
 ### Changed

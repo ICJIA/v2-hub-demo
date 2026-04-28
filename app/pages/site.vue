@@ -164,7 +164,7 @@ const stack = [
                 'text-sky-600 dark:text-sky-400': t.tone === 'sky',
                 'text-amber-600 dark:text-amber-400': t.tone === 'amber',
                 'text-violet-600 dark:text-violet-400': t.tone === 'violet',
-                'text-rose-600 dark:text-rose-400': t.tone === 'rose'
+                'text-violet-600 dark:text-violet-400': t.tone === 'rose'
               }"
             >
               <UIcon
@@ -302,7 +302,7 @@ const stack = [
     <section class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]">
       <div class="mx-auto max-w-5xl">
         <div class="mb-8">
-          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-rose-500/40 bg-rose-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:bg-rose-500/15 dark:text-rose-300">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
             <UIcon
               name="i-lucide-cloud-upload"
               class="size-3.5"
@@ -310,7 +310,7 @@ const stack = [
             03 · Deployment
           </div>
           <div class="mb-3 flex items-center gap-3">
-            <div class="flex size-12 items-center justify-center rounded-full bg-rose-500 text-white shadow-lg">
+            <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
               <UIcon
                 name="i-lucide-cloud"
                 class="size-6"
@@ -321,7 +321,7 @@ const stack = [
             </span>
           </div>
           <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
-            <span class="text-rose-600 dark:text-rose-400">Netlify.</span><br>Static-only.
+            <span class="text-violet-600 dark:text-violet-400">Netlify.</span><br>Static-only.
           </h2>
           <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">nuxt generate</code> writes pre-rendered HTML and hydration payloads to <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code>; Netlify publishes <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code> straight to its CDN (Content Delivery Network). There is no Nitro server, no Node runtime, no edge function — every response is a static file behind a globally-replicated CDN.
@@ -330,7 +330,7 @@ const stack = [
 
         <div class="grid gap-4 md:grid-cols-2">
           <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
-            <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+            <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
               <UIcon
                 name="i-lucide-file-cog"
                 class="size-3.5"
@@ -358,35 +358,35 @@ const stack = [
               <li class="flex gap-2">
                 <UIcon
                   name="i-lucide-check"
-                  class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
+                  class="mt-0.5 size-4 shrink-0 text-violet-600 dark:text-violet-400"
                 />
                 <span>Build runs <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">pnpm generate</code> on every push to <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">main</code>.</span>
               </li>
               <li class="flex gap-2">
                 <UIcon
                   name="i-lucide-check"
-                  class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
+                  class="mt-0.5 size-4 shrink-0 text-violet-600 dark:text-violet-400"
                 />
                 <span>Pull requests get isolated preview URLs automatically.</span>
               </li>
               <li class="flex gap-2">
                 <UIcon
                   name="i-lucide-check"
-                  class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
+                  class="mt-0.5 size-4 shrink-0 text-violet-600 dark:text-violet-400"
                 />
                 <span>Node 22 LTS (Long-Term Support), with raised heap to handle the prerender pass cleanly.</span>
               </li>
               <li class="flex gap-2">
                 <UIcon
                   name="i-lucide-check"
-                  class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
+                  class="mt-0.5 size-4 shrink-0 text-violet-600 dark:text-violet-400"
                 />
                 <span>No env-secrets needed — the GraphQL endpoint is public and read-only.</span>
               </li>
               <li class="flex gap-2">
                 <UIcon
                   name="i-lucide-check"
-                  class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
+                  class="mt-0.5 size-4 shrink-0 text-violet-600 dark:text-violet-400"
                 />
                 <span>Roll back is one click from the Netlify Deploys list.</span>
               </li>
@@ -395,8 +395,8 @@ const stack = [
         </div>
 
         <!-- Why static is right for Hub 2.0 -->
-        <div class="mt-10 rounded-2xl border border-rose-500/30 bg-white p-5 dark:border-rose-500/40 dark:bg-zinc-950">
-          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+        <div class="mt-10 rounded-2xl border border-violet-500/30 bg-white p-5 dark:border-violet-500/40 dark:bg-zinc-950">
+          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
             <UIcon
               name="i-lucide-target"
               class="size-3.5"
@@ -409,7 +409,7 @@ const stack = [
 
           <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-shield-check"
                   class="size-3.5"
@@ -422,7 +422,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-zap"
                   class="size-3.5"
@@ -435,7 +435,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-trending-down"
                   class="size-3.5"
@@ -448,7 +448,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-rotate-ccw"
                   class="size-3.5"
@@ -461,7 +461,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-git-branch"
                   class="size-3.5"
@@ -474,7 +474,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-search"
                   class="size-3.5"
@@ -487,7 +487,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-server-off"
                   class="size-3.5"
@@ -500,7 +500,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-database"
                   class="size-3.5"
@@ -513,7 +513,7 @@ const stack = [
             </div>
 
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
-              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
                 <UIcon
                   name="i-lucide-archive"
                   class="size-3.5"
@@ -569,7 +569,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -607,7 +607,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -645,7 +645,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -683,7 +683,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -721,7 +721,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
@@ -759,7 +759,7 @@ const stack = [
                   </p>
                 </div>
                 <div>
-                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-400">
                     − Why it's the wrong fit here
                   </div>
                   <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
