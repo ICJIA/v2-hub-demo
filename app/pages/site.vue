@@ -48,12 +48,12 @@ useHead({
 const appVersion = useRuntimeConfig().public.appVersion
 
 const stack = [
-  { name: 'Nuxt', version: '4.4.x', role: 'Vue meta-framework — pages, layouts, SSG, data fetching', tone: 'emerald' },
+  { name: 'Nuxt', version: '4.4.x', role: 'Vue meta-framework — pages, layouts, SSG (Static Site Generation), data fetching', tone: 'emerald' },
   { name: 'Vue', version: '3.5+', role: '<script setup lang="ts">, Composition API, reactivity', tone: 'emerald' },
   { name: 'Nuxt UI', version: '4.6.x', role: 'Headless components, theming, color modes', tone: 'emerald' },
   { name: 'Tailwind CSS', version: '4.2.x', role: 'Utility-first styling, dark mode, modern engine', tone: 'cyan' },
   { name: 'TypeScript', version: '6.0.x', role: 'Type-safe templates, composables, utils', tone: 'sky' },
-  { name: 'pnpm', version: '10.33.x', role: 'Lockfile-driven install, used in CI build', tone: 'amber' },
+  { name: 'pnpm', version: '10.33.x', role: 'Lockfile-driven install, used in CI (Continuous Integration) build', tone: 'amber' },
   { name: 'Iconify', version: 'lucide + simple-icons', role: 'Per-icon SSR injection, no global webfont', tone: 'violet' },
   { name: 'Mermaid', version: '11.14.x', role: 'Diagrams on /schema (relational triangle, etc.)', tone: 'rose' }
 ]
@@ -83,10 +83,10 @@ const stack = [
           </span>
         </div>
         <h1 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
-          <span class="text-primary">Built with Nuxt.</span><br>Static. Live data.
+          Hub 2.0. <span class="text-primary">Built with Nuxt.</span><br>Static. Live data.
         </h1>
         <p class="mt-5 max-w-2xl text-xl font-bold leading-snug text-zinc-700 sm:text-2xl dark:text-zinc-300">
-          A statically-generated Nuxt 4 SPA. Real GraphQL data. Zero server runtime.
+          A statically-generated Nuxt 4 SPA (Single-Page Application). Real GraphQL data. Zero server runtime.
         </p>
         <p class="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
           Every page on this demo is prerendered to static HTML at build time, then hydrates into a fully reactive Vue app. The <strong class="text-zinc-900 dark:text-white">four filter views are live</strong> — they pull <span class="text-primary">PUBLISHED</span> articles from a Strapi 5 GraphQL endpoint at build, render with the data baked in, then run all filtering, sorting, search, and highlighting on the client. Nothing on this page is a screenshot or a mock.
@@ -324,7 +324,7 @@ const stack = [
             <span class="text-rose-600 dark:text-rose-400">Netlify.</span><br>Static-only.
           </h2>
           <p class="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">nuxt generate</code> writes pre-rendered HTML and hydration payloads to <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code>; Netlify publishes <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code> straight to its CDN. There is no Nitro server, no Node runtime, no edge function — every response is a static file behind a global CDN.
+            <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">nuxt generate</code> writes pre-rendered HTML and hydration payloads to <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code>; Netlify publishes <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">dist/</code> straight to its CDN (Content Delivery Network). There is no Nitro server, no Node runtime, no edge function — every response is a static file behind a globally-replicated CDN.
           </p>
         </div>
 
@@ -374,7 +374,7 @@ const stack = [
                   name="i-lucide-check"
                   class="mt-0.5 size-4 shrink-0 text-rose-600 dark:text-rose-400"
                 />
-                <span>Node 22 LTS, with raised heap to handle the prerender pass cleanly.</span>
+                <span>Node 22 LTS (Long-Term Support), with raised heap to handle the prerender pass cleanly.</span>
               </li>
               <li class="flex gap-2">
                 <UIcon
@@ -430,7 +430,7 @@ const stack = [
                 Speed everywhere
               </div>
               <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Netlify replicates <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">dist/</code> across a global CDN. First byte is local-PoP fast for visitors in Europe, Asia, the Americas — without ICJIA running a server in each region.
+                Netlify replicates <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">dist/</code> across a global CDN. First byte is local-PoP (Point-of-Presence) fast for visitors in Europe, Asia, the Americas — without ICJIA running a server in each region.
               </p>
             </div>
 
@@ -469,7 +469,7 @@ const stack = [
                 Preview deploys
               </div>
               <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
-                Every PR gets its own live URL automatically. Stakeholders review on a real, isolated environment before merge — not a screen-share, not a localhost tunnel, not a screenshot in a slide.
+                Every PR (Pull Request) gets its own live URL automatically. Stakeholders review on a real, isolated environment before merge — not a screen-share, not a localhost tunnel, not a screenshot in a slide.
               </p>
             </div>
 
@@ -479,7 +479,7 @@ const stack = [
                   name="i-lucide-search"
                   class="size-3.5"
                 />
-                SEO + AI crawlers
+                SEO (Search Engine Optimization) + AI crawlers
               </div>
               <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
                 Pre-rendered HTML means Googlebot, Bingbot, and AI crawlers (GPT, Perplexity, Anthropic, Gemini) get fully formed pages on first fetch — no JS execution required for indexing.
@@ -704,7 +704,7 @@ const stack = [
                 </div>
                 <div>
                   <div class="text-base font-bold text-zinc-900 dark:text-white">
-                    Containerized (Docker + Kubernetes / ECS)
+                    Containerized (Docker + Kubernetes / ECS — Elastic Container Service)
                   </div>
                   <div class="text-xs text-zinc-500 dark:text-zinc-400">
                     A Node image running Nuxt SSR or a custom server, behind a load balancer, in a managed cluster
@@ -742,10 +742,10 @@ const stack = [
                 </div>
                 <div>
                   <div class="text-base font-bold text-zinc-900 dark:text-white">
-                    Traditional LAMP / VPS (WordPress, Drupal, custom PHP)
+                    Traditional LAMP / VPS — Linux + Apache + MySQL + PHP on a Virtual Private Server
                   </div>
                   <div class="text-xs text-zinc-500 dark:text-zinc-400">
-                    NGINX/Apache + PHP-FPM + MySQL on a long-running VPS or shared host
+                    NGINX/Apache + PHP-FPM (FastCGI Process Manager) + MySQL on a long-running VPS or shared host. WordPress, Drupal, custom PHP.
                   </div>
                 </div>
               </div>
@@ -770,8 +770,8 @@ const stack = [
             </div>
           </div>
 
-          <div class="mt-6 rounded-xl border-2 border-rose-500 bg-rose-50 p-5 dark:bg-rose-500/10">
-            <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+          <div class="mt-6 rounded-xl border-2 border-emerald-500 bg-emerald-50 p-5 dark:bg-emerald-500/10">
+            <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
               <UIcon
                 name="i-lucide-check-circle-2"
                 class="size-3.5"
@@ -779,7 +779,7 @@ const stack = [
               Net result
             </div>
             <p class="text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
-              For a read-mostly catalog with build-time-fresh content, an existing CMS for editors, and zero per-user state, <strong class="text-rose-700 dark:text-rose-300">Netlify static</strong> is the lightest, cheapest, fastest, most secure, and most maintainable option of the six. The other models all add runtime complexity in exchange for capabilities Hub 2.0 will never need.
+              For a read-mostly catalog with build-time-fresh content, an existing CMS (Content Management System) for editors, and zero per-user state, <strong class="text-emerald-700 dark:text-emerald-300">Netlify static</strong> is the lightest, cheapest, fastest, most secure, and most maintainable option of the six. The other models all add runtime complexity in exchange for capabilities Hub 2.0 will never need.
             </p>
           </div>
         </div>
@@ -877,7 +877,7 @@ const stack = [
               />
             </div>
             <span class="text-base font-medium italic text-zinc-600 sm:text-lg dark:text-zinc-400">
-              No regex. No DOM munging. Pure segment array.
+              No regex. No DOM (Document Object Model) munging. Pure segment array.
             </span>
           </div>
           <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
@@ -1062,7 +1062,7 @@ export function highlightSegments(
             </li>
             <li class="flex gap-2">
               <span class="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-[10px] font-black text-emerald-700 dark:text-emerald-300">3</span>
-              <span><strong>Returns an array, not HTML</strong> — Vue templates render <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">v-for</code> the segments and pick <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">&lt;mark&gt;</code> vs <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">&lt;span&gt;</code> per segment. No <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">v-html</code>, no XSS surface.</span>
+              <span><strong>Returns an array, not HTML</strong> — Vue templates render <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">v-for</code> the segments and pick <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">&lt;mark&gt;</code> vs <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">&lt;span&gt;</code> per segment. No <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">v-html</code>, no XSS (Cross-Site Scripting) surface.</span>
             </li>
             <li class="flex gap-2">
               <span class="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-[10px] font-black text-emerald-700 dark:text-emerald-300">4</span>
@@ -1189,7 +1189,7 @@ export function highlightSegments(
             Before / after — eight raw inputs, one canonical key
           </div>
           <p class="mb-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-            Eight ways the same researcher's name might appear in the CMS. All eight resolve to a single key — so the Authors dropdown lists "Jane Carter" once, and the article count for that author is honest.
+            Eight ways the same researcher's name might appear in the CMS (Content Management System). All eight resolve to a single key — so the Authors dropdown lists "Jane Carter" once, and the article count for that author is honest.
           </p>
 
           <div class="overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
@@ -1429,7 +1429,7 @@ export function highlightSegments(
               SEO + AI crawlers
             </div>
             <div class="mb-1 text-sm font-bold text-zinc-900 dark:text-white">
-              Per-page JSON-LD
+              Per-page JSON-LD (JSON for Linking Data)
             </div>
             <p class="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
               Site-wide WebSite + Organization graph in <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">app.vue</code>; per-page WebPage / TechArticle blocks emitted from each route.

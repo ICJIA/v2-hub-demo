@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.104] — 2026-04-28
+
+### Changed
+
+- **`/site` hero h1** — *"Built with Nuxt. / Static. Live data."* → *"Hub 2.0. Built with Nuxt. / Static. Live data."* — anchors the developer page to the same product name visitors see in the navbar and on every other narrative page.
+- **`/site` "Net result" deployment-comparison callout** — switched from rose (red) to emerald (green). Red read as a caution; green reads as "ready to go" — better matches the meaning, since this callout is the affirmative summary of why Netlify static won.
+
+### Added
+
+- **Acronyms expanded on first use throughout `/site`**, so a developer reviewing the page never has to hunt for what an abbreviation stands for. First-occurrence expansions added for: SPA (Single-Page Application), SSG (Static Site Generation), CI (Continuous Integration), CDN (Content Delivery Network), LTS (Long-Term Support), PoP (Point-of-Presence), SEO (Search Engine Optimization, applied to both card-title occurrences), PR (Pull Request), CMS (Content Management System, both occurrences), ECS (Elastic Container Service), LAMP (Linux + Apache + MySQL + PHP), VPS (Virtual Private Server), PHP-FPM (FastCGI Process Manager), DOM (Document Object Model), XSS (Cross-Site Scripting), JSON-LD (JSON for Linking Data). SSR and ISR were already inline-expanded in their card titles.
+
 ## [0.1.103] — 2026-04-28
 
 ### Added
