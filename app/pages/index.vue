@@ -1785,7 +1785,7 @@ function showExamples(typeValue: string) {
             Same articles, <span class="text-sky-600 dark:text-sky-400">four different layouts.</span>
           </p>
           <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            <strong class="text-zinc-900 dark:text-white">Start with Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views below to see the small clicks-saving fixes layered on top. Click any one and try filtering to "Research Report" — that's the test.
+            <strong class="text-zinc-900 dark:text-white">Start with Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views below to see the small clicks-saving fixes layered on top. <strong class="text-zinc-900 dark:text-white">These proposed views are live.</strong> Not boring, static PowerPoint slides. They come in real-time from Hub 2.0's new design.
           </p>
         </div>
 
