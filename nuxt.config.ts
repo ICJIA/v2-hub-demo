@@ -7,6 +7,10 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
+
   devtools: {
     enabled: false
   },

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.100] — 2026-04-28
+
+### Added
+
+- **Subtle page-transition fade** between routes. Wires Nuxt's built-in `app.pageTransition` (`name: 'page'`, `mode: 'out-in'`) plus a 150 ms opacity fade defined in `app/assets/css/main.css`. Old page fades out → new page snaps to top and fades in (~300 ms total) so visitors get a visual cue that a different page has loaded, without the whole-page flash that route-only navigation gives. Honors `prefers-reduced-motion: reduce` — users with that preference set get instant transitions instead.
+
 ## [0.1.99] — 2026-04-28
 
 ### Added
