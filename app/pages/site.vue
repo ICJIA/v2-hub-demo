@@ -266,6 +266,35 @@ const stack = [
             >/schema</NuxtLink>).
           </p>
         </div>
+
+        <!-- GraphQL playground link -->
+        <div class="mt-6 rounded-2xl border-2 border-cyan-500/50 bg-cyan-50 p-5 dark:border-cyan-500/40 dark:bg-cyan-500/10">
+          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-cyan-700 dark:text-cyan-300">
+            <UIcon
+              name="i-lucide-square-terminal"
+              class="size-3.5"
+            />
+            Run your own queries against the live Hub 2.0 backend
+          </div>
+          <p class="mb-4 text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
+            The Strapi 5 GraphQL endpoint is <strong class="text-cyan-700 dark:text-cyan-300">publicly readable</strong>. ICJIA hosts a custom-built playground in front of it so any developer can introspect the schema and run queries against the same backend this demo uses — no API key, no signup, no rate-limit gate.
+          </p>
+          <a
+            href="https://playground.icjia.app/"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-full border-2 border-cyan-500 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-cyan-700 shadow-sm transition-all hover:bg-cyan-500 hover:text-white dark:bg-zinc-950 dark:text-cyan-300 dark:hover:bg-cyan-500 dark:hover:text-white"
+          >
+            <UIcon
+              name="i-lucide-external-link"
+              class="size-4"
+            />
+            playground.icjia.app
+          </a>
+          <p class="mt-4 text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+            Designed in the same family as Apollo Studio / GraphiQL — schema docs, syntax-highlighted editor, query history, response panel, variables tab. Try the <code class="rounded bg-cyan-500/15 px-1 dark:bg-cyan-500/25">AllPublishedArticles</code> query above to see exactly what this site fetches at build, or write your own to filter by type, date range, or any other field on the Article model.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -362,6 +391,396 @@ const stack = [
                 <span>Roll back is one click from the Netlify Deploys list.</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <!-- Why static is right for Hub 2.0 -->
+        <div class="mt-10 rounded-2xl border border-rose-500/30 bg-white p-5 dark:border-rose-500/40 dark:bg-zinc-950">
+          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+            <UIcon
+              name="i-lucide-target"
+              class="size-3.5"
+            />
+            Why static is the correct fit for Hub 2.0
+          </div>
+          <p class="mb-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            Hub 2.0 is, at its core, a <strong class="text-zinc-900 dark:text-white">read-mostly publishing catalog</strong>. Articles change daily-to-weekly, not per-second. There is no logged-in view, no shopping cart, no realtime feed, no per-user personalization. The page that visitor A sees is identical to the page visitor B sees. That single fact unlocks static deployment as the obvious fit — and rules out every more-complex alternative.
+          </p>
+
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-shield-check"
+                  class="size-3.5"
+                />
+                No attack surface
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                With no Node runtime in the request path, there's nothing to patch for runtime exploits. The CDN serves immutable files; Strapi (which is patchable) lives on a separate host that visitors never talk to directly.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-zap"
+                  class="size-3.5"
+                />
+                Speed everywhere
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Netlify replicates <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">dist/</code> across a global CDN. First byte is local-PoP fast for visitors in Europe, Asia, the Americas — without ICJIA running a server in each region.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-trending-down"
+                  class="size-3.5"
+                />
+                Cost
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Static delivery is the cheapest mode there is — pennies per million requests, often free under modest tiers. No per-invocation billing for serverless, no idle VMs, no autoscaling group, no DB read replicas.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-rotate-ccw"
+                  class="size-3.5"
+                />
+                Atomic deploys + clean rollback
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Each build produces an immutable tagged snapshot. Promoting a bad build? One click in the Netlify dashboard and visitors are back on the previous snapshot. No DB migrations to reverse.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-git-branch"
+                  class="size-3.5"
+                />
+                Preview deploys
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Every PR gets its own live URL automatically. Stakeholders review on a real, isolated environment before merge — not a screen-share, not a localhost tunnel, not a screenshot in a slide.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-search"
+                  class="size-3.5"
+                />
+                SEO + AI crawlers
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Pre-rendered HTML means Googlebot, Bingbot, and AI crawlers (GPT, Perplexity, Anthropic, Gemini) get fully formed pages on first fetch — no JS execution required for indexing.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-server-off"
+                  class="size-3.5"
+                />
+                No 3 a.m. pager
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                There is no application server to crash, no memory leak, no PM2 restart loop, no PHP-FPM config to tune. If the static host is up, the site is up. ICJIA's runtime ops surface shrinks to: Strapi, and the build pipeline.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-3.5"
+                />
+                Source-of-truth separation
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Editors work in Strapi. The frontend pulls a snapshot at build. The two are decoupled — Strapi can be upgraded, swapped, or moved to a new host, and as long as the GraphQL contract holds, the frontend is unchanged.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+                <UIcon
+                  name="i-lucide-archive"
+                  class="size-3.5"
+                />
+                Long-term archivability
+              </div>
+              <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                The output is plain HTML/CSS/JS. Five years from now, ten, twenty — if Netlify and Strapi are gone, the <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-700">dist/</code> folder still opens in any browser, archives cleanly to the Wayback Machine, and survives long after this stack is retired.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison: deployment models -->
+        <div class="mt-8">
+          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-git-compare-arrows"
+              class="size-3.5"
+            />
+            Other deployment models we considered
+          </div>
+          <p class="mb-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            For context, here are the main ways a Vue/Nuxt app could be deployed in 2026, what each gives you, and why each is a worse fit for a read-mostly catalog like Hub 2.0.
+          </p>
+
+          <div class="space-y-3">
+            <!-- Model 1 — SSR -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-server"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Server-Side Rendering (SSR) on a Node host
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">nuxt build</code> + Nitro server on Render / Railway / Fly / AWS / a managed VPS
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Per-request HTML rendering. Always-fresh data without rebuild. Personalization (logged-in views, A/B variants, geo-routing, request-cookie-aware UI) is straightforward.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    A live Node process to monitor, patch, autoscale, and pay for 24/7 — for a site that has no per-user state. Cold starts on serverless platforms add latency. Hub 2.0 doesn't need anything SSR gives you.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model 2 — Edge SSR -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-globe"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Edge SSR (Workers / Edge Functions)
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    Cloudflare Workers, Netlify Edge Functions, Vercel Edge — V8 isolates running close to visitors
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Per-request rendering, but at the CDN edge — close to the visitor. Sub-50 ms response globally with personalization. No central server bottleneck.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    More complex than static. Limited Node API surface (no <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">fs</code>, no native modules, careful with bundle size). Same drawback as full SSR — Hub 2.0 doesn't need per-request anything.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model 3 — Pure SPA -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-monitor"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Pure SPA (no SSR, no SSG)
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">ssr: false</code> + Vite SPA build, served as one shell HTML
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Simplest static deploy possible — one HTML shell, plus JS bundles. The app loads once and routes client-side. No build-time data fetching to wire up.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Blank screen until JS loads + fetches data → poor first paint. Crawlers without JS execution see nothing. Search rankings and social-share previews suffer. SSG (what we use) is strictly better for read-mostly content.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model 4 — ISR -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-refresh-cw"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Incremental Static Regeneration (ISR / on-demand SSG)
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    Next.js ISR-style; Nuxt's <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">routeRules: { swr: 60 }</code> or <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">isr: true</code>
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Static pages that revalidate in the background — fresh content without a full rebuild on every CMS save. Best of both worlds when content cadence is high.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Requires a runtime to handle the regeneration — back to having a server. Hub 2.0's content cadence is slow enough that a webhook-triggered full rebuild on Strapi save (typically &lt;60s) is simpler and gives equally fresh content.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model 5 — Containerized -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-container"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Containerized (Docker + Kubernetes / ECS)
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    A Node image running Nuxt SSR or a custom server, behind a load balancer, in a managed cluster
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Portable runtime, fully under your control. Mature for stateful, complex applications with internal services and SLOs. Great when you genuinely need long-running processes.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Massive ops overhead for what is fundamentally a brochure site. Cluster health, image scanning, secret management, ingress, certs, autoscaling rules — all to serve HTML that doesn't change between visitors. Wrong tool by an order of magnitude.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Model 6 — Traditional LAMP / VPS -->
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+              <div class="mb-3 flex items-start gap-3">
+                <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  <UIcon
+                    name="i-lucide-hard-drive"
+                    class="size-5"
+                  />
+                </div>
+                <div>
+                  <div class="text-base font-bold text-zinc-900 dark:text-white">
+                    Traditional LAMP / VPS (WordPress, Drupal, custom PHP)
+                  </div>
+                  <div class="text-xs text-zinc-500 dark:text-zinc-400">
+                    NGINX/Apache + PHP-FPM + MySQL on a long-running VPS or shared host
+                  </div>
+                </div>
+              </div>
+              <div class="grid gap-3 text-sm sm:grid-cols-2 sm:gap-4 sm:pl-12">
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                    + What it gives you
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    A familiar setup. Generations of operators know it. Mature plugin ecosystem, especially for WordPress. Built-in admin / page editor without a separate CMS.
+                  </p>
+                </div>
+                <div>
+                  <div class="mb-1 text-[11px] font-bold uppercase tracking-[0.12em] text-rose-700 dark:text-rose-400">
+                    − Why it's the wrong fit here
+                  </div>
+                  <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    Largest attack surface of any option here — public DB connection, server-side script execution per request, plugin chain to keep patched. Per-request DB queries can't compete with CDN-served HTML for speed. ICJIA already runs Strapi for editing; layering another runtime in front doesn't help.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-xl border-2 border-rose-500 bg-rose-50 p-5 dark:bg-rose-500/10">
+            <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">
+              <UIcon
+                name="i-lucide-check-circle-2"
+                class="size-3.5"
+              />
+              Net result
+            </div>
+            <p class="text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
+              For a read-mostly catalog with build-time-fresh content, an existing CMS for editors, and zero per-user state, <strong class="text-rose-700 dark:text-rose-300">Netlify static</strong> is the lightest, cheapest, fastest, most secure, and most maintainable option of the six. The other models all add runtime complexity in exchange for capabilities Hub 2.0 will never need.
+            </p>
           </div>
         </div>
       </div>
@@ -507,6 +926,123 @@ export function highlightSegments(
 }</code></pre>
         </div>
 
+        <!-- Live demonstration — six rendered examples -->
+        <div class="mb-4 rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="mb-5 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-eye"
+              class="size-3.5"
+            />
+            Live demonstration — every example below renders the actual function
+          </div>
+
+          <!-- Example 1 — Single match in title, casing preserved -->
+          <div class="mb-6">
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-emerald-700 dark:text-emerald-300">Example 1</span>
+              <span>Query <code class="rounded bg-zinc-200/60 px-1 normal-case dark:bg-zinc-800">"juvenile"</code> · single match · capital J preserved</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <div class="text-sm font-semibold leading-relaxed text-zinc-900 dark:text-white">
+                Examining the Effectiveness of <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">Juvenile</mark> Diversion in Cook County
+              </div>
+            </div>
+            <pre class="mt-2 overflow-x-auto rounded-lg border border-zinc-200 bg-white p-3 text-[11px] leading-relaxed text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300"><code>// returns
+[
+  { text: "Examining the Effectiveness of ", match: false },
+  { text: "Juvenile",                       match: true  },  // ← original casing
+  { text: " Diversion in Cook County",      match: false }
+]</code></pre>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The matched segment is sliced from the <em>original</em> text starting at the indexOf position — so the rendered <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">&lt;mark&gt;</code> shows "Juvenile" with the capital J the editor wrote, even though the comparison was on the lowercased copy.
+            </p>
+          </div>
+
+          <!-- Example 2 — Multiple matches in abstract -->
+          <div class="mb-6">
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-emerald-700 dark:text-emerald-300">Example 2</span>
+              <span>Query <code class="rounded bg-zinc-200/60 px-1 normal-case dark:bg-zinc-800">"juvenile"</code> · four matches in one abstract</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                This study evaluates outcomes from <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> diversion programs across Cook County, comparing recidivism rates among <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> participants who completed diversion versus those processed through the traditional <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> court system. Earlier <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> intervention reduces re-arrest rates by 22%.
+              </p>
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The while-loop walks <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">indexOf</code> forward four times — each match wraps inline. The result array has <strong class="text-zinc-900 dark:text-white">9 segments</strong>: 4 matches + 5 inter-match runs of plain text. Vue's template <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">v-for</code>'s over them in order, picking <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">&lt;mark&gt;</code> when <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">match: true</code>, plain <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">&lt;span&gt;</code> otherwise.
+            </p>
+          </div>
+
+          <!-- Example 3 — Substring match -->
+          <div class="mb-6">
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-emerald-700 dark:text-emerald-300">Example 3</span>
+              <span>Query <code class="rounded bg-zinc-200/60 px-1 normal-case dark:bg-zinc-800">"juven"</code> · substring matching · matches inside other words</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                The <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juven</mark>ile justice system serves <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juven</mark>iles aged 10 to 17, with re<mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juven</mark>ation programs available statewide.
+              </p>
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              No word-boundary check — partial matches are deliberate. Type three letters and start seeing what's coming. The trade-off: "juven" inside <em>rejuvenation</em> highlights too. For a scan-fast catalog, that's the right call: it's a visual cue, not a final-truth filter (which is what the type / topic / author dropdowns are for).
+            </p>
+          </div>
+
+          <!-- Example 4 — Mixed casing in source -->
+          <div class="mb-6">
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-emerald-700 dark:text-emerald-300">Example 4</span>
+              <span>Query <code class="rounded bg-zinc-200/60 px-1 normal-case dark:bg-zinc-800">"juvenile"</code> · case-insensitive · mixed casings in source</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">JUVENILE</mark> JUSTICE QUARTERLY is a peer-reviewed journal. <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">Juvenile</mark> diversion programs in Illinois are funded through ICJIA. State data show <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> arrests are down 38% over the past decade.
+              </p>
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              All three of <em>JUVENILE</em>, <em>Juvenile</em>, and <em>juvenile</em> match because the comparison is on the lowercased copy — but the rendered <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">&lt;mark&gt;</code> contents are sliced from the original, so each preserves the casing it had in the source.
+            </p>
+          </div>
+
+          <!-- Example 5 — Empty query (passthrough) -->
+          <div class="mb-6">
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-zinc-300 px-2 py-0.5 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">Example 5 · edge case</span>
+              <span>Empty query — passthrough, nothing wrapped</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Examining the Effectiveness of Juvenile Diversion in Cook County
+              </p>
+            </div>
+            <pre class="mt-2 overflow-x-auto rounded-lg border border-zinc-200 bg-white p-3 text-[11px] leading-relaxed text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300"><code>// query === "" → returns
+[ { text: "Examining the Effectiveness of Juvenile Diversion in Cook County", match: false } ]</code></pre>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The first <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">if (!query)</code> short-circuits — one segment, no markup, render path is identical to a regular paragraph. No "if highlighting is on" branch in the consuming component.
+            </p>
+          </div>
+
+          <!-- Example 6 — No match -->
+          <div>
+            <div class="mb-2 flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">
+              <span class="rounded bg-zinc-300 px-2 py-0.5 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">Example 6 · edge case</span>
+              <span>Query <code class="rounded bg-zinc-200/60 px-1 normal-case dark:bg-zinc-800">"recidivism"</code> · query has no occurrence</span>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-700 dark:bg-zinc-950">
+              <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Examining the Effectiveness of Juvenile Diversion in Cook County
+              </p>
+            </div>
+            <pre class="mt-2 overflow-x-auto rounded-lg border border-zinc-200 bg-white p-3 text-[11px] leading-relaxed text-zinc-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300"><code>// indexOf returns -1, while loop never enters → returns
+[ { text: "Examining the Effectiveness of Juvenile Diversion in Cook County", match: false } ]</code></pre>
+            <p class="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The "no match" path falls through to the final <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">if (i &lt; text.length)</code>, which pushes the entire text as one non-matching segment. Vue renders it as a single plain run.
+            </p>
+          </div>
+        </div>
+
         <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
           <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">
             <UIcon
@@ -639,6 +1175,137 @@ export function highlightSegments(
             </div>
             <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
               <em>JANE DOE</em>, <em>jane doe</em>, <em>Jane Doe</em> all collapse to one.
+            </div>
+          </div>
+        </div>
+
+        <!-- Before / after — eight raw inputs, one canonical key -->
+        <div class="mt-8 rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-arrow-right-left"
+              class="size-3.5"
+            />
+            Before / after — eight raw inputs, one canonical key
+          </div>
+          <p class="mb-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            Eight ways the same researcher's name might appear in the CMS. All eight resolve to a single key — so the Authors dropdown lists "Jane Carter" once, and the article count for that author is honest.
+          </p>
+
+          <div class="overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+            <table class="w-full border-collapse text-sm">
+              <thead class="bg-zinc-50 dark:bg-zinc-900">
+                <tr class="border-b border-zinc-200 dark:border-zinc-800">
+                  <th class="px-4 py-2.5 text-left text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+                    Raw input from Strapi
+                  </th>
+                  <th class="px-2 py-2.5 text-center text-xs text-zinc-500" />
+                  <th class="px-4 py-2.5 text-left text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
+                    authorKey() →
+                  </th>
+                  <th class="px-4 py-2.5 text-left text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+                    Step that did it
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">5 only (lowercase)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"jane carter"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">no-op (already canonical)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"JANE CARTER"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">5 (case-fold)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter, PhD"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">1 (drop after first comma)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter, PhD, MA"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">1 (still drops everything from first comma)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"  Jane Carter  "</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">4 (trim ends)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane  Carter"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">3 (collapse double space)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"\nJane\tCarter "</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">3 + 4 (whitespace runs include \n and \t)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mt-4 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Article cards still display the original-spelled name (whichever variant the editor entered). Only the dropdown dedup and the Authors filter use the key.
+          </p>
+
+          <!-- When it doesn't merge -->
+          <div class="mt-6 rounded-xl border border-amber-500/40 bg-amber-50 p-4 dark:bg-amber-500/10">
+            <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
+              <UIcon
+                name="i-lucide-shield-alert"
+                class="size-3.5"
+              />
+              When the function does NOT merge — by design
+            </div>
+            <p class="text-xs leading-relaxed text-amber-900/90 dark:text-amber-100/90">
+              The function is deliberately conservative. It does not strip middle initials, expand nicknames, or fuzzy-match similar names. Doing any of those risks merging two genuinely different researchers — a worse failure mode than listing one researcher twice. Anything ambiguous stays separate, and the fix lives in editorial: clean the source name in Strapi and the next build merges it automatically.
+            </p>
+            <div class="mt-3 overflow-x-auto rounded-lg border border-amber-500/30 bg-white dark:bg-zinc-950">
+              <table class="w-full border-collapse text-xs">
+                <tbody class="divide-y divide-amber-500/20">
+                  <tr>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"John Carter"</td>
+                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">different given name</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane A. Carter"</td>
+                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">middle initial preserved on purpose</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"J. Carter"</td>
+                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">could be Jane, could be Jeff</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter & Associates"</td>
+                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">a person vs. a firm — keep separate</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

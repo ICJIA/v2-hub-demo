@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.103] — 2026-04-28
+
+### Added
+
+- **`/site` — six rendered `highlightSegments()` examples.** Each example renders the actual `<mark>`-wrapped output the function produces, plus the underlying segment array (where useful) and a one-paragraph explanation. Cases covered: (1) single match in title with original casing preserved, (2) four matches in one abstract showing inline-wrap behavior across a paragraph, (3) substring matching ("juven" inside "juveniles" and "rejuvenation") with a note on why partial-word matching is the right default, (4) case-insensitivity across mixed casings (JUVENILE / Juvenile / juvenile) all matching the same lowercase query, (5) empty-query passthrough returning a single non-matching segment, (6) no-match passthrough.
+- **`/site` — eight-row `authorKey()` before/after table.** Eight raw inputs (with credentials, mixed casing, double spaces, trailing whitespace, mixed `\n`/`\t`) all collapsing to `"jane carter"`, with a "step that did it" column showing which of the 5 pipeline steps did the work. Plus a follow-up amber "When the function does NOT merge — by design" callout with four `≠` rows (Jane Carter ≠ John Carter / Jane A. Carter / J. Carter / Jane Carter & Associates) explaining the conservative-by-design philosophy: never risk merging two different researchers.
+- **`/site` — "Why static is the correct fit for Hub 2.0"** subsection in the Deployment block. Nine reason cards: no attack surface, speed everywhere (global CDN), cost (pennies per million), atomic deploys + clean rollback, preview deploys per PR, SEO + AI crawlers see fully formed HTML, no 3 a.m. pager, source-of-truth separation, long-term archivability.
+- **`/site` — "Other deployment models we considered"** comparison block with six alternatives: SSR on Node, Edge SSR (Workers / Edge Functions), Pure SPA, ISR / on-demand SSG, Containerized (Docker + Kubernetes / ECS), Traditional LAMP / VPS. Each model gets a "+ what it gives you" / "− why it's the wrong fit here" pair so a reviewer can see the trade-off at a glance. Closes with a rose-bordered "Net result" callout summarizing why static wins.
+- **`/site` — GraphQL playground link.** Cyan callout in "The Data" section pointing to <https://playground.icjia.app/> — ICJIA's custom-built playground, designed in the same family as Apollo Studio / GraphiQL, that lets any developer introspect the schema and run queries directly against the live Hub 2.0 Strapi 5 backend (publicly readable, no API key, no signup).
+
 ## [0.1.102] — 2026-04-28
 
 ### Added
