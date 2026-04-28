@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.98] — 2026-04-28
+
+### Changed
+
+- **"More to explore" cards on `/` and `/about` now include the Hub 2.0 Deep Dive card** — both pages previously only linked sideways to two of the three other narrative pages. They now offer all three cross-page options consistently. Grid layout switched from `md:grid-cols-2` to `md:grid-cols-3` on both. Copy on the new card matches the version already added to `/taxonomy`: *"The data structure under the hood — the relational triangle, the 14-value enum, the bidirectional connections, with manager-friendly footnotes."*
+
 ## [0.1.97] — 2026-04-28
 
 Major homepage narrative restructure to lead with the "three concerns from recent meetings" framing, plus a wide-ranging plain-English / non-jargon pass across every page so a manager who's never seen the system can read it without a glossary.

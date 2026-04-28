@@ -463,7 +463,7 @@ function openUpgrade(index: number) {
         <h2 class="mb-7 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           More to explore.
         </h2>
-        <div class="grid gap-4 md:grid-cols-2">
+        <div class="grid gap-4 md:grid-cols-3">
           <NuxtLink
             to="/taxonomy"
             class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-sky-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-sky-400/60 dark:focus-visible:ring-sky-400"
@@ -484,6 +484,28 @@ function openUpgrade(index: number) {
             </p>
             <div class="text-xs font-semibold uppercase tracking-[0.04em] text-sky-600 group-hover:underline dark:text-sky-400">
               /taxonomy →
+            </div>
+          </NuxtLink>
+          <NuxtLink
+            to="/schema"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-violet-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-violet-400/60 dark:focus-visible:ring-violet-400"
+          >
+            <div class="mb-2 flex items-center gap-2.5">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-600 dark:border-violet-400/30 dark:bg-violet-400/10 dark:text-violet-400">
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-4"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                Hub 2.0 Deep Dive
+              </div>
+            </div>
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The data structure under the hood — the relational triangle, the 14-value enum, the bidirectional connections, with manager-friendly footnotes.
+            </p>
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-violet-600 group-hover:underline dark:text-violet-400">
+              /schema →
             </div>
           </NuxtLink>
           <NuxtLink
