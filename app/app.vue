@@ -197,6 +197,15 @@ const isActive = path => route.path === path
 
       <template #right>
         <UButton
+          to="/site"
+          label="About this Demo Site"
+          icon="i-lucide-code-2"
+          color="neutral"
+          :variant="isActive('/site') ? 'soft' : 'ghost'"
+          size="sm"
+          :aria-current="isActive('/site') ? 'page' : undefined"
+        />
+        <UButton
           to="https://github.com/ICJIA/v2-hub-demo/blob/main/CHANGELOG.md"
           target="_blank"
           label="Changelog"

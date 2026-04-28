@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.102] — 2026-04-28
+
+### Added
+
+- **New `/site` page — "About this Demo Site"** for developers. Same infographic rhythm as the rest of the demo (icon circle + italic reveal phrase + BIG `text-7xl/8xl font-black` h2 + bold subtitle), but the content is technical:
+  1. **Hero** — "Built with Nuxt. / Static. Live data." Notes that every page is statically generated, with live Strapi 5 data baked in at build, then hydrated into a reactive Vue app. Anchor links to GitHub repo + CHANGELOG.
+  2. **The Stack** (emerald) — eight-card grid of Nuxt 4, Vue 3.5+, Nuxt UI 4, Tailwind CSS 4, TypeScript 6, pnpm 10, Iconify (lucide + simple-icons), Mermaid 11, with version + role per card.
+  3. **The Data** (cyan) — Strapi 5 GraphQL endpoint, the actual `AllPublishedArticles` query verbatim (PUBLISHED only, sort by publishedAt desc, limit 1000).
+  4. **Deployment** (rose) — Netlify + `nuxt generate` + `dist/`, the verbatim `netlify.toml`, Node 22 LTS, plus a "what that means" checklist (every push to `main` rebuilds, isolated PR previews, raised Node heap, no env-secrets, one-click rollback).
+  5. **Live views** (sky) — verbatim `computed<Article[]>` filter chain; explains all four views share the same composable, all filtering / sorting / search / highlighting runs client-side.
+  6. **`highlightSegments()` under the hood** (emerald) — verbatim TypeScript source from `app/utils/article-format.ts`, plus a 4-bullet "why this shape" explainer (lower-cased copies for matching but slice from original, indexOf-loop beats RegExp here, returns segment array not HTML so no v-html / no XSS, stateless and pure).
+  7. **`authorKey()` under the hood** (violet) — verbatim TypeScript source, plus the 5-step pipeline as numbered cards (drop credentials / unify `&` ↔ "and" / collapse whitespace / trim / lower-case).
+  8. **Tuned for Static** (amber) — six perf/UX detail cards: `routeRules['/'].prerender`, preconnect + dns-prefetch to Strapi origin, 150 ms page-transition fade with reduced-motion guard, `html.scroll-smooth`, dark-by-default color mode, per-page JSON-LD for SEO + AI crawlers.
+  9. **More to explore** — three cross-page cards (Home / Hub 2.0 Deep Dive / Additional Upgrades).
+- **Footer "About this Demo Site" button** (`i-lucide-code-2`) added to `app.vue` — sits to the left of the existing Changelog and GitHub buttons. Active-route highlighting + `aria-current` mirrors the right-side header nav buttons.
+
 ## [0.1.101] — 2026-04-28
 
 ### Added
