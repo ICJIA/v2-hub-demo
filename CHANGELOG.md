@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.101] — 2026-04-28
+
+### Added
+
+- **"Demo only — publication types are not officially curated" disclaimer** on every working filter page: `/current`, `/view0`, `/view1`, `/view2`. Identical amber callout (flask-conical icon, bold title, supporting paragraph) sits between the page intro and the filter UI. Copy makes clear that the Publication Type label on each article (Research Report, Annual Report, etc.) is a sample mapping for demo purposes — not ICJIA's officially reviewed, approved, or curated categorization. The point: this demo shows how the filter UX behaves, not how content is officially categorized.
+
 ## [0.1.100] — 2026-04-28
 
 ### Added

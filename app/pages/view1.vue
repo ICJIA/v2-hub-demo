@@ -176,6 +176,21 @@ function applyAuthorFilter(key: string) {
       </p>
     </div>
 
+    <div class="mb-6 flex items-start gap-3 rounded-xl border border-amber-500/40 bg-amber-50 p-4 dark:bg-amber-500/10">
+      <UIcon
+        name="i-lucide-flask-conical"
+        class="mt-0.5 size-5 shrink-0 text-amber-700 dark:text-amber-400"
+      />
+      <div class="space-y-1 text-sm">
+        <div class="font-bold text-amber-900 dark:text-amber-200">
+          Demo only — publication types are not officially curated
+        </div>
+        <p class="text-amber-900/90 dark:text-amber-100/90">
+          This is a proof-of-concept built to show how the filter UI behaves. The <strong>Publication Type</strong> on each article (Research Report, Annual Report, etc.) is a sample mapping for demo purposes — not ICJIA's officially reviewed, approved, or curated categorization.
+        </p>
+      </div>
+    </div>
+
     <div
       v-if="pending"
       class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
