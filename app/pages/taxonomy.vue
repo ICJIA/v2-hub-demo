@@ -224,7 +224,7 @@ function showExamples(typeValue: string) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three core catalog buckets, same 14 article types. The CMS is new (Strapi 5), but the bones are the ones that already work.
+                <strong class="text-zinc-900 dark:text-white">Hub 2.0 didn't redesign the data structure</strong> — it kept the original Hub 1.0 shape intact. Same three core catalog buckets, same 14 article types. The content-editing platform is new (Strapi 5, the system editors use to publish), but the bones are the ones that already work.
               </p>
             </div>
           </template>
@@ -255,7 +255,7 @@ function showExamples(typeValue: string) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Future expansion</strong> linking Datasets to Apps/Dashboards. Four patterns: a dataset standing alone, a dashboard on one dataset, a dashboard on many datasets, or a dataset feeding multiple dashboards. All four are schema-supported in Strapi 5 today — the work is editorial, not engineering.
+                <strong class="text-zinc-900 dark:text-white">Future expansion</strong> linking Datasets to Apps/Dashboards. Four patterns: a dataset standing alone, a dashboard on one dataset, a dashboard on many datasets, or a dataset feeding multiple dashboards. All four are already built into the structure today — the work is editorial, not engineering.
               </p>
             </div>
           </template>
@@ -273,11 +273,11 @@ function showExamples(typeValue: string) {
           Same bones. Updated CMS. <span class="text-sky-700 dark:text-sky-400">Click the content types.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          The hub holds three core catalog buckets — plus a fourth catch-all <code>Page</code> entity for the homepage and landing pages (covered on <NuxtLink
+          The hub holds three core catalog buckets — plus a fourth catch-all <code>Page</code> entity for the homepage and landing pages (covered on the <NuxtLink
             to="/schema"
             class="font-semibold text-sky-700 underline-offset-2 hover:underline dark:text-sky-400"
           >
-            Inside the Hub
+            Hub 2.0 Deep Dive
           </NuxtLink>). Hub 2.0 swapped the CMS to <strong>Strapi 5</strong> but kept the original Hub 1.0 shape intact — because the original team got it right.
         </p>
 
@@ -515,11 +515,11 @@ function showExamples(typeValue: string) {
                 />
               </div>
               <p class="mb-3">
-                The Strapi 5 schema already wires Apps to Datasets bidirectionally (and to Articles too — see <NuxtLink
+                The Strapi 5 schema already wires Apps to Datasets bidirectionally (and to Articles too — see the <NuxtLink
                   to="/schema"
                   class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
                 >
-                  Inside the Hub
+                  Hub 2.0 Deep Dive
                 </NuxtLink>). The proposed <strong class="text-zinc-900 dark:text-white">"datahub"</strong> is the editorial work of curating which dataset belongs to which app, across four patterns:
               </p>
               <ul class="ml-1 space-y-2">
@@ -548,7 +548,7 @@ function showExamples(typeValue: string) {
                   class="mt-0.5 size-4 shrink-0 text-emerald-700 dark:text-emerald-300"
                 />
                 <div class="text-xs leading-snug">
-                  <strong class="text-zinc-900 dark:text-white">All four patterns are schema-supported in Strapi 5 today.</strong>
+                  <strong class="text-zinc-900 dark:text-white">All four patterns are already built into the structure today.</strong>
                   <span class="block pt-0.5 font-normal text-zinc-700 dark:text-zinc-300">
                     Hub 2.0's work on Datasets is editorial — curating which datasets belong to which apps — not building anything new at the data layer.
                   </span>
@@ -595,7 +595,7 @@ function showExamples(typeValue: string) {
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
-                  <span>Apps support bidirectional <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">manyToMany</code> relations with Datasets <em>and</em> with Articles (the schema is a 3-way relational triangle). The four datahub patterns work out of the box on the App ↔ Dataset edge; Articles citing apps and datasets work today too. <NuxtLink
+                  <span>Apps already connect both ways with Datasets <em>and</em> with Articles (the structure is a 3-way triangle of two-way connections). The four datahub patterns work out of the box on the App ↔ Dataset edge; Articles citing apps and datasets work today too. <NuxtLink
                     to="/schema"
                     class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
                   >
@@ -863,7 +863,7 @@ function showExamples(typeValue: string) {
               class="mt-0.5 size-6 shrink-0 text-emerald-700 dark:text-emerald-300"
             />
             <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              All four patterns: schema-supported in Strapi 5 today.
+              All four patterns: already built into the structure today.
               <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
                 The work for Hub 2.0 is editorial — curating which datasets belong to which apps, not building anything new at the data layer.
               </span>
@@ -1187,7 +1187,29 @@ function showExamples(typeValue: string) {
         <h2 class="mb-7 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
           More to explore.
         </h2>
-        <div class="grid gap-4 md:grid-cols-2">
+        <div class="grid gap-4 md:grid-cols-3">
+          <NuxtLink
+            to="/schema"
+            class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-violet-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-violet-400/60 dark:focus-visible:ring-violet-400"
+          >
+            <div class="mb-2 flex items-center gap-2.5">
+              <div class="flex size-7 items-center justify-center rounded-lg border border-violet-500/30 bg-violet-500/10 text-violet-600 dark:border-violet-400/30 dark:bg-violet-400/10 dark:text-violet-400">
+                <UIcon
+                  name="i-lucide-database"
+                  class="size-4"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                Hub 2.0 Deep Dive
+              </div>
+            </div>
+            <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The data structure under the hood — the relational triangle, the 14-value enum, the bidirectional connections, with manager-friendly footnotes.
+            </p>
+            <div class="text-xs font-semibold uppercase tracking-[0.04em] text-violet-600 group-hover:underline dark:text-violet-400">
+              /schema →
+            </div>
+          </NuxtLink>
           <NuxtLink
             to="/about"
             class="group block rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-emerald-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-400/60 dark:focus-visible:ring-emerald-400"
@@ -1200,7 +1222,7 @@ function showExamples(typeValue: string) {
                 />
               </div>
               <div class="text-base font-bold text-zinc-900 dark:text-white">
-                What else this demo shows
+                Additional Upgrades
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">

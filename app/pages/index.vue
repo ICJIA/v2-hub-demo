@@ -90,91 +90,151 @@ function showExamples(typeValue: string) {
 
 <template>
   <div class="bg-white text-zinc-900 dark:bg-[#0a0a0a] dark:text-[#fafafa]">
-    <!-- 1. HERO -->
-    <section class="px-6 pt-16 pb-8 sm:px-12 lg:px-16">
-      <div class="mx-auto max-w-5xl">
-        <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
-          A short orientation
+    <!-- 0. FROM RECENT MEETINGS — page anchor (first section, edge-to-edge) -->
+    <section
+      id="from-meetings"
+      class="border-b-2 border-zinc-200 bg-gradient-to-b from-zinc-100 to-zinc-50 px-6 pt-20 pb-20 sm:px-12 sm:pt-28 sm:pb-24 lg:px-16 dark:border-zinc-800 dark:from-[#101013] dark:to-[#0a0a0a]"
+    >
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-8 flex items-center gap-3">
+          <div class="flex size-14 items-center justify-center rounded-full bg-zinc-900 text-white shadow-xl dark:bg-zinc-100 dark:text-zinc-900">
+            <UIcon
+              name="i-lucide-message-square-quote"
+              class="size-7"
+            />
+          </div>
+          <span class="text-sm font-bold uppercase tracking-[0.2em] text-zinc-700 sm:text-base dark:text-zinc-300">
+            From recent meetings
+          </span>
         </div>
-        <h1 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
-          How Hub 2.0 organizes<br>ICJIA research.
+        <h1 class="mb-6 text-5xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
+          Three concerns came up in recent Hub 2.0 meetings.
+          <br><span class="text-zinc-400 dark:text-zinc-500">Here are three proposed solutions.</span>
         </h1>
-        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
-          "Articles" is the umbrella for everything published on the hub — research reports, annual reports, program evaluations, and ten more types. <span class="font-semibold text-zinc-900 dark:text-white">The Hub 2.0 migration carried Hub 1.0's structure forward intact</span>, so all of it is already here. This demo just shows how to pull out exactly what you need in one click.
+        <p class="mb-4 max-w-3xl text-lg leading-relaxed text-zinc-700 sm:text-xl dark:text-zinc-300">
+          Each one has a hands-on demo on this page — built and clickable, not slides. Click a card to jump straight to its solution, or read on for the orientation that motivated each fix.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <UButton
-            to="#views"
-            label="See it filtered"
-            trailing-icon="i-lucide-arrow-right"
-            color="neutral"
-            variant="solid"
-            class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-            size="lg"
-          />
-          <UButton
-            to="/taxonomy"
-            label="How the data is organized"
-            color="neutral"
-            variant="outline"
-            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
-            size="lg"
-          />
+        <p class="mb-12 rounded-2xl border-2 border-emerald-500 bg-emerald-50 px-5 py-4 text-base font-semibold leading-relaxed text-zinc-900 sm:text-lg dark:border-emerald-500/60 dark:bg-emerald-500/10 dark:text-white">
+          <span class="text-emerald-700 dark:text-emerald-400">The good news:</span> all three are either already built into the Hub or straightforward to add. <span class="mt-2 block text-sm font-normal text-zinc-700 sm:text-base dark:text-zinc-300">That's what this site is for — <em>answering these three questions (plus several others raised during meetings),</em> and offering a working glimpse of the ICJIA Research Hub publishing platform itself.</span>
+        </p>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <!-- Concern 1 — Research Reports (sky) -->
+          <a
+            href="#views"
+            class="group block rounded-2xl border-2 border-sky-500 bg-white p-6 transition-colors hover:bg-sky-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-zinc-900 dark:hover:bg-sky-500/10"
+          >
+            <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-sky-500/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">
+              <UIcon
+                name="i-lucide-message-circle"
+                class="size-3"
+              />
+              Concern 1
+            </div>
+            <p class="mb-4 text-lg font-bold italic leading-snug text-zinc-900 dark:text-white">
+              "I can't find the research reports."
+            </p>
+            <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
+              Solution 1 — Research Reports in one click
+            </div>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              They're filed under <strong class="text-zinc-900 dark:text-white">Articles</strong> alongside thirteen other types. The proposed views surface them as a one-click chip.
+            </p>
+            <div class="mt-3 text-xs font-semibold text-sky-700 group-hover:underline dark:text-sky-400">
+              Jump to the three layouts ↓
+            </div>
+          </a>
+
+          <!-- Concern 2 — Search Highlighting (emerald) -->
+          <a
+            href="#search-highlighting"
+            class="group block rounded-2xl border-2 border-emerald-500 bg-white p-6 transition-colors hover:bg-emerald-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:bg-zinc-900 dark:hover:bg-emerald-500/10"
+          >
+            <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+              <UIcon
+                name="i-lucide-message-circle"
+                class="size-3"
+              />
+              Concern 2
+            </div>
+            <p class="mb-4 text-lg font-bold italic leading-snug text-zinc-900 dark:text-white">
+              "Search returns results, but I can't see why they matched."
+            </p>
+            <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-400">
+              Solution 2 — Search Highlighting
+            </div>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Every occurrence of the query gets wrapped inline in a <code class="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">&lt;mark&gt;</code> — title and abstract, every match.
+            </p>
+            <div class="mt-3 text-xs font-semibold text-emerald-700 group-hover:underline dark:text-emerald-400">
+              Jump to highlighting ↓
+            </div>
+          </a>
+
+          <!-- Concern 3 — Author Names (violet) -->
+          <a
+            href="#author-normalization"
+            class="group block rounded-2xl border-2 border-violet-500 bg-white p-6 transition-colors hover:bg-violet-500/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:bg-zinc-900 dark:hover:bg-violet-500/10"
+          >
+            <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-500/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
+              <UIcon
+                name="i-lucide-message-circle"
+                class="size-3"
+              />
+              Concern 3
+            </div>
+            <p class="mb-4 text-lg font-bold italic leading-snug text-zinc-900 dark:text-white">
+              "The same author shows up seven different ways."
+            </p>
+            <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-400">
+              Solution 3 — Author Names
+            </div>
+            <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Five small text-cleaning steps merge every spelling variant onto a single matched-up entry. One author, one count, one click.
+            </p>
+            <div class="mt-3 text-xs font-semibold text-violet-700 group-hover:underline dark:text-violet-400">
+              Jump to author names ↓
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- 2. WHY THIS DEMO -->
-    <section class="border-y border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-12 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
+    <!-- 0.5 WHAT HUB 2.0 IS — Hub 1.0 was the original publishing platform; Hub 2.0 refines it -->
+    <section
+      id="what-hub-2-is"
+      class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
+    >
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
-          Want a summary?
+        <div class="mb-4 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-book-open-text"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700 sm:text-sm dark:text-emerald-300">
+            The publishing platform
+          </span>
         </div>
-        <h2 class="mb-6 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          On the hub, "summary" and "article" mean the same thing.
+        <h2 class="mb-3 text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+          Hub 1.0 was the original <span class="text-emerald-700 dark:text-emerald-400">publishing platform.</span>
         </h2>
-
-        <!-- Equivalence visual -->
-        <div class="my-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-          <div class="w-full max-w-xs rounded-2xl border-2 border-amber-500 bg-amber-500/10 px-8 py-6 text-center sm:w-auto">
-            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-              Database term
-            </div>
-            <div class="mt-2 text-4xl font-black tracking-tight text-amber-600 sm:text-5xl dark:text-amber-400">
-              articles
-            </div>
-          </div>
-          <div
-            class="text-5xl font-black text-zinc-900 sm:text-7xl dark:text-white"
-            aria-hidden="true"
-          >
-            ≡
-          </div>
-          <div class="w-full max-w-xs rounded-2xl border-2 border-sky-500 bg-sky-500/10 px-8 py-6 text-center sm:w-auto dark:border-sky-400">
-            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-              Plain English
-            </div>
-            <div class="mt-2 text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-300">
-              summaries
-            </div>
-          </div>
-        </div>
-        <p class="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          Same content. Two different words for it.
+        <p class="mb-6 max-w-3xl text-2xl font-bold leading-snug text-zinc-700 sm:text-3xl dark:text-zinc-300">
+          Hub 2.0 <span class="text-emerald-700 dark:text-emerald-400">refines</span> it.
         </p>
-
-        <div class="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+        <div class="max-w-3xl space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
           <p>
-            This demo exists because of a fair question at a recent ICJIA staff meeting. Someone said, reasonably: <strong class="text-zinc-900 dark:text-white">"I don't want articles. I want a summary."</strong>
-          </p>
-          <p class="rounded-2xl border-2 border-amber-400 bg-amber-50 px-5 py-4 text-xl font-extrabold leading-snug text-zinc-900 sm:text-2xl dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-white">
-            That's exactly the right thing to ask. <span class="text-amber-700 dark:text-amber-400">Summary === article.</span> Same thing.
+            It started with a question that's followed the agency for years — <em class="text-zinc-900 dark:text-white">"What, exactly, does ICJIA do?"</em>
           </p>
           <p>
-            Every summary on the hub <strong class="text-zinc-900 dark:text-white">is</strong> an article. Every article <strong class="text-zinc-900 dark:text-white">is</strong> a summary of something published by ICJIA. "Article" is the database's word for what's stored; "summary" is the plain English word for what's in it. Same content, two labels. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those summaries — same goes for Annual Reports, Program Evaluations, Updates, Strategic Plans, and nine more. Fourteen flavors of summary, all in the same bucket.
+            <strong class="text-zinc-900 dark:text-white">Hub 1.0's mission was simple:</strong> give R&amp;A authors a platform to publish their work digitally — research reports, evaluations, summaries, the whole catalog of what the agency produces. One place. Public. Citable. Searchable.
+          </p>
+          <p class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 px-5 py-4 text-xl font-bold leading-snug text-zinc-900 sm:text-2xl dark:border-emerald-500/60 dark:bg-emerald-500/10 dark:text-white">
+            And it worked. <span class="text-emerald-700 dark:text-emerald-400">Hub 1.0 is a success.</span>
           </p>
           <p>
-            <strong class="text-zinc-900 dark:text-white">Why "articles" and not just "summaries"?</strong> "Summaries" was on the table during Hub 1.0 planning. The team rejected it because some articles stand on their own — pieces with no attached source PDF — and "summaries" didn't fit those edge cases. "Articles" was both more general (covers standalone pieces too) and more specific (a familiar word for a publishing platform). The label stuck through Hub 2.0. <em>Functionally, it doesn't matter:</em> when you ask for a summary, you're asking for an article.
+            The numbers below are the proof — over the last twelve months, the hub pulled more traffic than any other part of <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">icjia.illinois.gov</code>. <strong class="text-zinc-900 dark:text-white">Hub 2.0 doesn't change what the platform is.</strong> It refines the look and feel — and how visitors move through the catalog — on top of Hub 1.0's existing content. Same authors, same articles, just easier to find what you're looking for in one or two clicks.
           </p>
         </div>
       </div>
@@ -191,7 +251,7 @@ function showExamples(typeValue: string) {
           The hub is the <span class="text-emerald-700 dark:text-emerald-400">busiest part</span> of icjia.illinois.gov.
         </h2>
         <p class="mb-7 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">twelve months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close.
+          Real visitors. Real reading. Over the last <strong class="text-zinc-900 dark:text-white">twelve months</strong>, the live research hub pulled more traffic than any other part of the agency website — and it's not close. <span class="text-sm">(Numbers from <strong class="text-zinc-900 dark:text-white">Plausible</strong>, a privacy-friendly traffic-measurement tool.)</span>
         </p>
 
         <!-- 4-tile stat strip: hub-specific traffic -->
@@ -892,6 +952,266 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
+    <!-- 3.5 WHY REFINE IT NOW? — the case for Hub 2.0, in plain English -->
+    <section
+      id="why-refine-now"
+      class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
+    >
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-4 flex items-center gap-3">
+          <div class="flex size-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-lg">
+            <UIcon
+              name="i-lucide-wrench"
+              class="size-6"
+            />
+          </div>
+          <span class="text-xs font-bold uppercase tracking-[0.18em] text-amber-700 sm:text-sm dark:text-amber-300">
+            Why refine it now?
+          </span>
+        </div>
+        <h2 class="mb-3 text-4xl font-extrabold leading-tight tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+          Hub 1.0 works. <br><span class="text-zinc-500 dark:text-zinc-400">The pieces underneath are showing their age.</span>
+        </h2>
+        <p class="mb-10 max-w-3xl text-lg leading-relaxed text-zinc-700 sm:text-xl dark:text-zinc-300">
+          Hub 1.0 has been quietly powering all that traffic — the busiest part of the agency website, year after year. But the foundation it sits on (the database, the framework, the security model, the look and feel) has aged. <strong class="text-zinc-900 dark:text-white">Hub 2.0 is the chance to refresh the foundation without losing what already works.</strong>
+        </p>
+
+        <!-- Where Hub 1.0 is straining -->
+        <div class="mb-10">
+          <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
+            <UIcon
+              name="i-lucide-alert-triangle"
+              class="size-4"
+            />
+            Where Hub 1.0 is starting to strain
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-package"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Aging framework
+              </div>
+              <div class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                The framework underneath Hub 1.0 has been superseded. Maintenance is harder, and security patches are getting rarer.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-clock"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Slow under load
+              </div>
+              <div class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Database response times stretch as the catalog grows. Pages and searches don't feel as snappy as they used to.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-key-round"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Yesterday's security
+              </div>
+              <div class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Web security standards keep moving. Hub 1.0 was built to its day's expectations — not today's.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-folder"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Less flexibility
+              </div>
+              <div class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Datasets, dashboards, apps — new content types need to slot in alongside articles. Hub 1.0 wasn't built for the mix.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-monitor"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Dated look &amp; feel
+              </div>
+              <div class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                What felt clean five years ago feels heavy now. Mobile, accessibility, and design expectations have all shifted.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hub 2.0 keeps what works — preservation guarantees -->
+        <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50 p-6 sm:p-8 dark:border-emerald-500/60 dark:bg-emerald-500/10">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+            <UIcon
+              name="i-lucide-circle-check-big"
+              class="size-3.5"
+            />
+            Hub 2.0 keeps what works
+          </div>
+          <h3 class="mb-3 text-2xl font-bold leading-snug text-zinc-900 sm:text-3xl dark:text-white">
+            Refresh the foundation. <span class="text-emerald-700 dark:text-emerald-400">Keep the success.</span>
+          </h3>
+          <p class="mb-6 max-w-3xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
+            The migration is built around three commitments — none of them break the experience that's been working all this time.
+          </p>
+          <div class="grid gap-4 md:grid-cols-3">
+            <div class="rounded-xl border border-emerald-500/40 bg-white p-5 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
+                <UIcon
+                  name="i-lucide-library"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                Same content
+              </div>
+              <div class="mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Every article published on Hub 1.0 carries forward to Hub 2.0. Nothing dropped, nothing rewritten.
+              </div>
+            </div>
+            <div class="rounded-xl border border-emerald-500/40 bg-white p-5 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
+                <UIcon
+                  name="i-lucide-link"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                Same URLs
+              </div>
+              <div class="mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                Every existing link still works — years of search rankings, citations, and shared links stay intact.
+              </div>
+            </div>
+            <div class="rounded-xl border border-emerald-500/40 bg-white p-5 dark:bg-zinc-900">
+              <div class="mb-3 flex size-9 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
+                <UIcon
+                  name="i-lucide-pen-line"
+                  class="size-5"
+                />
+              </div>
+              <div class="text-base font-bold text-zinc-900 dark:text-white">
+                R&amp;A authors stay the focus
+              </div>
+              <div class="mt-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                The mission hasn't changed: give Research &amp; Analysis authors a digital home for their work. Hub 2.0 sharpens how readers find it.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. HERO -->
+    <section class="px-6 pt-16 pb-8 sm:px-12 lg:px-16">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
+          A short orientation
+        </div>
+        <h2 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
+          How Hub 2.0 organizes<br>ICJIA research.
+        </h2>
+        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
+          "Articles" is the umbrella for everything published on the hub — research reports, annual reports, program evaluations, and ten more types. <span class="font-semibold text-zinc-900 dark:text-white">The Hub 2.0 migration carried Hub 1.0's structure forward intact</span>, so all of it is already here. This demo just shows how to pull out exactly what you need in one click.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <UButton
+            to="#views"
+            label="See it filtered"
+            trailing-icon="i-lucide-arrow-right"
+            color="neutral"
+            variant="solid"
+            class="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+            size="lg"
+          />
+          <UButton
+            to="/taxonomy"
+            label="How the data is organized"
+            color="neutral"
+            variant="outline"
+            class="border-zinc-300 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-700 dark:text-white dark:hover:bg-zinc-900"
+            size="lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WHY THIS DEMO -->
+    <section class="border-y border-zinc-200 bg-gradient-to-b from-white to-zinc-50 px-6 py-12 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#0e0e10]">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-amber-600 dark:text-amber-400">
+          Want a summary?
+        </div>
+        <h2 class="mb-6 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
+          On the hub, "summary" and "article" mean the same thing.
+        </h2>
+
+        <!-- Equivalence visual -->
+        <div class="my-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+          <div class="w-full max-w-xs rounded-2xl border-2 border-amber-500 bg-amber-500/10 px-8 py-6 text-center sm:w-auto">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              Database term
+            </div>
+            <div class="mt-2 text-4xl font-black tracking-tight text-amber-600 sm:text-5xl dark:text-amber-400">
+              articles
+            </div>
+          </div>
+          <div
+            class="text-5xl font-black text-zinc-900 sm:text-7xl dark:text-white"
+            aria-hidden="true"
+          >
+            ≡
+          </div>
+          <div class="w-full max-w-xs rounded-2xl border-2 border-sky-500 bg-sky-500/10 px-8 py-6 text-center sm:w-auto dark:border-sky-400">
+            <div class="text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              Plain English
+            </div>
+            <div class="mt-2 text-4xl font-black tracking-tight text-sky-700 sm:text-5xl dark:text-sky-300">
+              summaries
+            </div>
+          </div>
+        </div>
+        <p class="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
+          Same content. Two different words for it.
+        </p>
+
+        <div class="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+          <p>
+            This demo exists because of a fair question at a recent ICJIA staff meeting. Someone said, reasonably: <strong class="text-zinc-900 dark:text-white">"I don't want articles. I want a summary."</strong>
+          </p>
+          <p class="rounded-2xl border-2 border-amber-400 bg-amber-50 px-5 py-4 text-xl font-extrabold leading-snug text-zinc-900 sm:text-2xl dark:border-amber-500/60 dark:bg-amber-500/10 dark:text-white">
+            That's exactly the right thing to ask. <span class="text-amber-700 dark:text-amber-400">Summary === article.</span> Same thing.
+          </p>
+          <p>
+            Every summary on the hub <strong class="text-zinc-900 dark:text-white">is</strong> an article. Every article <strong class="text-zinc-900 dark:text-white">is</strong> a summary of something published by ICJIA. "Article" is the database's word for what's stored; "summary" is the plain English word for what's in it. Same content, two labels. Click <strong class="text-zinc-900 dark:text-white">Research Reports</strong> on any view below and the list narrows to exactly those summaries — same goes for Annual Reports, Program Evaluations, Updates, Strategic Plans, and nine more. Fourteen flavors of summary, all in the same bucket.
+          </p>
+          <p>
+            <strong class="text-zinc-900 dark:text-white">Why "articles" and not just "summaries"?</strong> "Summaries" was on the table during Hub 1.0 planning. The team rejected it because some articles stand on their own — pieces with no attached source PDF — and "summaries" didn't fit those edge cases. "Articles" was both more general (covers standalone pieces too) and more specific (a familiar word for a publishing platform). The label stuck through Hub 2.0. <em>Functionally, it doesn't matter:</em> when you ask for a summary, you're asking for an article.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- 4. URL STABILITY / SEO — why we keep the same URLs -->
     <section class="border-b border-zinc-200 bg-white px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-5xl">
@@ -1400,6 +1720,13 @@ function showExamples(typeValue: string) {
       class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
     >
       <div class="mx-auto max-w-5xl">
+        <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:bg-sky-500/15 dark:text-sky-300">
+          <UIcon
+            name="i-lucide-circle-check-big"
+            class="size-3.5"
+          />
+          Solution 1 of 3 · Research Reports in one click
+        </div>
         <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
           Try it yourself
         </div>
@@ -1407,7 +1734,7 @@ function showExamples(typeValue: string) {
           Current + three proposed views. Same data behind all of them.<br><span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
         </h2>
         <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          Start with <strong class="text-zinc-900 dark:text-white">Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views to see the friction-reducers layered on top. Click any one and try filtering to "Research Report" — that's the test.
+          Start with <strong class="text-zinc-900 dark:text-white">Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views to see the small clicks-saving fixes layered on top. Click any one and try filtering to "Research Report" — that's the test.
         </p>
 
         <!-- Current view (baseline) — full-width starting point -->
@@ -1444,7 +1771,7 @@ function showExamples(typeValue: string) {
         </NuxtLink>
 
         <div class="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-sky-700 dark:text-sky-400">
-          ↓ Three proposed friction-reducers
+          ↓ Three proposed clicks-saving fixes
         </div>
 
         <div class="grid gap-4 md:grid-cols-3">
@@ -1532,6 +1859,250 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
+    <!-- 9.5 SEARCH HIGHLIGHTING — the search bar, smarter -->
+    <section
+      id="search-highlighting"
+      class="border-b border-zinc-200 bg-white px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]"
+    >
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-8">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
+            <UIcon
+              name="i-lucide-circle-check-big"
+              class="size-3.5"
+            />
+            Solution 2 of 3 · Search Highlighting
+          </div>
+          <!-- Icon + reveal phrase -->
+          <div class="mb-3 flex items-center gap-3">
+            <div class="flex size-12 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg">
+              <UIcon
+                name="i-lucide-highlighter"
+                class="size-6"
+              />
+            </div>
+            <span class="text-base font-medium italic text-zinc-600 sm:text-lg dark:text-zinc-400">
+              The Hub 2.0 Search Bar, smarter
+            </span>
+          </div>
+          <!-- BIG INFOGRAPHIC TITLE -->
+          <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
+            <span class="text-emerald-600 dark:text-emerald-400">Searching Hub 2.0.</span>
+            <br>Visual Matching.
+          </h2>
+          <p class="mt-5 max-w-2xl text-xl font-bold leading-snug text-zinc-700 sm:text-2xl dark:text-zinc-300">
+            Every match, <span class="text-emerald-600 dark:text-emerald-400">highlighted in place.</span>
+          </p>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <strong class="text-zinc-900 dark:text-white">Searches return long lists.</strong> Without highlighting, you have to read every result top-to-bottom to figure out why it matched. Below: how this demo wraps the matched substring inline — across title and abstract, every occurrence.
+          </p>
+        </div>
+
+        <!-- THE PROBLEM -->
+        <div class="mb-6">
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+            <UIcon
+              name="i-lucide-alert-triangle"
+              class="size-3.5"
+            />
+            The problem
+          </div>
+          <p class="mb-5 max-w-2xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
+            A user types <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">juvenile</code> into the search box. They get back thirty articles. Without highlighting, every result looks identical — they have to scan each card line by line to find their term.
+          </p>
+          <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+              <UIcon
+                name="i-lucide-search"
+                class="size-3.5"
+              />
+              Search: "juvenile" — without highlighting
+            </div>
+            <article class="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-950">
+              <h3 class="text-base font-semibold leading-snug text-zinc-900 dark:text-white">
+                Examining the Effectiveness of Juvenile Diversion in Cook County
+              </h3>
+              <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                By Jane Carter · Sept 2024
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                This study evaluates outcomes from juvenile diversion programs across Cook County, comparing recidivism rates among juvenile participants who completed diversion versus those processed through the traditional juvenile court system.
+              </p>
+            </article>
+            <p class="mt-3 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Where did "juvenile" appear? You have to read the whole card to find out.
+            </p>
+          </div>
+        </div>
+
+        <!-- Transition -->
+        <div class="my-6 flex items-center justify-center gap-3">
+          <UIcon
+            name="i-lucide-arrow-down"
+            class="size-8 text-emerald-500"
+          />
+          <code class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+            highlightSegments()
+          </code>
+          <UIcon
+            name="i-lucide-arrow-down"
+            class="size-8 text-emerald-500"
+          />
+        </div>
+
+        <!-- THE SOLUTION -->
+        <div class="mb-2">
+          <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+            <UIcon
+              name="i-lucide-check-circle-2"
+              class="size-3.5"
+            />
+            The solution
+          </div>
+          <p class="mb-5 max-w-2xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
+            Every occurrence of the query gets wrapped inline in a <code class="rounded bg-emerald-500/10 px-1 text-emerald-700 dark:text-emerald-300">&lt;mark&gt;</code> tag — same green tint as the demo's primary accent. Title, abstract, every match.
+          </p>
+          <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 p-5">
+            <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+              <UIcon
+                name="i-lucide-search"
+                class="size-3.5"
+              />
+              Search: "juvenile" — with highlighting
+            </div>
+            <article class="rounded-xl border border-emerald-500/40 bg-white p-5 shadow-sm dark:bg-zinc-900">
+              <h3 class="text-base font-semibold leading-snug text-zinc-900 dark:text-white">
+                Examining the Effectiveness of <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">Juvenile</mark> Diversion in Cook County
+              </h3>
+              <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
+                By Jane Carter · Sept 2024
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                This study evaluates outcomes from <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> diversion programs across Cook County, comparing recidivism rates among <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> participants who completed diversion versus those processed through the traditional <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> court system.
+              </p>
+            </article>
+            <p class="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              Four matches in one card. The eye finds them in milliseconds.
+            </p>
+          </div>
+        </div>
+
+        <!-- Four properties of the highlight -->
+        <div class="mt-12">
+          <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+            <UIcon
+              name="i-lucide-list-checks"
+              class="size-4"
+            />
+            Four properties of the highlight
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">
+                1
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Case-insensitive
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>Juvenile</em>, <em>juvenile</em>, <em>JUVENILE</em> — all match the same search.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">
+                2
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Every occurrence
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                Not just the first hit — every instance, in title and in abstract.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">
+                3
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Substring match
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>juven</em> highlights <em>juvenile</em>. Partial typing still lights up.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-emerald-500/15 text-sm font-black text-emerald-700 dark:text-emerald-300">
+                4
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Original casing kept
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                The match is rendered as the source wrote it — only the comparison was lowered.
+              </div>
+            </div>
+          </div>
+          <p class="mt-5 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            One small UI affordance, four properties working together. The user sees <em>why</em> each result is in their list — without reading any of it.
+          </p>
+
+          <!-- PSEUDOCODE — for developers (collapsible, default hidden) -->
+          <details class="group mt-10">
+            <summary class="inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 transition-colors hover:bg-zinc-200 [&::-webkit-details-marker]:hidden dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700">
+              <UIcon
+                name="i-lucide-code-2"
+                class="size-3.5"
+              />
+              Pseudocode for developers
+              <UIcon
+                name="i-lucide-chevron-down"
+                class="size-3.5 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div class="mt-4">
+            <p class="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Walk the source string, find every occurrence of the query (case-insensitive), and emit segments tagged <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">match</code> or not. The renderer wraps every <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">match</code> in a <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">&lt;mark&gt;</code>.
+            </p>
+            <pre class="overflow-x-auto rounded-2xl border border-zinc-700 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-100 sm:text-sm"><code><span class="text-emerald-300">function</span> <span class="text-sky-300">highlightSegments</span>(text, query):
+    <span class="text-zinc-500"># Bail out fast on empty input or empty query</span>
+    <span class="text-violet-300">if</span> not text:  <span class="text-violet-300">return</span> []
+    <span class="text-violet-300">if</span> not query: <span class="text-violet-300">return</span> [{ text, match: <span class="text-amber-300">false</span> }]
+
+    <span class="text-zinc-500"># Lowercase only for the *comparison* — original casing is preserved</span>
+    <span class="text-zinc-500"># in the segments returned to the renderer.</span>
+    lowerText  ← lowercase(text)
+    lowerQuery ← lowercase(query)
+
+    segments ← []
+    cursor   ← 0
+    next     ← indexOf(lowerText, lowerQuery)
+
+    <span class="text-violet-300">while</span> next ≠ -1:
+        <span class="text-zinc-500"># Plain text between the previous match and this one</span>
+        <span class="text-violet-300">if</span> next &gt; cursor:
+            segments.push({ text: text[cursor..next], match: <span class="text-amber-300">false</span> })
+
+        <span class="text-zinc-500"># The match itself — keep original casing from `text`, not `lowerText`</span>
+        segments.push({ text: text[next..next + length(query)], match: <span class="text-amber-300">true</span> })
+
+        cursor ← next + length(query)
+        next   ← indexOf(lowerText, lowerQuery, from: cursor)
+
+    <span class="text-zinc-500"># Tail after the last match (or the whole string if no match)</span>
+    <span class="text-violet-300">if</span> cursor &lt; length(text):
+        segments.push({ text: text[cursor..end], match: <span class="text-amber-300">false</span> })
+
+    <span class="text-violet-300">return</span> segments
+</code></pre>
+            <p class="mt-3 max-w-3xl text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              The renderer iterates the returned segments: <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">match: true</code> → wrap in <code class="rounded bg-zinc-200/60 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">&lt;mark&gt;</code> with a green tint, otherwise plain text. Same routine runs over every searchable field on the card.
+            </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- 10. AUTHOR NORMALIZATION — one more under-the-hood fix -->
     <section
       id="author-normalization"
@@ -1539,6 +2110,13 @@ function showExamples(typeValue: string) {
     >
       <div class="mx-auto max-w-5xl">
         <div class="mb-8">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
+            <UIcon
+              name="i-lucide-circle-check-big"
+              class="size-3.5"
+            />
+            Solution 3 of 3 · Author Names
+          </div>
           <!-- "One more thing..." Steve Jobs reveal -->
           <div class="mb-3 flex items-center gap-3">
             <div class="flex size-12 items-center justify-center rounded-full bg-violet-500 text-white shadow-lg">
@@ -1720,6 +2298,52 @@ function showExamples(typeValue: string) {
           <p class="mt-5 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             The display name shown in the dropdown is the most-frequent variant in the dataset (ties go to the shortest, which usually means the clean form without credentials). The same approach merges the five canonical ICJIA Centers across the "&" / "and" split.
           </p>
+
+          <!-- PSEUDOCODE — for developers (collapsible, default hidden) -->
+          <details class="group mt-10">
+            <summary class="inline-flex cursor-pointer list-none items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 transition-colors hover:bg-zinc-200 [&::-webkit-details-marker]:hidden dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700">
+              <UIcon
+                name="i-lucide-code-2"
+                class="size-3.5"
+              />
+              Pseudocode for developers
+              <UIcon
+                name="i-lucide-chevron-down"
+                class="size-3.5 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div class="mt-4">
+            <p class="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              Five chained string operations, applied in order. Same input → same canonical key. Two authors collide on the same key only if they'd already collide as humans reading the rendered name.
+            </p>
+            <pre class="overflow-x-auto rounded-2xl border border-zinc-700 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-100 sm:text-sm"><code><span class="text-violet-300">function</span> <span class="text-sky-300">authorKey</span>(name):
+    <span class="text-zinc-500"># 1. Drop credentials — cut everything after the first comma</span>
+    <span class="text-zinc-500">#    "Jane Carter, Ph.D" → "Jane Carter"</span>
+    name ← regex_replace(name, <span class="text-amber-300">/,.*$/</span>, <span class="text-emerald-300">""</span>)
+
+    <span class="text-zinc-500"># 2. Unify ampersands — "&amp;" (with any spaces around it) becomes " and "</span>
+    <span class="text-zinc-500">#    "Forensics &amp; Policy Lab" → "Forensics and Policy Lab"</span>
+    name ← regex_replace(name, <span class="text-amber-300">/\s*&amp;\s*/g</span>, <span class="text-emerald-300">" and "</span>)
+
+    <span class="text-zinc-500"># 3. Collapse runs of internal whitespace into a single space</span>
+    <span class="text-zinc-500">#    "Jane   Carter" → "Jane Carter"</span>
+    name ← regex_replace(name, <span class="text-amber-300">/\s+/g</span>, <span class="text-emerald-300">" "</span>)
+
+    <span class="text-zinc-500"># 4. Trim leading and trailing whitespace</span>
+    <span class="text-zinc-500">#    "  Jane Carter  " → "Jane Carter"</span>
+    name ← trim(name)
+
+    <span class="text-zinc-500"># 5. Lowercase for case-insensitive matching</span>
+    <span class="text-zinc-500">#    "JANE CARTER" → "jane carter"</span>
+    name ← lowercase(name)
+
+    <span class="text-violet-300">return</span> name   <span class="text-zinc-500">// the canonical key</span>
+</code></pre>
+            <p class="mt-3 max-w-3xl text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Steps 1 and 2 normalize <em>meaning</em> (credentials are noise; "&amp;" and "and" are the same word). Steps 3 and 4 normalize <em>spacing</em>. Step 5 normalizes <em>case</em>. Order matters: dropping credentials before lowercasing keeps the comma-cut deterministic regardless of input casing.
+            </p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -1747,7 +2371,7 @@ function showExamples(typeValue: string) {
                 />
               </div>
               <div class="text-base font-bold text-zinc-900 dark:text-white">
-                How the data is organized
+                How is the Hub organized?
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -1770,11 +2394,11 @@ function showExamples(typeValue: string) {
                 />
               </div>
               <div class="text-base font-bold text-zinc-900 dark:text-white">
-                What else this demo shows
+                Additional Upgrades
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Search highlighting, click-to-filter authors, additive tags, the five ICJIA centers — seven small upgrades that make the catalog easier to navigate.
+              The other four upgrades not on this page — click-to-filter authors, additive tag stacking, the five ICJIA Centers filter, and the four UX layouts compared side-by-side.
             </p>
             <div class="text-xs font-semibold uppercase tracking-[0.04em] text-amber-600 group-hover:underline dark:text-amber-500">
               /about →
@@ -1905,11 +2529,11 @@ function showExamples(typeValue: string) {
                   />
                 </div>
                 <p class="mb-3">
-                  The Strapi 5 schema already wires Apps to Datasets bidirectionally (and to Articles too — see <NuxtLink
+                  The Strapi 5 schema already wires Apps to Datasets bidirectionally (and to Articles too — see the <NuxtLink
                     to="/schema"
                     class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
                   >
-                    Inside the Hub
+                    Hub 2.0 Deep Dive
                   </NuxtLink>). The proposed <strong class="text-zinc-900 dark:text-white">"datahub"</strong> is the editorial work of curating which dataset belongs to which app, across four patterns:
                 </p>
                 <ul class="ml-1 space-y-2">
@@ -1938,7 +2562,7 @@ function showExamples(typeValue: string) {
                     class="mt-0.5 size-5 shrink-0 text-emerald-700 dark:text-emerald-300"
                   />
                   <div class="text-sm leading-snug">
-                    <strong class="text-zinc-900 dark:text-white">All four patterns are schema-supported in Strapi 5 today.</strong>
+                    <strong class="text-zinc-900 dark:text-white">All four patterns are already built into the structure today.</strong>
                     <span class="block pt-1 font-normal text-zinc-700 dark:text-zinc-300">
                       Hub 2.0's work on Datasets is editorial — curating which datasets belong to which apps — not building anything new at the data layer.
                     </span>
@@ -2025,7 +2649,7 @@ function showExamples(typeValue: string) {
                   </li>
                   <li class="flex items-start gap-2">
                     <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-500" />
-                    <span>Apps support bidirectional <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">manyToMany</code> relations with Datasets <em>and</em> with Articles (the schema is a 3-way relational triangle). The four datahub patterns work out of the box on the App ↔ Dataset edge; Articles citing apps and datasets work today too. <NuxtLink
+                    <span>Apps already connect both ways with Datasets <em>and</em> with Articles (the structure is a 3-way triangle of two-way connections). The four datahub patterns work out of the box on the App ↔ Dataset edge; Articles citing apps and datasets work today too. <NuxtLink
                       to="/schema"
                       class="font-semibold text-violet-700 underline-offset-2 hover:underline dark:text-violet-400"
                     >
@@ -2060,3 +2684,13 @@ function showExamples(typeValue: string) {
     </UModal>
   </div>
 </template>
+
+<style>
+details summary .iconify.i-lucide\:chevron-down {
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+details[open] > summary .iconify.i-lucide\:chevron-down {
+  transform: rotate(180deg) !important;
+}
+</style>

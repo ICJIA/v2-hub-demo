@@ -67,7 +67,8 @@ useHead({
     }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'en',
+    class: 'scroll-smooth'
   }
 })
 
@@ -114,6 +115,9 @@ const navItems = [
   { label: 'View 1', to: '/view1' },
   { label: 'View 2', to: '/view2' }
 ]
+
+const route = useRoute()
+const isActive = path => route.path === path
 </script>
 
 <template>
@@ -146,29 +150,32 @@ const navItems = [
       <template #right>
         <UButton
           to="/about"
-          label="Why this demo app?"
+          label="Additional Upgrades"
           icon="i-lucide-sparkles"
           color="primary"
-          variant="ghost"
+          :variant="isActive('/about') ? 'soft' : 'ghost'"
           size="sm"
+          :aria-current="isActive('/about') ? 'page' : undefined"
         />
 
         <UButton
           to="/taxonomy"
           label="How is the Hub organized?"
           icon="i-lucide-network"
-          color="neutral"
-          variant="ghost"
+          color="primary"
+          :variant="isActive('/taxonomy') ? 'soft' : 'ghost'"
           size="sm"
+          :aria-current="isActive('/taxonomy') ? 'page' : undefined"
         />
 
         <UButton
           to="/schema"
-          label="Inside the Hub"
+          label="Hub 2.0 Deep Dive"
           icon="i-lucide-database"
-          color="neutral"
-          variant="ghost"
+          color="primary"
+          :variant="isActive('/schema') ? 'soft' : 'ghost'"
           size="sm"
+          :aria-current="isActive('/schema') ? 'page' : undefined"
         />
 
         <UColorModeButton />

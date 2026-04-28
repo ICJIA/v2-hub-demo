@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const PAGE_TITLE = 'What this demo shows — ICJIA Research Hub Demo'
-const PAGE_DESCRIPTION = 'Seven friction-reducers Hub 2.0 brings to Hub 1.0\'s existing catalog — one-click filters, author normalization, click-to-filter tags, and four UX takes to try (Current + three proposed views).'
+const PAGE_DESCRIPTION = 'Seven small fixes Hub 2.0 brings to Hub 1.0\'s existing catalog — one-click filters, author normalization, click-to-filter tags, and four layouts to try (Current + three proposed views).'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/about'
 const OG_IMAGE = 'https://v2-hub-demo.netlify.app/og-image.png'
 
@@ -187,8 +187,23 @@ function openUpgrade(index: number) {
         <h1 class="mb-4 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
           Seven small upgrades.<br>One big difference.
         </h1>
-        <p class="mb-7 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
+        <p class="mb-6 max-w-2xl text-lg leading-relaxed text-zinc-600 sm:text-xl dark:text-zinc-400">
           <span class="font-semibold text-zinc-900 dark:text-white">Hub 2.0 builds on Hub 1.0's success</span> by streamlining and sharpening the UI/UX. This proof-of-concept demo reduces the friction to find articles in the existing Hub 1.0 catalog — so anyone can find what they're looking for in <span class="font-semibold text-zinc-900 dark:text-white">one or two clicks</span>.
+        </p>
+        <p class="mb-7 max-w-3xl rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-sm leading-relaxed text-zinc-700 sm:text-base dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
+          <strong class="text-zinc-900 dark:text-white">Three of these surfaced in recent meetings</strong> and lead the <NuxtLink
+            to="/"
+            class="font-semibold text-emerald-700 underline-offset-2 hover:underline dark:text-emerald-400"
+          >homepage</NuxtLink> — <NuxtLink
+            to="/#views"
+            class="font-semibold text-emerald-700 underline-offset-2 hover:underline dark:text-emerald-400"
+          >Research Reports in one click</NuxtLink>, <NuxtLink
+            to="/#search-highlighting"
+            class="font-semibold text-emerald-700 underline-offset-2 hover:underline dark:text-emerald-400"
+          >Search Highlighting</NuxtLink>, <NuxtLink
+            to="/#author-normalization"
+            class="font-semibold text-emerald-700 underline-offset-2 hover:underline dark:text-emerald-400"
+          >Author Names</NuxtLink>. <strong class="text-zinc-900 dark:text-white">The other four live below.</strong>
         </p>
         <div class="flex flex-wrap gap-3">
           <UButton
@@ -265,7 +280,7 @@ function openUpgrade(index: number) {
           <template #content>
             <div class="max-w-xs p-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>
-                <strong class="text-zinc-900 dark:text-white">Seven friction-reducers Hub 2.0 brings to Hub 1.0's existing catalog:</strong> one-click filters by article type, search highlighting, click-to-filter authors, author normalization, stackable tag filters, ICJIA Center filters, and three side-by-side filter UX layouts to compare. Each one is detailed in the cards below.
+                <strong class="text-zinc-900 dark:text-white">Seven small fixes Hub 2.0 brings to Hub 1.0's existing catalog:</strong> one-click filters by article type, search highlighting, click-to-filter authors, author normalization, stackable tag filters, ICJIA Center filters, and three side-by-side filter UX layouts to compare. Each one is detailed in the cards below.
               </p>
             </div>
           </template>
@@ -461,7 +476,7 @@ function openUpgrade(index: number) {
                 />
               </div>
               <div class="text-base font-bold text-zinc-900 dark:text-white">
-                How the data is organized
+                How is the Hub organized?
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { typeLabel } from '~/utils/article-format'
 
-const PAGE_TITLE = 'Inside the Hub — schema deep-dive'
+const PAGE_TITLE = 'Hub 2.0 Deep Dive — schema'
 const PAGE_DESCRIPTION = 'A faithful structural view of the Hub 2.0 catalog: three content types, fourteen named article types, one bidirectional relation. The bones the rest of the demo sits on.'
 const PAGE_URL = 'https://v2-hub-demo.netlify.app/schema'
 
@@ -106,7 +106,7 @@ const enumValues = [
           The bones — in one diagram
         </div>
         <h1 class="mb-2 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
-          Inside the Hub.
+          Hub 2.0.
         </h1>
         <p class="mb-5 text-2xl font-bold tracking-tight text-sky-700 sm:text-3xl lg:text-4xl dark:text-sky-400">
           A Deep Dive.
@@ -309,7 +309,7 @@ const enumValues = [
               Thing #1 — The only enum
             </div>
             <h3 class="mb-3 text-2xl font-black leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-              <span class="text-amber-700 dark:text-amber-400">Article.type</span> is the only fixed enum.
+              <span class="text-amber-700 dark:text-amber-400">Article.type</span> is the only fixed enum.<sup class="text-base text-amber-700 dark:text-amber-400">*</sup>
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
               Editors pick from a closed list of <strong class="text-zinc-900 dark:text-white">14 values</strong> at publish time. That's why the chip filter on every view is a single click — a fixed enum lets the chips be guaranteed-correct labels. Datasets and Apps don't have an equivalent field, so they don't get chips.
@@ -331,7 +331,7 @@ const enumValues = [
               <span class="text-violet-700 dark:text-violet-400">Article ↔ App ↔ Dataset</span> — all three ways.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
-              Articles cite apps. Apps visualize datasets. Datasets are referenced by both articles and apps — and every one of those connections is bidirectional. <strong class="text-zinc-900 dark:text-white">All three relationships are already wired in the schema.</strong> The proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge; the Article-side connections work today.
+              Articles cite apps. Apps visualize datasets. Datasets are referenced by both articles and apps — and every one of those connections is bidirectional.<sup class="text-base text-violet-700 dark:text-violet-400">†</sup> <strong class="text-zinc-900 dark:text-white">All three relationships are already wired in the schema.</strong> The proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge; the Article-side connections work today.
             </p>
           </div>
 
@@ -344,15 +344,27 @@ const enumValues = [
               />
             </div>
             <div class="mb-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:text-sky-400">
-              Thing #3 — Authors live in free-form JSON
+              Thing #3 — Authors are typed in
             </div>
             <h3 class="mb-3 text-2xl font-black leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-              <span class="text-sky-700 dark:text-sky-400">Authors</span> aren't a relation. They're typed in.
+              <span class="text-sky-700 dark:text-sky-400">Authors</span> are typed in by hand, not picked from a list.
             </h3>
             <p class="text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
               <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">Article.authors</code> is a <code class="rounded bg-sky-500/15 px-1 text-sky-700 dark:text-sky-300">json</code> field — not a Strapi component, not a relation to a separate Author table. Editors type names in by hand, which is exactly why "Riley Calder," "Riley Calder, Ph.D," and "RILEY CARTER" can all appear for the same person — and why the demo needs the canonical-key trick to merge variants. (Same applies to <code>categories</code> and <code>tags</code>: free-form, no central taxonomy.)
             </p>
           </div>
+        </div>
+
+        <!-- Footnotes — plain-language explanations for non-technical readers -->
+        <div class="mt-8 max-w-4xl space-y-4 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p class="rounded-xl border border-amber-500/30 bg-amber-50 px-4 py-3 dark:bg-amber-500/5">
+            <strong class="text-amber-700 dark:text-amber-400">* What's an "enum"?</strong>
+            A pre-set, closed list of values — the opposite of a free-form text box. Instead of typing the type into a blank field (where one editor writes "Research Report" and another writes "research report" or "Research Reports"), editors pick from a fixed dropdown of <strong class="text-zinc-900 dark:text-white">14 named values</strong>: Research Report, Annual Report, Program Evaluation Summary, and so on. <strong class="text-zinc-900 dark:text-white">Same label, every time, exactly spelled.</strong> That consistency is what makes the chip filter on every view possible — each chip is matching against a guaranteed-correct value. Free-form fields can't make that promise; typos and variations creep in, and the filter UI has nothing reliable to match against. The trade-off: adding a 15th type is a code change, not a content change. That's a feature, not a bug — it's what keeps the catalog clean.
+          </p>
+          <p class="rounded-xl border border-violet-500/30 bg-violet-50 px-4 py-3 dark:bg-violet-500/5">
+            <strong class="text-violet-700 dark:text-violet-400">† What's "bidirectional"?</strong>
+            A connection that works <strong class="text-zinc-900 dark:text-white">both ways, automatically.</strong> When an editor links an article to the dataset it's built on, the dataset's record automatically lists that article — without anyone having to update the dataset side. <strong class="text-zinc-900 dark:text-white">For Hub 2.0, this is the foundation for related-content discovery:</strong> a reader on an article page sees the data behind it, a reader on a dataset page sees every article built on it, a reader on a dashboard sees the articles citing it. None of that requires extra editorial work — the connections were wired both ways from the start, so the relationships surface themselves. It's also why the migration is low-risk: every existing article-dataset link in Hub 1.0 already carries the reverse direction, so the "see related" surfaces light up the moment Hub 2.0 ships.
+          </p>
         </div>
       </div>
     </section>
@@ -402,7 +414,7 @@ const enumValues = [
           Three relations. <span class="text-violet-700 dark:text-violet-400">All bidirectional.</span>
         </h2>
         <p class="mb-8 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Same `manyToMany` mechanism, three different semantic purposes. Articles cite apps and datasets; apps visualize datasets. Each side of every line knows about the other.
+          Same connection mechanism (each side knows about the other<sup class="text-violet-700 dark:text-violet-400">†</sup>), three different purposes. Articles cite apps and datasets; apps visualize datasets.
         </p>
 
         <div class="space-y-3">
@@ -548,7 +560,7 @@ const enumValues = [
               class="mt-0.5 size-6 shrink-0 text-emerald-700 dark:text-emerald-300"
             />
             <p class="text-base font-bold leading-snug text-zinc-900 sm:text-lg dark:text-white">
-              All three relations are <code class="rounded bg-emerald-500/15 px-1 text-emerald-700 dark:text-emerald-300">manyToMany</code> in Strapi 5 — schema-supported today.
+              All three connections work both ways<sup class="text-violet-700 dark:text-violet-400">†</sup> — already built into the structure today.
               <span class="block pt-1 text-sm font-normal text-zinc-700 dark:text-zinc-300">
                 The Article ↔ App and Article ↔ Dataset edges work without curation. The proposed Hub 2.0 datahub specifically curates the App ↔ Dataset edge — picking which datasets belong to which apps. Four patterns: solo dataset · one app, one dataset · one app, many datasets · shared dataset.
               </span>
@@ -584,15 +596,19 @@ const enumValues = [
     <!-- 9. SMALL DEV NOTE — collapsible feel -->
     <section class="border-b border-zinc-200 bg-white px-6 py-12 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0a0a0a]">
       <div class="mx-auto max-w-4xl">
-        <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
-          <div class="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
+        <details class="group rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+          <summary class="flex cursor-pointer list-none items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 [&::-webkit-details-marker]:hidden dark:text-zinc-400">
             <UIcon
               name="i-lucide-code-2"
               class="size-3.5"
             />
-            Small print for developers
-          </div>
-          <div class="space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+            Implementation notes (collapsed by default)
+            <UIcon
+              name="i-lucide-chevron-down"
+              class="ml-auto size-4"
+            />
+          </summary>
+          <div class="mt-3 space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <p>
               Strapi names: <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::article.article</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::dataset.dataset</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::app.app</code>, <code class="rounded bg-zinc-200/60 px-1 dark:bg-zinc-800">api::page.page</code> — all collection types with draft &amp; publish enabled. Standard Strapi metadata (<code>createdAt</code>, <code>updatedAt</code>, <code>publishedAt</code>, <code>locale</code>, <code>documentId</code>) lives on every record but is omitted from the diagram for clarity.
             </p>
@@ -609,7 +625,7 @@ const enumValues = [
               <strong class="text-zinc-900 dark:text-white">Page</strong> (<code>api::page.page</code>) is a fourth content type — <code>title</code>, <code>summary</code>, <code>body</code>, <code>slug</code>. The <strong class="text-zinc-900 dark:text-white">catch-all</strong> for everything the hub publishes that isn't a catalog item: the live hub homepage, landing pages, anything that's not an Article / Dataset / App. Not part of the filter demo's data model — but a real top-level Strapi collection type with its own draft / publish lifecycle.
             </p>
           </div>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -657,11 +673,11 @@ const enumValues = [
                 />
               </div>
               <div class="text-base font-bold text-zinc-900 dark:text-white">
-                Why this demo app?
+                Additional Upgrades
               </div>
             </div>
             <p class="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Seven friction-reducers Hub 2.0 brings to Hub 1.0's existing catalog — search highlighting, author normalization, three layouts to compare.
+              Seven small fixes Hub 2.0 brings to Hub 1.0's existing catalog — search highlighting, author normalization, three layouts to compare.
             </p>
             <div class="text-xs font-semibold uppercase tracking-[0.04em] text-emerald-600 group-hover:underline dark:text-emerald-400">
               /about →
@@ -694,3 +710,13 @@ const enumValues = [
     </section>
   </div>
 </template>
+
+<style>
+details summary .iconify.i-lucide\:chevron-down {
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+details[open] > summary .iconify.i-lucide\:chevron-down {
+  transform: rotate(180deg) !important;
+}
+</style>

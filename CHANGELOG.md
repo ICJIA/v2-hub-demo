@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.97] — 2026-04-28
+
+Major homepage narrative restructure to lead with the "three concerns from recent meetings" framing, plus a wide-ranging plain-English / non-jargon pass across every page so a manager who's never seen the system can read it without a glossary.
+
+### Added
+
+- **New page-anchor section "From recent meetings"** at the very top of `/` — sets the page's only `<h1>`: *"Three concerns came up in recent Hub 2.0 meetings. Here are three proposed solutions."* Three color-coded concern cards (sky / emerald / violet) for **Research Reports in one click**, **Search Highlighting**, and **Author Names**, each linking down to its solution section. Edge-to-edge layout (`max-w-7xl`). Includes a green "good news" callout: *"all three are either already built into the Hub or straightforward to add."*
+- **New "What Hub 2.0 is" section** (`#what-hub-2-is`) — explicitly positions Hub 1.0 as the original publishing platform that's a proven success, and Hub 2.0 as a refinement on top: *"Hub 1.0 was the original publishing platform. Hub 2.0 refines it."* Origin story tied to the long-standing "What, exactly, does ICJIA do?" question.
+- **New "Why refine it now?" section** (`#why-refine-now`) — manager-friendly case for Hub 2.0: five "where Hub 1.0 is straining" cards (aging framework / slow under load / yesterday's security / less flexibility / dated look & feel) followed by a three-card preservation callout (same content / same URLs / R&A authors stay the focus).
+- **New "Search Highlighting" section** (`#search-highlighting`) — full deep-dive with the same Problem → `highlightSegments()` → Solution arc as the existing author-normalization section, including a four-property grid (case-insensitive / every occurrence / substring match / original casing kept) and a working visual demo showing four `<mark>`-wrapped occurrences of "juvenile" in a sample article card.
+- **"Solution N of 3" badges** on each of the three solution sections so the throughline stays visible while scrolling.
+- **Asterisk / dagger footnotes on `/schema`** with manager-friendly definitions of *"enum"* (closed list of pre-approved values, why it's better than free-form, how it makes the chip filters reliable) and *"bidirectional"* (connections that work both ways automatically, what that means for related-content discovery in Hub 2.0).
+- **Smooth scroll** added globally via `htmlAttrs.class = 'scroll-smooth'` so all in-page anchor jumps glide instead of teleport.
+- **Active route highlighting** on the right-side navbar — current page gets a soft green pill background; `aria-current="page"` for screen readers.
+- **/about hero relationship callout** — "Three of these surfaced in recent meetings and lead the homepage… The other four live below." Anchors `/about` as the full catalog of seven upgrades while making clear the homepage now leads with the three from meetings.
+- **Pseudocode sections collapsible** — both pseudocode blocks (`highlightSegments` and `authorKey`) wrapped in `<details>`, default closed, so non-developers don't see them by default. Chevron rotates 180° on expand.
+- **`/schema` "Implementation notes" collapsible** — the technical "Strapi names / GraphQL endpoint / field references" block at the bottom is now a `<details>` (default closed), keeping the technical reference for developers without overwhelming managers.
+
+### Changed
+
+- **Navbar labels rewritten** to better describe what each page actually is:
+  - *"Why this demo app?"* → **"Additional Upgrades"** (the page covers seven upgrades; three are now on the homepage, four live here)
+  - *"Inside the Hub"* → **"Hub 2.0 Deep Dive"** (page hero adjusted to "Hub 2.0." / "A Deep Dive."; SEO title and JSON-LD updated; all inline cross-page link text updated on `/`, `/taxonomy`, `/schema`)
+  - All three right-side links now use `color="primary"` (green by default); the active one gets a soft pill.
+- **"More to explore" cards** on every narrative page now use the new navbar names — *"How the data is organized"* → *"How is the Hub organized?"*; *"What else this demo shows"* → *"Additional Upgrades"*; *"Why this demo app?"* → *"Additional Upgrades"*.
+- **Plausible analytics first-mention gloss** added on `/`: *"(Numbers from Plausible, a privacy-friendly traffic-measurement tool.)"*
+- **Strapi 5 first-mention gloss** added on `/taxonomy`: *"the new content-editing platform editors use to publish."*
+- **Jargon → plain English pass** across `/`, `/about`, `/taxonomy`, `/schema`:
+  - *"Five chained string ops merge every variant onto a single canonical key"* → *"Five small text-cleaning steps merge every spelling variant onto a single matched-up entry"* (Concern 3 card on home)
+  - *"UI/UX"* → *"the look and feel — and how visitors move through the catalog"*
+  - *"friction-reducers"* → *"small fixes that save clicks"* / *"clicks-saving fixes"* (every occurrence)
+  - *"schema-supported in Strapi 5 today"* → *"already built into the structure today"* (every occurrence)
+  - *"manyToMany"* in user-facing copy → *"two-way connections"* / *"both ways"* (kept the term inside the collapsed `/schema` Implementation notes for developers)
+  - *"Authors live in free-form JSON"* (schema page card 3 title) → *"Authors are typed in by hand, not picked from a list"*
+- **Heading hierarchy fixed** — page now has exactly one `<h1>` (the new "Three concerns came up…" page anchor); the previous Hero `<h1>` was demoted to `<h2>` (visual size unchanged).
+- **Plausible-traffic section moved** — the existing "Hub 1.0 in numbers" Plausible analytics section now sits directly after "What Hub 2.0 is," delivering on that section's closing line ("the numbers below are the proof").
+- **Hero on `/schema`** — *"Inside the Hub. / A Deep Dive."* → *"Hub 2.0. / A Deep Dive."* to match the new navbar name.
+- **Search-highlighting section title** went through a couple of iterations on the way to the final: *"See / what matched."* → *"See / What Search Matches."* → *"Searching Hub 2.0. / Visual Matching."*
+- **Page-anchor h1** — *"Three concerns came up in recent meetings."* → *"Three concerns came up in recent Hub 2.0 meetings."*
+- **Page-anchor good-news callout** now reads *"answering these three questions (plus several others raised during meetings), and offering a working glimpse of the ICJIA Research Hub publishing platform itself"* — emphasizes the site's dual purpose.
+
+### Fixed
+
+- Chevron rotation on `<details>` summary elements — Tailwind v4's `group-open:rotate-180` doesn't emit the expected rule for these markup shapes, so a small SFC-level `<style>` block targets `details[open] > summary .iconify.i-lucide\:chevron-down { transform: rotate(180deg) !important; }` with a 200 ms ease transition. Applied on both `index.vue` (pseudocode collapsibles) and `schema.vue` (Implementation notes collapsible).
+
 ## [0.1.96] — 2026-04-27
 
 ### Changed

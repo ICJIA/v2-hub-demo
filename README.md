@@ -6,9 +6,9 @@
 
 **Live:** https://v2-hub-demo.netlify.app/
 
-Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, ICJIA Center, and tags, alongside a free-text search. The demo is built around a **skeptic-first narrative for non-technical managers**: lead with live Plausible traffic data and URL-stability evidence, then explain the architecture that made it work, then show the proposed UX tweaks.
+Proof-of-concept for ICJIA showing how the research hub article list could be filtered by publication type, topic, author, year, ICJIA Center, and tags, alongside a free-text search. The demo is built around a **concerns-first narrative for non-technical managers**: open with the three concerns that surfaced in recent Hub 2.0 meetings (Research Reports in one click / Search Highlighting / Author Names), position Hub 2.0 as a refinement of the original Hub 1.0 publishing platform that's a proven success, prove that success with live Plausible traffic, make the manager-friendly case for refining now, then explain the architecture and show the proposed UX tweaks.
 
-Seven pages total. The narrative pages (`/`, `/about`, `/taxonomy`) are infographic-heavy explanations aimed at a manager who hasn't been close to the system; `/current` shows Hub 2.0 as it stands today (a baseline filter bar with no chips); `/view0`, `/view1`, `/view2` are three side-by-side filter-UX variants that layer the proposed friction-reducers on top of `/current`.
+Seven pages total. The narrative pages (`/`, `/about`, `/taxonomy`, `/schema`) are infographic-heavy explanations aimed at a manager who hasn't been close to the system; `/current` shows Hub 2.0 as it stands today (a baseline filter bar with no chips); `/view0`, `/view1`, `/view2` are three side-by-side filter-UX variants that layer the proposed clicks-saving fixes on top of `/current`. Right-side navbar labels mirror what each page is: "Additional Upgrades" (`/about`), "How is the Hub organized?" (`/taxonomy`), "Hub 2.0 Deep Dive" (`/schema`).
 
 The article-list pages fetch live from the Strapi 5 GraphQL endpoint at `https://v2.hub.icjia-api.cloud/graphql`, hold all published articles in memory, and apply every filter client-side. Cards link to an internal stub detail page at `/articles/<slug>` so the demo is fully self-contained — no runtime traffic leaves this app. The narrative pages additionally pull live traffic data from a self-hosted Plausible instance via the `@icjia/plausible-mcp` tooling to ground claims in real numbers (last 12 months: 36.8K visitors, 232K pageviews, ~70% of all icjia.illinois.gov traffic).
 
@@ -66,18 +66,24 @@ Each dropdown leads with an `All …` reset entry, sized to fit the longest item
 
 ## Routes
 
-- **`/` — Home page.** Visual orientation aimed at a skeptical non-technical manager. Eleven infographic sections in evidence-first order:
-  1. Hero — orientation
-  2. **Why this demo** — `articles ≡ summaries` equivalence answering "I want a summary, not an article"
-  3. **Hub 1.0 in numbers** ("Proof — the hub already works") — live Plausible traffic for the production hub: 36.8K visitors, 232K pageviews, ~70% of icjia.illinois.gov traffic, 16-min average read time, top-five-articles bar chart with bounce rates, plain-English "What's a 'bounce'?" explainer, expandable "More from Plausible" with sources / devices / 12-month trend
-  4. **URL stability / SEO** — why Hub 2.0 keeps `/researchhub/articles/…` URLs (Google rankings, ChatGPT citations, external backlinks all attached to specific URLs; renaming costs traffic)
-  5. **Architecture diagram** — three interactive content-type cards (Articles / Datasets / Apps-Dashboards as tabs that swap content panel below); zoom into Articles with the 14 type pills (each clickable to open a live-examples modal)
-  6. **What this demo adds** stat strip — POC counts (`~240` articles · `14` types · `3` filter layouts · `1` click)
-  7. **"And one more thing… Author names."** — Steve Jobs-style reveal with a 6xl/7xl/8xl `font-black` infographic title, then a Problem/Solution split: "Riley Calder, Riley Calder PhD, JANE CARTER" 7-variant CMS dump (the Problem) vs. one canonical entry + five normalization steps (the Solution)
-  8. TL;DR — "Every research report is one click away. *(Remember — articles **are** summaries.)*"
-  9. Five takeaways — busy-manager skim cards
-  10. **Current + three proposed views** — full-width "Start here · /current" card on top, then three view cards below with chip / dropdown / always-on previews
-  11. Deep dives — links to `/taxonomy` and `/about`
+- **`/` — Home page.** Visual orientation aimed at a non-technical manager. Concerns-first narrative — the page anchor states the three meeting concerns up top (`<h1>`), then the platform context, then the proof, then the case for refining now, then orientation, then the three solutions. Sections in order:
+  1. **From recent meetings** (page anchor, only `<h1>` on the page) — *"Three concerns came up in recent Hub 2.0 meetings. Here are three proposed solutions."* Three color-coded concern cards (sky / emerald / violet) that link down to the matching solution sections below. Edge-to-edge layout (`max-w-7xl`).
+  2. **What Hub 2.0 is** — *"Hub 1.0 was the original publishing platform. Hub 2.0 refines it."* Origin story tied to the long-standing "What, exactly, does ICJIA do?" question, ending with "the numbers below are the proof" → flows into Plausible.
+  3. **Hub 1.0 in numbers** ("Proof — the hub already works") — live Plausible traffic for the production hub: 36.8K visitors, 232K pageviews, ~70% of icjia.illinois.gov traffic, 16-min average read time, top-five-articles bar chart with bounce rates, plain-English "What's a 'bounce'?" explainer, expandable "More from Plausible" with sources / devices / 12-month trend. First mention of Plausible glossed inline as "a privacy-friendly traffic-measurement tool."
+  4. **Why refine it now?** — manager-friendly case for Hub 2.0: five strain cards (aging framework / slow under load / yesterday's security / less flexibility / dated look & feel) followed by an emerald preservation callout (same content / same URLs / R&A authors stay the focus).
+  5. Hero — *"How Hub 2.0 organizes ICJIA research."* `<h2>` (was `<h1>` before the page-anchor restructure).
+  6. **Why this demo** — `articles ≡ summaries` equivalence answering "I want a summary, not an article"
+  7. **URL stability / SEO** — why Hub 2.0 keeps `/researchhub/articles/…` URLs (Google rankings, ChatGPT citations, external backlinks all attached to specific URLs; renaming costs traffic)
+  8. **Architecture diagram** — three interactive content-type cards (Articles / Datasets / Apps-Dashboards as tabs that swap content panel below); zoom into Articles with the 14 type pills (each clickable to open a live-examples modal)
+  9. **What this demo adds** stat strip — POC counts (`~240` articles · `14` types · `3` filter layouts · `1` click)
+  10. TL;DR — "Every research report is one click away. *(Remember — articles **are** summaries.)*"
+  11. Five takeaways — busy-manager skim cards
+  12. **Solution 1 / Current + three proposed views** — full-width "Start here · /current" card on top, then three view cards below with chip / dropdown / always-on previews
+  13. **Solution 2 / Search Highlighting** (`#search-highlighting`) — *"Searching Hub 2.0. / Visual Matching."* Problem → `highlightSegments()` → Solution arc, with a four-property grid (case-insensitive / every occurrence / substring match / original casing kept) and a working visual demo. Includes a collapsible (default-closed) Pseudocode-for-developers `<details>` block.
+  14. **Solution 3 / Author Names** (`#author-normalization`) — *"And one more thing… Author names."* Steve Jobs-style reveal with a Problem/Solution split: "Riley Calder, Riley Calder PhD, JANE CARTER" 7-variant CMS dump (the Problem) vs. one canonical entry + five normalization steps (the Solution). Pseudocode-for-developers block also collapsible.
+  15. Deep dives — links to `/taxonomy` and `/about`
+
+  Each of the three solution sections (12 / 13 / 14) carries a "Solution N of 3" pill at the top, color-keyed to the corresponding card on the page-anchor section, so the throughline stays visible while scrolling.
 
   Respects the dark/light toggle (default dark).
 
