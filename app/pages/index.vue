@@ -1714,28 +1714,80 @@ function showExamples(typeValue: string) {
       </div>
     </section>
 
+    <!-- 8.5 SOLUTIONS DIVIDER — context ends, proposed solutions begin -->
+    <section
+      id="solutions"
+      class="border-y border-zinc-200 bg-gradient-to-b from-white to-zinc-100 px-6 py-20 sm:px-12 lg:px-16 dark:border-zinc-800 dark:from-[#0a0a0a] dark:to-[#101014]"
+    >
+      <div class="mx-auto max-w-5xl text-center">
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+          <UIcon
+            name="i-lucide-arrow-down"
+            class="size-3.5"
+          />
+          Now, the proposals
+        </div>
+        <h2 class="mb-5 text-5xl font-black leading-[1.02] tracking-tight text-zinc-900 sm:text-6xl lg:text-7xl dark:text-white">
+          The <span class="text-primary">3 proposed</span><br>
+          Solutions.
+        </h2>
+        <p class="mx-auto max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
+          Three concerns from recent meetings. Three working answers — in order. Each one is hands-on: click a layout, try the search bar, watch the author names normalize.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.14em]">
+          <span class="rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-sky-700 dark:bg-sky-500/15 dark:text-sky-300">1 · Research reports in one click</span>
+          <UIcon
+            name="i-lucide-arrow-right"
+            class="size-3.5 text-zinc-400"
+          />
+          <span class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">2 · Search highlighting</span>
+          <UIcon
+            name="i-lucide-arrow-right"
+            class="size-3.5 text-zinc-400"
+          />
+          <span class="rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">3 · Author names</span>
+        </div>
+      </div>
+    </section>
+
     <!-- 9. THREE VIEWS -->
     <section
       id="views"
-      class="border-b border-zinc-200 bg-zinc-50 px-6 py-14 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
+      class="border-b border-zinc-200 bg-zinc-50 px-6 py-16 sm:px-12 lg:px-16 dark:border-zinc-800 dark:bg-[#0e0e10]"
     >
       <div class="mx-auto max-w-5xl">
-        <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:bg-sky-500/15 dark:text-sky-300">
-          <UIcon
-            name="i-lucide-circle-check-big"
-            class="size-3.5"
-          />
-          Solution 1 of 3 · Research Reports in one click
+        <div class="mb-8">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-sky-700 dark:bg-sky-500/15 dark:text-sky-300">
+            <UIcon
+              name="i-lucide-circle-check-big"
+              class="size-3.5"
+            />
+            Solution 1 of 3 · Research Reports in one click
+          </div>
+          <!-- Icon + reveal phrase -->
+          <div class="mb-3 flex items-center gap-3">
+            <div class="flex size-12 items-center justify-center rounded-full bg-sky-500 text-white shadow-lg">
+              <UIcon
+                name="i-lucide-layout-grid"
+                class="size-6"
+              />
+            </div>
+            <span class="text-base font-medium italic text-zinc-600 sm:text-lg dark:text-zinc-400">
+              Try it yourself. Click any layout.
+            </span>
+          </div>
+          <!-- BIG INFOGRAPHIC TITLE -->
+          <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
+            <span class="text-sky-600 dark:text-sky-400">Three views.</span>
+            <br>Same data.
+          </h2>
+          <p class="mt-5 max-w-2xl text-xl font-bold leading-snug text-zinc-700 sm:text-2xl dark:text-zinc-300">
+            Same articles, <span class="text-sky-600 dark:text-sky-400">four different layouts.</span>
+          </p>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <strong class="text-zinc-900 dark:text-white">Start with Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views below to see the small clicks-saving fixes layered on top. Click any one and try filtering to "Research Report" — that's the test.
+          </p>
         </div>
-        <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400">
-          Try it yourself
-        </div>
-        <h2 class="mb-2 text-2xl font-bold leading-tight text-zinc-900 sm:text-3xl dark:text-white">
-          Current + three proposed views. Same data behind all of them.<br><span class="font-medium text-zinc-600 dark:text-zinc-400">Go ahead. Click.</span>
-        </h2>
-        <p class="mb-7 max-w-2xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-          Start with <strong class="text-zinc-900 dark:text-white">Current</strong> — Hub 2.0 as it stands today. Then jump into the three proposed views to see the small clicks-saving fixes layered on top. Click any one and try filtering to "Research Report" — that's the test.
-        </p>
 
         <!-- Current view (baseline) — full-width starting point -->
         <NuxtLink

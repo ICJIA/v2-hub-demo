@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.99] — 2026-04-28
+
+### Added
+
+- **New "The 3 Proposed Solutions" divider section** (`#solutions`) sits between the context block above (recent-meetings anchor → what Hub 2.0 is → Plausible numbers → why refine now → hero / takeaways) and the three solution sections below. Centered "Now, the proposals" pill, big "The **3 proposed** Solutions." headline (with "3 proposed" in primary green), explanatory paragraph, and a row of three color-coded numbered pills (sky → emerald → violet) showing the order. Subtle `bg-gradient-to-b` from white/zinc-100 in light mode and `from-[#0a0a0a] to-[#101014]` in dark mode marks the visual handoff from "context" to "solutions."
+
+### Changed
+
+- **Solution 1 / Three Views heading restructured to match Solutions 2 & 3's infographic format.** Previously a small `text-2xl/3xl` h2 with a "Try it yourself" eyebrow; now mirrors the Search Highlighting and Author Names pattern: sky-colored `bg-sky-500` icon circle (`i-lucide-layout-grid`) + italic reveal phrase ("Try it yourself. Click any layout."), big `text-6xl/7xl/8xl font-black` infographic h2 — *"**Three views.** Same data."* with the first phrase in sky — bold sky-accented subtitle *"Same articles, four different layouts."*, and the explanatory paragraph kept underneath. All three solution headings now share the same visual rhythm (pill → icon + reveal → BIG headline → bold subtitle → light paragraph).
+
 ## [0.1.98] — 2026-04-28
 
 ### Changed
