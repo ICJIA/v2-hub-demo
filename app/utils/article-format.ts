@@ -40,13 +40,29 @@ export function articleAuthorNames(a: Article): string[] {
   return names
 }
 
+export interface AuthorKeyStep {
+  value: string
+  label: string
+}
+
+export function authorKeySteps(name: string): { steps: AuthorKeyStep[], key: string } {
+  const steps: AuthorKeyStep[] = []
+  let v = name
+  v = v.replace(/,.*$/, '')
+  steps.push({ value: v, label: 'Drop credentials' })
+  v = v.replace(/\s*&\s*/g, ' and ')
+  steps.push({ value: v, label: 'Unify ampersands' })
+  v = v.replace(/\s+/g, ' ')
+  steps.push({ value: v, label: 'Collapse spaces' })
+  v = v.trim()
+  steps.push({ value: v, label: 'Trim whitespace' })
+  v = v.toLowerCase()
+  steps.push({ value: v, label: 'Lowercase' })
+  return { steps, key: v }
+}
+
 export function authorKey(name: string): string {
-  return name
-    .replace(/,.*$/, '')
-    .replace(/\s*&\s*/g, ' and ')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLowerCase()
+  return authorKeySteps(name).key
 }
 
 export interface HighlightSegment {
