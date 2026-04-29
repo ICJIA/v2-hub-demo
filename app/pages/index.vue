@@ -2283,6 +2283,8 @@ function showExamples(typeValue: string) {
           </div>
         </div>
 
+        <AuthorNormalizationSandbox />
+
         <!-- The five steps -->
         <div class="mt-12">
           <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
