@@ -1092,7 +1092,7 @@ export function highlightSegments(
               />
             </div>
             <span class="text-base font-medium italic text-zinc-600 sm:text-lg dark:text-zinc-400">
-              Five chained string ops. One canonical key.
+              Six chained string ops. One canonical key.
             </span>
           </div>
           <h2 class="text-6xl font-black leading-[0.95] tracking-tight text-zinc-900 sm:text-7xl lg:text-8xl dark:text-white">
@@ -1113,29 +1113,41 @@ export function highlightSegments(
           </div>
           <pre class="overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs leading-relaxed text-zinc-800 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"><code>export function authorKey(name: string): string {
   return name
-    .replace(/,.*$/, '')          // 1. drop credentials after comma
-    .replace(/\s*&amp;\s*/g, ' and ')  // 2. unify '&' with 'and'
-    .replace(/\s+/g, ' ')         // 3. collapse runs of whitespace
-    .trim()                       // 4. strip leading/trailing space
-    .toLowerCase()                // 5. case-fold
+    .replace(/^(Dr|Prof|Mr|Mrs|Ms|Miss|Rev|Hon|Sir|Dame|Lord|Lady)(\.\s*|\s+)/i, '')  // 1. drop leading honorifics
+    .replace(/,.*$/, '')          // 2. drop credentials after comma
+    .replace(/\s*&amp;\s*/g, ' and ')  // 3. unify '&' with 'and'
+    .replace(/\s+/g, ' ')         // 4. collapse runs of whitespace
+    .trim()                       // 5. strip leading/trailing space
+    .toLowerCase()                // 6. case-fold
 }</code></pre>
         </div>
 
-        <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-5">
+        <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
               1
             </div>
             <div class="text-sm font-bold text-zinc-900 dark:text-white">
-              Drop credentials
+              Drop honorifics
             </div>
             <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-              <em>"Jane Doe, PhD"</em> → <em>"Jane Doe"</em>
+              <em>"Dr. Riley Calder"</em> → <em>"Riley Calder"</em>. Handles <em>Dr., Prof., Mr., Mrs., Ms., Rev., Hon.</em>, etc.
             </div>
           </div>
           <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
               2
+            </div>
+            <div class="text-sm font-bold text-zinc-900 dark:text-white">
+              Drop credentials
+            </div>
+            <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+              <em>"Riley Calder, PhD"</em> → <em>"Riley Calder"</em>
+            </div>
+          </div>
+          <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+              3
             </div>
             <div class="text-sm font-bold text-zinc-900 dark:text-white">
               Unify <code class="rounded bg-zinc-200/60 px-1 text-xs dark:bg-zinc-800">&amp;</code> ↔ <em>and</em>
@@ -1146,7 +1158,7 @@ export function highlightSegments(
           </div>
           <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
-              3
+              4
             </div>
             <div class="text-sm font-bold text-zinc-900 dark:text-white">
               Collapse whitespace
@@ -1157,7 +1169,7 @@ export function highlightSegments(
           </div>
           <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
-              4
+              5
             </div>
             <div class="text-sm font-bold text-zinc-900 dark:text-white">
               Trim
@@ -1168,28 +1180,28 @@ export function highlightSegments(
           </div>
           <div class="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
-              5
+              6
             </div>
             <div class="text-sm font-bold text-zinc-900 dark:text-white">
               Lower-case
             </div>
             <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-              <em>JANE DOE</em>, <em>jane doe</em>, <em>Jane Doe</em> all collapse to one.
+              <em>RILEY CALDER</em>, <em>riley calder</em>, <em>Riley Calder</em> all collapse to one.
             </div>
           </div>
         </div>
 
-        <!-- Before / after — eight raw inputs, one canonical key -->
+        <!-- Before / after — nine raw inputs, one canonical key -->
         <div class="mt-8 rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
           <div class="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">
             <UIcon
               name="i-lucide-arrow-right-left"
               class="size-3.5"
             />
-            Before / after — eight raw inputs, one canonical key
+            Before / after — nine raw inputs, one canonical key
           </div>
           <p class="mb-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-            Eight ways the same researcher's name might appear in the CMS (Content Management System). All eight resolve to a single key — so the Authors dropdown lists "Jane Carter" once, and the article count for that author is honest.
+            Nine ways the same researcher's name might appear in the CMS (Content Management System). All nine resolve to a single key — so the Authors dropdown lists "Riley Calder" once, and the article count for that author is honest.
           </p>
 
           <div class="overflow-x-auto rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
@@ -1210,52 +1222,58 @@ export function highlightSegments(
               </thead>
               <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Dr. Riley Calder"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">5 only (lowercase)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">1 (drop honorific) + 6 (lowercase)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"jane carter"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Riley Calder"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">6 only (lowercase)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"riley calder"</td>
+                  <td class="px-2 py-2 text-center text-zinc-400">→</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
                   <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">no-op (already canonical)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"JANE CARTER"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"RILEY CALDER"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">5 (case-fold)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">6 (case-fold)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter, PhD"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Riley Calder, PhD"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">1 (drop after first comma)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">2 (drop after first comma)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane Carter, PhD, MA"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Riley Calder, PhD, MA"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">1 (still drops everything from first comma)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">2 (still drops everything from first comma)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"  Jane Carter  "</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"  Riley Calder  "</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">4 (trim ends)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">5 (trim ends)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Jane  Carter"</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"Riley  Calder"</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">3 (collapse double space)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">4 (collapse double space)</td>
                 </tr>
                 <tr>
-                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"\nJane\tCarter "</td>
+                  <td class="px-4 py-2 font-mono text-xs text-zinc-900 dark:text-white">"\nRiley\tCalder "</td>
                   <td class="px-2 py-2 text-center text-zinc-400">→</td>
-                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"jane carter"</td>
-                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">3 + 4 (whitespace runs include \n and \t)</td>
+                  <td class="px-4 py-2 font-mono text-xs text-violet-700 dark:text-violet-300">"riley calder"</td>
+                  <td class="px-4 py-2 text-xs text-zinc-600 dark:text-zinc-400">4 + 5 (whitespace runs include \n and \t)</td>
                 </tr>
               </tbody>
             </table>
@@ -1281,27 +1299,27 @@ export function highlightSegments(
               <table class="w-full border-collapse text-xs">
                 <tbody class="divide-y divide-amber-500/20">
                   <tr>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley Calder"</td>
                     <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"John Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Robin Calder"</td>
                     <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">different given name</td>
                   </tr>
                   <tr>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley Calder"</td>
                     <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane A. Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley A. Calder"</td>
                     <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">middle initial preserved on purpose</td>
                   </tr>
                   <tr>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley Calder"</td>
                     <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"J. Carter"</td>
-                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">could be Jane, could be Jeff</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"R. Calder"</td>
+                    <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">could be Riley, could be Robin</td>
                   </tr>
                   <tr>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley Calder"</td>
                     <td class="px-2 py-1.5 text-center font-bold text-amber-700 dark:text-amber-400">≠</td>
-                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Jane Carter & Associates"</td>
+                    <td class="px-3 py-1.5 font-mono text-zinc-900 dark:text-white">"Riley Calder & Associates"</td>
                     <td class="px-3 py-1.5 text-amber-900/80 dark:text-amber-100/80">a person vs. a firm — keep separate</td>
                   </tr>
                 </tbody>
