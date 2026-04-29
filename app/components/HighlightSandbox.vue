@@ -107,15 +107,13 @@ function isChipActive(chip: string) {
       <h3 class="text-base font-semibold leading-snug text-zinc-900 dark:text-white">
         <template
           v-for="(seg, i) in titleSegments"
-          :key="`t${i}`"
+          :key="`t-${i}`"
         >
           <mark
             v-if="seg.match"
             class="rounded-sm bg-primary/40 px-0.5 text-inherit"
           >{{ seg.text }}</mark>
-          <template v-else>
-            {{ seg.text }}
-          </template>
+          <span v-else>{{ seg.text }}</span>
         </template>
       </h3>
       <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
@@ -124,15 +122,13 @@ function isChipActive(chip: string) {
       <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         <template
           v-for="(seg, i) in abstractSegments"
-          :key="`a${i}`"
+          :key="`a-${i}`"
         >
           <mark
             v-if="seg.match"
             class="rounded-sm bg-primary/40 px-0.5 text-inherit"
           >{{ seg.text }}</mark>
-          <template v-else>
-            {{ seg.text }}
-          </template>
+          <span v-else>{{ seg.text }}</span>
         </template>
       </p>
     </article>
