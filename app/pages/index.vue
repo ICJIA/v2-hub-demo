@@ -1367,6 +1367,64 @@ function showExamples(typeValue: string) {
           </div>
         </div>
 
+        <!-- Why SEO matters. A lot. — earned, 301 FAQ, catalog-as-entry-point -->
+        <div class="mb-8 rounded-2xl border-2 border-amber-400 bg-amber-50 p-6 dark:border-amber-500/40 dark:bg-amber-500/5">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">
+            <UIcon
+              name="i-lucide-trending-up"
+              class="size-3.5"
+            />
+            Why SEO matters. A lot.
+          </div>
+          <h3 class="mb-4 text-xl font-extrabold leading-snug text-zinc-900 sm:text-2xl dark:text-white">
+            SEO is the difference between research being <span class="text-emerald-700 dark:text-emerald-400">found</span> and research being <span class="text-red-700 dark:text-red-400">invisible.</span>
+          </h3>
+
+          <div class="space-y-4 text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
+            <p>
+              <strong class="text-zinc-900 dark:text-white">36,800 visits over twelve months.</strong> Most of them arrived via Google. The hub doesn't run ads, doesn't buy traffic, doesn't email-blast. Visitors land on it because Google decided <em>"this answers your question."</em> Take SEO away and that traffic doesn't reroute somewhere else — it disappears. The articles still exist; only the readers who already know the URL can find them.
+            </p>
+
+            <p>
+              <strong class="text-zinc-900 dark:text-white">SEO is earned, not given. Slowly. You can't shortcut it.</strong> A search ranking is the cumulative product of years of signal: when the URL was first crawled, how often it gets clicked vs. shown, how long readers stay, how many other sites link to it, how many recrawls confirm it's still alive. Google trusts a URL that has been "the answer" for years. It doesn't trust a brand-new URL — even when the content is byte-for-byte identical. <strong class="text-zinc-900 dark:text-white">Hub 1.0's most-read articles average many years of accumulated trust.</strong> Reset the URL and the clock starts over at zero. There's no setting to import the old signal — it doesn't transfer; it gets re-earned, slowly, if at all.
+            </p>
+
+            <!-- 301 FAQ callout -->
+            <div class="rounded-xl border-2 border-amber-300/70 bg-white p-5 dark:border-amber-500/40 dark:bg-zinc-900">
+              <div class="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-[0.12em] text-amber-700 dark:text-amber-300">
+                <UIcon
+                  name="i-lucide-help-circle"
+                  class="size-3.5"
+                />
+                FAQ
+              </div>
+              <h4 class="mb-2 text-base font-bold text-zinc-900 dark:text-white">
+                "What about 301 permanent redirects? Don't those preserve SEO?"
+              </h4>
+              <p class="mb-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <strong class="text-zinc-900 dark:text-white">Mostly. But not entirely.</strong> A 301 ("moved permanently") tells search engines to forward most of a URL's accumulated equity to the new URL. Google's official guidance says full ranking signal is preserved through a 301 — but SEO professionals measuring real sites consistently observe <strong class="text-amber-700 dark:text-amber-400">5–15% signal loss in practice</strong>, especially for older URLs and shorter-tail search terms. Across hundreds of articles, years of compounding signal, and AI-assistant citations that may or may not follow the redirect, that's not nothing.
+              </p>
+              <p class="mb-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <strong class="text-zinc-900 dark:text-white">301s are a damage-mitigation tool, not a get-out-of-jail-free card.</strong> They are <em class="text-zinc-900 dark:text-white">strictly better</em> than letting a URL 404 — that's catastrophic loss. They are <em class="text-zinc-900 dark:text-white">not better</em> than keeping the URL stable in the first place. The cheapest 301 is the one you don't have to write.
+              </p>
+              <div class="flex items-start gap-2 rounded-lg border border-amber-400/50 bg-amber-100/50 px-3 py-2 text-xs leading-relaxed text-zinc-700 dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-zinc-300">
+                <UIcon
+                  name="i-lucide-info"
+                  class="mt-0.5 size-3.5 shrink-0 text-amber-700 dark:text-amber-400"
+                />
+                <span>
+                  <strong class="text-zinc-900 dark:text-white">Plain-English ranking:</strong>
+                  Stable URL (no redirect) → 301 redirect (some leak) → 302 temporary redirect (more leak) → 404 (full loss). Hub 2.0 picks the leftmost option for every existing article.
+                </span>
+              </div>
+            </div>
+
+            <p>
+              <strong class="text-zinc-900 dark:text-white">For a research catalog, SEO <em>is</em> the catalog.</strong> Most hub readers don't browse the homepage — they search. They Google "<em>SAFE-T Act ICJIA</em>" or "<em>juvenile justice Illinois evaluation</em>" and land directly on the matching article. The hub's homepage is one entry point of many. <strong class="text-zinc-900 dark:text-white">Every article URL is its own entry point</strong> — indexed by every search engine, cited by ChatGPT (2,600 visits/year on its own), bookmarked by researchers, embedded in academic papers and government reports. Lose SEO and you don't lose the homepage; you lose the hundreds of doors people use to find specific work. A research catalog without SEO is a library where the books exist but the aisles are sealed off.
+            </p>
+          </div>
+        </div>
+
         <!-- The summary===article connection -->
         <div class="rounded-2xl border border-amber-300/60 bg-amber-50 px-6 py-5 dark:border-amber-500/20 dark:bg-amber-500/5">
           <div class="flex gap-3">
