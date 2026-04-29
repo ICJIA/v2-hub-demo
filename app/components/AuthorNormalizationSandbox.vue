@@ -41,7 +41,7 @@ const SAMPLE_AUTHORS: SampleAuthor[] = [
 
 const PART_1_VARIANTS = SAMPLE_AUTHORS[0]!.variants
 
-const part1CanonicalLabel = (() => {
+const part1CanonicalLabel = computed(() => {
   const counts = new Map<string, Map<string, number>>()
   for (const name of PART_1_VARIANTS) {
     const k = authorKey(name)
@@ -60,7 +60,7 @@ const part1CanonicalLabel = (() => {
     }
   }
   return bestName
-})()
+})
 
 const selectedAuthorIndex = ref(0)
 const selectedAuthor = computed(() => SAMPLE_AUTHORS[selectedAuthorIndex.value]!)
@@ -88,6 +88,13 @@ function isVariantActive(variant: string) {
 
 function visibleWhitespace(s: string): string {
   return s.replaceAll(' ', '·')
+}
+
+function visibleAbnormalWhitespace(s: string): string {
+  return s
+    .replace(/^\s+/, m => '·'.repeat(m.length))
+    .replace(/\s+$/, m => '·'.repeat(m.length))
+    .replace(/  +/g, m => '·'.repeat(m.length))
 }
 </script>
 
@@ -126,7 +133,7 @@ function visibleWhitespace(s: string): string {
             :key="i"
             class="border-b border-zinc-100 px-4 py-2 font-mono text-xs text-zinc-700 last:border-b-0 dark:border-zinc-800 dark:text-zinc-300"
           >
-            {{ visibleWhitespace(v) }}
+            {{ visibleAbnormalWhitespace(v) }}
           </li>
         </ul>
         <div class="border-t border-zinc-200 px-4 py-2 text-[11px] text-zinc-500 dark:border-zinc-700 dark:text-zinc-500">
@@ -199,7 +206,7 @@ function visibleWhitespace(s: string): string {
           : 'border-zinc-300 bg-white text-zinc-700 hover:border-violet-500/60 hover:bg-violet-500/10 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300'"
         @click="userInput = variant"
       >
-        {{ visibleWhitespace(variant) }}
+        {{ visibleAbnormalWhitespace(variant) }}
       </button>
     </div>
 
