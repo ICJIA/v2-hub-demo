@@ -6,61 +6,132 @@ interface SampleAuthor {
   variants: string[]
 }
 
-const SAMPLE_AUTHORS: SampleAuthor[] = [
-  {
-    canonical: 'Jane Carter',
-    variants: [
-      'Jane Carter',
-      'Jane Carter, Ph.D',
-      'Jane Carter, PhD',
-      'Jane Carter, M.A., M.P.A.',
-      'JANE CARTER',
-      '  Jane  Carter  ',
-      'Jane Carter, MSW, LCSW'
-    ]
-  },
-  {
-    canonical: 'Marcus Reynolds',
-    variants: [
-      'Marcus Reynolds',
-      'Marcus Reynolds, M.D.',
-      'Marcus Reynolds, JD, MPA',
-      'marcus reynolds'
-    ]
-  },
-  {
-    canonical: 'Forensics & Policy Lab',
-    variants: [
-      'Forensics & Policy Lab',
-      'Forensics and Policy Lab',
-      'Forensics  &  Policy Lab',
-      'forensics and policy lab'
-    ]
-  }
+interface CmsAuthorRow {
+  name: string
+  articleCount: number
+}
+
+const SAMPLE_CMS_AUTHORS: CmsAuthorRow[] = [
+  { name: 'Riley Calder', articleCount: 3 },
+  { name: 'Dr. Riley Calder', articleCount: 2 },
+  { name: 'Riley Calder, Ph.D', articleCount: 2 },
+  { name: 'Riley Calder, PhD', articleCount: 1 },
+  { name: 'Riley Calder, M.A., M.P.A.', articleCount: 1 },
+  { name: 'RILEY CALDER', articleCount: 1 },
+  { name: '  Riley  Calder  ', articleCount: 1 },
+  { name: 'Riley Calder, MSW, LCSW', articleCount: 1 },
+  { name: 'Dr. Riley Calder, Ph.D.', articleCount: 1 },
+  { name: 'Morgan Whitcomb', articleCount: 4 },
+  { name: 'Morgan Whitcomb, M.D.', articleCount: 2 },
+  { name: 'Morgan Whitcomb, JD, MPA', articleCount: 1 },
+  { name: 'morgan whitcomb', articleCount: 1 },
+  { name: 'Dr. Morgan Whitcomb', articleCount: 1 },
+  { name: 'Behavioral Outcomes & Research Group', articleCount: 3 },
+  { name: 'Behavioral Outcomes and Research Group', articleCount: 2 },
+  { name: 'Behavioral Outcomes  &  Research Group', articleCount: 1 },
+  { name: 'behavioral outcomes and research group', articleCount: 1 },
+  { name: 'Center for Public Safety Research and Analysis', articleCount: 4 },
+  { name: 'Center for Public Safety Research & Analysis', articleCount: 2 }
 ]
 
-const PART_1_VARIANTS = SAMPLE_AUTHORS[0]!.variants
+const totalRawEntries = SAMPLE_CMS_AUTHORS.length
+const totalArticles = SAMPLE_CMS_AUTHORS.reduce((sum, r) => sum + r.articleCount, 0)
 
-const part1CanonicalLabel = computed(() => {
-  const counts = new Map<string, Map<string, number>>()
-  for (const name of PART_1_VARIANTS) {
-    const k = authorKey(name)
-    const variants = counts.get(k) ?? new Map<string, number>()
-    variants.set(name, (variants.get(name) ?? 0) + 1)
-    counts.set(k, variants)
+interface NormalizedGroup {
+  key: string
+  displayName: string
+  totalArticles: number
+  spellingCount: number
+}
+
+const normalizedGroups = computed<NormalizedGroup[]>(() => {
+  const groups = new Map<string, { variants: Map<string, number>, totalArticles: number }>()
+  for (const row of SAMPLE_CMS_AUTHORS) {
+    const k = authorKey(row.name)
+    if (!groups.has(k)) groups.set(k, { variants: new Map(), totalArticles: 0 })
+    const g = groups.get(k)!
+    g.variants.set(row.name, (g.variants.get(row.name) ?? 0) + row.articleCount)
+    g.totalArticles += row.articleCount
   }
-  let bestName = ''
-  let bestCount = -1
-  for (const [, variants] of counts) {
-    for (const [name, count] of variants) {
+  const out: NormalizedGroup[] = []
+  for (const [key, g] of groups) {
+    let bestName = ''
+    let bestCount = -1
+    for (const [name, count] of g.variants) {
       if (count > bestCount || (count === bestCount && name.length < bestName.length)) {
         bestName = name
         bestCount = count
       }
     }
+    out.push({ key, displayName: bestName, totalArticles: g.totalArticles, spellingCount: g.variants.size })
   }
-  return bestName
+  out.sort((a, b) => a.displayName.localeCompare(b.displayName))
+  return out
 })
+
+const rawDropdownItems = computed(() => {
+  return [...SAMPLE_CMS_AUTHORS]
+    .sort((a, b) => a.name.trim().localeCompare(b.name.trim(), 'en', { sensitivity: 'base' }))
+    .map(row => ({
+      label: `${visibleAbnormalWhitespace(row.name)} (${row.articleCount})`,
+      value: row.name
+    }))
+})
+
+const normalizedDropdownItems = computed(() => {
+  return normalizedGroups.value.map(g => ({
+    label: `${g.displayName} (${g.totalArticles} · merged from ${g.spellingCount})`,
+    value: g.key
+  }))
+})
+
+const rawSelected = ref<string | undefined>(undefined)
+const normalizedSelected = ref<string | undefined>(undefined)
+
+const rawSelectedCanonical = computed(() => {
+  return rawSelected.value ? authorKey(rawSelected.value) : ''
+})
+
+const normalizedSelectedDetails = computed(() => {
+  if (!normalizedSelected.value) return null
+  return normalizedGroups.value.find(g => g.key === normalizedSelected.value) ?? null
+})
+
+const SAMPLE_AUTHORS: SampleAuthor[] = [
+  {
+    canonical: 'Riley Calder',
+    variants: [
+      'Riley Calder',
+      'Dr. Riley Calder',
+      'Riley Calder, Ph.D',
+      'Riley Calder, PhD',
+      'Riley Calder, M.A., M.P.A.',
+      'RILEY CALDER',
+      '  Riley  Calder  ',
+      'Riley Calder, MSW, LCSW',
+      'Dr. Riley Calder, Ph.D.'
+    ]
+  },
+  {
+    canonical: 'Morgan Whitcomb',
+    variants: [
+      'Morgan Whitcomb',
+      'Dr. Morgan Whitcomb',
+      'Morgan Whitcomb, M.D.',
+      'Morgan Whitcomb, JD, MPA',
+      'morgan whitcomb'
+    ]
+  },
+  {
+    canonical: 'Behavioral Outcomes & Research Group',
+    variants: [
+      'Behavioral Outcomes & Research Group',
+      'Behavioral Outcomes and Research Group',
+      'Behavioral Outcomes  &  Research Group',
+      'behavioral outcomes and research group'
+    ]
+  }
+]
 
 const selectedAuthorIndex = ref(0)
 const selectedAuthor = computed(() => SAMPLE_AUTHORS[selectedAuthorIndex.value]!)
@@ -113,49 +184,73 @@ function visibleAbnormalWhitespace(s: string): string {
     </div>
 
     <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-      Part 1 — Same dropdown, two different worlds
+      Part 1 — Same Authors dropdown, before vs. after normalization
     </div>
-    <div class="mb-8 grid gap-3 sm:grid-cols-2">
-      <div class="rounded-xl border border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900">
-        <div class="border-b border-zinc-200 px-4 py-2.5 text-sm font-semibold text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
+    <p class="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+      Same dataset — <strong class="text-zinc-900 dark:text-white">{{ totalArticles }} articles</strong> by 4 distinct authors — typed into the CMS with messy spellings. Open both dropdowns. Same {{ totalArticles }} articles. Without normalization, that's <strong class="text-zinc-900 dark:text-white">{{ totalRawEntries }} entries</strong> to scroll through. With normalization, it's <strong class="text-violet-700 dark:text-violet-400">{{ normalizedGroups.length }} entries</strong>.
+    </p>
+
+    <div class="mb-8 grid gap-4 sm:grid-cols-2">
+      <div>
+        <div class="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-zinc-300">
           Dropdown — without normalization
         </div>
-        <ul>
-          <li
-            v-for="(v, i) in PART_1_VARIANTS"
-            :key="i"
-            class="border-b border-zinc-100 px-4 py-2 font-mono text-xs text-zinc-700 last:border-b-0 dark:border-zinc-800 dark:text-zinc-300"
-          >
-            {{ visibleAbnormalWhitespace(v) }}
-          </li>
-        </ul>
-        <div class="border-t border-zinc-200 px-4 py-2 text-[11px] text-zinc-500 dark:border-zinc-700 dark:text-zinc-500">
-          7 entries · same person 😕
+        <USelect
+          v-model="rawSelected"
+          :items="rawDropdownItems"
+          :placeholder="`All authors (${totalRawEntries} entries) ▾`"
+          class="w-full"
+        />
+        <div class="mt-2 text-[11px] text-zinc-600 dark:text-zinc-400">
+          <strong class="text-zinc-900 dark:text-white">{{ totalRawEntries }} raw entries</strong> · {{ totalArticles }} articles · same author appears multiple times 😕
+        </div>
+        <div
+          v-if="rawSelected"
+          aria-live="polite"
+          class="mt-2 rounded-md border border-zinc-200 bg-white p-2 text-[11px] dark:border-zinc-800 dark:bg-zinc-900"
+        >
+          <div class="text-zinc-500 dark:text-zinc-500">
+            You picked the raw spelling:
+          </div>
+          <code class="mt-0.5 block whitespace-pre rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">"{{ visibleAbnormalWhitespace(rawSelected) }}"</code>
+          <div class="mt-1 text-zinc-500 dark:text-zinc-500">
+            Its canonical key →
+            <code class="rounded bg-violet-500/15 px-1.5 py-0.5 font-mono text-violet-700 dark:text-violet-300">{{ rawSelectedCanonical }}</code>
+          </div>
         </div>
       </div>
 
-      <div class="rounded-xl border border-violet-500 bg-white dark:bg-zinc-900">
-        <div class="border-b border-violet-500/30 px-4 py-2.5 text-sm font-semibold text-violet-700 dark:text-violet-300">
+      <div>
+        <div class="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-violet-700 dark:text-violet-300">
           Dropdown — with normalization
         </div>
-        <ul>
-          <li class="flex items-center justify-between gap-3 px-4 py-2 text-sm">
-            <span class="font-semibold text-zinc-900 dark:text-white">
-              {{ part1CanonicalLabel }}
-            </span>
-            <span class="rounded-full bg-violet-500/20 px-2 py-0.5 text-[10px] font-bold text-violet-700 dark:text-violet-300">
-              7 articles
-            </span>
-          </li>
-        </ul>
-        <div class="border-t border-violet-500/30 px-4 py-2 text-[11px] text-violet-600 dark:text-violet-400">
-          1 entry · ✓ canonical
+        <USelect
+          v-model="normalizedSelected"
+          :items="normalizedDropdownItems"
+          :placeholder="`All authors (${normalizedGroups.length} entries) ▾`"
+          class="w-full"
+        />
+        <div class="mt-2 text-[11px] text-violet-700 dark:text-violet-400">
+          <strong class="text-violet-900 dark:text-white">{{ normalizedGroups.length }} canonical entries</strong> · {{ totalArticles }} articles · ✓ one row per author
+        </div>
+        <div
+          v-if="normalizedSelectedDetails"
+          aria-live="polite"
+          class="mt-2 rounded-md border border-violet-300/60 bg-white p-2 text-[11px] dark:border-violet-500/40 dark:bg-zinc-900"
+        >
+          <div class="text-violet-700 dark:text-violet-400">
+            You picked: <strong class="text-zinc-900 dark:text-white">{{ normalizedSelectedDetails.displayName }}</strong>
+          </div>
+          <div class="mt-1 text-zinc-600 dark:text-zinc-400">
+            <strong class="text-zinc-900 dark:text-white">{{ normalizedSelectedDetails.totalArticles }} articles</strong> · merged from {{ normalizedSelectedDetails.spellingCount }} raw spellings · canonical key:
+            <code class="rounded bg-violet-500/15 px-1.5 py-0.5 font-mono text-violet-700 dark:text-violet-300">{{ normalizedSelectedDetails.key }}</code>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-      Part 2 — Type any name, watch the 5 steps
+      Part 2 — Type any name, watch the 6 steps
     </div>
 
     <div class="mb-3 flex flex-wrap items-center gap-2 text-xs">

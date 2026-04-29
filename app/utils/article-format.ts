@@ -48,6 +48,8 @@ export interface AuthorKeyStep {
 export function authorKeySteps(name: string): { steps: AuthorKeyStep[], key: string } {
   const steps: AuthorKeyStep[] = []
   let v = name
+  v = v.replace(/^(Dr|Prof|Professor|Mr|Mrs|Ms|Miss|Rev|Reverend|Hon|Honorable|Sir|Dame|Lord|Lady)(\.\s*|\s+)/i, '')
+  steps.push({ value: v, label: 'Drop honorifics' })
   v = v.replace(/,.*$/, '')
   steps.push({ value: v, label: 'Drop credentials' })
   v = v.replace(/\s*&\s*/g, ' and ')

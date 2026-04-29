@@ -190,7 +190,7 @@ function showExamples(typeValue: string) {
               Solution 3 — Author Names
             </div>
             <p class="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Five small text-cleaning steps merge every spelling variant onto a single matched-up entry. One author, one count, one click.
+              Six small text-cleaning steps merge every spelling variant onto a single matched-up entry. One author, one count, one click.
             </p>
             <div class="mt-3 text-xs font-semibold text-violet-700 group-hover:underline dark:text-violet-400">
               Jump to author names ↓
@@ -2033,7 +2033,7 @@ function showExamples(typeValue: string) {
                 Examining the Effectiveness of Juvenile Diversion in Cook County
               </h3>
               <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-                By Jane Carter · Sept 2024
+                By Riley Calder · Sept 2024
               </p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 This study evaluates outcomes from juvenile diversion programs across Cook County, comparing recidivism rates among juvenile participants who completed diversion versus those processed through the traditional juvenile court system.
@@ -2085,7 +2085,7 @@ function showExamples(typeValue: string) {
                 Examining the Effectiveness of <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">Juvenile</mark> Diversion in Cook County
               </h3>
               <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-500">
-                By Jane Carter · Sept 2024
+                By Riley Calder · Sept 2024
               </p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 This study evaluates outcomes from <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> diversion programs across Cook County, comparing recidivism rates among <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> participants who completed diversion versus those processed through the traditional <mark class="rounded-sm bg-primary/40 px-0.5 text-inherit">juvenile</mark> court system.
@@ -2247,7 +2247,7 @@ function showExamples(typeValue: string) {
             <br>names.
           </h2>
           <p class="mt-5 max-w-2xl text-xl font-bold leading-snug text-zinc-700 sm:text-2xl dark:text-zinc-300">
-            Same person, listed <span class="text-violet-700 dark:text-violet-400">seven different ways.</span>
+            Same person, listed <span class="text-violet-700 dark:text-violet-400">eight different ways.</span>
           </p>
           <p class="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             <strong class="text-zinc-900 dark:text-white">This came up in a meeting.</strong> An author's name shows up in the dropdown three or four different ways, the same person fragments across entries, the count looks wrong. Below: how we fixed it, and why the fix works.
@@ -2263,33 +2263,36 @@ function showExamples(typeValue: string) {
             The problem
           </div>
           <p class="mb-5 max-w-2xl text-base leading-relaxed text-zinc-700 sm:text-lg dark:text-zinc-300">
-            Authors come out of the CMS under multiple labels — credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list <strong class="text-zinc-900 dark:text-white">one person seven times</strong>.
+            Authors come out of the CMS under multiple labels — honorifics, credentials, casing, stray whitespace, "&" versus "and." Without a fix, the Authors dropdown would list <strong class="text-zinc-900 dark:text-white">one person eight times</strong>.
           </p>
           <div class="rounded-2xl border border-zinc-300 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900">
             <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
-              What the CMS delivers — seven entries, one researcher
+              What the CMS delivers — eight entries, one researcher
             </div>
             <ul class="grid gap-2 text-sm text-zinc-700 sm:grid-cols-2 dark:text-zinc-300">
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
-                Jane Carter
+                Riley Calder
+              </li>
+              <li class="rounded border border-zinc-200 bg-white px-3 py-2 italic dark:border-zinc-700 dark:bg-zinc-950">
+                Dr. Riley Calder
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
-                Jane Carter, Ph.D
+                Riley Calder, Ph.D
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
-                Jane Carter, PhD
+                Riley Calder, PhD
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
-                Jane Carter, M.A., M.P.A.
+                Riley Calder, M.A., M.P.A.
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 font-bold dark:border-zinc-700 dark:bg-zinc-950">
-                JANE CARTER
+                RILEY CALDER
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 font-mono text-xs dark:border-zinc-700 dark:bg-zinc-950">
-                ··Jane  Carter··
+                ··Riley  Calder··
               </li>
               <li class="rounded border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-950">
-                Jane Carter, MSW, LCSW
+                Riley Calder, MSW, LCSW
               </li>
             </ul>
           </div>
@@ -2324,15 +2327,15 @@ function showExamples(typeValue: string) {
           </p>
           <div class="rounded-2xl border-2 border-violet-500 bg-violet-500/10 p-5">
             <div class="mb-3 text-xs font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">
-              What the filter shows — one entry, all seven variants matched
+              What the filter shows — one entry, all eight variants matched
             </div>
             <div class="rounded-xl border border-violet-500/40 bg-white p-5 shadow-sm dark:bg-zinc-900">
               <div class="flex items-center justify-between gap-3">
-                <span class="text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Jane Carter</span>
-                <span class="rounded-full bg-violet-500/20 px-2.5 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300">7 articles</span>
+                <span class="text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">Riley Calder</span>
+                <span class="rounded-full bg-violet-500/20 px-2.5 py-0.5 text-xs font-bold text-violet-700 dark:text-violet-300">8 articles</span>
               </div>
               <div class="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
-                canonical key: <code class="text-violet-700 dark:text-violet-300">jane carter</code>
+                canonical key: <code class="text-violet-700 dark:text-violet-300">riley calder</code>
               </div>
             </div>
             <p class="mt-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
@@ -2343,25 +2346,25 @@ function showExamples(typeValue: string) {
 
         <AuthorNormalizationSandbox />
 
-        <!-- The five steps -->
+        <!-- The six steps -->
         <div class="mt-12">
           <div class="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
             <UIcon
               name="i-lucide-list-ordered"
               class="size-4"
             />
-            Five normalization steps, in order
+            Six normalization steps, in order
           </div>
-          <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-5">
+          <div class="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
               <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
                 1
               </div>
               <div class="text-sm font-bold text-zinc-900 dark:text-white">
-                Drop credentials
+                Drop honorifics
               </div>
               <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                Cut everything after the first comma. <em>Jane Carter, PhD</em> → <em>Jane Carter</em>.
+                Strip leading prefixes. <em>Dr. Riley Calder</em> → <em>Riley Calder</em>. Handles <em>Dr., Prof., Mr., Mrs., Ms., Rev., Hon.</em>, etc.
               </div>
             </div>
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
@@ -2369,10 +2372,10 @@ function showExamples(typeValue: string) {
                 2
               </div>
               <div class="text-sm font-bold text-zinc-900 dark:text-white">
-                Unify ampersands
+                Drop credentials
               </div>
               <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                <em>Forensics &amp; Policy Lab</em> → <em>Forensics and Policy Lab</em>.
+                Cut everything after the first comma. <em>Riley Calder, PhD</em> → <em>Riley Calder</em>.
               </div>
             </div>
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
@@ -2380,10 +2383,10 @@ function showExamples(typeValue: string) {
                 3
               </div>
               <div class="text-sm font-bold text-zinc-900 dark:text-white">
-                Collapse spaces
+                Unify ampersands
               </div>
               <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                <em>Jane &nbsp;&nbsp;Carter</em> (double space) → <em>Jane Carter</em>.
+                <em>Behavioral Outcomes &amp; Research Group</em> → <em>Behavioral Outcomes and Research Group</em>.
               </div>
             </div>
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
@@ -2391,10 +2394,10 @@ function showExamples(typeValue: string) {
                 4
               </div>
               <div class="text-sm font-bold text-zinc-900 dark:text-white">
-                Trim whitespace
+                Collapse spaces
               </div>
               <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                <em>"  Jane Carter "</em> → <em>"Jane Carter"</em>.
+                <em>Riley &nbsp;&nbsp;Calder</em> (double space) → <em>Riley Calder</em>.
               </div>
             </div>
             <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
@@ -2402,15 +2405,26 @@ function showExamples(typeValue: string) {
                 5
               </div>
               <div class="text-sm font-bold text-zinc-900 dark:text-white">
+                Trim whitespace
+              </div>
+              <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <em>"  Riley Calder "</em> → <em>"Riley Calder"</em>.
+              </div>
+            </div>
+            <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+              <div class="mb-2 flex size-7 items-center justify-center rounded-lg bg-violet-500/15 text-sm font-black text-violet-700 dark:text-violet-300">
+                6
+              </div>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white">
                 Lowercase
               </div>
               <div class="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                <em>JANE CARTER</em> → <em>jane carter</em>.
+                <em>RILEY CALDER</em> → <em>riley calder</em>.
               </div>
             </div>
           </div>
           <p class="mt-5 max-w-3xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            The display name shown in the dropdown is the most-frequent variant in the dataset (ties go to the shortest, which usually means the clean form without credentials). The same approach merges the five canonical ICJIA Centers across the "&" / "and" split.
+            The display name shown in the dropdown is the most-frequent variant in the dataset (ties go to the shortest, which usually means the clean form without honorifics or credentials). The same approach merges the five canonical ICJIA Centers across the "&" / "and" split.
           </p>
 
           <!-- PSEUDOCODE — for developers (collapsible, default hidden) -->
@@ -2428,33 +2442,37 @@ function showExamples(typeValue: string) {
             </summary>
             <div class="mt-4">
             <p class="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              Five chained string operations, applied in order. Same input → same canonical key. Two authors collide on the same key only if they'd already collide as humans reading the rendered name.
+              Six chained string operations, applied in order. Same input → same canonical key. Two authors collide on the same key only if they'd already collide as humans reading the rendered name.
             </p>
             <pre class="overflow-x-auto rounded-2xl border border-zinc-700 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-100 sm:text-sm"><code><span class="text-violet-300">function</span> <span class="text-sky-300">authorKey</span>(name):
-    <span class="text-zinc-500"># 1. Drop credentials — cut everything after the first comma</span>
-    <span class="text-zinc-500">#    "Jane Carter, Ph.D" → "Jane Carter"</span>
+    <span class="text-zinc-500"># 1. Drop honorifics — strip leading prefixes (Dr., Prof., Mr., Mrs., Ms., Rev., Hon., etc.)</span>
+    <span class="text-zinc-500">#    "Dr. Riley Calder" → "Riley Calder"</span>
+    name ← regex_replace(name, <span class="text-amber-300">/^(Dr|Prof|Mr|Mrs|Ms|Miss|Rev|Hon|Sir|Dame|Lord|Lady)(\.\s*|\s+)/i</span>, <span class="text-emerald-300">""</span>)
+
+    <span class="text-zinc-500"># 2. Drop credentials — cut everything after the first comma</span>
+    <span class="text-zinc-500">#    "Riley Calder, Ph.D" → "Riley Calder"</span>
     name ← regex_replace(name, <span class="text-amber-300">/,.*$/</span>, <span class="text-emerald-300">""</span>)
 
-    <span class="text-zinc-500"># 2. Unify ampersands — "&amp;" (with any spaces around it) becomes " and "</span>
-    <span class="text-zinc-500">#    "Forensics &amp; Policy Lab" → "Forensics and Policy Lab"</span>
+    <span class="text-zinc-500"># 3. Unify ampersands — "&amp;" (with any spaces around it) becomes " and "</span>
+    <span class="text-zinc-500">#    "Behavioral Outcomes &amp; Research Group" → "Behavioral Outcomes and Research Group"</span>
     name ← regex_replace(name, <span class="text-amber-300">/\s*&amp;\s*/g</span>, <span class="text-emerald-300">" and "</span>)
 
-    <span class="text-zinc-500"># 3. Collapse runs of internal whitespace into a single space</span>
-    <span class="text-zinc-500">#    "Jane   Carter" → "Jane Carter"</span>
+    <span class="text-zinc-500"># 4. Collapse runs of internal whitespace into a single space</span>
+    <span class="text-zinc-500">#    "Riley   Calder" → "Riley Calder"</span>
     name ← regex_replace(name, <span class="text-amber-300">/\s+/g</span>, <span class="text-emerald-300">" "</span>)
 
-    <span class="text-zinc-500"># 4. Trim leading and trailing whitespace</span>
-    <span class="text-zinc-500">#    "  Jane Carter  " → "Jane Carter"</span>
+    <span class="text-zinc-500"># 5. Trim leading and trailing whitespace</span>
+    <span class="text-zinc-500">#    "  Riley Calder  " → "Riley Calder"</span>
     name ← trim(name)
 
-    <span class="text-zinc-500"># 5. Lowercase for case-insensitive matching</span>
-    <span class="text-zinc-500">#    "JANE CARTER" → "jane carter"</span>
+    <span class="text-zinc-500"># 6. Lowercase for case-insensitive matching</span>
+    <span class="text-zinc-500">#    "RILEY CALDER" → "riley calder"</span>
     name ← lowercase(name)
 
     <span class="text-violet-300">return</span> name   <span class="text-zinc-500">// the canonical key</span>
 </code></pre>
             <p class="mt-3 max-w-3xl text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Steps 1 and 2 normalize <em>meaning</em> (credentials are noise; "&amp;" and "and" are the same word). Steps 3 and 4 normalize <em>spacing</em>. Step 5 normalizes <em>case</em>. Order matters: dropping credentials before lowercasing keeps the comma-cut deterministic regardless of input casing.
+              Steps 1, 2, and 3 normalize <em>meaning</em> (honorifics and credentials are noise; "&amp;" and "and" are the same word). Steps 4 and 5 normalize <em>spacing</em>. Step 6 normalizes <em>case</em>. Order matters: dropping honorifics first lets the comma-cut work cleanly on whatever's left, regardless of how the name was prefixed.
             </p>
             </div>
           </details>

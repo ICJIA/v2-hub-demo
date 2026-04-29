@@ -3,7 +3,7 @@ import { highlightSegments } from '~/utils/article-format'
 
 const SAMPLE_ARTICLE = {
   title: 'Examining the Effectiveness of Juvenile Diversion in Cook County',
-  byline: 'By Jane Carter · Sept 2024',
+  byline: 'By Riley Calder · Sept 2024',
   abstract: 'This study evaluates outcomes from juvenile diversion programs across Cook County, comparing recidivism rates among juvenile participants who completed diversion versus those processed through the traditional juvenile court system. Researchers tracked 1,200 first-time offenders over thirty months, controlling for offense severity, age at first contact, and prior school attendance. Findings indicate that juveniles who completed diversion were 43 percent less likely to reoffend within twelve months compared to peers routed through traditional adjudication. The recidivism gap widened over the full thirty-month window. Cook County\'s diversion model — combining a structured intake assessment, restorative-justice conferences, and community-based mentoring — delivered the largest benefit to younger juveniles with no prior contacts.'
 }
 
