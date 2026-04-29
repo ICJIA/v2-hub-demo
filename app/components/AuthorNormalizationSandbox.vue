@@ -116,18 +116,11 @@ function visibleAbnormalWhitespace(s: string): string {
       Part 1 — Same dropdown, two different worlds
     </div>
     <div class="mb-8 grid gap-3 sm:grid-cols-2">
-      <details
-        open
-        class="group rounded-xl border border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900"
-      >
-        <summary class="flex cursor-pointer items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-zinc-700 [&::-webkit-details-marker]:hidden dark:text-zinc-300">
-          <span>Author — raw CMS</span>
-          <UIcon
-            name="i-lucide-chevron-down"
-            class="size-4 transition-transform group-open:rotate-180"
-          />
-        </summary>
-        <ul class="border-t border-zinc-200 dark:border-zinc-700">
+      <div class="rounded-xl border border-zinc-300 bg-white dark:border-zinc-700 dark:bg-zinc-900">
+        <div class="border-b border-zinc-200 px-4 py-2.5 text-sm font-semibold text-zinc-700 dark:border-zinc-700 dark:text-zinc-300">
+          Dropdown — without normalization
+        </div>
+        <ul>
           <li
             v-for="(v, i) in PART_1_VARIANTS"
             :key="i"
@@ -139,20 +132,13 @@ function visibleAbnormalWhitespace(s: string): string {
         <div class="border-t border-zinc-200 px-4 py-2 text-[11px] text-zinc-500 dark:border-zinc-700 dark:text-zinc-500">
           7 entries · same person 😕
         </div>
-      </details>
+      </div>
 
-      <details
-        open
-        class="group rounded-xl border border-violet-500 bg-white dark:bg-zinc-900"
-      >
-        <summary class="flex cursor-pointer items-center justify-between gap-2 px-4 py-2.5 text-sm font-semibold text-violet-700 [&::-webkit-details-marker]:hidden dark:text-violet-300">
-          <span>Author — normalized</span>
-          <UIcon
-            name="i-lucide-chevron-down"
-            class="size-4 transition-transform group-open:rotate-180"
-          />
-        </summary>
-        <ul class="border-t border-violet-500/30">
+      <div class="rounded-xl border border-violet-500 bg-white dark:bg-zinc-900">
+        <div class="border-b border-violet-500/30 px-4 py-2.5 text-sm font-semibold text-violet-700 dark:text-violet-300">
+          Dropdown — with normalization
+        </div>
+        <ul>
           <li class="flex items-center justify-between gap-3 px-4 py-2 text-sm">
             <span class="font-semibold text-zinc-900 dark:text-white">
               {{ part1CanonicalLabel }}
@@ -165,7 +151,7 @@ function visibleAbnormalWhitespace(s: string): string {
         <div class="border-t border-violet-500/30 px-4 py-2 text-[11px] text-violet-600 dark:text-violet-400">
           1 entry · ✓ canonical
         </div>
-      </details>
+      </div>
     </div>
 
     <div class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-zinc-600 dark:text-zinc-400">
