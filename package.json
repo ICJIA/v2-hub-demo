@@ -17,7 +17,7 @@
     "@iconify-json/simple-icons": "^1.2.78",
     "@nuxt/ui": "^4.6.1",
     "mermaid": "^11.14.0",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.5.1",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
